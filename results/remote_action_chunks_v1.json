@@ -1,0 +1,484 @@
+{
+  "schema": "cabinet_remote_chunks_check_v1",
+  "mode": "RECORDED_ACTION_CHUNKS",
+  "learned_policy": false,
+  "created_utc": "2026-11-19T07:57:04.569370+00:00",
+  "source_code_sha256": {
+    "src/pi05_cabinet/inference.py": "a231df3d52611c91af20b536604e403b25375905d05e65af9fdd889147536095",
+    "scripts/serve_action_replay.py": "00f9ff72141375de4170eee7db99bcca0c893c55da29d547a9f854bd44d6eaca",
+    "scripts/remote_policy_rollout.py": "7b1896fdaaeffe2411a4875087f4cc71f017afdaa731dd31f4556e5c1032152a",
+    "scripts/check_remote_chunks.py": "7e846e62e67a75e1cb89cc2d1e5c5fbc2dcc102f186acf4a7efdbdf5cd23660f",
+    "tests/test_inference.py": "b0fc02aacce54de039c8af06fed0b5d05592a3d8b956ddcf052f3ebefb15f9d9"
+  },
+  "scope": "Recorded actions over loopback HTTP, not pi0.5 inference or policy evaluation",
+  "horizon": 50,
+  "execute_steps": 5,
+  "checks": [
+    {
+      "check": "open_top",
+      "passed": true,
+      "client_exit_code": 0,
+      "report": {
+        "schema": "cabinet_remote_rollout_v1",
+        "mode": "RECORDED_ACTION_CHUNKS",
+        "learned_policy": false,
+        "checkpoint_id": "recorded:a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040",
+        "episode_id": "23d306c6-82dd-4327-bed6-66c21cb6bdb7",
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "horizon": 50,
+        "execute_steps": 5,
+        "control_hz": 20,
+        "max_control_steps": 600,
+        "steps": 321,
+        "accepted_requests": 65,
+        "rejected_requests": 0,
+        "success_final": true,
+        "success_stable_last_10": true,
+        "stop_reason": "recording_end",
+        "simulation_advances_while_waiting": false,
+        "max_sim_time_advance_during_request_s": 0.0,
+        "source_episode_sha256": "a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "recorded_actions": 321,
+        "max_joint_replay_error_rad": 2.4733235934881748e-06,
+        "max_drawer_replay_error": 4.865334346515482e-08,
+        "max_robot_action_replay_error": 1.4660034075575368e-08,
+        "initial_state_max_error": 0.0,
+        "task": "OpenDrawerPairLite",
+        "seed": 701,
+        "language": "Open the top drawer.",
+        "scene_parameters": {
+          "instruction": "Open the top drawer.",
+          "scene_offset": [
+            -0.0153,
+            -0.0264
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "all_recorded_actions_executed": true,
+        "replay_within_tolerance": true,
+        "evaluation": {
+          "target_drawer": "top",
+          "drawer_fractions": {
+            "top": 0.9766108941824275,
+            "bottom": 1.28262378675804e-06
+          },
+          "initial_drawer_fractions": {
+            "top": 1.2787883427281531e-06,
+            "bottom": 1.2787883427281531e-06
+          },
+          "target_success": true,
+          "non_target_max_drift": 3.83544402988682e-09,
+          "non_target_unchanged": true,
+          "non_target_tolerance": 0.05
+        },
+        "wall_seconds": 14.457587600000124,
+        "latency_seconds": {
+          "count": 65,
+          "mean": 0.021627779999982104,
+          "p95": 0.029350560000057153,
+          "maximum": 0.030742199999849618
+        }
+      },
+      "server_requests": 65,
+      "distinct_input_hashes": 65,
+      "client_trace_sha256": "b37779c1b3c9ef67c0433c4ba1ecf73b827f54fd5d68fa5ea422ffeb510b5744",
+      "server_trace_sha256": "20040cdc08a833c068f2e73dbd16c075a722c6159703e469482986ae4a3d856e"
+    },
+    {
+      "check": "open_bottom",
+      "passed": true,
+      "client_exit_code": 0,
+      "report": {
+        "schema": "cabinet_remote_rollout_v1",
+        "mode": "RECORDED_ACTION_CHUNKS",
+        "learned_policy": false,
+        "checkpoint_id": "recorded:669864d9aefe3fa02beeb68c8f62fe456de6ac46d54c6cae93317d4f474a65df",
+        "episode_id": "e9486858-8263-46ef-b1d9-bd4ef32c38f3",
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "horizon": 50,
+        "execute_steps": 5,
+        "control_hz": 20,
+        "max_control_steps": 600,
+        "steps": 409,
+        "accepted_requests": 82,
+        "rejected_requests": 0,
+        "success_final": true,
+        "success_stable_last_10": true,
+        "stop_reason": "recording_end",
+        "simulation_advances_while_waiting": false,
+        "max_sim_time_advance_during_request_s": 0.0,
+        "source_episode_sha256": "669864d9aefe3fa02beeb68c8f62fe456de6ac46d54c6cae93317d4f474a65df",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "recorded_actions": 409,
+        "max_joint_replay_error_rad": 8.770234017019263e-06,
+        "max_drawer_replay_error": 2.434626062974843e-06,
+        "max_robot_action_replay_error": 1.4660034075575368e-08,
+        "initial_state_max_error": 0.0,
+        "task": "OpenDrawerPairLite",
+        "seed": 701,
+        "language": "Open the bottom drawer.",
+        "scene_parameters": {
+          "instruction": "Open the bottom drawer.",
+          "scene_offset": [
+            -0.0153,
+            -0.0264
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "all_recorded_actions_executed": true,
+        "replay_within_tolerance": true,
+        "evaluation": {
+          "target_drawer": "bottom",
+          "drawer_fractions": {
+            "top": 1.28262378675804e-06,
+            "bottom": 0.9689948918224011
+          },
+          "initial_drawer_fractions": {
+            "top": 1.2787883427281531e-06,
+            "bottom": 1.2787883427281531e-06
+          },
+          "target_success": true,
+          "non_target_max_drift": 3.83544402988682e-09,
+          "non_target_unchanged": true,
+          "non_target_tolerance": 0.05
+        },
+        "wall_seconds": 17.790649900000062,
+        "latency_seconds": {
+          "count": 82,
+          "mean": 0.022216609756114628,
+          "p95": 0.03071555000016133,
+          "maximum": 0.03132389999996121
+        }
+      },
+      "server_requests": 82,
+      "distinct_input_hashes": 82,
+      "client_trace_sha256": "7e17603cc09a294127094f58a252b73cb84b2c54580f147594164a508b44c75c",
+      "server_trace_sha256": "bab2ad3d2be480770efdb6c66de3d47aabed0d71bb691a9acf7cab13be3bf65a"
+    },
+    {
+      "check": "close_top",
+      "passed": true,
+      "client_exit_code": 0,
+      "report": {
+        "schema": "cabinet_remote_rollout_v1",
+        "mode": "RECORDED_ACTION_CHUNKS",
+        "learned_policy": false,
+        "checkpoint_id": "recorded:34bb2304999f0918b88023107b9015a06dad2ae91c0036a808614442ae7e67da",
+        "episode_id": "b882b822-2ee7-4e65-b19b-4e4bc52bc7bd",
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "horizon": 50,
+        "execute_steps": 5,
+        "control_hz": 20,
+        "max_control_steps": 600,
+        "steps": 308,
+        "accepted_requests": 62,
+        "rejected_requests": 0,
+        "success_final": true,
+        "success_stable_last_10": true,
+        "stop_reason": "recording_end",
+        "simulation_advances_while_waiting": false,
+        "max_sim_time_advance_during_request_s": 0.0,
+        "source_episode_sha256": "34bb2304999f0918b88023107b9015a06dad2ae91c0036a808614442ae7e67da",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "recorded_actions": 308,
+        "max_joint_replay_error_rad": 6.521021424621409e-06,
+        "max_drawer_replay_error": 4.54373220992732e-08,
+        "max_robot_action_replay_error": 1.3519601493872102e-08,
+        "initial_state_max_error": 0.0,
+        "task": "CloseDrawerPairLite",
+        "seed": 701,
+        "language": "Close the top drawer.",
+        "scene_parameters": {
+          "instruction": "Close the top drawer.",
+          "scene_offset": [
+            -0.0153,
+            -0.0264
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "all_recorded_actions_executed": true,
+        "replay_within_tolerance": true,
+        "evaluation": {
+          "target_drawer": "top",
+          "drawer_fractions": {
+            "top": 3.341291380538249e-05,
+            "bottom": 0.9562751254586045
+          },
+          "initial_drawer_fractions": {
+            "top": 0.899633859275551,
+            "bottom": 0.9562751254586045
+          },
+          "target_success": true,
+          "non_target_max_drift": 0.0,
+          "non_target_unchanged": true,
+          "non_target_tolerance": 0.05
+        },
+        "wall_seconds": 14.464182899999969,
+        "latency_seconds": {
+          "count": 62,
+          "mean": 0.022218382258067264,
+          "p95": 0.030260954999960177,
+          "maximum": 0.030602799999996932
+        }
+      },
+      "server_requests": 62,
+      "distinct_input_hashes": 62,
+      "client_trace_sha256": "7604775296da15f60e6c66387941b445410d00b3e2d8cdcdf576623052f513ed",
+      "server_trace_sha256": "ccfc490ca15a635f94d47d351ab533dbdb2df1564fdd5d2da1f1e6db490fc89f"
+    },
+    {
+      "check": "close_bottom",
+      "passed": true,
+      "client_exit_code": 0,
+      "report": {
+        "schema": "cabinet_remote_rollout_v1",
+        "mode": "RECORDED_ACTION_CHUNKS",
+        "learned_policy": false,
+        "checkpoint_id": "recorded:bdf4bdc86767f997d4f8acb9c29d6a0e924628ebe9a7c31cdf86b9f1f627e17e",
+        "episode_id": "99221963-6b07-4ea5-babb-3de930794e62",
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "horizon": 50,
+        "execute_steps": 5,
+        "control_hz": 20,
+        "max_control_steps": 600,
+        "steps": 409,
+        "accepted_requests": 82,
+        "rejected_requests": 0,
+        "success_final": true,
+        "success_stable_last_10": true,
+        "stop_reason": "recording_end",
+        "simulation_advances_while_waiting": false,
+        "max_sim_time_advance_during_request_s": 0.0,
+        "source_episode_sha256": "bdf4bdc86767f997d4f8acb9c29d6a0e924628ebe9a7c31cdf86b9f1f627e17e",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "recorded_actions": 409,
+        "max_joint_replay_error_rad": 7.503989801982414e-06,
+        "max_drawer_replay_error": 6.385174742828958e-07,
+        "max_robot_action_replay_error": 1.3519601493872102e-08,
+        "initial_state_max_error": 0.0,
+        "task": "CloseDrawerPairLite",
+        "seed": 701,
+        "language": "Close the bottom drawer.",
+        "scene_parameters": {
+          "instruction": "Close the bottom drawer.",
+          "scene_offset": [
+            -0.0153,
+            -0.0264
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "all_recorded_actions_executed": true,
+        "replay_within_tolerance": true,
+        "evaluation": {
+          "target_drawer": "bottom",
+          "drawer_fractions": {
+            "top": 0.899633859275551,
+            "bottom": 0.0013256142604524319
+          },
+          "initial_drawer_fractions": {
+            "top": 0.899633859275551,
+            "bottom": 0.9562751254586045
+          },
+          "target_success": true,
+          "non_target_max_drift": 0.0,
+          "non_target_unchanged": true,
+          "non_target_tolerance": 0.05
+        },
+        "wall_seconds": 16.757308700000067,
+        "latency_seconds": {
+          "count": 82,
+          "mean": 0.021738076829262532,
+          "p95": 0.02758929500007526,
+          "maximum": 0.030606999999918116
+        }
+      },
+      "server_requests": 82,
+      "distinct_input_hashes": 82,
+      "client_trace_sha256": "f7c209ff6c46b691fe780d43e3f10ddd120f32c4cbda823fc746b69dc9b3ef43",
+      "server_trace_sha256": "7eb2257ef00a96a6dbcd845250609d97eb4cf7859426a27f469ffa52da19b9c8"
+    },
+    {
+      "check": "stale_episode",
+      "passed": true,
+      "client_exit_code": 1,
+      "report": {
+        "schema": "cabinet_remote_rollout_v1",
+        "mode": "RECORDED_ACTION_CHUNKS",
+        "learned_policy": false,
+        "checkpoint_id": "recorded:a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040",
+        "episode_id": "48cd5c11-3200-41ec-94b8-f8529dd2c340",
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "horizon": 50,
+        "execute_steps": 5,
+        "control_hz": 20,
+        "max_control_steps": 600,
+        "steps": 5,
+        "accepted_requests": 1,
+        "rejected_requests": 1,
+        "success_final": false,
+        "success_stable_last_10": false,
+        "stop_reason": "error",
+        "simulation_advances_while_waiting": false,
+        "max_sim_time_advance_during_request_s": 0.0,
+        "source_episode_sha256": "a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "recorded_actions": 321,
+        "max_joint_replay_error_rad": 9.516132326581328e-10,
+        "max_drawer_replay_error": 0.0,
+        "max_robot_action_replay_error": 5.960464455334602e-09,
+        "initial_state_max_error": 0.0,
+        "task": "OpenDrawerPairLite",
+        "seed": 701,
+        "language": "Open the top drawer.",
+        "scene_parameters": {
+          "instruction": "Open the top drawer.",
+          "scene_offset": [
+            -0.0153,
+            -0.0264
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "error_type": "InferenceError",
+        "error": "Response episode_id does not match current request",
+        "evaluation": {
+          "target_drawer": "top",
+          "drawer_fractions": {
+            "top": 1.282424021708285e-06,
+            "bottom": 1.282424021708285e-06
+          },
+          "initial_drawer_fractions": {
+            "top": 1.2787883427281531e-06,
+            "bottom": 1.2787883427281531e-06
+          },
+          "target_success": false,
+          "non_target_max_drift": 3.6356789801317773e-09,
+          "non_target_unchanged": true,
+          "non_target_tolerance": 0.05
+        },
+        "wall_seconds": 5.3116333000000395,
+        "latency_seconds": {
+          "count": 1,
+          "mean": 0.021152699999902325,
+          "p95": 0.021152699999902325,
+          "maximum": 0.021152699999902325
+        }
+      },
+      "server_requests": 2,
+      "distinct_input_hashes": 2,
+      "client_trace_sha256": "23d29e784aaa8804677ef4582d6d1cb749bf1a782408d6ac97e5db4d7b941e22",
+      "server_trace_sha256": "97af301407a71a336d4fa1420724d564d7700c72e63578c30f5bc386fc2f4836"
+    },
+    {
+      "check": "timeout",
+      "passed": true,
+      "client_exit_code": 1,
+      "report": {
+        "schema": "cabinet_remote_rollout_v1",
+        "mode": "RECORDED_ACTION_CHUNKS",
+        "learned_policy": false,
+        "checkpoint_id": "recorded:a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040",
+        "episode_id": "cdc0f944-e22c-4d52-a98f-9a66f36e0a78",
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "horizon": 50,
+        "execute_steps": 5,
+        "control_hz": 20,
+        "max_control_steps": 600,
+        "steps": 5,
+        "accepted_requests": 1,
+        "rejected_requests": 1,
+        "success_final": false,
+        "success_stable_last_10": false,
+        "stop_reason": "error",
+        "simulation_advances_while_waiting": false,
+        "max_sim_time_advance_during_request_s": 0.0,
+        "source_episode_sha256": "a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "recorded_actions": 321,
+        "max_joint_replay_error_rad": 9.516132326581328e-10,
+        "max_drawer_replay_error": 0.0,
+        "max_robot_action_replay_error": 5.960464455334602e-09,
+        "initial_state_max_error": 0.0,
+        "task": "OpenDrawerPairLite",
+        "seed": 701,
+        "language": "Open the top drawer.",
+        "scene_parameters": {
+          "instruction": "Open the top drawer.",
+          "scene_offset": [
+            -0.0153,
+            -0.0264
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "error_type": "InferenceError",
+        "error": "Policy transport failed or timed out",
+        "evaluation": {
+          "target_drawer": "top",
+          "drawer_fractions": {
+            "top": 1.282424021708285e-06,
+            "bottom": 1.282424021708285e-06
+          },
+          "initial_drawer_fractions": {
+            "top": 1.2787883427281531e-06,
+            "bottom": 1.2787883427281531e-06
+          },
+          "target_success": false,
+          "non_target_max_drift": 3.6356789801317773e-09,
+          "non_target_unchanged": true,
+          "non_target_tolerance": 0.05
+        },
+        "wall_seconds": 5.925955000000158,
+        "latency_seconds": {
+          "count": 1,
+          "mean": 0.021285400000124355,
+          "p95": 0.021285400000124355,
+          "maximum": 0.021285400000124355
+        }
+      },
+      "server_requests": 2,
+      "distinct_input_hashes": 2,
+      "client_trace_sha256": "7e57be15f54a0fd9d8860ea9e9fe6ef98dba8eaec571fb34cac3299798bf9abc",
+      "server_trace_sha256": "016d3c512b37849f18c4c6c0cfd1615f649b472786c2724189e7a549e198cb3a"
+    }
+  ],
+  "all_passed": true,
+  "raw_run_report_sha256": "9242e93f4aa4a76e00f67db99df63f6e4ddca15f1d415eda1525d31dd76a6a61",
+  "video_checks": [
+    {
+      "check": "open_top",
+      "frames_decoded": 321,
+      "fps": 20.0,
+      "sha256": "a841bd2229122ffd30aabe593b4a5bc14dce65ca90a79b7253768841eabc0143"
+    },
+    {
+      "check": "open_bottom",
+      "frames_decoded": 409,
+      "fps": 20.0,
+      "sha256": "d59a025a3411edc15cae8c07272d5fda54dbb5ff49c3bbe59dc15c4f217e8eaf"
+    },
+    {
+      "check": "close_top",
+      "frames_decoded": 308,
+      "fps": 20.0,
+      "sha256": "70b3158230a3c0a833cf31bb627047f2c065eb9f90774d11706e6e5f7b58b644"
+    },
+    {
+      "check": "close_bottom",
+      "frames_decoded": 409,
+      "fps": 20.0,
+      "sha256": "4fdd1246417c25e5e1d14028aab1faa0198bbae99a5764b78834444a05f1224d"
+    }
+  ],
+  "frozen_v4_files_changed": [],
+  "protocol_unit_tests": {
+    "tests": 12,
+    "simulation_environment_passed": true,
+    "cpu_data_environment_passed": true
+  }
+}

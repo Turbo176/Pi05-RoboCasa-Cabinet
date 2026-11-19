@@ -25,7 +25,7 @@
   <a href="#quickstart">🚀 Quickstart</a>
 </p>
 
-A **MuJoCo + RoboCasa/robosuite** workflow for drawer opening, closing, and language-specified target selection with **PandaOmron**. It brings together simulation, keyboard teleoperation, scripted contact control, episode recording, action replay, and official LeRobot export to prepare demonstrations for π0.5 fine-tuning.
+A **MuJoCo + RoboCasa/robosuite** workflow for drawer opening, closing, and language-specified target selection with **PandaOmron**. It brings together simulation, keyboard teleoperation, scripted contact control, episode recording, action replay, official LeRobot export, and HTTP action-chunk execution to prepare for π0.5 fine-tuning and deployment.
 
 | 🗄️ Tasks | 📷 Observations | 🦾 Action interface | ⏱️ Control |
 |---|---|---|---|
@@ -320,6 +320,18 @@ Use a new output directory for each run. Outputs include trajectories, replay vi
 
 Local hardware handles simulation, collection, replay, and video recording. Model training and inference are assigned to a Linux GPU server. Datasets, weights, and environments are excluded from Git.
 
+### 4. Check HTTP action-chunk execution
+
+```powershell
+& $sim scripts\check_remote_chunks.py `
+    --condition outputs\data_readiness_v4\train_001 `
+    --output outputs\NEW_REMOTE_CHUNK_CHECK
+```
+
+The check sends language, both RGB views and robot state through a loopback HTTP endpoint. Each response contains 50 actions; MuJoCo executes the first five before sending a fresh observation. Four recorded tasks passed **1,447 actions / 291 requests**. Stale-episode and timeout checks both stopped after five valid actions, with no further action or simulator-time advance while waiting.
+
+The endpoint returns **recorded scripted actions**, labeled `RECORDED_ACTION_CHUNKS`. This verifies transport and execution; π0.5 inference still requires a model server and processor checks. [Protocol, results and separate server/client commands](docs/REMOTE_INFERENCE.md).
+
 <a id="layout"></a>
 
 ## 📂 Project layout
@@ -333,6 +345,7 @@ src/pi05_cabinet/
   scripted.py           # Physical-contact drawer controller
   recording.py          # Streaming HDF5 and MP4 recording
   adapters.py           # Two RGB views, 9D state, 7D action
+  inference.py          # Versioned HTTP action chunks and response validation
 scripts/
   bootstrap_*.ps1       # Environment setup and verification
   teleop_record.py      # Keyboard demonstrations
@@ -342,6 +355,8 @@ scripts/
   evaluate_drawer_pair.py / run_pair_pilot.ps1
   prepare_sft_data.py   # Splits, selection, action-chunk checks
   make_collection_review.py # Full recorded policy-view videos and keyframes
+  serve_action_replay.py / remote_policy_rollout.py
+  check_remote_chunks.py # Four-task transport and fail-stop regression
 configs/                # Initialization conditions, splits, frozen code hashes
 requirements/           # Simulation and CPU dataset dependencies
 docs/                   # Setup, collection, data, and model integration
