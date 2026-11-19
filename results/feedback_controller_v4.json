@@ -1,0 +1,919 @@
+{
+  "schema": "cabinet_feedback_collector_validation_v4",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "controller_revision": "pose_contact_feedback_v4",
+  "controller_default": "fixed_v2; feedback_v4 is opt-in",
+  "role": "Controller development and dataset pipeline verification, not learned-policy or held-out performance",
+  "collection_code_sha256": {
+    "src/pi05_cabinet/envs.py": "5295e4cc312d4f6e12afecd89803c12ad3e9fbc4c14b99e31bea6e2968c8bc2a",
+    "src/pi05_cabinet/scripted.py": "b05b1f8d660289cab90a47d1a80a59903e55b2697ffdf0c06d2d5a3b14c9def4",
+    "src/pi05_cabinet/recording.py": "fce048fc6f4dd8517259943a89de9445fa51c5f4400abd76dd68665e09901816",
+    "src/pi05_cabinet/adapters.py": "85395e19e3e3aac48724439d655a787870e4cc2beaf179583cfd471a00faa890",
+    "scripts/_windows_runtime.py": "8efcc811a07e4f58a54023d324758ec19c7a442ac767630a705a696429920199",
+    "scripts/scripted_rollout.py": "0946775377890f5a5ffbcb797cfe383ba78d5f6e3a198ab2821b1a1c25e95183",
+    "scripts/replay_episode.py": "521154615215cb8c1f39af649903fe3e0266d25acdaafac2b528f7ec2c5436eb",
+    "scripts/evaluate_drawer_pair.py": "cb6cd3f87795e372c6034e015e4430377a41b30d19a3b6b9181ba32371d9144d",
+    "scripts/run_pair_pilot.ps1": "f9b7140ccdb675805124c51c20adc3a3bfca682db54bd6cfb3fc646f4963ccb7",
+    "requirements/sim-win.lock.txt": "b6a3c761a3d6d052b4e8525589dfba3ce260b87e2d3fca0655b11d5926d69422",
+    "scripts/convert_lerobot.py": "ca75ad71d62fe1727b6fb1d82d57fffce2e8f7f30a5edc6bf322d748731fade1",
+    "scripts/prepare_sft_data.py": "655cf2306bb7da2fd459c3bda0669abfed5fb1505eb11e4f8f4700a23ad0205d",
+    "requirements/data-cpu.lock.txt": "b5682ba3f0a33ee65aa7c26192171465d625eae7aa05f0931b0e10035c8e42e6",
+    "src/pi05_cabinet/validation.py": "eaa6e405b231fb0bdc84645300298df782ebd55b270de9dbd9acf658f2802c67"
+  },
+  "headless_control_regression": {
+    "report": "results/feedback_regression_v4.json",
+    "sha256": "a48d35a8492b436c5e6d12e1a64e20d542c94c56a11b69e002d5a6053a4ecdfd",
+    "attempted": 20,
+    "stable_and_controller_completed": 20,
+    "max_steps": 419,
+    "seeds": [
+      101,
+      102,
+      501,
+      502,
+      503
+    ],
+    "validation_seed601_executed": false,
+    "reserved_tests_executed": false
+  },
+  "initial_reset_checks": {
+    "physics_exact_count": 10,
+    "in_process_xml_exact_count": 9,
+    "in_process_checks": 10,
+    "in_process_initial_rgb_all_bitwise_identical": false,
+    "mesh_content_type_difference": {
+      "seed": 101,
+      "behavior": "Open",
+      "changed_meshes": 71,
+      "other_serialized_attributes_changed": false,
+      "inference": "Observed serializer attribute difference; cache mechanism not established. Do not bypass exact XML audit."
+    },
+    "fresh_process_seed101_open_pair": {
+      "passed": true,
+      "hashes": {
+        "xml_sha256": "eff498402c8a63d60a14af2558e40566dc85b89e2475832a5bd00c7bb52b194d",
+        "state_sha256": "dac38253bd59a1694c0a2625e991febd41c5232e48aa49d0dd3246fc0d39f3a2",
+        "rgb_sha256": {
+          "cabinet_front_image": "f33a93c6f6ecad268b84d659604c3c92d9b7b9042b51e8df8a3305172cf9ea9c",
+          "robot0_eye_in_hand_image": "5547004c2a215d7e6d1a4fb3112ff0c0e4d66a866d4f860a113e0e426bb5d147"
+        }
+      },
+      "role": "Matches the existing one-process-per-recording runner"
+    }
+  },
+  "fault_injection": {
+    "kind": "Deliberately suppressed pad-contact feedback; not an ordinary task attempt",
+    "stop_reason": "stage_gate_timeout:grasp",
+    "completed": false,
+    "pull_actions": 0,
+    "passed": true
+  },
+  "full_recordings": [
+    {
+      "seed": 502,
+      "case": "open_bottom",
+      "role": "Re-recording a diagnosed training failure; development-only",
+      "original_episode_sha256": "fdcefc1f903bc8781591b5aa51013cb31543e0434afc222416cb7b2e063bcf1f",
+      "original_final_fraction": 9.587784655965268e-05,
+      "original_stable_success": false,
+      "episode_path": "outputs/feedback_dev_v4/final_seed502_open_bottom/episode.hdf5",
+      "video_path": "outputs/feedback_dev_v4/final_seed502_open_bottom/scripted.mp4",
+      "recorded": {
+        "task": "OpenDrawerPairLite",
+        "seed": 502,
+        "mode": "SCRIPTED_PRIVILEGED_STATE",
+        "source": "pose servo uses simulator handle pose; robot motion only through env.step",
+        "learned_policy": false,
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "steps": 408,
+        "sim_seconds": 20.4,
+        "wall_seconds": 15.358988499996485,
+        "steps_per_second": 26.56424933192009,
+        "language": "Open the bottom drawer.",
+        "final_drawer_open_fraction": 0.9704965909813862,
+        "max_drawer_open_fraction": 0.9704965909813862,
+        "success_final": true,
+        "success_any": true,
+        "success_stable_last_10": true,
+        "bilateral_handle_contact_steps": 91,
+        "saved_alignment_and_video_decode_passed": true,
+        "controller_execution": {
+          "controller_revision": "pose_contact_feedback_v4",
+          "completed": true,
+          "stop_reason": null,
+          "steps": 408,
+          "stages": [
+            {
+              "name": "approach_above",
+              "steps": 60,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.2444327816791992,
+              "orientation_error_rad": 0.009827165958798834,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "align_height",
+              "steps": 149,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.007251513798417306,
+              "orientation_error_rad": 0.001983118725905153,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "reach_handle",
+              "steps": 36,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.021211762610282188,
+              "orientation_error_rad": 0.05015705141066043,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "grasp",
+              "steps": 15,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.011819890671533738,
+              "orientation_error_rad": 0.05616956167233197,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "pull",
+              "steps": 73,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.004409096193658889,
+              "orientation_error_rad": 0.003926877598471273,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "hold",
+              "steps": 10,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.003628870060324446,
+              "orientation_error_rad": 0.004007925914456354,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "release",
+              "steps": 25,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.0007170202292367139,
+              "orientation_error_rad": 0.0007351826374116291,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "retreat",
+              "steps": 40,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.007209724574022753,
+              "orientation_error_rad": 0.004762685053966579,
+              "loaded_target_pad_ids": []
+            }
+          ],
+          "wrist_flipped": true
+        },
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 1.2826043483847072e-06,
+          "bottom": 0.9704965909813862
+        },
+        "initial_drawer_fractions": {
+          "top": 1.27876871030035e-06,
+          "bottom": 1.27876871030035e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835638084357248e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05,
+        "scene_parameters": {
+          "instruction": "Open the bottom drawer.",
+          "scene_offset": [
+            0.0142,
+            0.0198
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "episode_sha256": "a82633d78ed451eff68f3f2f228f47a17d1b52745510faa3a5249a8d1f8703f3"
+      },
+      "replay": {
+        "mode": "RECORDED_ACTION_REPLAY",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "learned_policy": false,
+        "source_episode_sha256": "a82633d78ed451eff68f3f2f228f47a17d1b52745510faa3a5249a8d1f8703f3",
+        "task": "OpenDrawerPairLite",
+        "seed": 502,
+        "steps": 408,
+        "initial_state_max_error": 0.0,
+        "max_joint_error_rad": 5.917488721252084e-12,
+        "max_open_fraction_error": 3.416536498157541e-11,
+        "success_final": true,
+        "replay_within_tolerance": true,
+        "max_all_drawer_fraction_error": 3.416536498157541e-11,
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 1.2826043483847072e-06,
+          "bottom": 0.9704965909713854
+        },
+        "initial_drawer_fractions": {
+          "top": 1.27876871030035e-06,
+          "bottom": 1.27876871030035e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835638084357248e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05,
+        "scene_parameters": {
+          "instruction": "Open the bottom drawer.",
+          "scene_offset": [
+            0.0142,
+            0.0198
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "contact_diagnostics": "contacts.json"
+      },
+      "replay_contacts_sha256": "1bb2c3d4454526b39537866f647fa27beaf5c57d579dc15ef519483f73a98186",
+      "loaded_target_handle_contact_points_during_clearance_and_retreat": []
+    },
+    {
+      "seed": 502,
+      "case": "close_bottom",
+      "role": "Re-recording a diagnosed training failure; development-only",
+      "original_episode_sha256": "82413a326f422749e40a245da69a8fa631dfe4d4299a1770eaeafa0360a4f149",
+      "original_final_fraction": 0.12415499251852448,
+      "original_stable_success": false,
+      "episode_path": "outputs/feedback_dev_v4/final_seed502_close_bottom/episode.hdf5",
+      "video_path": "outputs/feedback_dev_v4/final_seed502_close_bottom/scripted.mp4",
+      "recorded": {
+        "task": "CloseDrawerPairLite",
+        "seed": 502,
+        "mode": "SCRIPTED_PRIVILEGED_STATE",
+        "source": "pose servo uses simulator handle pose; robot motion only through env.step",
+        "learned_policy": false,
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "steps": 416,
+        "sim_seconds": 20.8,
+        "wall_seconds": 16.075047999998787,
+        "steps_per_second": 25.87861635001223,
+        "language": "Close the bottom drawer.",
+        "final_drawer_open_fraction": 0.005647341985222334,
+        "max_drawer_open_fraction": 0.9655162708189292,
+        "success_final": true,
+        "success_any": true,
+        "success_stable_last_10": true,
+        "bilateral_handle_contact_steps": 88,
+        "saved_alignment_and_video_decode_passed": true,
+        "controller_execution": {
+          "controller_revision": "pose_contact_feedback_v4",
+          "completed": true,
+          "stop_reason": null,
+          "steps": 416,
+          "stages": [
+            {
+              "name": "approach_above",
+              "steps": 60,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.39389647689866714,
+              "orientation_error_rad": 0.009827165958800428,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "align_height",
+              "steps": 149,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.006869505074036204,
+              "orientation_error_rad": 0.003764422078662441,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "reach_handle",
+              "steps": 34,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.01396219915094262,
+              "orientation_error_rad": 0.005080198440404558,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "grasp",
+              "steps": 13,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.0027714615098974353,
+              "orientation_error_rad": 0.001885315899992292,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "push",
+              "steps": 71,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.014338800188975279,
+              "orientation_error_rad": 0.054649291176749784,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "hold",
+              "steps": 10,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.009079295753237428,
+              "orientation_error_rad": 0.055688447575436034,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "release",
+              "steps": 25,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.01688024948146789,
+              "orientation_error_rad": 0.04854850551857723,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "clear_handle",
+              "steps": 14,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.021518002099819782,
+              "orientation_error_rad": 0.06802019382366345,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "retreat",
+              "steps": 40,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.007725611150785805,
+              "orientation_error_rad": 0.016747732696089757,
+              "loaded_target_pad_ids": []
+            }
+          ],
+          "wrist_flipped": true
+        },
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 0.9496361874231488,
+          "bottom": 0.005647341985222334
+        },
+        "initial_drawer_fractions": {
+          "top": 0.9496361874231488,
+          "bottom": 0.9655162708189292
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05,
+        "scene_parameters": {
+          "instruction": "Close the bottom drawer.",
+          "scene_offset": [
+            0.0142,
+            0.0198
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "episode_sha256": "0081f96044299ad5afd5f2c9a9cb63c1e72dbbc18d05ef59970658ba9c34ccd6"
+      },
+      "replay": {
+        "mode": "RECORDED_ACTION_REPLAY",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "learned_policy": false,
+        "source_episode_sha256": "0081f96044299ad5afd5f2c9a9cb63c1e72dbbc18d05ef59970658ba9c34ccd6",
+        "task": "CloseDrawerPairLite",
+        "seed": 502,
+        "steps": 416,
+        "initial_state_max_error": 0.0,
+        "max_joint_error_rad": 1.2939399551825659e-11,
+        "max_open_fraction_error": 1.5070908757075507e-10,
+        "success_final": true,
+        "replay_within_tolerance": true,
+        "max_all_drawer_fraction_error": 1.5070908757075507e-10,
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 0.9496361874231488,
+          "bottom": 0.00564734213593142
+        },
+        "initial_drawer_fractions": {
+          "top": 0.9496361874231488,
+          "bottom": 0.9655162708189292
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05,
+        "scene_parameters": {
+          "instruction": "Close the bottom drawer.",
+          "scene_offset": [
+            0.0142,
+            0.0198
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "contact_diagnostics": "contacts.json"
+      },
+      "replay_contacts_sha256": "ff7756229342185d6c0f40c36819e7801afbe68ddab0730233f5317c855bfae9",
+      "loaded_target_handle_contact_points_during_clearance_and_retreat": []
+    },
+    {
+      "seed": 503,
+      "case": "open_top",
+      "role": "Re-recording a diagnosed training failure; development-only",
+      "original_episode_sha256": "a56a431c0883a0530744d9c70d96de9324e5d8b842c57ecd8693302fcf1eb55c",
+      "original_final_fraction": 0.00014801829107386524,
+      "original_stable_success": false,
+      "episode_path": "outputs/feedback_dev_v4/final_seed503_open_top/episode.hdf5",
+      "video_path": "outputs/feedback_dev_v4/final_seed503_open_top/scripted.mp4",
+      "recorded": {
+        "task": "OpenDrawerPairLite",
+        "seed": 503,
+        "mode": "SCRIPTED_PRIVILEGED_STATE",
+        "source": "pose servo uses simulator handle pose; robot motion only through env.step",
+        "learned_policy": false,
+        "benchmark": "custom Lite; not full RoboCasa benchmark",
+        "steps": 323,
+        "sim_seconds": 16.15,
+        "wall_seconds": 13.264367799994943,
+        "steps_per_second": 24.350953235790335,
+        "language": "Open the top drawer.",
+        "final_drawer_open_fraction": 0.9782273143029088,
+        "max_drawer_open_fraction": 0.9782273143029088,
+        "success_final": true,
+        "success_any": true,
+        "success_stable_last_10": true,
+        "bilateral_handle_contact_steps": 92,
+        "saved_alignment_and_video_decode_passed": true,
+        "controller_execution": {
+          "controller_revision": "pose_contact_feedback_v4",
+          "completed": true,
+          "stop_reason": null,
+          "steps": 323,
+          "stages": [
+            {
+              "name": "approach_above",
+              "steps": 60,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.25416500675209197,
+              "orientation_error_rad": 0.03457952067844218,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "align_height",
+              "steps": 68,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.007453400964502062,
+              "orientation_error_rad": 0.001346479711731349,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "reach_handle",
+              "steps": 33,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.013591807299368689,
+              "orientation_error_rad": 0.0013316688342352465,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "grasp",
+              "steps": 13,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.004976686703067149,
+              "orientation_error_rad": 0.0011338414491000098,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "pull",
+              "steps": 74,
+              "gated": true,
+              "gate_passed": true,
+              "position_error_m": 0.005909824064493365,
+              "orientation_error_rad": 0.0008610421938731967,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "hold",
+              "steps": 10,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.002446122314804946,
+              "orientation_error_rad": 0.001551810387761433,
+              "loaded_target_pad_ids": [
+                1,
+                2
+              ]
+            },
+            {
+              "name": "release",
+              "steps": 25,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.0010819692138023728,
+              "orientation_error_rad": 0.0035090596644434947,
+              "loaded_target_pad_ids": []
+            },
+            {
+              "name": "retreat",
+              "steps": 40,
+              "gated": false,
+              "gate_passed": true,
+              "position_error_m": 0.0064581527564602035,
+              "orientation_error_rad": 0.008114361569581622,
+              "loaded_target_pad_ids": []
+            }
+          ],
+          "wrist_flipped": false
+        },
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 0.9782273143029088,
+          "bottom": 1.2826237647375705e-06
+        },
+        "initial_drawer_fractions": {
+          "top": 1.278788320489434e-06,
+          "bottom": 1.278788320489434e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.8354442481365054e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05,
+        "scene_parameters": {
+          "instruction": "Open the top drawer.",
+          "scene_offset": [
+            0.035,
+            0.0347
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "episode_sha256": "e1f48b194f48d660845db53817cb6036eb50b0f77d4c8604913f1b2b25de8e02"
+      },
+      "replay": {
+        "mode": "RECORDED_ACTION_REPLAY",
+        "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+        "learned_policy": false,
+        "source_episode_sha256": "e1f48b194f48d660845db53817cb6036eb50b0f77d4c8604913f1b2b25de8e02",
+        "task": "OpenDrawerPairLite",
+        "seed": 503,
+        "steps": 323,
+        "initial_state_max_error": 0.0,
+        "max_joint_error_rad": 5.329070518200751e-15,
+        "max_open_fraction_error": 1.9984014443252818e-15,
+        "success_final": true,
+        "replay_within_tolerance": true,
+        "max_all_drawer_fraction_error": 1.9984014443252818e-15,
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 0.97822731430291,
+          "bottom": 1.2826237647375705e-06
+        },
+        "initial_drawer_fractions": {
+          "top": 1.278788320489434e-06,
+          "bottom": 1.278788320489434e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.8354442481365054e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05,
+        "scene_parameters": {
+          "instruction": "Open the top drawer.",
+          "scene_offset": [
+            0.035,
+            0.0347
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "contact_diagnostics": "contacts.json"
+      },
+      "replay_contacts_sha256": "d34000c2af73ddbccc3a2506cd6971f6b1e0469e2b95b7ace82545f063626264",
+      "loaded_target_handle_contact_points_during_clearance_and_retreat": []
+    }
+  ],
+  "official_lerobot_pipeline_check": {
+    "schema_version": "pandaomron_arm_osc_v1",
+    "lerobot_version": "0.4.4",
+    "dataset_format": "v3.0",
+    "dataset_api": "official LeRobotDataset.create/add_frame/save_episode/finalize and loader",
+    "frames": 1147,
+    "episodes": 3,
+    "fps": 20,
+    "state_dim": 9,
+    "action_dim": 7,
+    "cameras": [
+      "observation.images.front",
+      "observation.images.wrist"
+    ],
+    "image_storage": "lossless PNG embedded in Parquet",
+    "all_frames_compared": true,
+    "official_loader_passed": true,
+    "no_upload": true,
+    "learned_policy": false,
+    "source_episodes": [
+      {
+        "filename": "final_seed502_open_bottom/episode.hdf5",
+        "sha256": "a82633d78ed451eff68f3f2f228f47a17d1b52745510faa3a5249a8d1f8703f3",
+        "mode": "SCRIPTED_PRIVILEGED_STATE",
+        "task": "OpenDrawerPairLite",
+        "seed": 502,
+        "frames": 408,
+        "camera_mapping": {
+          "observation.images.front": "cabinet_front_image",
+          "observation.images.wrist": "robot0_eye_in_hand_image"
+        },
+        "language": "Open the bottom drawer.",
+        "success_final": true,
+        "scene_parameters": {
+          "instruction": "Open the bottom drawer.",
+          "scene_offset": [
+            0.0142,
+            0.0198
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "target_drawer": "bottom",
+        "non_target_max_drift": 3.835638084357248e-09,
+        "non_target_tolerance": 0.05
+      },
+      {
+        "filename": "final_seed502_close_bottom/episode.hdf5",
+        "sha256": "0081f96044299ad5afd5f2c9a9cb63c1e72dbbc18d05ef59970658ba9c34ccd6",
+        "mode": "SCRIPTED_PRIVILEGED_STATE",
+        "task": "CloseDrawerPairLite",
+        "seed": 502,
+        "frames": 416,
+        "camera_mapping": {
+          "observation.images.front": "cabinet_front_image",
+          "observation.images.wrist": "robot0_eye_in_hand_image"
+        },
+        "language": "Close the bottom drawer.",
+        "success_final": true,
+        "scene_parameters": {
+          "instruction": "Close the bottom drawer.",
+          "scene_offset": [
+            0.0142,
+            0.0198
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "target_drawer": "bottom",
+        "non_target_max_drift": 0.0,
+        "non_target_tolerance": 0.05
+      },
+      {
+        "filename": "final_seed503_open_top/episode.hdf5",
+        "sha256": "e1f48b194f48d660845db53817cb6036eb50b0f77d4c8604913f1b2b25de8e02",
+        "mode": "SCRIPTED_PRIVILEGED_STATE",
+        "task": "OpenDrawerPairLite",
+        "seed": 503,
+        "frames": 323,
+        "camera_mapping": {
+          "observation.images.front": "cabinet_front_image",
+          "observation.images.wrist": "robot0_eye_in_hand_image"
+        },
+        "language": "Open the top drawer.",
+        "success_final": true,
+        "scene_parameters": {
+          "instruction": "Open the top drawer.",
+          "scene_offset": [
+            0.035,
+            0.0347
+          ],
+          "pair_layout": "spaced",
+          "front_camera": "cabinet_front"
+        },
+        "target_drawer": "top",
+        "non_target_max_drift": 3.8354442481365054e-09,
+        "non_target_tolerance": 0.05
+      }
+    ],
+    "conversion_code_sha256": "ca75ad71d62fe1727b6fb1d82d57fffce2e8f7f30a5edc6bf322d748731fade1"
+  },
+  "action_chunks": {
+    "chunk_size": 50,
+    "action_shape": [
+      50,
+      7
+    ],
+    "boundary_samples_checked": 15,
+    "official_action_padding_passed": true,
+    "cross_episode_actions_observed": false,
+    "cpu_batch_action_shape": [
+      3,
+      50,
+      7
+    ],
+    "cpu_batch_state_shape": [
+      3,
+      9
+    ],
+    "cpu_batch_rgb_shape": [
+      3,
+      3,
+      256,
+      256
+    ],
+    "cpu_batch_language_passed": true,
+    "stats_sha256": "710928323d451002cd11185f44391aa60f4a583c2efe8e7db885c396c7ac324b",
+    "vector_stats": {
+      "observation.state": {
+        "min": [
+          -0.33919447660446167,
+          -1.764770269393921,
+          -2.1180055141448975,
+          -2.702382802963257,
+          -0.27486371994018555,
+          1.4988269805908203,
+          -2.1615424156188965,
+          0.012654941529035568,
+          -0.04004395380616188
+        ],
+        "max": [
+          0.6575382351875305,
+          -1.043618083000183,
+          -0.006070111878216267,
+          -1.5828030109405518,
+          0.5571734309196472,
+          2.677854299545288,
+          1.624799132347107,
+          0.04004398360848427,
+          -0.005679992493242025
+        ],
+        "mean": [
+          0.061031603726128855,
+          -1.62679897450112,
+          -1.4826771337879983,
+          -2.140974686472127,
+          0.05260529043680705,
+          2.1755584695594874,
+          -0.08124946674889034,
+          0.03295465949321947,
+          -0.031884041911197314
+        ],
+        "std": [
+          0.26484958823936966,
+          0.16383095256539845,
+          0.6068695883061903,
+          0.2509329009904684,
+          0.17653566919722932,
+          0.3179436611954676,
+          1.1813105815359366,
+          0.010812126953040124,
+          0.01163829734467656
+        ],
+        "q01": [
+          -0.2956085411549498,
+          -1.7630195198416216,
+          -1.922818540597351,
+          -2.673670763907062,
+          -0.1642878614863626,
+          1.5491987894739188,
+          -0.4866295743591389,
+          0.013889885775041756,
+          -0.039260291683616694
+        ],
+        "q99": [
+          0.5247331682554306,
+          -1.1082811825849122,
+          -0.09727609535872468,
+          -1.6672462928035308,
+          0.28280354032008775,
+          2.6703570614347485,
+          1.329560824521438,
+          0.03973484527616561,
+          -0.009655341214195338
+        ]
+      },
+      "action": {
+        "min": [
+          -0.3499999940395355,
+          -0.3499999940395355,
+          -0.3499999940395355,
+          -0.5,
+          -0.5,
+          -0.5,
+          -1.0
+        ],
+        "max": [
+          0.3499999940395355,
+          0.06817065924406052,
+          0.3499999940395355,
+          0.5,
+          0.005701305810362101,
+          0.5,
+          1.0
+        ],
+        "mean": [
+          -0.060525485903102624,
+          -0.09514048492898085,
+          -0.10022426444027044,
+          0.010621665456472735,
+          -0.03255009013305255,
+          -0.008469729100491237,
+          -0.49607672261069313
+        ],
+        "std": [
+          0.2494993572573024,
+          0.15621176943245185,
+          0.19363240408431448,
+          0.11593419683294585,
+          0.09596792804855919,
+          0.09856728035889671,
+          0.868278671702899
+        ],
+        "q01": [
+          -0.3499999940395355,
+          -0.3499999940395355,
+          -0.3499999940395355,
+          -0.1453381369709189,
+          -0.5,
+          -0.36238725453176324,
+          -1.0
+        ],
+        "q99": [
+          0.349991017955318,
+          0.03815023474362796,
+          0.3499572922886688,
+          0.360089100346216,
+          0.0054959296948140866,
+          0.14755858757400783,
+          0.9999839025071872
+        ]
+      }
+    }
+  },
+  "legacy_selection_check": {
+    "legacy_plans_valid": true,
+    "selection_checks": [
+      {
+        "condition": "train_001",
+        "case": "open_top",
+        "selected": true,
+        "reasons": []
+      },
+      {
+        "condition": "train_002",
+        "case": "close_bottom",
+        "selected": false,
+        "reasons": [
+          "task_final_failure",
+          "not_successful_for_final_10_steps"
+        ]
+      }
+    ]
+  },
+  "candidate_dataset_status": {
+    "v3_selection_manifest_unchanged": true,
+    "additional_sft_dataset_built": false,
+    "new_development_episodes_merged_into_v3": false,
+    "full_episode_human_visual_acceptance": false
+  },
+  "limits": [
+    "20 reused train/development cases are not independent evaluation.",
+    "All controllers use privileged fixture/contact state. No pi0.5 model was loaded, trained or evaluated.",
+    "Gate contacts are sampled only at the final physics substep of each 20 Hz action.",
+    "The 3-episode LeRobot export is a development pipeline check, not an SFT training split.",
+    "One early recorder attempt failed to serialize a NumPy boolean; its incomplete files remain discarded and excluded."
+  ]
+}

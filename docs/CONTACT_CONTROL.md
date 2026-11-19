@@ -106,3 +106,14 @@ review found that the legacy robot-left view clipped the lower handle. Its
 three completed recordings remain development diagnostics; no v2 SFT dataset
 was built. The next collection uses a declared `cabinet_front` profile and
 fresh seeds. [Retirement record](../results/data_collection_v2_retired.json).
+
+## Pose and contact feedback collector
+
+The later v3 training failures showed that a fixed clearance duration alone
+does not cover every initialization. The optional `feedback_v4` collector adds
+measured stage gates, nearer pregrasp waypoints and a lower-drawer wrist-roll
+choice for left-side robot spawns. Twenty reused development conditions
+completed stably; the three diagnosed training failures were re-recorded and
+replayed. These checks do not replace the frozen v3 collection results or
+measure a learned policy. See the [collector protocol and commands](FEEDBACK_COLLECTOR.md)
+and [recorded validation](../results/feedback_controller_v4.json).

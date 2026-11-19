@@ -80,6 +80,8 @@ The original closing trajectory reopened the drawer during retreat. Lowering the
 
 [▶ Comparison MP4](assets/demo/withdraw_clearance_v2.mp4) · [Contact measurements and reproduction](docs/CONTACT_CONTROL.md)
 
+The optional [`feedback_v4` collector](docs/FEEDBACK_COLLECTOR.md) also checks actual alignment and pad contact before advancing stages. It completed 20 reused development conditions, with the three diagnosed training failures re-recorded and replayed. These are scripted controller checks; the frozen v3 dataset results below retain their original counts.
+
 </details>
 
 <a id="tasks"></a>

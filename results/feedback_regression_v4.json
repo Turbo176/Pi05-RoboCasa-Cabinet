@@ -1,0 +1,2684 @@
+{
+  "schema": "cabinet_feedback_development_regression_v4",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "role": "Reused training and development initializations; not held-out evaluation",
+  "rgb_check": "Previously declared lsb_v1; physics and XML must be exact",
+  "rgb_rendering": "RGB disabled only after reset capture; controller is privileged, no RGB policy is evaluated",
+  "code_sha256": {
+    "src/pi05_cabinet/scripted.py": "b05b1f8d660289cab90a47d1a80a59903e55b2697ffdf0c06d2d5a3b14c9def4",
+    "src/pi05_cabinet/envs.py": "5295e4cc312d4f6e12afecd89803c12ad3e9fbc4c14b99e31bea6e2968c8bc2a",
+    "scripts/scripted_rollout.py": "0946775377890f5a5ffbcb797cfe383ba78d5f6e3a198ab2821b1a1c25e95183",
+    "scripts/prepare_sft_data.py": "655cf2306bb7da2fd459c3bda0669abfed5fb1505eb11e4f8f4700a23ad0205d"
+  },
+  "attempts": 20,
+  "passed": 20,
+  "paired_prompt_reset_checks": [
+    {
+      "seed": 101,
+      "verb": "Open",
+      "model_xml_identical": false,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": false
+    },
+    {
+      "seed": 101,
+      "verb": "Close",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 102,
+      "verb": "Open",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 102,
+      "verb": "Close",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": false,
+          "max_channel_error_uint8": 1,
+          "differing_pixels": 3,
+          "differing_channels": 3,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 501,
+      "verb": "Open",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 501,
+      "verb": "Close",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 502,
+      "verb": "Open",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 502,
+      "verb": "Close",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 503,
+      "verb": "Open",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 503,
+      "verb": "Close",
+      "model_xml_identical": true,
+      "physics_exactly_identical": true,
+      "rgb": {
+        "cabinet_front_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        },
+        "robot0_eye_in_hand_image": {
+          "profile": "lsb_v1",
+          "bitwise_identical": true,
+          "max_channel_error_uint8": 0,
+          "differing_pixels": 0,
+          "differing_channels": 0,
+          "allowed_channel_error_uint8": 1,
+          "allowed_differing_pixels": 16,
+          "passed": true
+        }
+      },
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "instruction": "Open the top drawer.",
+      "steps": 321,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 0.9764115925547593,
+          "bottom": 1.2826232245671885e-06
+        },
+        "initial_drawer_fractions": {
+          "top": 1.2787877749258312e-06,
+          "bottom": 1.2787877749258312e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835449641357276e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 321,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2816886301276485,
+            "orientation_error_rad": 0.006045523140876584,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 66,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0066135805339605615,
+            "orientation_error_rad": 0.01164799142218846,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 33,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.014686995122161576,
+            "orientation_error_rad": 0.0013135257961643745,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005068209809901252,
+            "orientation_error_rad": 0.0012887593975654458,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 74,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006473955613138096,
+            "orientation_error_rad": 0.002884049088680777,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.003007150729837764,
+            "orientation_error_rad": 0.0022198785473257696,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0012464556345312427,
+            "orientation_error_rad": 0.003553377758396973,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.006699981083869454,
+            "orientation_error_rad": 0.002731322453632868,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "instruction": "Open the bottom drawer.",
+      "steps": 409,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 1.2826232245671885e-06,
+          "bottom": 0.9694782653772852
+        },
+        "initial_drawer_fractions": {
+          "top": 1.2787877749258312e-06,
+          "bottom": 1.2787877749258312e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835449641357276e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 409,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2816886301276485,
+            "orientation_error_rad": 0.006045523140876584,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 149,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006770359215134427,
+            "orientation_error_rad": 0.00195370433484577,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 35,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.018164068085797343,
+            "orientation_error_rad": 0.04170833568203227,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 14,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.00918724697849194,
+            "orientation_error_rad": 0.04579538557573585,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 76,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.004168398723945166,
+            "orientation_error_rad": 0.003979015838904428,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0018568697734058465,
+            "orientation_error_rad": 0.003823816263444709,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0008755235570368887,
+            "orientation_error_rad": 0.00342279427667295,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007651449695573953,
+            "orientation_error_rad": 0.005008963999293336,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "instruction": "Close the top drawer.",
+      "steps": 308,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 3.0567637141769554e-05,
+          "bottom": 0.9694686614146977
+        },
+        "initial_drawer_fractions": {
+          "top": 0.8952221340859939,
+          "bottom": 0.9694686614146977
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 308,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.4240412339270264,
+            "orientation_error_rad": 0.0060455231981916754,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 65,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.007839678860736323,
+            "orientation_error_rad": 0.014009024216185693,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 34,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.01434376784415263,
+            "orientation_error_rad": 0.005452229220083979,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0029212796016136263,
+            "orientation_error_rad": 0.002440135317776917,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 61,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.010906154013584773,
+            "orientation_error_rad": 0.0004780139558185889,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.005086408264278846,
+            "orientation_error_rad": 0.0006709917656640169,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0006055113220613485,
+            "orientation_error_rad": 0.0012676838898029955,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007469891311786094,
+            "orientation_error_rad": 0.005151562103113609,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "instruction": "Close the bottom drawer.",
+      "steps": 412,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 0.8952221340859939,
+          "bottom": 0.003340912703848848
+        },
+        "initial_drawer_fractions": {
+          "top": 0.8952221340859939,
+          "bottom": 0.9694686614146977
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 412,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.44248568803631894,
+            "orientation_error_rad": 0.0060455231981916754,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 150,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.011086120222757838,
+            "orientation_error_rad": 0.02484473841103301,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 33,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013697360710198801,
+            "orientation_error_rad": 0.00872108432999591,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0028143022560367026,
+            "orientation_error_rad": 0.0024312687883611766,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 70,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013770445893867455,
+            "orientation_error_rad": 0.04397547064419249,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.00801493955618651,
+            "orientation_error_rad": 0.04461453866493618,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.012521716497942195,
+            "orientation_error_rad": 0.0391124264296785,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "clear_handle",
+            "steps": 11,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.018772932146188217,
+            "orientation_error_rad": 0.05736529829629372,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007227094212056477,
+            "orientation_error_rad": 0.011142600392286805,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "instruction": "Open the top drawer.",
+      "steps": 325,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 0.977845121133622,
+          "bottom": 1.282636866890679e-06
+        },
+        "initial_drawer_fractions": {
+          "top": 1.2788016117978385e-06,
+          "bottom": 1.2788016117978385e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835255092840482e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 325,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2635869629138678,
+            "orientation_error_rad": 0.07806446120029267,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 70,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.007719235177950962,
+            "orientation_error_rad": 0.004297486506971543,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 33,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013689560426094817,
+            "orientation_error_rad": 0.0014659777702960791,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.00503009716383778,
+            "orientation_error_rad": 0.0011823684435322613,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 74,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005995114232874989,
+            "orientation_error_rad": 0.0012308762772006872,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0025363650742466375,
+            "orientation_error_rad": 0.0011081373922684032,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0009697846236896578,
+            "orientation_error_rad": 0.0029942281486154223,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.006485084912428013,
+            "orientation_error_rad": 0.006218073732521624,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "instruction": "Open the bottom drawer.",
+      "steps": 408,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 1.282636866890679e-06,
+          "bottom": 0.973348887599436
+        },
+        "initial_drawer_fractions": {
+          "top": 1.2788016117978385e-06,
+          "bottom": 1.2788016117978385e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835255092840482e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 408,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.29135121790272434,
+            "orientation_error_rad": 0.00897020270900961,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 149,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006767393250155194,
+            "orientation_error_rad": 0.0019271676832489828,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 34,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.015025375496238483,
+            "orientation_error_rad": 0.021636908786256605,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 14,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006441616377648748,
+            "orientation_error_rad": 0.022172244478942095,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 76,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005656894100551769,
+            "orientation_error_rad": 0.0031025505880056376,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0027953497192325094,
+            "orientation_error_rad": 0.0031168098308930366,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.001356708523686765,
+            "orientation_error_rad": 0.004266740348479518,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007896051424094002,
+            "orientation_error_rad": 0.005282760406472251,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": true
+      },
+      "passed": true
+    },
+    {
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "instruction": "Close the top drawer.",
+      "steps": 327,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 2.915659797793262e-05,
+          "bottom": 0.9676838122249679
+        },
+        "initial_drawer_fractions": {
+          "top": 0.8932371578569692,
+          "bottom": 0.9676838122249679
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 327,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.41811331970965926,
+            "orientation_error_rad": 0.07806446121033785,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 82,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.010680014163659038,
+            "orientation_error_rad": 0.04480177137924917,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 36,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.012602647023991194,
+            "orientation_error_rad": 0.006047820999466718,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.00264167761582202,
+            "orientation_error_rad": 0.0041016873815590835,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 61,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.011020671247193465,
+            "orientation_error_rad": 0.0006807021588460471,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.004420641142093688,
+            "orientation_error_rad": 0.0006503189360090181,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0004306809765322154,
+            "orientation_error_rad": 0.0012914948385587335,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007118696139090326,
+            "orientation_error_rad": 0.0037480548375554423,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "instruction": "Close the bottom drawer.",
+      "steps": 410,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 0.8932371578569692,
+          "bottom": 6.585543100232977e-05
+        },
+        "initial_drawer_fractions": {
+          "top": 0.8932371578569692,
+          "bottom": 0.9676838122249679
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 410,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.46542201234561037,
+            "orientation_error_rad": 0.008970202667233237,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 151,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.012217143242942019,
+            "orientation_error_rad": 0.03443545863575272,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 33,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013260743184645811,
+            "orientation_error_rad": 0.009323640175984438,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0027008837434895736,
+            "orientation_error_rad": 0.0033621947637381853,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 68,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.011737923651607725,
+            "orientation_error_rad": 0.02095050482831477,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.005251921996576929,
+            "orientation_error_rad": 0.021562521118840515,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.005512237468541886,
+            "orientation_error_rad": 0.019197146639193002,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "clear_handle",
+            "steps": 10,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.012684717125035458,
+            "orientation_error_rad": 0.03578059510276846,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.006982080399737328,
+            "orientation_error_rad": 0.004610497868077761,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": true
+      },
+      "passed": true
+    },
+    {
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "instruction": "Open the top drawer.",
+      "steps": 321,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 0.9762371163882014,
+          "bottom": 1.2826236071272436e-06
+        },
+        "initial_drawer_fractions": {
+          "top": 1.2787881613055823e-06,
+          "bottom": 1.2787881613055823e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835445821661353e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 321,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2729614697972741,
+            "orientation_error_rad": 0.00830143422939801,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 66,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0063595382966209575,
+            "orientation_error_rad": 0.012604489106742818,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 33,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.014804167570932114,
+            "orientation_error_rad": 0.0014266845297539843,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005120367837901148,
+            "orientation_error_rad": 0.0013410851606368685,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 74,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006476680411416467,
+            "orientation_error_rad": 0.003111840297239771,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0030284219328362695,
+            "orientation_error_rad": 0.0024193563424523656,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0012591025580917217,
+            "orientation_error_rad": 0.003650849938702285,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0067439181390881635,
+            "orientation_error_rad": 0.002312020821891366,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "instruction": "Open the bottom drawer.",
+      "steps": 409,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 1.2826236071272436e-06,
+          "bottom": 0.9732042727271175
+        },
+        "initial_drawer_fractions": {
+          "top": 1.2787881613055823e-06,
+          "bottom": 1.2787881613055823e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835445821661353e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 409,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2729614697972741,
+            "orientation_error_rad": 0.00830143422939801,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 149,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.007128747366428157,
+            "orientation_error_rad": 0.0020958272755422732,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 38,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.022500163407448835,
+            "orientation_error_rad": 0.059649094304986855,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 15,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.011842043826148684,
+            "orientation_error_rad": 0.0672107282562718,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 72,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.004234136713721046,
+            "orientation_error_rad": 0.009520011840284682,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.002803962313499438,
+            "orientation_error_rad": 0.011316473996533535,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0020379438324286017,
+            "orientation_error_rad": 0.008190986679507427,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007574741592265415,
+            "orientation_error_rad": 0.005098972342070713,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "instruction": "Close the top drawer.",
+      "steps": 314,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 2.9254535934786233e-05,
+          "bottom": 0.9197771283020102
+        },
+        "initial_drawer_fractions": {
+          "top": 0.9766497952643626,
+          "bottom": 0.9197771283020102
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 314,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.4337629591421406,
+            "orientation_error_rad": 0.008301434219957953,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 65,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.007672569066954489,
+            "orientation_error_rad": 0.013109240181897653,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 35,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013496714179460093,
+            "orientation_error_rad": 0.005993188815636877,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.002752164283187425,
+            "orientation_error_rad": 0.0032823006652293665,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 66,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.010860368406545676,
+            "orientation_error_rad": 0.00043891016264348276,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.004741599647996796,
+            "orientation_error_rad": 0.0005998065058978049,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0005568638315640261,
+            "orientation_error_rad": 0.0012887055258239291,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0072266374938130306,
+            "orientation_error_rad": 0.004989937026339211,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "instruction": "Close the bottom drawer.",
+      "steps": 419,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 0.9766497952643626,
+          "bottom": 0.005615329610190061
+        },
+        "initial_drawer_fractions": {
+          "top": 0.9766497952643626,
+          "bottom": 0.9197771283020102
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 419,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.42013707862206545,
+            "orientation_error_rad": 0.008301434219957953,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 151,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.012090715375025585,
+            "orientation_error_rad": 0.0346922725388248,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 32,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013883913693997428,
+            "orientation_error_rad": 0.02215845782698156,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.003502436037795186,
+            "orientation_error_rad": 0.011692126405489446,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 69,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.014303760240814383,
+            "orientation_error_rad": 0.06602347526896755,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.009613946349006953,
+            "orientation_error_rad": 0.06675168829807158,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.019730881406468073,
+            "orientation_error_rad": 0.05838195062972091,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "clear_handle",
+            "steps": 19,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.02261242081814592,
+            "orientation_error_rad": 0.0798642926894028,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.011870996219964536,
+            "orientation_error_rad": 0.03368670368192204,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "instruction": "Open the top drawer.",
+      "steps": 323,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 0.9760613498563808,
+          "bottom": 1.2826043483847072e-06
+        },
+        "initial_drawer_fractions": {
+          "top": 1.27876871030035e-06,
+          "bottom": 1.27876871030035e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835638084357248e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 323,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2164702767336403,
+            "orientation_error_rad": 0.04117983293798205,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 69,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006278123708450743,
+            "orientation_error_rad": 0.0028283986095249854,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 32,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.015137085441015326,
+            "orientation_error_rad": 0.0019812433293632838,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005483829760064428,
+            "orientation_error_rad": 0.0013042943366728928,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 74,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006058725066341895,
+            "orientation_error_rad": 0.0038909483404377695,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0027233922496930113,
+            "orientation_error_rad": 0.0032765962871369007,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0011192091162680288,
+            "orientation_error_rad": 0.0029672882331044812,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.006484168687100044,
+            "orientation_error_rad": 0.0038017474218379624,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "instruction": "Open the bottom drawer.",
+      "steps": 408,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 1.2826043483847072e-06,
+          "bottom": 0.9704965909813862
+        },
+        "initial_drawer_fractions": {
+          "top": 1.27876871030035e-06,
+          "bottom": 1.27876871030035e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.835638084357248e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 408,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2444327816791992,
+            "orientation_error_rad": 0.009827165958798834,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 149,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.007251513798417306,
+            "orientation_error_rad": 0.001983118725905153,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 36,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.021211762610282188,
+            "orientation_error_rad": 0.05015705141066043,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 15,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.011819890671533738,
+            "orientation_error_rad": 0.05616956167233197,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 73,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.004409096193658889,
+            "orientation_error_rad": 0.003926877598471273,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.003628870060324446,
+            "orientation_error_rad": 0.004007925914456354,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0007170202292367139,
+            "orientation_error_rad": 0.0007351826374116291,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007209724574022753,
+            "orientation_error_rad": 0.004762685053966579,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": true
+      },
+      "passed": true
+    },
+    {
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "instruction": "Close the top drawer.",
+      "steps": 321,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 3.213261059234126e-05,
+          "bottom": 0.9655162708189292
+        },
+        "initial_drawer_fractions": {
+          "top": 0.9496361874231488,
+          "bottom": 0.9655162708189292
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 321,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.3626930401908989,
+            "orientation_error_rad": 0.041179832937981324,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 74,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.008727565369591555,
+            "orientation_error_rad": 0.023538339665129828,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 34,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013288883735522285,
+            "orientation_error_rad": 0.00603774146066311,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0028690193862672734,
+            "orientation_error_rad": 0.0018554656896491997,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 65,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.011128046889646307,
+            "orientation_error_rad": 0.001195183044887943,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.004930272560926211,
+            "orientation_error_rad": 0.0008544404139140707,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0004472078200522884,
+            "orientation_error_rad": 0.0011128132630839683,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007202203001072807,
+            "orientation_error_rad": 0.004192882293541046,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "instruction": "Close the bottom drawer.",
+      "steps": 416,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 0.9496361874231488,
+          "bottom": 0.005647341985222334
+        },
+        "initial_drawer_fractions": {
+          "top": 0.9496361874231488,
+          "bottom": 0.9655162708189292
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 416,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.39389647689866714,
+            "orientation_error_rad": 0.009827165958800428,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 149,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006869505074036204,
+            "orientation_error_rad": 0.003764422078662441,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 34,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.01396219915094262,
+            "orientation_error_rad": 0.005080198440404558,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0027714615098974353,
+            "orientation_error_rad": 0.001885315899992292,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 71,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.014338800188975279,
+            "orientation_error_rad": 0.054649291176749784,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.009079295753237428,
+            "orientation_error_rad": 0.055688447575436034,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.01688024948146789,
+            "orientation_error_rad": 0.04854850551857723,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "clear_handle",
+            "steps": 14,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.021518002099819782,
+            "orientation_error_rad": 0.06802019382366345,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007725611150785805,
+            "orientation_error_rad": 0.016747732696089757,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": true
+      },
+      "passed": true
+    },
+    {
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "instruction": "Open the top drawer.",
+      "steps": 323,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 0.9782273143029088,
+          "bottom": 1.2826237647375705e-06
+        },
+        "initial_drawer_fractions": {
+          "top": 1.278788320489434e-06,
+          "bottom": 1.278788320489434e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.8354442481365054e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 323,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.25416500675209197,
+            "orientation_error_rad": 0.03457952067844218,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 68,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.007453400964502062,
+            "orientation_error_rad": 0.001346479711731349,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 33,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.013591807299368689,
+            "orientation_error_rad": 0.0013316688342352465,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.004976686703067149,
+            "orientation_error_rad": 0.0011338414491000098,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 74,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005909824064493365,
+            "orientation_error_rad": 0.0008610421938731967,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.002446122314804946,
+            "orientation_error_rad": 0.001551810387761433,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0010819692138023728,
+            "orientation_error_rad": 0.0035090596644434947,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0064581527564602035,
+            "orientation_error_rad": 0.008114361569581622,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "instruction": "Open the bottom drawer.",
+      "steps": 407,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 1.2826237647375705e-06,
+          "bottom": 0.9751736921731796
+        },
+        "initial_drawer_fractions": {
+          "top": 1.278788320489434e-06,
+          "bottom": 1.278788320489434e-06
+        },
+        "target_success": true,
+        "non_target_max_drift": 3.8354442481365054e-09,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 407,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.2817686956205219,
+            "orientation_error_rad": 0.0099001255389875,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 150,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005967822409367176,
+            "orientation_error_rad": 0.0017865125700645675,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 34,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.01408772041499333,
+            "orientation_error_rad": 0.01340497906379904,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.005536984875088625,
+            "orientation_error_rad": 0.013142363718242527,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "pull",
+            "steps": 75,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.006471724379983007,
+            "orientation_error_rad": 0.0028695880472347354,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0031172914258303006,
+            "orientation_error_rad": 0.0027918252984360787,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0013145620435187678,
+            "orientation_error_rad": 0.004064730466635009,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007731616008300228,
+            "orientation_error_rad": 0.00425057899786355,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": true
+      },
+      "passed": true
+    },
+    {
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "instruction": "Close the top drawer.",
+      "steps": 323,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "top",
+        "drawer_fractions": {
+          "top": 3.15086758231273e-05,
+          "bottom": 0.9302034843876265
+        },
+        "initial_drawer_fractions": {
+          "top": 0.8932597894154681,
+          "bottom": 0.9302034843876265
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 323,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.4108227316560067,
+            "orientation_error_rad": 0.03457952064054564,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 78,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.01167722613511675,
+            "orientation_error_rad": 0.05218045923863202,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 36,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.01376400544128633,
+            "orientation_error_rad": 0.005185673733048656,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.002717897074526945,
+            "orientation_error_rad": 0.004903387884752686,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 61,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.010992317500731394,
+            "orientation_error_rad": 0.0005565680595908954,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.004619223423261658,
+            "orientation_error_rad": 0.0005054925597579147,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0004402185749913774,
+            "orientation_error_rad": 0.0014264243663049902,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.007087666343473552,
+            "orientation_error_rad": 0.0035364301774004066,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": false
+      },
+      "passed": true
+    },
+    {
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "instruction": "Close the bottom drawer.",
+      "steps": 405,
+      "stable_last_10": true,
+      "metrics": {
+        "target_drawer": "bottom",
+        "drawer_fractions": {
+          "top": 0.8932597894154681,
+          "bottom": 4.175430159812145e-05
+        },
+        "initial_drawer_fractions": {
+          "top": 0.8932597894154681,
+          "bottom": 0.9302034843876265
+        },
+        "target_success": true,
+        "non_target_max_drift": 0.0,
+        "non_target_unchanged": true,
+        "non_target_tolerance": 0.05
+      },
+      "execution": {
+        "controller_revision": "pose_contact_feedback_v4",
+        "completed": true,
+        "stop_reason": null,
+        "steps": 405,
+        "stages": [
+          {
+            "name": "approach_above",
+            "steps": 60,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.4457594496515864,
+            "orientation_error_rad": 0.009900125529990717,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "align_height",
+            "steps": 150,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.011223662959581049,
+            "orientation_error_rad": 0.024151509081481275,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "reach_handle",
+            "steps": 33,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.014477825510777517,
+            "orientation_error_rad": 0.006915517568271797,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "grasp",
+            "steps": 13,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.0027798111320385286,
+            "orientation_error_rad": 0.00415596784511668,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "push",
+            "steps": 64,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.012336745563163123,
+            "orientation_error_rad": 0.01260230607205263,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hold",
+            "steps": 10,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0047359916914090335,
+            "orientation_error_rad": 0.012821074924360158,
+            "loaded_target_pad_ids": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "release",
+            "steps": 25,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.0031657696281089205,
+            "orientation_error_rad": 0.011443461498325432,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "clear_handle",
+            "steps": 10,
+            "gated": true,
+            "gate_passed": true,
+            "position_error_m": 0.010137848584631107,
+            "orientation_error_rad": 0.027222284329036277,
+            "loaded_target_pad_ids": []
+          },
+          {
+            "name": "retreat",
+            "steps": 40,
+            "gated": false,
+            "gate_passed": true,
+            "position_error_m": 0.006922781938878512,
+            "orientation_error_rad": 0.004158243028374107,
+            "loaded_target_pad_ids": []
+          }
+        ],
+        "wrist_flipped": true
+      },
+      "passed": true
+    }
+  ],
+  "fault_injection": {
+    "kind": "Deliberately suppressed pad-contact feedback; not an ordinary task attempt",
+    "stop_reason": "stage_gate_timeout:grasp",
+    "completed": false,
+    "pull_actions": 0,
+    "passed": true
+  },
+  "all_in_process_reset_checks_passed": false,
+  "reset_check_note": "First seed101 prompt pair has mesh content_type serialization differences inside one process. Physical reset vectors and initial pixels match. Fresh-process comparison matches XML, state and RGB exactly; strict XML checks were not relaxed."
+}

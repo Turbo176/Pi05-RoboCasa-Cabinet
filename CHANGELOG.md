@@ -39,6 +39,18 @@
 
 依据：[接触诊断](results/withdraw_contact_diagnosis_v2.json)、[回归报告](results/withdraw_regression_v2.json)、[相机检查](results/camera_framing_v3.json)、[v3协议](docs/DATA_READINESS_V3.md)。
 
+## 2026-11-19 — 按到位与接触反馈采集示教
+
+- 增加可选`feedback_v4`采集控制器，保留默认`fixed_v2`及历史冻结批次。
+- 复查到位误差和关节限位；调整预抓取路径，并在左侧出生的下层任务中翻转夹爪腕部姿态。
+- 对齐、接近、夹稳、开合和脱离阶段按实测条件切换；未通过条件则停止，记录原因，SFT筛选拒绝未完整执行的轨迹。
+- 复用5组训练/开发初始化的20条指令，20/20完整执行且末10步稳定成功，最多419步；这不是独立模型评测。
+- 原3条训练失败重新录制并通过3/3动作回放；1147帧官方LeRobot重读及15个动作块边界样本通过，保留为独立开发流水线检查。
+- 保留同进程首组XML序列化差异；独立进程复查XML、状态和初始RGB哈希精确一致，未放宽原始检查。
+- 新采集计划明确锁定控制器选项；原v3候选、验证条件和40组预留测试保持原记录。
+
+依据：[控制器说明](docs/FEEDBACK_COLLECTOR.md)、[完整验证](results/feedback_controller_v4.json)、[20条回归记录](results/feedback_regression_v4.json)。
+
 ## 后续里程碑
 
 1. 扩充有效示教，逐批检查回放、数据划分、图像与动作质量，保留失败和拒选原因。

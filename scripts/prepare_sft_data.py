@@ -23,6 +23,7 @@ CASES = {
     "close_top": ("CloseDrawerPairLite", "Close the top drawer."),
     "close_bottom": ("CloseDrawerPairLite", "Close the bottom drawer."),
 }
+CONTROLLERS = {"fixed_v2": "lower_handle_clearance_v2", "feedback_v4": "pose_contact_feedback_v4"}
 COLLECTION_FILES = [
     "src/pi05_cabinet/envs.py", "src/pi05_cabinet/scripted.py",
     "src/pi05_cabinet/recording.py", "src/pi05_cabinet/adapters.py",
@@ -82,7 +83,7 @@ def freeze_plan(args):
         purpose="Data readiness pilot; too small for a model quality claim",
         sampler=f"Python random.Random({args.sampler_seed}); reserved tests inherited if previous_plan is set",
         pair_layout="spaced", source="SCRIPTED_PRIVILEGED_STATE", learned_policy=False,
-        front_camera=args.front_camera,
+        front_camera=args.front_camera, scripted_controller=args.controller,
         prompts=list(CASES.values()), max_control_steps=600, fps=20,
         group_rule="All four commands of one seed/offset/layout stay in one split; seeds are disjoint across splits",
         legacy_rule="All pre-plan episodes, including tuned seed 0/1 conditions, are development-only and excluded",
@@ -109,6 +110,8 @@ def validate_plan(plan):
         raise ValueError("Unknown collection plan")
     if plan.get("front_camera", "robot_left") not in ("robot_left", "cabinet_front"):
         raise ValueError("Unknown camera profile")
+    if plan.get("scripted_controller", "fixed_v2") not in CONTROLLERS:
+        raise ValueError("Unknown scripted controller")
     ids, seeds, positions = set(), set(), set()
     for condition in plan["conditions"]:
         split, seed, xy = condition["split"], condition["seed"], condition["scene_offset"]
@@ -128,7 +131,8 @@ def validate_plan(plan):
         positions.add(tuple(xy))
 
 
-def inspect_episode(path, condition, case, audit_row, replay, code_hashes, front_camera="robot_left"):
+def inspect_episode(path, condition, case, audit_row, replay, code_hashes, front_camera="robot_left",
+                    scripted_controller=None):
     import h5py
     import numpy as np
     from evaluate_drawer_pair import score
@@ -149,6 +153,8 @@ def inspect_episode(path, condition, case, audit_row, replay, code_hashes, front
             raise ValueError("Scene differs from the frozen plan")
         if meta["scene_parameters"].get("front_camera", "robot_left") != front_camera:
             raise ValueError("Camera profile differs from the frozen plan")
+        if scripted_controller is not None and meta.get("controller_revision") != CONTROLLERS[scripted_controller]:
+            raise ValueError("Scripted controller differs from the frozen plan")
         camera_mapping = image_keys(file["observations"])
         if meta["schema_version"] != "cabinet_raw_v1" or meta["drawer_names"] != ["top", "bottom"]:
             raise ValueError("Unknown raw/paired data schema")
@@ -189,6 +195,14 @@ def inspect_episode(path, condition, case, audit_row, replay, code_hashes, front
             and replay["max_joint_error_rad"] < .01 and replay["max_all_drawer_fraction_error"] < .01
             and bool(replay["success_final"]) == final)
         reasons = []
+        execution = meta.get("controller_execution")
+        if meta.get("controller_revision") == "pose_contact_feedback_v4":
+            if not execution or execution.get("completed") is not True:
+                reasons.append("scripted_controller_did_not_complete")
+            elif (execution.get("steps") != n or
+                  [row["name"] for row in execution.get("stages", [])] != [row["name"] for row in meta["script_stages"]] or
+                  any(not row.get("gate_passed") for row in execution.get("stages", []))):
+                reasons.append("scripted_controller_stage_gate_failed")
         if not final: reasons.append("task_final_failure")
         if not stable: reasons.append("not_successful_for_final_10_steps")
         if drift > .05: reasons.append("non_target_drawer_moved")
@@ -289,7 +303,8 @@ def build_datasets(args):
             path = (directory / case / "episode.hdf5").resolve(strict=True)
             replay = read_json(directory / f"replay_{case}/report.json")
             rows.append(inspect_episode(path, condition, case, audit_rows[case], replay,
-                plan["collection_code_sha256"], front_camera=plan.get("front_camera", "robot_left")))
+                plan["collection_code_sha256"], front_camera=plan.get("front_camera", "robot_left"),
+                scripted_controller=plan.get("scripted_controller")))
     # Deduplicate by raw bytes and physical/visual initialization across splits.
     # Top/bottom intentionally share resets within a split, never across them.
     seen = {key: {} for key in ("sha256", "initial_state_sha256", "initial_dual_rgb_sha256")}
@@ -373,6 +388,7 @@ def main():
     plan.add_argument("--validation-seeds", nargs="+", type=int, default=[201])
     plan.add_argument("--sampler-seed", type=int, default=20261119)
     plan.add_argument("--front-camera", choices=("robot_left", "cabinet_front"), default="cabinet_front")
+    plan.add_argument("--controller", choices=tuple(CONTROLLERS), default="fixed_v2")
     build = commands.add_parser("build", help="Audit successes and build separate official train/validation datasets")
     build.add_argument("--plan", type=Path, required=True)
     build.add_argument("--raw-root", type=Path, required=True)
