@@ -95,7 +95,7 @@ Single-drawer scenes use `OpenDrawerLite` / `CloseDrawerLite`; two-drawer scenes
 | `Close the top drawer.` | Top | Close |
 | `Close the bottom drawer.` | Bottom | Close |
 
-- **🗺️ Scene configuration** — RoboCasa drawer fixtures, configurable drawer spacing and cabinet translation, a fixed frontal camera covering both drawers, and identical initial physics and RGB when swapping the target instruction.
+- **🗺️ Scene configuration** — RoboCasa drawer fixtures, configurable drawer spacing and cabinet translation, a fixed frontal camera covering both drawers, and paired-prompt checks on exact initial physics and measured RGB differences.
 - **⌨️ Demonstration collection** — Keyboard translation, rotation, and gripper control; pause, save, discard, and optional fixed-orientation assistance.
 - **🎥 Recording and replay** — Two RGB views, robot state, actions, language, initial simulator state, and scene XML; replay reports joint and drawer-opening errors.
 - **📦 Dataset preparation** — Official LeRobot export and readback, frame-level checks, and action-chunk boundary and padding validation.

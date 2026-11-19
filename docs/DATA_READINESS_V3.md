@@ -125,7 +125,7 @@ or exact raw-to-LeRobot pixel comparison.
 
 Every attempted episode is retained, including failures. Selection checks raw
 T/T+1 alignment, source hashes, task outcomes recomputed from drawer
-measurements, paired-prompt reset equality, and action replay. Training and
+measurements, exact paired-prompt physics equality, explicit image QA, and action replay. Training and
 validation are exported separately. Official loading compares every exported
 RGB pixel, state, action, instruction, and timestamp with its source. Action
 chunks have length 50, and boundary checks require padding with the same
