@@ -177,7 +177,7 @@ The merge preserves each episode's original collection-plan hash and checks for 
 
 A separate follow-up cohort adds **8 training / 2,937 frames** and **8 validation / 2,893 frames**. Its two right-side validation initializations complement v1's single left-side validation group. All **16 / 16** scripted attempts reached stable success and passed recorded-action replay; **5,830 frames** passed official LeRobot exact readback and **80** action-chunk boundary samples passed.
 
-The Chinese review page contains four full-length dual-view videos and 16 pending human decisions. These candidates remain separate from the accepted release and the server's first training run. The original data, statistics, collector and 40 reserved tests are unchanged. [Collection and reproduction](docs/LOCAL_FOLLOWUP_V5.md) · [Data checks](results/sft_data_followup_v5.json) · [Review provenance](results/collection_review_followup_v5.json).
+All 16 episodes passed [automatic checks plus agent spot review](docs/DATA_REVIEW.md): keyframes for every episode, two complete trajectory samples inspected as chronological dual-view filmstrips, and native-resolution contact-stage details. The [admission record](results/assisted_review_followup_v5.json) preserves the inspection scope and source hashes. These data remain separate from v1 and the server's first training run; a later release must explicitly define its splits and training statistics. The original data, collector and 40 reserved tests are unchanged. [Collection and reproduction](docs/LOCAL_FOLLOWUP_V5.md) · [Data checks](results/sft_data_followup_v5.json) · [Original review provenance](results/collection_review_followup_v5.json).
 
 </details>
 
@@ -238,7 +238,7 @@ Seed 502 failed to open and close the lower drawer; seed 503 failed to open the 
 
 Paired prompts have identical initial physics and XML. One closing pair differed in three RGB pixels by one uint8 level; a separately recorded image QA profile accepts this bounded difference. Raw-to-LeRobot image readback still requires exact pixels. [Image QA protocol](configs/rgb_reset_audit_v1.json) · [Collection and reproduction](docs/DATA_READINESS_V3.md) · [Full report](results/sft_data_readiness_v3.json).
 
-Candidates require full-episode human visual acceptance before training. The validation set has one initialization on the right spawn side. The 40 reserved test conditions remain unexecuted; these measurements establish neither learned language following nor policy generalization.
+The v3 collection protocol required full-episode human visual acceptance; [new batches use assisted review](docs/DATA_REVIEW.md). This validation set has one initialization on the right spawn side. The 40 reserved test conditions remain unexecuted; these measurements establish neither learned language following nor policy generalization.
 
 </details>
 
@@ -375,7 +375,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Review inventory failed' }
 Start-Process outputs\NEW_REVIEW_INDEX\index.html
 ```
 
-The offline page reuses complete videos, starts every decision at `pending`, and exports a review JSON without changing the data. [Reproduce the additional collection, merge, and review checks](docs/TRAINING_DATA_EXTENSION.md).
+The optional human review page reuses complete videos, starts every human decision at `pending`, and exports a review JSON without changing the data. New batches use [automatic checks plus agent spot review](docs/DATA_REVIEW.md). [Reproduce the additional collection, merge, and review checks](docs/TRAINING_DATA_EXTENSION.md).
 
 <a id="layout"></a>
 

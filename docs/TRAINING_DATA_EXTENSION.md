@@ -190,7 +190,16 @@ provenance, not a promise that different installations emit identical files.
 `prepare_sft_data.py plan --previous-plan` retires older collection conditions;
 use the append command above when retaining the base candidates and validation.
 
-## Review complete recordings
+## Default review for new batches
+
+New batches follow [automatic checks plus agent spot review](DATA_REVIEW.md).
+The agent reviews every episode's keyframes, a small preselected sample of
+complete trajectories, and exceptions. Only unresolved cases require
+maintainer input. Record the inspection scope and source hashes separately
+from human viewing declarations. This does not change the frozen v1 release
+or its 32 human acceptances.
+
+## Full human review used by v1
 
 `make_collection_review.py` creates the existing four-command policy-view
 packet. Reuse a packet when it is already present. Build an offline index
@@ -235,9 +244,10 @@ It is a viewing declaration, not proof that the video was watched.
 The check rejects missing or duplicate rows, changed source or video hashes,
 decisions tied to another inventory, unnamed approvals, unwatched approvals,
 and rejections without reasons. It records the declarations without changing
-the original datasets or their automatic selection. Future training must use
-episodes that pass both automatic selection and human acceptance. Keep
-rejections and their reasons when preparing the final training manifest.
+the original datasets or their automatic selection. This full-human-review
+workflow remains available; it was used for the frozen v1 release. New
+admissions can instead use the assisted policy above. Keep rejections and
+their reasons when preparing a later explicit training manifest.
 
 The local review page uses Chinese labels and task translations. It preserves
 the original English task strings, export values (`pending`, `accept`,

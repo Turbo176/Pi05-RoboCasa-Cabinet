@@ -17,8 +17,9 @@ Each group contains all four commands and stays in one split.
 | validation_003 | 803 | (+0.0329, +0.0257) | Validation |
 
 The accepted v1 release, its datasets and statistics, and the server transfer
-stay unchanged. The new cohort is exported separately and requires its own
-complete-video acceptance before inclusion in a later release. The original
+stay unchanged. The new cohort is exported separately and has passed the
+[assisted-review policy](DATA_REVIEW.md) for inclusion in a later explicit
+trial or release. The original
 40 reserved test conditions remain unexecuted. Cabinet translation is not a
 defined robot-relative OOD region.
 
@@ -35,7 +36,8 @@ defined robot-relative OOD region.
 | Maximum joint / drawer replay error | 2.91 × 10⁻¹⁰ rad / 3.37 × 10⁻¹⁰ |
 | Longest trajectory | 415 / 600 actions |
 | Full-length review packets | Four MP4 files; all 1,643 video frames decoded |
-| Human acceptance | 16 pending |
+| Assisted review | 16 admitted; all keyframes and two complete trajectory samples inspected |
+| Human declarations | 16 pending, optional under the new review policy |
 
 All eight prompt pairs have identical initial physics and XML. Seven also
 have bit-identical RGB. The opening pair for seed 708 differs at three frontal
@@ -45,11 +47,15 @@ stopped and its log is retained. A separate audit passed the existing
 neither the controller nor any threshold was changed. The export comparison
 still requires exact source pixels.
 
-The local Chinese review page is `outputs/data_review_followup_v5/index.html`.
-The agent inspected 48 keyframe timepoints across the 16 recordings; that
-inspection does not mark complete videos as accepted. Exported reviewer
-decisions must pass the existing source-bound checker before these candidates
-can enter a new accepted release.
+The current Chinese status page is
+`outputs/data_review_followup_v5_assisted/index.html`. The agent inspected
+48 keyframe timepoints across the 16 recordings, all 737 observations of two
+sampled trajectories, and native-resolution stage-boundary details. The
+[assisted-review record](../results/assisted_review_followup_v5.json) binds
+the findings to the existing sources. The original human review page at
+`outputs/data_review_followup_v5/index.html` remains available for optional
+human annotations. Its earlier pending fields are historical, not a remaining
+gate under the approved policy. No human viewing declarations were added.
 
 Checks also confirmed that v1's 22 dataset files, its release and acceptance
 records, and the frozen collection code remain unchanged. New and old sources,
@@ -59,6 +65,7 @@ modified. The new dataset is about 512 MB across 16 files, excluded from Git.
 
 [Data checks](../results/sft_data_followup_v5.json)
 · [Review provenance, image differences and release guards](../results/collection_review_followup_v5.json)
+· [Current admission and review policy](DATA_REVIEW.md)
 
 ## Reproduce
 

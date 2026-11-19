@@ -1,0 +1,767 @@
+{
+  "schema": "cabinet_assisted_review_result_v2",
+  "created_utc": "2026-11-19T11:07:26.491768+00:00",
+  "review_policy": {
+    "path": "configs/data_review_v2.json",
+    "sha256": "cc871fc81c48d2249f38ac7307923162f33be553cf0d95b36c4511e78e873a12"
+  },
+  "reviewer_type": "agent",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "authorization": "Maintainer approved automatic checks plus agent keyframes, complete-trajectory spot checks and exception review in the project conversation",
+  "prior_collection_record": {
+    "path": "results/collection_review_followup_v5.json",
+    "sha256": "8b654f2626644e2aa1db1648b0b9334f22fd9ff08524d9b96af8e84804cadba6"
+  },
+  "automatic_data_report": {
+    "path": "results/sft_data_followup_v5.json",
+    "sha256": "bdfbb8ea39d87dbfd677dadc7ae9bc0c367fa714f598039860829284d6dee183"
+  },
+  "selection_manifest": {
+    "path": "data/lerobot/sft_followup_v5/selection_manifest.json",
+    "sha256": "7cc6d83162d223754be93329d32573c9ad4607f0de8d41cb85a62551e2759b02"
+  },
+  "review_inventory": {
+    "path": "outputs/data_review_followup_v5/inventory.json",
+    "sha256": "5f61f7e0d7f2c0daf16320d97cbf181708775b65c0830adea3b5ca8dc1fda95a"
+  },
+  "sample_plan": {
+    "path": "outputs/data_review_followup_v5_assisted/sample_plan.json",
+    "sha256": "a55c83af618f7369a76266ca6a2d603131d8edaf3bd983365e58cf1ba9445c76"
+  },
+  "evidence_inventory": {
+    "path": "outputs/data_review_followup_v5_assisted/evidence_inventory.json",
+    "sha256": "9471c220e0c3dae52718a39bab6cde045d53d17f1e92e26b4bf75aefcf4c944e"
+  },
+  "evidence_generator": {
+    "path": "outputs/data_review_followup_v5_assisted/prepare_evidence.py",
+    "sha256": "d9802e245374994636d42802527a2d3a466d7970a660dcfe1a436f8d1524062a"
+  },
+  "automatic_checks": {
+    "train_episodes": 8,
+    "train_frames": 2937,
+    "validation_episodes": 8,
+    "validation_frames": 2893,
+    "stable_successes": 16,
+    "action_replays_passed": 16,
+    "official_frames_checked": 5830,
+    "action_boundary_samples": 80,
+    "new_dataset_files_reverified": 16,
+    "collector_code_hashes_reverified": true,
+    "numeric_thresholds_changed": false,
+    "existing_exact_readback_and_chunk_results_reused": true
+  },
+  "keyframe_review": {
+    "episodes": 16,
+    "timepoints": 48,
+    "cameras": [
+      "front",
+      "wrist"
+    ],
+    "sheets": [
+      {
+        "path": "outputs/data_followup_v5/review/train_008/keyframes.png",
+        "sha256": "c5d8f9ca9fb18238fa4e7a6279ffe73cadccdb966ff2dadfc7a1f362971372cd",
+        "condition_id": "train_008",
+        "episode_count": 4,
+        "post_action_indices": {
+          "open_top": [
+            0,
+            175,
+            324
+          ],
+          "open_bottom": [
+            0,
+            256,
+            408
+          ],
+          "close_top": [
+            0,
+            194,
+            331
+          ],
+          "close_bottom": [
+            0,
+            261,
+            411
+          ]
+        },
+        "reviewed_by": "agent",
+        "finding": "Task-target and final images consistent at the inspected keyframes; no blocking anomaly identified"
+      },
+      {
+        "path": "outputs/data_followup_v5/review/train_009/keyframes.png",
+        "sha256": "f2a1d585aa3a333a98d966fe718e7e4cdf8bd7ac88544760e8d4ce5393bc9522",
+        "condition_id": "train_009",
+        "episode_count": 4,
+        "post_action_indices": {
+          "open_top": [
+            0,
+            172,
+            320
+          ],
+          "open_bottom": [
+            0,
+            256,
+            408
+          ],
+          "close_top": [
+            0,
+            173,
+            313
+          ],
+          "close_bottom": [
+            0,
+            260,
+            414
+          ]
+        },
+        "reviewed_by": "agent",
+        "finding": "Task-target and final images consistent at the inspected keyframes; no blocking anomaly identified"
+      },
+      {
+        "path": "outputs/data_followup_v5/review/validation_002/keyframes.png",
+        "sha256": "8df42497d2aa5998eedaa7d496f5b2eef606de6a2caa48b5d2969653e7af5c37",
+        "condition_id": "validation_002",
+        "episode_count": 4,
+        "post_action_indices": {
+          "open_top": [
+            0,
+            171,
+            321
+          ],
+          "open_bottom": [
+            0,
+            258,
+            406
+          ],
+          "close_top": [
+            0,
+            171,
+            310
+          ],
+          "close_bottom": [
+            0,
+            255,
+            409
+          ]
+        },
+        "reviewed_by": "agent",
+        "finding": "Task-target and final images consistent at the inspected keyframes; no blocking anomaly identified"
+      },
+      {
+        "path": "outputs/data_followup_v5/review/validation_003/keyframes.png",
+        "sha256": "90eb5fb4648d00304cd9e440f0b406dc54c19545ce6a6c915b85211843208e78",
+        "condition_id": "validation_003",
+        "episode_count": 4,
+        "post_action_indices": {
+          "open_top": [
+            0,
+            171,
+            319
+          ],
+          "open_bottom": [
+            0,
+            254,
+            404
+          ],
+          "close_top": [
+            0,
+            172,
+            311
+          ],
+          "close_bottom": [
+            0,
+            256,
+            405
+          ]
+        },
+        "reviewed_by": "agent",
+        "finding": "Task-target and final images consistent at the inspected keyframes; no blocking anomaly identified"
+      }
+    ]
+  },
+  "full_trajectory_spot_review": {
+    "episodes": 2,
+    "observations": 737,
+    "post_action_observations": 735,
+    "initial_observations": 2,
+    "filmstrip_sheets": 16,
+    "native_resolution_detail_sheets": 9,
+    "samples": [
+      {
+        "id": "train_008/open_top",
+        "reason": "Opening sample from train; paired initial RGB audit flagged three one-level pixel differences",
+        "source": {
+          "path": "outputs/data_followup_v5/train_008/open_top/episode.hdf5",
+          "sha256": "b49a87d506a29edc783e4f061bc0495fedc2a2f6735dffc20d4731710a41cdc1"
+        },
+        "actions": 325,
+        "all_observations_inspected": 326,
+        "real_time_video_playback_performed": false,
+        "method": "Agent inspection of every observation as chronological dual-view thumbnail filmstrips, plus native-resolution stage-boundary images",
+        "findings": [
+          "Initial drawers are closed. The upper drawer opens while the lower drawer remains closed.",
+          "Approach, grasp, pull, release and retreat progress without a gross pose discontinuity in the all-frame filmstrips.",
+          "Native-resolution stage details show the target handle between the fingers. Fine contact forces are not established by RGB."
+        ],
+        "filmstrips": [
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/frames_000_047.png",
+            "sha256": "1b5d7beb9abcdf27170a008e9bd2a089e56c257f33de006c338d2f17f4576795",
+            "observation_indices": {
+              "first": 0,
+              "last": 47,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/frames_048_095.png",
+            "sha256": "c2b4a521d9d0165c450602406969958205bd07cca7f8a964cd3174509be667d2",
+            "observation_indices": {
+              "first": 48,
+              "last": 95,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/frames_096_143.png",
+            "sha256": "a99c1fc5c369a29eb991a9fa65d9ed5f3ef78c5db813c9988baf8589d37dabbd",
+            "observation_indices": {
+              "first": 96,
+              "last": 143,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/frames_144_191.png",
+            "sha256": "d98f77f837d6adc261be843ba469f67e117ffe1d35bab651757618901075e942",
+            "observation_indices": {
+              "first": 144,
+              "last": 191,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/frames_192_239.png",
+            "sha256": "e4a3af67a773b2e41b55c0da6572178a7ef0c81bd64a9ae5b0be2e4d5a8a1b9f",
+            "observation_indices": {
+              "first": 192,
+              "last": 239,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/frames_240_287.png",
+            "sha256": "e5de17a820d7131cb6e1c9949bc11582339905f10dd62aa2097008029ba782d1",
+            "observation_indices": {
+              "first": 240,
+              "last": 287,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/frames_288_325.png",
+            "sha256": "ea10b9c16a12b737c6a91927e4d9fd5468ae3b4eb787a150669834bf791afad3",
+            "observation_indices": {
+              "first": 288,
+              "last": 325,
+              "count": 38
+            }
+          }
+        ],
+        "stage_boundary_details": [
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/contact_00.png",
+            "sha256": "3e9964683969924e8569b902c19d8d448e1816abea2cc311e422e1cc094160be",
+            "observation_indices": [
+              0,
+              1,
+              2,
+              3,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              128,
+              129
+            ]
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/contact_01.png",
+            "sha256": "86756dd93a6c894968e88418465d88e90ac9054512b9ddcb92794313ec679ee7",
+            "observation_indices": [
+              130,
+              131,
+              132,
+              133,
+              161,
+              162,
+              163,
+              164,
+              165,
+              166,
+              174,
+              175
+            ]
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/contact_02.png",
+            "sha256": "9fabd57d60d25fa2bd74e002b661b3b5f8b2efa2a23873fe93bc74046d7af03b",
+            "observation_indices": [
+              176,
+              177,
+              178,
+              179,
+              248,
+              249,
+              250,
+              251,
+              252,
+              253,
+              258,
+              259
+            ]
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/train_008__open_top/contact_03.png",
+            "sha256": "a0e6888806f90ea144e7d9a19fe107b39c28f092db863533182fa27894a628f0",
+            "observation_indices": [
+              260,
+              261,
+              262,
+              263,
+              283,
+              284,
+              285,
+              286,
+              287,
+              288
+            ]
+          }
+        ]
+      },
+      {
+        "id": "validation_002/close_bottom",
+        "reason": "Closing sample from validation; longest validation trajectory, selected by recorded length before visual inspection",
+        "source": {
+          "path": "outputs/data_followup_v5/validation_002/close_bottom/episode.hdf5",
+          "sha256": "fe678e18788e59dc2024ef08ec21824687f71519a96bc35a5d6f1bc2221aad63"
+        },
+        "actions": 410,
+        "all_observations_inspected": 411,
+        "real_time_video_playback_performed": false,
+        "method": "Agent inspection of every observation as chronological dual-view thumbnail filmstrips, plus native-resolution stage-boundary images",
+        "findings": [
+          "Both drawers initially open. The lower drawer closes while the upper drawer remains open.",
+          "Approach, grasp, push, release, handle clearance and retreat are visible without a gross pose discontinuity.",
+          "The wrist view includes the target handle during interaction; final lower-drawer opening is consistent with the automatic near-closed result."
+        ],
+        "filmstrips": [
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_000_047.png",
+            "sha256": "2bccf33cfdd9d845e1b83a417ad528ec4ea966fc935dbcdf376e1105de313968",
+            "observation_indices": {
+              "first": 0,
+              "last": 47,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_048_095.png",
+            "sha256": "3cc7a7e7eb52da991525a0a95b2432d7aaab6b41aec83e4582d94798006950fe",
+            "observation_indices": {
+              "first": 48,
+              "last": 95,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_096_143.png",
+            "sha256": "e152f9853e6855284e5329b2f7930a5514753bad9d508c7de59d6f0a7e8eac5c",
+            "observation_indices": {
+              "first": 96,
+              "last": 143,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_144_191.png",
+            "sha256": "05956691029a83635a156206b0c089795ca64a2baa5a2abddde1171fb5e635b4",
+            "observation_indices": {
+              "first": 144,
+              "last": 191,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_192_239.png",
+            "sha256": "9e16690bbca4e23e04457509c3b6fe60278551fd8511bf0f2141f9103a5f2970",
+            "observation_indices": {
+              "first": 192,
+              "last": 239,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_240_287.png",
+            "sha256": "e335d0f12a325ef12a7266a9b49cfc6fc2531a72512ec199322aabde758bdcb3",
+            "observation_indices": {
+              "first": 240,
+              "last": 287,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_288_335.png",
+            "sha256": "c522ddb709e7a4dfa638cf848f9359ac909e307ddea150cf49f6167be00ea1e4",
+            "observation_indices": {
+              "first": 288,
+              "last": 335,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_336_383.png",
+            "sha256": "0877011588f6cc56f20ec0a20ddb918bbf2f9c2672fd0c8e5afe9438035bd2fa",
+            "observation_indices": {
+              "first": 336,
+              "last": 383,
+              "count": 48
+            }
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/frames_384_410.png",
+            "sha256": "87ffa8b404f32c02a1c32c79d3c4acf6022cbd75fa3dfd14ed1e78b2f5457254",
+            "observation_indices": {
+              "first": 384,
+              "last": 410,
+              "count": 27
+            }
+          }
+        ],
+        "stage_boundary_details": [
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/contact_00.png",
+            "sha256": "4dd41283893b4b9dfaa4fd7d979c1315b8c00339ab0e59d7bfcbd85284b205d2",
+            "observation_indices": [
+              0,
+              1,
+              2,
+              3,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              207,
+              208
+            ]
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/contact_01.png",
+            "sha256": "0611e3120036117dea9720b413ad648583f4e9dcce3d2cbd5ea3bf58262af121",
+            "observation_indices": [
+              209,
+              210,
+              211,
+              212,
+              241,
+              242,
+              243,
+              244,
+              245,
+              246,
+              254,
+              255
+            ]
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/contact_02.png",
+            "sha256": "8c6d2db4e575bb43d749e68f01758fcffb81888bdc0b328c24ab83bedf7eb266",
+            "observation_indices": [
+              256,
+              257,
+              258,
+              259,
+              321,
+              322,
+              323,
+              324,
+              325,
+              326,
+              331,
+              332
+            ]
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/contact_03.png",
+            "sha256": "acf05117b6c82706b86597050c7a89850752356a6e402f62ddf1806747098729",
+            "observation_indices": [
+              333,
+              334,
+              335,
+              336,
+              356,
+              357,
+              358,
+              359,
+              360,
+              361,
+              368,
+              369
+            ]
+          },
+          {
+            "path": "outputs/data_review_followup_v5_assisted/validation_002__close_bottom/contact_04.png",
+            "sha256": "7e47d3139215e6ef850bd66e874eed20f3127bb48780c8b6f30120fbf32c5193",
+            "observation_indices": [
+              370,
+              371,
+              372,
+              373
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exception_review": {
+    "condition": "train_008",
+    "exception": "Paired opening reset RGB differs at three frontal pixels by one uint8 level",
+    "evidence": "Exact pixel locations, original strict failure and unchanged named-profile results remain in the prior collection record",
+    "disposition": "Nonblocking under existing lsb_v1; initial physics/XML exact, wrist identical, raw-to-LeRobot pixels exact",
+    "rendering_root_cause": "Not isolated",
+    "threshold_changes": false,
+    "visual_finding": "No associated gross target or motion anomaly in the inspected opening trajectory and all four condition keyframe rows"
+  },
+  "nonblocking_observations": [
+    "The wrist camera sees floor or cabinet side during early approach; the frontal camera retains the task scene and the handle becomes visible before interaction",
+    "Filmstrips show gross motion continuity; they do not measure contact forces or certify absence of subtle mesh penetration"
+  ],
+  "decision": {
+    "status": "accepted_under_assisted_review_v2",
+    "train_episodes": 8,
+    "train_frames": 2937,
+    "validation_episodes": 8,
+    "validation_frames": 2893,
+    "blocking_anomalies_identified": 0,
+    "unresolved_maintainer_questions": [],
+    "human_complete_video_approvals_added": 0,
+    "original_human_decisions_preserved": true,
+    "future_human_full_review_required": false,
+    "eligible_for": "A later explicitly versioned SFT trial/release; validation remains outside training",
+    "merged_into_active_release": false,
+    "server_transfer_modified": false
+  },
+  "guards": {
+    "protected_v1_files_reverified": 24,
+    "accepted_release_manifest": {
+      "path": "configs/sft_release_v1.json",
+      "sha256": "fa7428a322cca8f996a42b099a14902314b5023eb67fa26abdc21e79a6c876fd"
+    },
+    "historical_reports_unchanged": true,
+    "raw_and_dataset_files_unchanged": true,
+    "transfer_checksum_list": {
+      "path": "outputs/server_handoff_drawer_sft_v1/SHA256SUMS",
+      "sha256": "101bcdd2f3df00a4a71e09fdc560c894ee2175b9ed779374e279b0b0a7842b0f"
+    },
+    "transfer_files_reverified": [
+      {
+        "path": "outputs/server_handoff_drawer_sft_v1/drawer_sft_v1_data.zip",
+        "sha256": "6cbf6938b3ed5e82051bd33bd9367075df61ed1d612195b0565b906a71c86a6b"
+      },
+      {
+        "path": "outputs/server_handoff_drawer_sft_v1/Pi05-RoboCasa-Cabinet-code.bundle",
+        "sha256": "7dc2f60975af9f1021995199ab2dea813f4762cf9e8e6a3ee1b1818960189f75"
+      },
+      {
+        "path": "outputs/server_handoff_drawer_sft_v1/sft_release_v1.json",
+        "sha256": "fa7428a322cca8f996a42b099a14902314b5023eb67fa26abdc21e79a6c876fd"
+      },
+      {
+        "path": "outputs/server_handoff_drawer_sft_v1/verify_transfer.py",
+        "sha256": "c03b00ca7fac48967fccb7531872f8b20c89309d88acb8b42085984824022448"
+      },
+      {
+        "path": "outputs/server_handoff_drawer_sft_v1/服务器交接说明.md",
+        "sha256": "f5f1995db7ad49140a0140812f895a41a052974c91b2a982f84f8350317e47e8"
+      },
+      {
+        "path": "outputs/server_handoff_drawer_sft_v1/服务器助手提示词.md",
+        "sha256": "0480e1b20c464b0a30e2b7c26c4c0d11ce6ff3e596531b9085e21ab1b06e5c80"
+      }
+    ]
+  },
+  "episodes": [
+    {
+      "id": "train_008/open_top",
+      "split": "train",
+      "frames": 325,
+      "source_sha256": "b49a87d506a29edc783e4f061bc0495fedc2a2f6735dffc20d4731710a41cdc1",
+      "video_sha256": "f699a0ade45bc3e0337e67dba90b378f1a4d440d6df138d509fde070161b170e",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "train_008/open_bottom",
+      "split": "train",
+      "frames": 409,
+      "source_sha256": "a0b846eeb7017059a34f126b5cc7d7886705aa257f222b69f1435c3225deeb54",
+      "video_sha256": "f699a0ade45bc3e0337e67dba90b378f1a4d440d6df138d509fde070161b170e",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "train_008/close_top",
+      "split": "train",
+      "frames": 332,
+      "source_sha256": "2718a91f1bad8ff7f03a375e711d4914376efb4dfa481b3e17fd094a9932035d",
+      "video_sha256": "f699a0ade45bc3e0337e67dba90b378f1a4d440d6df138d509fde070161b170e",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "train_008/close_bottom",
+      "split": "train",
+      "frames": 412,
+      "source_sha256": "82e488bbc6af08c267b1a4053cfbd2b878b8fca4b1f6959654e3838297a263ec",
+      "video_sha256": "f699a0ade45bc3e0337e67dba90b378f1a4d440d6df138d509fde070161b170e",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "train_009/open_top",
+      "split": "train",
+      "frames": 321,
+      "source_sha256": "5434adbcdb322b39fe4f34883f8e59c99665601ae42440fb152ed58f0ad4948b",
+      "video_sha256": "6233e278ebe4fc6a812daf65edbd032a88839c659a481e3dae442f9cbebde1eb",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "train_009/open_bottom",
+      "split": "train",
+      "frames": 409,
+      "source_sha256": "09776d306f71d1da781d05607eb43dcdd838f278bfefe95a35765a61222681c7",
+      "video_sha256": "6233e278ebe4fc6a812daf65edbd032a88839c659a481e3dae442f9cbebde1eb",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "train_009/close_top",
+      "split": "train",
+      "frames": 314,
+      "source_sha256": "d31c028045e5f0b9926c950a44119237418da0bd73119a6e099f2bd88989bc33",
+      "video_sha256": "6233e278ebe4fc6a812daf65edbd032a88839c659a481e3dae442f9cbebde1eb",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "train_009/close_bottom",
+      "split": "train",
+      "frames": 415,
+      "source_sha256": "3a821a78ad4a7c95a644736200d981c9779dc9c69383f2008452fdc6fbd32b8a",
+      "video_sha256": "6233e278ebe4fc6a812daf65edbd032a88839c659a481e3dae442f9cbebde1eb",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_002/open_top",
+      "split": "validation",
+      "frames": 322,
+      "source_sha256": "9ea9e555479453f8a1ad0a17de894c8b964482b732a4cf3b865d4aa7a8d41464",
+      "video_sha256": "ce524a6d05e8100aa53ae7863620e6f3ad0d7afc97fb95e07454990ab066b3b8",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_002/open_bottom",
+      "split": "validation",
+      "frames": 407,
+      "source_sha256": "a3e9a5bfb4c7ddbda982d97da5f460badb93d0513f45734d92136b748d48b884",
+      "video_sha256": "ce524a6d05e8100aa53ae7863620e6f3ad0d7afc97fb95e07454990ab066b3b8",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_002/close_top",
+      "split": "validation",
+      "frames": 311,
+      "source_sha256": "f9098b8dc8cff374416b0f85db587675ff95eedd0c768fb16bbdb237ba173969",
+      "video_sha256": "ce524a6d05e8100aa53ae7863620e6f3ad0d7afc97fb95e07454990ab066b3b8",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_002/close_bottom",
+      "split": "validation",
+      "frames": 410,
+      "source_sha256": "fe678e18788e59dc2024ef08ec21824687f71519a96bc35a5d6f1bc2221aad63",
+      "video_sha256": "ce524a6d05e8100aa53ae7863620e6f3ad0d7afc97fb95e07454990ab066b3b8",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_003/open_top",
+      "split": "validation",
+      "frames": 320,
+      "source_sha256": "e7f6fee24e4945f4153b493c9a5bb39e03069071bbf50c9e3a90c8265000549c",
+      "video_sha256": "874f36fa78de7ffa40b0624b9a5cb0ce62b90ffc4e7c5439f3f12270adafac06",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_003/open_bottom",
+      "split": "validation",
+      "frames": 405,
+      "source_sha256": "f6e7bbf4080016f5d67e5d08b6fc5ebfd33dcbac1bd991277e02be74f4608788",
+      "video_sha256": "874f36fa78de7ffa40b0624b9a5cb0ce62b90ffc4e7c5439f3f12270adafac06",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_003/close_top",
+      "split": "validation",
+      "frames": 312,
+      "source_sha256": "27cb8174cbfbf2286d4187019d5708e648fd5b17bf218102e910be31069fed28",
+      "video_sha256": "874f36fa78de7ffa40b0624b9a5cb0ce62b90ffc4e7c5439f3f12270adafac06",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    },
+    {
+      "id": "validation_003/close_bottom",
+      "split": "validation",
+      "frames": 406,
+      "source_sha256": "e65e258b2bbc8bbb42e52198ee0770c88652d7b7e7c288bc08097575ea04f882",
+      "video_sha256": "874f36fa78de7ffa40b0624b9a5cb0ce62b90ffc4e7c5439f3f12270adafac06",
+      "keyframes_inspected": true,
+      "decision": "accepted_under_assisted_review_v2",
+      "human_full_episode_viewing_declared": false
+    }
+  ],
+  "limitations": [
+    "Agent image inspection, not a maintainer declaration of watching every complete video",
+    "Only two complete trajectories were inspected; the other 14 have keyframe inspection and automatic checks",
+    "Subtle contact problems can escape image inspection",
+    "Admission does not establish learned-policy success, data sufficiency or generalization"
+  ]
+}

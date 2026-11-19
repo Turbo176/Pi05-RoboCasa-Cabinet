@@ -1,0 +1,43 @@
+{
+  "schema": "cabinet_data_review_policy_v2",
+  "policy_id": "automatic_plus_agent_spot_review_v2",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "scope": "New local demonstration batches; existing frozen releases retain their original acceptance records",
+  "automatic_checks": {
+    "coverage": "Every attempted episode, including failures",
+    "requirements": [
+      "Existing collection, task-success, non-target drift and action-replay checks pass",
+      "Official LeRobot readback matches all selected raw frames, both RGB views, states, actions, language and timestamps",
+      "Existing action-chunk boundary, train-statistics and split-isolation checks pass",
+      "Raw sources, dataset files, reports and review media remain bound by SHA256",
+      "Decode all review-video frames; retain failed audits and their explanations"
+    ],
+    "threshold_changes": "None; this policy changes review workload only"
+  },
+  "agent_visual_review": {
+    "keyframes": "Every episode, both views: first action, grasp completion and final action",
+    "full_trajectory_sample": {
+      "minimum_episodes": 2,
+      "fraction_of_episodes": 0.1,
+      "rounding": "Ceiling; cap at the batch size",
+      "selection": "Write sample IDs and reasons before visual inspection; cover train and validation where present, include opening and closing, and add relevant anomalous cases",
+      "method": "Inspect every observation of each sampled trajectory in chronological dual-view filmstrips, including its initial and final observations",
+      "extra_detail": "Use native-resolution views around suspicious contact or motion before clearing a flag"
+    },
+    "exceptions": "Inspect reported anomalies and retain their source evidence; a passed success flag alone cannot clear an anomaly",
+    "record": "Reviewer type, exact episode IDs, frame indices, evidence hashes, findings, unresolved items and admission decision"
+  },
+  "admission": {
+    "requires": "Automatic checks pass, required agent inspection is recorded, and no unresolved blocking anomaly remains",
+    "label": "accepted_under_assisted_review_v2",
+    "human_full_episode_review_required": false,
+    "human_acceptance_claim": false,
+    "escalate_to_maintainer": "Ambiguous contact or motion, unexplained significant reset differences, task/instruction mismatch, or an anomaly the agent cannot resolve",
+    "release_rule": "Admission permits inclusion in a later explicit release; never silently replace an active dataset, split, statistics file or server transfer"
+  },
+  "limitations": [
+    "Visual review can miss subtle contact or simulator defects",
+    "Thumbnail filmstrip inspection is distinct from real-time video playback and human complete-video acceptance",
+    "Data admission establishes neither model task success nor generalization"
+  ]
+}
