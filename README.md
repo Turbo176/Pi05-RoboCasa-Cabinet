@@ -172,6 +172,15 @@ The merge preserves each episode's original collection-plan hash and checks for 
 
 [Frozen release manifest](configs/sft_release_v1.json) · [Human acceptance](results/human_acceptance_v4.json) · [Collection and reproduction](docs/TRAINING_DATA_EXTENSION.md) · [Combined data report](results/training_extension_v4.json)
 
+<details>
+<summary><strong>Additional initialization coverage</strong></summary>
+
+A separate follow-up cohort adds **8 training / 2,937 frames** and **8 validation / 2,893 frames**. Its two right-side validation initializations complement v1's single left-side validation group. All **16 / 16** scripted attempts reached stable success and passed recorded-action replay; **5,830 frames** passed official LeRobot exact readback and **80** action-chunk boundary samples passed.
+
+The Chinese review page contains four full-length dual-view videos and 16 pending human decisions. These candidates remain separate from the accepted release and the server's first training run. The original data, statistics, collector and 40 reserved tests are unchanged. [Collection and reproduction](docs/LOCAL_FOLLOWUP_V5.md) · [Data checks](results/sft_data_followup_v5.json) · [Review provenance](results/collection_review_followup_v5.json).
+
+</details>
+
 ### Feedback-gated collection (v4)
 
 Four fresh initializations, seeds **701 / 702 / 703 / 801**, each run all four instructions with the frozen `feedback_v4` controller. Counts cover all attempts in this small scripted collection.

@@ -1,0 +1,811 @@
+{
+  "schema": "cabinet_local_followup_review_v1",
+  "created_utc": "2026-11-19T10:44:03.845119+00:00",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "collection_plan": {
+    "path": "configs/data_splits_v5_followup.json",
+    "sha256": "01d4b81b35ae116ba1f26cdb43e0019674204bec7bbbfc3b87e493453fac8e58"
+  },
+  "data_report": {
+    "path": "results/sft_data_followup_v5.json",
+    "sha256": "bdfbb8ea39d87dbfd677dadc7ae9bc0c367fa714f598039860829284d6dee183"
+  },
+  "selection_manifest": {
+    "path": "data/lerobot/sft_followup_v5/selection_manifest.json",
+    "sha256": "7cc6d83162d223754be93329d32573c9ad4607f0de8d41cb85a62551e2759b02"
+  },
+  "independent_followup": true,
+  "accepted_release": "drawer_sft_v1",
+  "accepted_release_files_unchanged": true,
+  "protected_release_files_verified": 24,
+  "collector_code_unchanged": true,
+  "old_and_new_source_physics_rgb_hashes_disjoint": true,
+  "old_and_new_seeds_disjoint": true,
+  "cross_split_initializations_disjoint": true,
+  "reserved_test_conditions_unchanged_and_unexecuted": 40,
+  "automatic_candidates": {
+    "train_episodes": 8,
+    "train_frames": 2937,
+    "validation_episodes": 8,
+    "validation_frames": 2893,
+    "stable_successes": 16,
+    "action_replays_passed": 16,
+    "official_frames_checked": 5830,
+    "action_boundary_samples": 80
+  },
+  "review": {
+    "index": "outputs/data_review_followup_v5/index.html",
+    "inventory_sha256": "5f61f7e0d7f2c0daf16320d97cbf181708775b65c0830adea3b5ca8dc1fda95a",
+    "video_packets": 4,
+    "decoded_frames": 1643,
+    "agent_keyframe_timepoints_inspected": 48,
+    "agent_inspection_scope": "First action, grasp completion and final action in both views for each recording; not full-episode human acceptance",
+    "human_decision_counts": {
+      "pending": 16,
+      "accept": 0,
+      "reject": 0
+    }
+  },
+  "reset_image_audit": {
+    "physics_and_xml_exact_pairs": 8,
+    "bitwise_rgb_identical_pairs": 7,
+    "named_profile": "lsb_v1",
+    "named_profile_passed_pairs": 8,
+    "profile_config": {
+      "path": "configs/rgb_reset_audit_v1.json",
+      "sha256": "af46adad8fce1b4f928ce57df9bd306cc51bfc2ad64c7373e5161d3d81a636e7"
+    },
+    "strict_complete_conditions": [
+      "train_009",
+      "validation_002",
+      "validation_003"
+    ],
+    "strict_stopped_condition": "train_008",
+    "strict_log": {
+      "path": "outputs/data_followup_v5/train_008.log",
+      "sha256": "89fa192bbf9202774ffc49716ec1941554298d5631bcf25844bb707918484639"
+    },
+    "nonidentical_pair": "train_008/open_top versus train_008/open_bottom",
+    "image_coordinate_convention": "Top-left policy RGB, y/x indices",
+    "pixel_differences": [
+      {
+        "y": 208,
+        "x": 241,
+        "open_top_rgb": [
+          159,
+          150,
+          144
+        ],
+        "open_bottom_rgb": [
+          159,
+          150,
+          143
+        ]
+      },
+      {
+        "y": 209,
+        "x": 240,
+        "open_top_rgb": [
+          163,
+          158,
+          151
+        ],
+        "open_bottom_rgb": [
+          163,
+          157,
+          151
+        ]
+      },
+      {
+        "y": 211,
+        "x": 245,
+        "open_top_rgb": [
+          153,
+          146,
+          140
+        ],
+        "open_bottom_rgb": [
+          152,
+          146,
+          140
+        ]
+      }
+    ],
+    "rendering_cause": "Not isolated; exact failure retained; no controller or threshold change",
+    "pairs": [
+      {
+        "condition_id": "train_008",
+        "task": "OpenDrawerPairLite",
+        "seed": 708,
+        "scene_offset": [
+          -0.0055,
+          0.0149
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": false,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": false,
+            "max_channel_error_uint8": 1,
+            "differing_pixels": 3,
+            "differing_channels": 3,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.4503752247276088,
+          -0.5267769837324529,
+          0.0
+        ],
+        "passed": true
+      },
+      {
+        "condition_id": "train_008",
+        "task": "CloseDrawerPairLite",
+        "seed": 708,
+        "scene_offset": [
+          -0.0055,
+          0.0149
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.4503752247276088,
+          -0.5267769837324529,
+          0.0
+        ],
+        "passed": true
+      },
+      {
+        "condition_id": "train_009",
+        "task": "OpenDrawerPairLite",
+        "seed": 709,
+        "scene_offset": [
+          0.0129,
+          0.0051
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.5444027929363369,
+          -0.5428200359113017,
+          0.0
+        ],
+        "passed": true
+      },
+      {
+        "condition_id": "train_009",
+        "task": "CloseDrawerPairLite",
+        "seed": 709,
+        "scene_offset": [
+          0.0129,
+          0.0051
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.5444027929363369,
+          -0.5428200359113017,
+          0.0
+        ],
+        "passed": true
+      },
+      {
+        "condition_id": "validation_002",
+        "task": "OpenDrawerPairLite",
+        "seed": 802,
+        "scene_offset": [
+          -0.0132,
+          -0.0299
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.4563117441680922,
+          -0.6422212142122976,
+          0.0
+        ],
+        "passed": true
+      },
+      {
+        "condition_id": "validation_002",
+        "task": "CloseDrawerPairLite",
+        "seed": 802,
+        "scene_offset": [
+          -0.0132,
+          -0.0299
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.4563117441680922,
+          -0.6422212142122976,
+          0.0
+        ],
+        "passed": true
+      },
+      {
+        "condition_id": "validation_003",
+        "task": "OpenDrawerPairLite",
+        "seed": 803,
+        "scene_offset": [
+          0.0329,
+          0.0257
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.4987260561704976,
+          -0.5031798425935872,
+          0.0
+        ],
+        "passed": true
+      },
+      {
+        "condition_id": "validation_003",
+        "task": "CloseDrawerPairLite",
+        "seed": 803,
+        "scene_offset": [
+          0.0329,
+          0.0257
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.4987260561704976,
+          -0.5031798425935872,
+          0.0
+        ],
+        "passed": true
+      }
+    ]
+  },
+  "dataset_file_count": 16,
+  "dataset_bytes": 512264067,
+  "dataset_files": {
+    "train": {
+      "dataset": "data/lerobot/sft_followup_v5/train",
+      "files": {
+        "conversion_report.json": {
+          "sha256": "d6eb7219eeed9893e9807a84a63e4dfcf2f843c8f375b9235e3f8a0f80d212a2",
+          "bytes": 7556
+        },
+        "data/chunk-000/file-000.parquet": {
+          "sha256": "cdb12d7a410db47eae0ce2130bd66ff85c38cfdafc9a1eeb11b304348ae4e4ac",
+          "bytes": 92815577
+        },
+        "data/chunk-000/file-001.parquet": {
+          "sha256": "02614d3355cda7f5e53eeb2a59281b592c024ad5d931be2596f5817c81f942f7",
+          "bytes": 99826376
+        },
+        "data/chunk-000/file-002.parquet": {
+          "sha256": "e39f3abcf04d8efe1d751efccf32c7abe39fb19cdf7b855eb516e3d93482ab88",
+          "bytes": 63999094
+        },
+        "meta/episodes/chunk-000/file-000.parquet": {
+          "sha256": "1befc909d20539736957509eb9d0d4ee4771343d69735e6bf3b4fc5422621778",
+          "bytes": 60845
+        },
+        "meta/info.json": {
+          "sha256": "4f1b06d0bcd27cf7080e2ddd48ca20e4832569881df62b829d2536338f8cb0da",
+          "bytes": 2720
+        },
+        "meta/stats.json": {
+          "sha256": "4346dd04e7771c96ea5781a9623c56384fcaf7f7a07284bcad4c7d642fa5d274",
+          "bytes": 14901
+        },
+        "meta/tasks.parquet": {
+          "sha256": "f94c091f8c13b56cda8deb83587020a3d0d364499bfbd967ad316e47bdc9dd79",
+          "bytes": 2252
+        }
+      }
+    },
+    "validation": {
+      "dataset": "data/lerobot/sft_followup_v5/validation",
+      "files": {
+        "conversion_report.json": {
+          "sha256": "378bd98ee99199cc622592dbf3279d2c01f8f2afd67e7ffde692e0756437f254",
+          "bytes": 7560
+        },
+        "data/chunk-000/file-000.parquet": {
+          "sha256": "dae50beb9cbbe93f18505e7fac59b077cf92ad58991a5b2c1c8067eee43ba19e",
+          "bytes": 92047763
+        },
+        "data/chunk-000/file-001.parquet": {
+          "sha256": "117bda7b94f1943805e4370560c3f3f2e9e3614fbd2a3120678ae2fd0361b9fd",
+          "bytes": 100195146
+        },
+        "data/chunk-000/file-002.parquet": {
+          "sha256": "b11898423671529368a8040b7884bcf5379f7b7fe89d028c52b13e2e4678dc5a",
+          "bytes": 63203196
+        },
+        "meta/episodes/chunk-000/file-000.parquet": {
+          "sha256": "e39deac8d66bda2b08687b93c8c0c00ccf51fefb3e00163358b29ae8c81e12bc",
+          "bytes": 61137
+        },
+        "meta/info.json": {
+          "sha256": "806203996712fa61eb0879cf44cd614bbdf1c8aa2fd2bcfff2f48aea8b306c51",
+          "bytes": 2720
+        },
+        "meta/stats.json": {
+          "sha256": "262621e11fd856cde8c01dee197c1a932441640d36a1107645866c7233f73272",
+          "bytes": 14972
+        },
+        "meta/tasks.parquet": {
+          "sha256": "f94c091f8c13b56cda8deb83587020a3d0d364499bfbd967ad316e47bdc9dd79",
+          "bytes": 2252
+        }
+      }
+    }
+  },
+  "packets": [
+    {
+      "condition_id": "train_008",
+      "seed": 708,
+      "split": "train",
+      "report": "outputs/data_followup_v5/review/train_008/report.json",
+      "report_sha256": "d11b6b0d959becd955bc0673186c3dc2cf7bdeda9c024ce280e642eea966ccef",
+      "video_sha256": "f699a0ade45bc3e0337e67dba90b378f1a4d440d6df138d509fde070161b170e",
+      "decoded_frames": 412,
+      "fps": 20,
+      "keyframe_timepoints": 12,
+      "sources": [
+        {
+          "case": "open_top",
+          "path": "outputs/data_followup_v5/train_008/open_top/episode.hdf5",
+          "sha256": "b49a87d506a29edc783e4f061bc0495fedc2a2f6735dffc20d4731710a41cdc1",
+          "frames": 325,
+          "sheet_post_action_indices": [
+            0,
+            175,
+            324
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "open_bottom",
+          "path": "outputs/data_followup_v5/train_008/open_bottom/episode.hdf5",
+          "sha256": "a0b846eeb7017059a34f126b5cc7d7886705aa257f222b69f1435c3225deeb54",
+          "frames": 409,
+          "sheet_post_action_indices": [
+            0,
+            256,
+            408
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_top",
+          "path": "outputs/data_followup_v5/train_008/close_top/episode.hdf5",
+          "sha256": "2718a91f1bad8ff7f03a375e711d4914376efb4dfa481b3e17fd094a9932035d",
+          "frames": 332,
+          "sheet_post_action_indices": [
+            0,
+            194,
+            331
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_bottom",
+          "path": "outputs/data_followup_v5/train_008/close_bottom/episode.hdf5",
+          "sha256": "82e488bbc6af08c267b1a4053cfbd2b878b8fca4b1f6959654e3838297a263ec",
+          "frames": 412,
+          "sheet_post_action_indices": [
+            0,
+            261,
+            411
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        }
+      ]
+    },
+    {
+      "condition_id": "train_009",
+      "seed": 709,
+      "split": "train",
+      "report": "outputs/data_followup_v5/review/train_009/report.json",
+      "report_sha256": "56b7eae285ff7a484efd74c24646c6b35bd202b0f96945c6d615188239f786e3",
+      "video_sha256": "6233e278ebe4fc6a812daf65edbd032a88839c659a481e3dae442f9cbebde1eb",
+      "decoded_frames": 415,
+      "fps": 20,
+      "keyframe_timepoints": 12,
+      "sources": [
+        {
+          "case": "open_top",
+          "path": "outputs/data_followup_v5/train_009/open_top/episode.hdf5",
+          "sha256": "5434adbcdb322b39fe4f34883f8e59c99665601ae42440fb152ed58f0ad4948b",
+          "frames": 321,
+          "sheet_post_action_indices": [
+            0,
+            172,
+            320
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "open_bottom",
+          "path": "outputs/data_followup_v5/train_009/open_bottom/episode.hdf5",
+          "sha256": "09776d306f71d1da781d05607eb43dcdd838f278bfefe95a35765a61222681c7",
+          "frames": 409,
+          "sheet_post_action_indices": [
+            0,
+            256,
+            408
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_top",
+          "path": "outputs/data_followup_v5/train_009/close_top/episode.hdf5",
+          "sha256": "d31c028045e5f0b9926c950a44119237418da0bd73119a6e099f2bd88989bc33",
+          "frames": 314,
+          "sheet_post_action_indices": [
+            0,
+            173,
+            313
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_bottom",
+          "path": "outputs/data_followup_v5/train_009/close_bottom/episode.hdf5",
+          "sha256": "3a821a78ad4a7c95a644736200d981c9779dc9c69383f2008452fdc6fbd32b8a",
+          "frames": 415,
+          "sheet_post_action_indices": [
+            0,
+            260,
+            414
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        }
+      ]
+    },
+    {
+      "condition_id": "validation_002",
+      "seed": 802,
+      "split": "validation",
+      "report": "outputs/data_followup_v5/review/validation_002/report.json",
+      "report_sha256": "0cf23479a7cf620b7f57416d0c6ac20f040b69415a48598e9afd2f800a0e7d5b",
+      "video_sha256": "ce524a6d05e8100aa53ae7863620e6f3ad0d7afc97fb95e07454990ab066b3b8",
+      "decoded_frames": 410,
+      "fps": 20,
+      "keyframe_timepoints": 12,
+      "sources": [
+        {
+          "case": "open_top",
+          "path": "outputs/data_followup_v5/validation_002/open_top/episode.hdf5",
+          "sha256": "9ea9e555479453f8a1ad0a17de894c8b964482b732a4cf3b865d4aa7a8d41464",
+          "frames": 322,
+          "sheet_post_action_indices": [
+            0,
+            171,
+            321
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "open_bottom",
+          "path": "outputs/data_followup_v5/validation_002/open_bottom/episode.hdf5",
+          "sha256": "a3e9a5bfb4c7ddbda982d97da5f460badb93d0513f45734d92136b748d48b884",
+          "frames": 407,
+          "sheet_post_action_indices": [
+            0,
+            258,
+            406
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_top",
+          "path": "outputs/data_followup_v5/validation_002/close_top/episode.hdf5",
+          "sha256": "f9098b8dc8cff374416b0f85db587675ff95eedd0c768fb16bbdb237ba173969",
+          "frames": 311,
+          "sheet_post_action_indices": [
+            0,
+            171,
+            310
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_bottom",
+          "path": "outputs/data_followup_v5/validation_002/close_bottom/episode.hdf5",
+          "sha256": "fe678e18788e59dc2024ef08ec21824687f71519a96bc35a5d6f1bc2221aad63",
+          "frames": 410,
+          "sheet_post_action_indices": [
+            0,
+            255,
+            409
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        }
+      ]
+    },
+    {
+      "condition_id": "validation_003",
+      "seed": 803,
+      "split": "validation",
+      "report": "outputs/data_followup_v5/review/validation_003/report.json",
+      "report_sha256": "fbecb05d23478fbe13a4bcf350309e5ffec72dc1f35eda27eef29841a6fd848b",
+      "video_sha256": "874f36fa78de7ffa40b0624b9a5cb0ce62b90ffc4e7c5439f3f12270adafac06",
+      "decoded_frames": 406,
+      "fps": 20,
+      "keyframe_timepoints": 12,
+      "sources": [
+        {
+          "case": "open_top",
+          "path": "outputs/data_followup_v5/validation_003/open_top/episode.hdf5",
+          "sha256": "e7f6fee24e4945f4153b493c9a5bb39e03069071bbf50c9e3a90c8265000549c",
+          "frames": 320,
+          "sheet_post_action_indices": [
+            0,
+            171,
+            319
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "open_bottom",
+          "path": "outputs/data_followup_v5/validation_003/open_bottom/episode.hdf5",
+          "sha256": "f6e7bbf4080016f5d67e5d08b6fc5ebfd33dcbac1bd991277e02be74f4608788",
+          "frames": 405,
+          "sheet_post_action_indices": [
+            0,
+            254,
+            404
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_top",
+          "path": "outputs/data_followup_v5/validation_003/close_top/episode.hdf5",
+          "sha256": "27cb8174cbfbf2286d4187019d5708e648fd5b17bf218102e910be31069fed28",
+          "frames": 312,
+          "sheet_post_action_indices": [
+            0,
+            172,
+            311
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        },
+        {
+          "case": "close_bottom",
+          "path": "outputs/data_followup_v5/validation_003/close_bottom/episode.hdf5",
+          "sha256": "e65e258b2bbc8bbb42e52198ee0770c88652d7b7e7c288bc08097575ea04f882",
+          "frames": 406,
+          "sheet_post_action_indices": [
+            0,
+            256,
+            405
+          ],
+          "stable_success": true,
+          "controller_completed": true
+        }
+      ]
+    }
+  ],
+  "active_server_transfer_modified": false,
+  "model_training_or_rollouts_in_this_local_run": false,
+  "limitations": [
+    "Human acceptance pending for all 16 new recordings",
+    "Independent cohort is not merged into accepted v1 or the active server run",
+    "Same four-command drawer family; object storage and robot-relative OOD not implemented",
+    "Scripted success and replay are not learned-policy metrics"
+  ]
+}

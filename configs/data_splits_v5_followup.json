@@ -1,0 +1,744 @@
+{
+  "schema": "cabinet_split_plan_v1",
+  "created_utc": "2026-11-19T10:23:25.739933+00:00",
+  "purpose": "Independent follow-up cohort: two training and two validation initializations; retain accepted drawer_sft_v1 unchanged",
+  "sampler": "Python random.Random(2026111906); seeds and offsets frozen before any rollout; no result-based resampling",
+  "pair_layout": "spaced",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "front_camera": "cabinet_front",
+  "scripted_controller": "feedback_v4",
+  "prompts": [
+    [
+      "OpenDrawerPairLite",
+      "Open the top drawer."
+    ],
+    [
+      "OpenDrawerPairLite",
+      "Open the bottom drawer."
+    ],
+    [
+      "CloseDrawerPairLite",
+      "Close the top drawer."
+    ],
+    [
+      "CloseDrawerPairLite",
+      "Close the bottom drawer."
+    ]
+  ],
+  "max_control_steps": 600,
+  "fps": 20,
+  "group_rule": "All four commands of one seed/offset/layout stay in one split; seeds are disjoint across splits",
+  "legacy_rule": "All earlier recordings stay excluded from this standalone cohort; accepted v1 remains separately available for server training",
+  "regions_m": {
+    "train_validation_test_id": {
+      "dx": [
+        -0.04,
+        0.04
+      ],
+      "dy": [
+        -0.04,
+        0.04
+      ]
+    },
+    "test_translation": {
+      "abs_dx": [
+        0.08,
+        0.12
+      ],
+      "dy": [
+        -0.04,
+        0.04
+      ]
+    }
+  },
+  "translation_claim_limit": "World cabinet translation stress test only; upstream spawn moves with cabinet. Not a held-out robot-relative position region.",
+  "relative_position_ood_status": "Not yet specified or implemented; must freeze a new relative-position protocol before collecting or claiming it",
+  "test_rule": "Do not execute reserved tests or convert them to SFT; if used for tuning, retire this test version",
+  "collection_code_sha256": {
+    "src/pi05_cabinet/envs.py": "5295e4cc312d4f6e12afecd89803c12ad3e9fbc4c14b99e31bea6e2968c8bc2a",
+    "src/pi05_cabinet/scripted.py": "b05b1f8d660289cab90a47d1a80a59903e55b2697ffdf0c06d2d5a3b14c9def4",
+    "src/pi05_cabinet/recording.py": "fce048fc6f4dd8517259943a89de9445fa51c5f4400abd76dd68665e09901816",
+    "src/pi05_cabinet/adapters.py": "85395e19e3e3aac48724439d655a787870e4cc2beaf179583cfd471a00faa890",
+    "scripts/_windows_runtime.py": "8efcc811a07e4f58a54023d324758ec19c7a442ac767630a705a696429920199",
+    "scripts/scripted_rollout.py": "0946775377890f5a5ffbcb797cfe383ba78d5f6e3a198ab2821b1a1c25e95183",
+    "scripts/replay_episode.py": "521154615215cb8c1f39af649903fe3e0266d25acdaafac2b528f7ec2c5436eb",
+    "scripts/evaluate_drawer_pair.py": "cb6cd3f87795e372c6034e015e4430377a41b30d19a3b6b9181ba32371d9144d",
+    "scripts/run_pair_pilot.ps1": "f9b7140ccdb675805124c51c20adc3a3bfca682db54bd6cfb3fc646f4963ccb7",
+    "requirements/sim-win.lock.txt": "b6a3c761a3d6d052b4e8525589dfba3ce260b87e2d3fca0655b11d5926d69422",
+    "scripts/convert_lerobot.py": "ca75ad71d62fe1727b6fb1d82d57fffce2e8f7f30a5edc6bf322d748731fade1",
+    "scripts/prepare_sft_data.py": "655cf2306bb7da2fd459c3bda0669abfed5fb1505eb11e4f8f4700a23ad0205d",
+    "requirements/data-cpu.lock.txt": "b5682ba3f0a33ee65aa7c26192171465d625eae7aa05f0931b0e10035c8e42e6",
+    "src/pi05_cabinet/validation.py": "eaa6e405b231fb0bdc84645300298df782ebd55b270de9dbd9acf658f2802c67",
+    "scripts/extend_sft_data.py": "be9b6ce885ef8de26c1f3dee487d4d89879b6a87c1ecec7eb9fa02264fb2b0f8"
+  },
+  "conditions": [
+    {
+      "id": "train_008",
+      "split": "train",
+      "seed": 708,
+      "scene_offset": [
+        -0.0055,
+        0.0149
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_009",
+      "split": "train",
+      "seed": 709,
+      "scene_offset": [
+        0.0129,
+        0.0051
+      ],
+      "run_now": true
+    },
+    {
+      "id": "validation_002",
+      "split": "validation",
+      "seed": 802,
+      "scene_offset": [
+        -0.0132,
+        -0.0299
+      ],
+      "run_now": true
+    },
+    {
+      "id": "validation_003",
+      "split": "validation",
+      "seed": 803,
+      "scene_offset": [
+        0.0329,
+        0.0257
+      ],
+      "run_now": true
+    },
+    {
+      "id": "test_id_001",
+      "split": "test_id",
+      "seed": 1001,
+      "scene_offset": [
+        -0.0197,
+        0.0396
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_002",
+      "split": "test_id",
+      "seed": 1002,
+      "scene_offset": [
+        -0.0045,
+        0.0289
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_003",
+      "split": "test_id",
+      "seed": 1003,
+      "scene_offset": [
+        -0.018,
+        -0.036
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_004",
+      "split": "test_id",
+      "seed": 1004,
+      "scene_offset": [
+        0.0133,
+        0.018
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_005",
+      "split": "test_id",
+      "seed": 1005,
+      "scene_offset": [
+        -0.0378,
+        -0.0011
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_006",
+      "split": "test_id",
+      "seed": 1006,
+      "scene_offset": [
+        -0.0136,
+        0.0248
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_007",
+      "split": "test_id",
+      "seed": 1007,
+      "scene_offset": [
+        0.0041,
+        -0.0353
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_008",
+      "split": "test_id",
+      "seed": 1008,
+      "scene_offset": [
+        -0.0215,
+        -0.0017
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_009",
+      "split": "test_id",
+      "seed": 1009,
+      "scene_offset": [
+        0.0344,
+        -0.0266
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_010",
+      "split": "test_id",
+      "seed": 1010,
+      "scene_offset": [
+        -0.009,
+        0.0156
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_011",
+      "split": "test_id",
+      "seed": 1011,
+      "scene_offset": [
+        0.0242,
+        -0.0288
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_012",
+      "split": "test_id",
+      "seed": 1012,
+      "scene_offset": [
+        0.0028,
+        -0.0231
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_013",
+      "split": "test_id",
+      "seed": 1013,
+      "scene_offset": [
+        0.006,
+        -0.0189
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_014",
+      "split": "test_id",
+      "seed": 1014,
+      "scene_offset": [
+        -0.0057,
+        0.0274
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_015",
+      "split": "test_id",
+      "seed": 1015,
+      "scene_offset": [
+        0.0279,
+        -0.0221
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_016",
+      "split": "test_id",
+      "seed": 1016,
+      "scene_offset": [
+        -0.0158,
+        0.0182
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_017",
+      "split": "test_id",
+      "seed": 1017,
+      "scene_offset": [
+        0.0088,
+        0.0289
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_018",
+      "split": "test_id",
+      "seed": 1018,
+      "scene_offset": [
+        -0.0118,
+        -0.0381
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_019",
+      "split": "test_id",
+      "seed": 1019,
+      "scene_offset": [
+        0.0329,
+        -0.0025
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_id_020",
+      "split": "test_id",
+      "seed": 1020,
+      "scene_offset": [
+        -0.007,
+        -0.0078
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_001",
+      "split": "test_translation",
+      "seed": 2001,
+      "scene_offset": [
+        -0.1029,
+        0.0342
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_002",
+      "split": "test_translation",
+      "seed": 2002,
+      "scene_offset": [
+        0.1035,
+        -0.0183
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_003",
+      "split": "test_translation",
+      "seed": 2003,
+      "scene_offset": [
+        -0.1181,
+        -0.0256
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_004",
+      "split": "test_translation",
+      "seed": 2004,
+      "scene_offset": [
+        0.089,
+        0.0388
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_005",
+      "split": "test_translation",
+      "seed": 2005,
+      "scene_offset": [
+        -0.0805,
+        0.0228
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_006",
+      "split": "test_translation",
+      "seed": 2006,
+      "scene_offset": [
+        0.1076,
+        -0.0014
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_007",
+      "split": "test_translation",
+      "seed": 2007,
+      "scene_offset": [
+        -0.1047,
+        -0.0276
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_008",
+      "split": "test_translation",
+      "seed": 2008,
+      "scene_offset": [
+        0.1066,
+        -0.006
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_009",
+      "split": "test_translation",
+      "seed": 2009,
+      "scene_offset": [
+        -0.0979,
+        -0.0072
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_010",
+      "split": "test_translation",
+      "seed": 2010,
+      "scene_offset": [
+        0.1153,
+        0.0398
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_011",
+      "split": "test_translation",
+      "seed": 2011,
+      "scene_offset": [
+        -0.0924,
+        0.0169
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_012",
+      "split": "test_translation",
+      "seed": 2012,
+      "scene_offset": [
+        0.1049,
+        -0.0146
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_013",
+      "split": "test_translation",
+      "seed": 2013,
+      "scene_offset": [
+        -0.1148,
+        0.0206
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_014",
+      "split": "test_translation",
+      "seed": 2014,
+      "scene_offset": [
+        0.1173,
+        0.0367
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_015",
+      "split": "test_translation",
+      "seed": 2015,
+      "scene_offset": [
+        -0.1,
+        -0.0367
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_016",
+      "split": "test_translation",
+      "seed": 2016,
+      "scene_offset": [
+        0.104,
+        0.0098
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_017",
+      "split": "test_translation",
+      "seed": 2017,
+      "scene_offset": [
+        -0.1022,
+        -0.0352
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_018",
+      "split": "test_translation",
+      "seed": 2018,
+      "scene_offset": [
+        0.1119,
+        -0.0273
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_019",
+      "split": "test_translation",
+      "seed": 2019,
+      "scene_offset": [
+        -0.1178,
+        -0.0378
+      ],
+      "run_now": false
+    },
+    {
+      "id": "test_translation_020",
+      "split": "test_translation",
+      "seed": 2020,
+      "scene_offset": [
+        0.0937,
+        -0.002
+      ],
+      "run_now": false
+    }
+  ],
+  "retired_collection_conditions": [
+    {
+      "id": "train_001",
+      "split": "train",
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_002",
+      "split": "train",
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "run_now": true
+    },
+    {
+      "id": "validation_001",
+      "split": "validation",
+      "seed": 201,
+      "scene_offset": [
+        0.0381,
+        0.0276
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_001",
+      "split": "train",
+      "seed": 301,
+      "scene_offset": [
+        -0.005,
+        -0.0091
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_002",
+      "split": "train",
+      "seed": 302,
+      "scene_offset": [
+        0.031,
+        -0.0286
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_003",
+      "split": "train",
+      "seed": 303,
+      "scene_offset": [
+        0.0296,
+        0.0218
+      ],
+      "run_now": true
+    },
+    {
+      "id": "validation_001",
+      "split": "validation",
+      "seed": 401,
+      "scene_offset": [
+        -0.0072,
+        -0.0261
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_001",
+      "split": "train",
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_002",
+      "split": "train",
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_003",
+      "split": "train",
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "run_now": true
+    },
+    {
+      "id": "validation_001",
+      "split": "validation",
+      "seed": 601,
+      "scene_offset": [
+        -0.0234,
+        0.0038
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_001",
+      "split": "train",
+      "seed": 701,
+      "scene_offset": [
+        -0.0153,
+        -0.0264
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_002",
+      "split": "train",
+      "seed": 702,
+      "scene_offset": [
+        -0.0306,
+        -0.0241
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_003",
+      "split": "train",
+      "seed": 703,
+      "scene_offset": [
+        -0.0057,
+        0.0247
+      ],
+      "run_now": true
+    },
+    {
+      "id": "validation_001",
+      "split": "validation",
+      "seed": 801,
+      "scene_offset": [
+        0.0356,
+        -0.0072
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_004",
+      "split": "train",
+      "seed": 704,
+      "scene_offset": [
+        -0.0135,
+        -0.0399
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_005",
+      "split": "train",
+      "seed": 705,
+      "scene_offset": [
+        0.0013,
+        -0.0159
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_006",
+      "split": "train",
+      "seed": 706,
+      "scene_offset": [
+        -0.0263,
+        -0.0251
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_007",
+      "split": "train",
+      "seed": 707,
+      "scene_offset": [
+        0.0011,
+        -0.0392
+      ],
+      "run_now": true
+    }
+  ],
+  "previous_plan": {
+    "path": "configs/data_splits_v4_train_extension.json",
+    "sha256": "da35cdb5eab00d3298c89ddd4b579917ec067e664c51d6176c1cf238722336a0"
+  },
+  "accepted_release_guard": {
+    "release_id": "drawer_sft_v1",
+    "files_sha256": {
+      "configs/sft_release_v1.json": "fa7428a322cca8f996a42b099a14902314b5023eb67fa26abdc21e79a6c876fd",
+      "results/human_acceptance_v4.json": "f8e061af6dfe05854266fe49f5eeb14fb5dd3ea65e8b3a9c115114b9f79fe000",
+      "data/lerobot/sft_readiness_v4_extended/train/conversion_report.json": "1ecf08520c051effc66785b0b13cfe85453190cd81e5cadbf4036633d6d6ef43",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-000.parquet": "631bfcacf1b389db8887945b8e071c21747c14579dfe7434f338f9c0cb504d3d",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-001.parquet": "11f9b476bfc909488a16c6deee4ff01706e4c0b4780c2ec27585a9393079569f",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-002.parquet": "a43e120c452510d742ccb57f0e5fce6eefac8555e9bed0e231412033421f90fe",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-003.parquet": "adea31bfa85aea44d18ed02e42ec4edcde12066b3e8b804812740af95e9ce993",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-004.parquet": "3546ffab87abae64d804fd38c8a23d81fcf2779d3430f322b0b3792d51dc0466",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-005.parquet": "75cccb81723ed3e054c2edf3e49d8eaf646bee16c19e65599f405afa6e10c246",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-006.parquet": "5fbdda7697d47c2bdc82e7187fe0471c0be78e304951f443c5889e36525fcf5d",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-007.parquet": "892c73b7bd868eb8e4ba4352ddff0ed2998dc8115081b90341ad543d38685d8b",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-008.parquet": "a5c537965fc06cf0460d281e3804b52060eb01ee1c26e2832585783ce98ca7cc",
+      "data/lerobot/sft_readiness_v4_extended/train/data/chunk-000/file-009.parquet": "1b2b79202dc49aefd43dda1159d05da08b9982453ee7d093e374b798be161632",
+      "data/lerobot/sft_readiness_v4_extended/train/meta/episodes/chunk-000/file-000.parquet": "1a50516b3edfd08068dd86454aff30e8b85d42fa8fc27438162c07e76e95182f",
+      "data/lerobot/sft_readiness_v4_extended/train/meta/info.json": "9ba39537a97a124b5a7a2c3b6ba906cb618a6597339e65e854e3e27ff1fde123",
+      "data/lerobot/sft_readiness_v4_extended/train/meta/stats.json": "93c7244de6461da15c9e7e6073f3f7574da8db1d3ba5c26d2b3b6818786585c7",
+      "data/lerobot/sft_readiness_v4_extended/train/meta/tasks.parquet": "f94c091f8c13b56cda8deb83587020a3d0d364499bfbd967ad316e47bdc9dd79",
+      "data/lerobot/sft_readiness_v4/validation/conversion_report.json": "75bbd1557bb11d614263ec9c7440d1e5e805e55be739654f187ce119c03ea7e0",
+      "data/lerobot/sft_readiness_v4/validation/data/chunk-000/file-000.parquet": "98a9f7f1fe88f1aa4ced0d5fafc9116729edcc7973f2794d18012378f959ab4d",
+      "data/lerobot/sft_readiness_v4/validation/data/chunk-000/file-001.parquet": "d22bb70c759cf773ca9c7ebc6fe7eb453bdd077c689ceb083ec28dc4d8b86c21",
+      "data/lerobot/sft_readiness_v4/validation/meta/episodes/chunk-000/file-000.parquet": "c2969d0cf427397c58f0eeeeea014415fc8463bb90f21ac0435fb09952247453",
+      "data/lerobot/sft_readiness_v4/validation/meta/info.json": "962f2973ec725205140bce057f3ed11b4af0fa9c1f13c5d9445ee0f6ec696730",
+      "data/lerobot/sft_readiness_v4/validation/meta/stats.json": "1452167af5eaa09b1eb904eeac8fd01bbf5cbfa67fb97d1e7bfa87db494c8441",
+      "data/lerobot/sft_readiness_v4/validation/meta/tasks.parquet": "f94c091f8c13b56cda8deb83587020a3d0d364499bfbd967ad316e47bdc9dd79"
+    },
+    "rule": "Keep accepted v1 datasets, statistics, manifest and human acceptance unchanged; do not replace the active server transfer"
+  },
+  "followup_rule": "Retain every planned attempt; failed recordings stay auditable; no merge into accepted data before separate human review"
+}
