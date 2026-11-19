@@ -1,0 +1,169 @@
+{
+  "schema": "cabinet_four_command_runner_check_v1",
+  "created_utc": "2026-11-19T11:36:09.160490+00:00",
+  "source": "RECORDED_ACTION_CHUNKS",
+  "learned_policy": false,
+  "scope": "Batch runner verification on existing v1 validation recordings, with separate synthetic control-flow tests; no PI05 endpoint or model loaded",
+  "runner": {
+    "path": "scripts/run_policy_smoke.py",
+    "sha256": "ebf655ccfd030da2822a4e1735f74becae0d186facd623f9fc44be3fadd7fe66"
+  },
+  "raw_batch_summary": {
+    "path": "outputs/four_command_smoke_replay_v1/report.json",
+    "sha256": "af7cecafc84752b2638bb1633bd4bd289eacb018fe42cf4f422845e03f5936c7"
+  },
+  "horizon": 50,
+  "execute_steps": 5,
+  "validation_seed": 801,
+  "completed_recorded_commands": 4,
+  "recorded_actions": 1465,
+  "http_requests": 294,
+  "decoded_video_frames": 1465,
+  "rows": [
+    {
+      "case": "open_top",
+      "actions": 323,
+      "requests": 65,
+      "stable_recorded_success": true,
+      "max_joint_replay_error_rad": 5.254839536839029e-07,
+      "max_drawer_replay_error": 6.853919110039186e-08,
+      "max_robot_action_replay_error": 1.4511050250298752e-08,
+      "report": {
+        "path": "outputs/four_command_smoke_replay_v1/open_top/rollout/report.json",
+        "sha256": "7be16e228eff3362c35dde1af3c7c9d0819cf0c2e768c2407aed4b9e0dc28290"
+      },
+      "video": {
+        "path": "outputs/four_command_smoke_replay_v1/open_top/rollout/rollout.mp4",
+        "sha256": "33bca049d84d76060a458bfa047af68388ed129131e9504d028b3c0313b7c077",
+        "decoded_frames": 323
+      }
+    },
+    {
+      "case": "open_bottom",
+      "actions": 409,
+      "requests": 82,
+      "stable_recorded_success": true,
+      "max_joint_replay_error_rad": 3.2572640999983804e-06,
+      "max_drawer_replay_error": 3.616093466884962e-07,
+      "max_robot_action_replay_error": 1.487109962949873e-08,
+      "report": {
+        "path": "outputs/four_command_smoke_replay_v1/open_bottom/rollout/report.json",
+        "sha256": "6777e2e343ea2f5200eb2620b80f210cabce943874fc6d54294f72bc9e5dc295"
+      },
+      "video": {
+        "path": "outputs/four_command_smoke_replay_v1/open_bottom/rollout/rollout.mp4",
+        "sha256": "05e1d285eaaa12f6a92709039c803797f1ffd77480852279765b5aaaa3a41e60",
+        "decoded_frames": 409
+      }
+    },
+    {
+      "case": "close_top",
+      "actions": 320,
+      "requests": 64,
+      "stable_recorded_success": true,
+      "max_joint_replay_error_rad": 6.348742047634914e-06,
+      "max_drawer_replay_error": 6.140163535763448e-07,
+      "max_robot_action_replay_error": 1.4899702693860206e-08,
+      "report": {
+        "path": "outputs/four_command_smoke_replay_v1/close_top/rollout/report.json",
+        "sha256": "c50abd7981345e1c0c9c8e3a26fd87cf2bd5a0a24e550706c60678b0a929c428"
+      },
+      "video": {
+        "path": "outputs/four_command_smoke_replay_v1/close_top/rollout/rollout.mp4",
+        "sha256": "e58050e31caff6e9cec70d762511e95e1310a1dfe9358cb5c4baea7d70fe54f0",
+        "decoded_frames": 320
+      }
+    },
+    {
+      "case": "close_bottom",
+      "actions": 413,
+      "requests": 83,
+      "stable_recorded_success": true,
+      "max_joint_replay_error_rad": 4.216834556647342e-06,
+      "max_drawer_replay_error": 6.451329787112315e-07,
+      "max_robot_action_replay_error": 1.4722938368461058e-08,
+      "report": {
+        "path": "outputs/four_command_smoke_replay_v1/close_bottom/rollout/report.json",
+        "sha256": "19dd6355ca7a24fd546185eff4eca7863a9a88804e3cc105666072fa81da865d"
+      },
+      "video": {
+        "path": "outputs/four_command_smoke_replay_v1/close_bottom/rollout/rollout.mp4",
+        "sha256": "d59a0c59bbdaadd3c76cf6767ba86683199cd47fd9dab8dfaedf6b447b1652a6",
+        "decoded_frames": 413
+      }
+    }
+  ],
+  "runner_checks": [
+    {
+      "check": "dry_run_no_output",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "reserved_test_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "training_initialization_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "invalid_chunk_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "missing_checkpoint_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "credential_url_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "existing_output_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "unbound_plan_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "mismatched_replay_sources_refused",
+      "passed": true,
+      "simulation_started": false
+    },
+    {
+      "check": "task_failure_is_retained",
+      "passed": true,
+      "simulation_started": false,
+      "synthetic_control_flow_only": true
+    },
+    {
+      "check": "client_error_stops_batch",
+      "passed": true,
+      "simulation_started": false,
+      "synthetic_control_flow_only": true
+    }
+  ],
+  "existing_protocol_tests": {
+    "simulation_environment": "12 passed",
+    "cpu_data_environment": "12 passed",
+    "note": "Timeout injection can log expected WinError10053 on the test server after the client aborts; unittest result is OK"
+  },
+  "protected_v1_files_unchanged": 24,
+  "immutable_collection_code_unchanged": true,
+  "reserved_tests_executed": false,
+  "actual_model_branch_validated": false,
+  "limitations": [
+    "Recorded-action replay does not measure learned-policy performance",
+    "Synthetic fixtures only check task-failure continuation and infrastructure-error stopping",
+    "First actual model endpoint, processor and checkpoint-loading checks remain on the server"
+  ]
+}

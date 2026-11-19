@@ -362,6 +362,8 @@ The check sends language, both RGB views and robot state through a loopback HTTP
 
 The endpoint returns **recorded scripted actions**, labeled `RECORDED_ACTION_CHUNKS`. This verifies transport and execution; π0.5 inference still requires a model server and processor checks. [Protocol, results and separate server/client commands](docs/REMOTE_INFERENCE.md).
 
+The [four-command smoke runner](docs/POLICY_SMOKE.md) provides one batch entry point for an actual model endpoint, with per-command MP4 files and a summary table. Its recorded-action diagnostic passed **1,465 actions / 294 requests** on the existing validation initialization, with all video frames decoded. The actual PI05 branch still requires its first model run. [Runner checks](results/four_command_smoke_runner_v1.json) · [Server first-run checklist](docs/SERVER_FIRST_RUN.md).
+
 ### 5. Review the training candidates
 
 With the local data and existing review packets:
@@ -404,6 +406,7 @@ scripts/
   make_collection_review.py # Full recorded policy-view videos and keyframes
   serve_action_replay.py / remote_policy_rollout.py
   check_remote_chunks.py # Four-task transport and fail-stop regression
+  run_policy_smoke.py    # Four validation commands, model or explicit replay mode
 configs/                # Initialization conditions, splits, frozen code hashes
 requirements/           # Simulation and CPU dataset dependencies
 docs/                   # Setup, collection, data, and model integration

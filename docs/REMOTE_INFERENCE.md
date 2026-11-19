@@ -131,6 +131,11 @@ returns actions by control-step index. Its mode is always
 
 ## Model-server handoff
 
+The [four-command smoke runner](POLICY_SMOKE.md) provides a batch entry point
+for the existing validation initialization, with reports and videos. Use its
+dry-run mode before connecting the actual endpoint. Recorded-action mode is
+separate and cannot establish model performance.
+
 The client also has an explicit `PI05` mode for a future model endpoint. No model
 server, processor integration, checkpoint verification or pi0.5 rollout has been
 implemented or tested yet. Echoing a checkpoint string alone does not establish
