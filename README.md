@@ -151,6 +151,25 @@ Episodes are split by initialization condition, with separate training and valid
 
 ## 📊 Results
 
+### Training-only extension
+
+Four additional training initializations, seeds **704–707**, produced **16 / 16** complete, stable scripted episodes and **16 / 16** passing action replays. The original validation files and all 40 reserved test conditions are retained unchanged.
+
+| Data check | Combined candidates |
+|---|---|
+| Training | **28 episodes · 10,226 frames**, seven examples per instruction |
+| Training spawn coverage, per instruction | **5 left · 2 right** |
+| Validation, reused byte-for-byte | **4 episodes · 1,465 frames**, one left-side initialization |
+| Official LeRobot exact readback | **11,691 frames** across both splits; combined training re-export checked in full |
+| Action-chunk boundary samples | **160**, horizon **50**, same-episode padding |
+| Stable successes / recorded-action replays | **32 / 32** each across the base and additional batches |
+| Maximum replay error | Joint `1.08 × 10⁻⁵ rad` · drawer opening `1.32 × 10⁻⁶` |
+| Complete-video review | **8 local packets · 32 episode entries**, human decisions pending |
+
+The merge preserves each episode's original collection-plan hash and checks for duplicate sources and cross-split reset leakage. A local review page plays both policy views and exports source-bound acceptance or rejection notes. These are scripted demonstration candidates within the four-command drawer task family. Human acceptance, model training, and learned-policy evaluation remain separate checks.
+
+[Collection, review and reproduction](docs/TRAINING_DATA_EXTENSION.md) · [Combined data report](results/training_extension_v4.json) · [Review provenance](results/collection_review_extension_v4.json)
+
 ### Feedback-gated collection (v4)
 
 Four fresh initializations, seeds **701 / 702 / 703 / 801**, each run all four instructions with the frozen `feedback_v4` controller. Counts cover all attempts in this small scripted collection.
@@ -332,6 +351,21 @@ The check sends language, both RGB views and robot state through a loopback HTTP
 
 The endpoint returns **recorded scripted actions**, labeled `RECORDED_ACTION_CHUNKS`. This verifies transport and execution; π0.5 inference still requires a model server and processor checks. [Protocol, results and separate server/client commands](docs/REMOTE_INFERENCE.md).
 
+### 5. Review the training candidates
+
+With the local data and existing review packets:
+
+```powershell
+& $data scripts\review_sft_data.py build `
+    --manifest data\lerobot\sft_readiness_v4_extended\selection_manifest.json `
+    --review-roots outputs\data_readiness_v4\review_final outputs\data_extension_v4\review `
+    --output outputs\NEW_REVIEW_INDEX
+if ($LASTEXITCODE -ne 0) { throw 'Review inventory failed' }
+Start-Process outputs\NEW_REVIEW_INDEX\index.html
+```
+
+The offline page reuses complete videos, starts every decision at `pending`, and exports a review JSON without changing the data. [Reproduce the additional collection, merge, and review checks](docs/TRAINING_DATA_EXTENSION.md).
+
 <a id="layout"></a>
 
 ## 📂 Project layout
@@ -354,6 +388,8 @@ scripts/
   convert_lerobot.py    # Official export and frame-level verification
   evaluate_drawer_pair.py / run_pair_pilot.ps1
   prepare_sft_data.py   # Splits, selection, action-chunk checks
+  extend_sft_data.py    # Training-only collection and provenance-preserving union
+  review_sft_data.py    # Local video review index and human decision checks
   make_collection_review.py # Full recorded policy-view videos and keyframes
   serve_action_replay.py / remote_policy_rollout.py
   check_remote_chunks.py # Four-task transport and fail-stop regression

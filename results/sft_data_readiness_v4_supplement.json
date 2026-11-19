@@ -1,0 +1,950 @@
+{
+  "schema": "cabinet_data_readiness_report_v1",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "plan_sha256": "da35cdb5eab00d3298c89ddd4b579917ec067e664c51d6176c1cf238722336a0",
+  "selection_manifest_sha256": "3924b272f9d47e56ad857403fd3ad1431f980048e75a31838efff84bd8c46f39",
+  "front_camera": "cabinet_front",
+  "rgb_reset_check": "lsb_v1",
+  "audit_subdir": "evaluation_lsb_v1",
+  "collection_code_sha256": {
+    "src/pi05_cabinet/envs.py": "5295e4cc312d4f6e12afecd89803c12ad3e9fbc4c14b99e31bea6e2968c8bc2a",
+    "src/pi05_cabinet/scripted.py": "b05b1f8d660289cab90a47d1a80a59903e55b2697ffdf0c06d2d5a3b14c9def4",
+    "src/pi05_cabinet/recording.py": "fce048fc6f4dd8517259943a89de9445fa51c5f4400abd76dd68665e09901816",
+    "src/pi05_cabinet/adapters.py": "85395e19e3e3aac48724439d655a787870e4cc2beaf179583cfd471a00faa890",
+    "scripts/_windows_runtime.py": "8efcc811a07e4f58a54023d324758ec19c7a442ac767630a705a696429920199",
+    "scripts/scripted_rollout.py": "0946775377890f5a5ffbcb797cfe383ba78d5f6e3a198ab2821b1a1c25e95183",
+    "scripts/replay_episode.py": "521154615215cb8c1f39af649903fe3e0266d25acdaafac2b528f7ec2c5436eb",
+    "scripts/evaluate_drawer_pair.py": "cb6cd3f87795e372c6034e015e4430377a41b30d19a3b6b9181ba32371d9144d",
+    "scripts/run_pair_pilot.ps1": "f9b7140ccdb675805124c51c20adc3a3bfca682db54bd6cfb3fc646f4963ccb7",
+    "requirements/sim-win.lock.txt": "b6a3c761a3d6d052b4e8525589dfba3ce260b87e2d3fca0655b11d5926d69422",
+    "scripts/convert_lerobot.py": "ca75ad71d62fe1727b6fb1d82d57fffce2e8f7f30a5edc6bf322d748731fade1",
+    "scripts/prepare_sft_data.py": "655cf2306bb7da2fd459c3bda0669abfed5fb1505eb11e4f8f4700a23ad0205d",
+    "requirements/data-cpu.lock.txt": "b5682ba3f0a33ee65aa7c26192171465d625eae7aa05f0931b0e10035c8e42e6",
+    "src/pi05_cabinet/validation.py": "eaa6e405b231fb0bdc84645300298df782ebd55b270de9dbd9acf658f2802c67",
+    "scripts/extend_sft_data.py": "be9b6ce885ef8de26c1f3dee487d4d89879b6a87c1ecec7eb9fa02264fb2b0f8"
+  },
+  "data_qa_code_sha256": {
+    "scripts/prepare_sft_data.py": "655cf2306bb7da2fd459c3bda0669abfed5fb1505eb11e4f8f4700a23ad0205d",
+    "scripts/convert_lerobot.py": "ca75ad71d62fe1727b6fb1d82d57fffce2e8f7f30a5edc6bf322d748731fade1",
+    "scripts/evaluate_drawer_pair.py": "cb6cd3f87795e372c6034e015e4430377a41b30d19a3b6b9181ba32371d9144d",
+    "src/pi05_cabinet/adapters.py": "85395e19e3e3aac48724439d655a787870e4cc2beaf179583cfd471a00faa890",
+    "src/pi05_cabinet/validation.py": "eaa6e405b231fb0bdc84645300298df782ebd55b270de9dbd9acf658f2802c67"
+  },
+  "selection_manifest": "data/lerobot/sft_readiness_v4_supplement/selection_manifest.json",
+  "attempted_episodes": 16,
+  "selected_episodes": 16,
+  "stable_success_count": 16,
+  "max_replay_joint_error_rad": 1.0774735129726043e-05,
+  "max_replay_drawer_error": 1.3189716046024813e-06,
+  "non_target_max_drift": 3.835449097385305e-09,
+  "splits": {
+    "train": {
+      "attempted": 16,
+      "selected": 16,
+      "rejected": 0,
+      "frames": 5847,
+      "selected_prompt_counts": {
+        "Open the top drawer.": 4,
+        "Open the bottom drawer.": 4,
+        "Close the top drawer.": 4,
+        "Close the bottom drawer.": 4
+      },
+      "selected_prompt_spawn_side_counts": {
+        "Open the top drawer. | robot=left": 3,
+        "Open the bottom drawer. | robot=left": 3,
+        "Close the top drawer. | robot=left": 3,
+        "Close the bottom drawer. | robot=left": 3,
+        "Open the top drawer. | robot=right": 1,
+        "Open the bottom drawer. | robot=right": 1,
+        "Close the top drawer. | robot=right": 1,
+        "Close the bottom drawer. | robot=right": 1
+      },
+      "all_four_prompts_present": true,
+      "dataset": "data/lerobot/sft_readiness_v4_supplement/train",
+      "official_all_frames_passed": true,
+      "chunk_check": {
+        "chunk_size": 50,
+        "action_shape": [
+          50,
+          7
+        ],
+        "boundary_samples_checked": 80,
+        "official_action_padding_passed": true,
+        "cross_episode_actions_observed": false,
+        "cpu_batch_action_shape": [
+          4,
+          50,
+          7
+        ],
+        "cpu_batch_state_shape": [
+          4,
+          9
+        ],
+        "cpu_batch_rgb_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "cpu_batch_language_passed": true,
+        "stats_sha256": "65e8b37d95d79071f3970294b223425d9bcf1536e2760452bb586c4e8d030bae",
+        "vector_stats": {
+          "observation.state": {
+            "min": [
+              -0.6641221642494202,
+              -1.7660845518112183,
+              -2.189864158630371,
+              -2.7218575477600098,
+              -0.4808332622051239,
+              1.5065252780914307,
+              -2.205284357070923,
+              0.005389923229813576,
+              -0.04004398360848427
+            ],
+            "max": [
+              0.5811733603477478,
+              -0.9975727796554565,
+              2.099583387374878,
+              -1.521145224571228,
+              0.6300324201583862,
+              2.9006693363189697,
+              1.6717114448547363,
+              0.04004400596022606,
+              -0.006636250298470259
+            ],
+            "mean": [
+              0.00383647955287957,
+              -1.5985057882841007,
+              -0.6999135943219176,
+              -2.2001212702177524,
+              -0.027613286207389766,
+              2.200668302992378,
+              -0.1445996412481429,
+              0.03222706467289129,
+              -0.03238993450012986
+            ],
+            "std": [
+              0.25359158021086214,
+              0.1791064740647106,
+              1.3624597429720782,
+              0.25583734151187315,
+              0.2090646327529463,
+              0.3416029263417977,
+              1.2560968519471294,
+              0.011243561827461883,
+              0.01127471246196385
+            ],
+            "q01": [
+              -0.3571391389611105,
+              -1.7630295914724936,
+              -1.3791164084336451,
+              -2.701422191288852,
+              -0.24634537139101081,
+              1.5649199264060134,
+              -0.7299871543492362,
+              0.01261483786874405,
+              -0.03958823865147989
+            ],
+            "q99": [
+              0.44087965300312737,
+              -1.0804594649295225,
+              0.4260787721055671,
+              -1.7572183972782653,
+              0.1927234017577552,
+              2.7248329244477945,
+              1.2005515351694485,
+              0.03940549345402075,
+              -0.012343826483587242
+            ]
+          },
+          "action": {
+            "min": [
+              -0.3499999940395355,
+              -0.3499999940395355,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.5,
+              -1.0
+            ],
+            "max": [
+              0.3499999940395355,
+              0.3499999940395355,
+              0.3499999940395355,
+              0.5,
+              0.009868024848401546,
+              0.5,
+              1.0
+            ],
+            "mean": [
+              -0.05234153544916054,
+              -0.04581524541546427,
+              -0.08918755773180302,
+              -0.008935032949827667,
+              -0.03462390944378252,
+              0.005956023854410748,
+              -0.48999486674768244
+            ],
+            "std": [
+              0.25745828783239333,
+              0.18227212470023643,
+              0.1940472662406066,
+              0.11650606719939739,
+              0.1003145623711912,
+              0.10082521124085982,
+              0.8717253200213403
+            ],
+            "q01": [
+              -0.3499999940395355,
+              -0.2703508529341801,
+              -0.3499999940395355,
+              -0.29338222119325974,
+              -0.5,
+              -0.21821745788439603,
+              -1.0
+            ],
+            "q99": [
+              0.3499919216612558,
+              0.11222593000808108,
+              0.349961202793065,
+              0.2109470927330077,
+              0.005154632543840759,
+              0.29524651055734885,
+              0.999984088678745
+            ]
+          }
+        }
+      }
+    },
+    "validation": {
+      "attempted": 0,
+      "selected": 0,
+      "rejected": 0,
+      "frames": 0,
+      "selected_prompt_counts": {},
+      "selected_prompt_spawn_side_counts": {},
+      "all_four_prompts_present": false
+    }
+  },
+  "reserved_test_conditions_unexecuted": 40,
+  "train_normalization_stats": "data/lerobot/sft_readiness_v4_supplement/train/meta/stats.json",
+  "normalization_rule": "Use only the train stats for both training and validation; validation's own conversion stats are diagnostic only",
+  "train_validation_reset_hashes_disjoint": true,
+  "successful_demonstration_candidates_only": true,
+  "sufficient_for_sft_quality_claim": false,
+  "human_visual_acceptance": "pending",
+  "limitations": [
+    "4 train conditions and 0 validation conditions only; expand after quality inspection",
+    "Privileged scripted actions are not human demonstrations or pi0.5 rollouts",
+    "Validation inspected for data readiness; if used to tune controller, mark it development and version the split",
+    "Translation tests unexecuted; no reserved robot-relative OOD region implemented",
+    "No weights, tokenizer, processor, forward/backward or model rollout validated"
+  ],
+  "episode_results": [
+    {
+      "condition_id": "train_004",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_extension_v4/train_004/open_top/episode.hdf5",
+      "sha256": "12e718e8fb9d276ba82388968af24ff8db20457ddcf4d95d7195688ced1cdc98",
+      "frames": 325,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 704,
+      "scene_offset": [
+        -0.0135,
+        -0.0399
+      ],
+      "robot_spawn_world_m": [
+        0.4650913095153111,
+        -0.6116412108038667,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.521408690484689,
+        0.5717412108038666
+      ],
+      "initial_state_sha256": "d5efc18e6e55608b5d365befc74a3e42149a7b3d660af1dd80d5647aaf6d8228",
+      "initial_dual_rgb_sha256": "79be177b7ca6f22aca4c3543d0d27d932a53a8599d2b7957254e1070c236e96a",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835449097385305e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 3.552713678800501e-15,
+      "replay_max_drawer_error": 3.219646771412954e-15,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_004",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_extension_v4/train_004/open_bottom/episode.hdf5",
+      "sha256": "acc3c6bac82e1577b5c385750b11581cef533ff235edf7fd6887094ea7f463d6",
+      "frames": 409,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 704,
+      "scene_offset": [
+        -0.0135,
+        -0.0399
+      ],
+      "robot_spawn_world_m": [
+        0.4650913095153111,
+        -0.6116412108038667,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.521408690484689,
+        0.5717412108038666
+      ],
+      "initial_state_sha256": "d5efc18e6e55608b5d365befc74a3e42149a7b3d660af1dd80d5647aaf6d8228",
+      "initial_dual_rgb_sha256": "79be177b7ca6f22aca4c3543d0d27d932a53a8599d2b7957254e1070c236e96a",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835449097385305e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.51731968603508e-12,
+      "replay_max_drawer_error": 1.9238055593007175e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_004",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_extension_v4/train_004/close_top/episode.hdf5",
+      "sha256": "1c39aa395599e57347a2fc93ce454d8bc8f0d009cc3a287dc7bb228a846c0e48",
+      "frames": 326,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 704,
+      "scene_offset": [
+        -0.0135,
+        -0.0399
+      ],
+      "robot_spawn_world_m": [
+        0.4650913095153111,
+        -0.6116412108038667,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.521408690484689,
+        0.5717412108038666
+      ],
+      "initial_state_sha256": "68127044b63a64e97e4b65742ce0b06c1f57c1ef82063b77e1988af4504d2fe3",
+      "initial_dual_rgb_sha256": "ac0a924572133f85a8b9d6f89b6858ed423f82a4c56174e742dbabfcf83224f0",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.0634082503457876e-10,
+      "replay_max_drawer_error": 1.8565869584167161e-10,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_004",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_extension_v4/train_004/close_bottom/episode.hdf5",
+      "sha256": "f939b6ab33ed1d3a16c54cd3d7f27d28c3b9611b4d49e7133a64af29027c9221",
+      "frames": 407,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 704,
+      "scene_offset": [
+        -0.0135,
+        -0.0399
+      ],
+      "robot_spawn_world_m": [
+        0.4650913095153111,
+        -0.6116412108038667,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.521408690484689,
+        0.5717412108038666
+      ],
+      "initial_state_sha256": "68127044b63a64e97e4b65742ce0b06c1f57c1ef82063b77e1988af4504d2fe3",
+      "initial_dual_rgb_sha256": "ac0a924572133f85a8b9d6f89b6858ed423f82a4c56174e742dbabfcf83224f0",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.3723245590190345e-12,
+      "replay_max_drawer_error": 4.866218539234524e-12,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_005",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_extension_v4/train_005/open_top/episode.hdf5",
+      "sha256": "5165195bbab8c0436e0c74237517b71f362531201b7c9e83253a23190dd1afd9",
+      "frames": 323,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 705,
+      "scene_offset": [
+        0.0013,
+        -0.0159
+      ],
+      "robot_spawn_world_m": [
+        0.5440110031188946,
+        -0.6298217697139153,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.45728899688110547,
+        0.6139217697139153
+      ],
+      "initial_state_sha256": "df383abce3541258732d81fc8a687570c920dbace1aa08e41c4f1c5f9261306f",
+      "initial_dual_rgb_sha256": "cf9d66b8526d02bfe6839b3869da0e3c4ce62af4f9a940579c52323cb8a639d7",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.83544578300531e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.504663143554353e-12,
+      "replay_max_drawer_error": 3.633316911222373e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_005",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_extension_v4/train_005/open_bottom/episode.hdf5",
+      "sha256": "9c6ad4cdfd6632835c42f48c5fd8d8f984c2cdf73a9e785cf2ba91990ce09e65",
+      "frames": 406,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 705,
+      "scene_offset": [
+        0.0013,
+        -0.0159
+      ],
+      "robot_spawn_world_m": [
+        0.5440110031188946,
+        -0.6298217697139153,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.45728899688110547,
+        0.6139217697139153
+      ],
+      "initial_state_sha256": "df383abce3541258732d81fc8a687570c920dbace1aa08e41c4f1c5f9261306f",
+      "initial_dual_rgb_sha256": "cf9d66b8526d02bfe6839b3869da0e3c4ce62af4f9a940579c52323cb8a639d7",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.83544578300531e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 3.2152058793144533e-11,
+      "replay_max_drawer_error": 1.989353681786099e-10,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_005",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_extension_v4/train_005/close_top/episode.hdf5",
+      "sha256": "c8e66633d87fbf9fa9a0e6dfd844a44a75c8b3f40073206e375b43a3382a9582",
+      "frames": 319,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 705,
+      "scene_offset": [
+        0.0013,
+        -0.0159
+      ],
+      "robot_spawn_world_m": [
+        0.5440110031188946,
+        -0.6298217697139153,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.45728899688110547,
+        0.6139217697139153
+      ],
+      "initial_state_sha256": "d9629b543dc19c6043d73df2487f3e1d29666381bfc135041e0786d1beab84a0",
+      "initial_dual_rgb_sha256": "7a65c329431e457828e0f17d3b01b765178ef38668b55ebe72ebc18e77e85c1f",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 8.57980353430321e-13,
+      "replay_max_drawer_error": 7.930076951004339e-13,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_005",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_extension_v4/train_005/close_bottom/episode.hdf5",
+      "sha256": "16b69181b8a8c1abfc4f111946e925edf959b8c4fa45927df7aa27157c8e9ce6",
+      "frames": 406,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 705,
+      "scene_offset": [
+        0.0013,
+        -0.0159
+      ],
+      "robot_spawn_world_m": [
+        0.5440110031188946,
+        -0.6298217697139153,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.45728899688110547,
+        0.6139217697139153
+      ],
+      "initial_state_sha256": "d9629b543dc19c6043d73df2487f3e1d29666381bfc135041e0786d1beab84a0",
+      "initial_dual_rgb_sha256": "7a65c329431e457828e0f17d3b01b765178ef38668b55ebe72ebc18e77e85c1f",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.9621249069956548e-12,
+      "replay_max_drawer_error": 5.131167712946194e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_006",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_extension_v4/train_006/open_top/episode.hdf5",
+      "sha256": "6e593624c1bb13d46436421b8bbda29ceb7b61d0b21d8b7c9b58d1e9795d015f",
+      "frames": 324,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 706,
+      "scene_offset": [
+        -0.0263,
+        -0.0251
+      ],
+      "robot_spawn_world_m": [
+        0.5051032554604373,
+        -0.6221806831230671,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4685967445395627,
+        0.5970806831230671
+      ],
+      "initial_state_sha256": "9e701e0ae7bfefd7ce5c07a83841e92fd8c22b24ecbc4ed230bb8ea7b8cfe1a8",
+      "initial_dual_rgb_sha256": "33c39b5073e0f65eb8926623eb2e846d5f82dd1a2dbab996c62cbafc9c806fa3",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835445457129713e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.3585577935136826e-12,
+      "replay_max_drawer_error": 4.5931237979690565e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_006",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_extension_v4/train_006/open_bottom/episode.hdf5",
+      "sha256": "4f7e37a06cfea55708f9dd4505e2bb5a0c67dd9ed5c3dcf11b91e8c6f2f05c2c",
+      "frames": 407,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 706,
+      "scene_offset": [
+        -0.0263,
+        -0.0251
+      ],
+      "robot_spawn_world_m": [
+        0.5051032554604373,
+        -0.6221806831230671,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4685967445395627,
+        0.5970806831230671
+      ],
+      "initial_state_sha256": "9e701e0ae7bfefd7ce5c07a83841e92fd8c22b24ecbc4ed230bb8ea7b8cfe1a8",
+      "initial_dual_rgb_sha256": "33c39b5073e0f65eb8926623eb2e846d5f82dd1a2dbab996c62cbafc9c806fa3",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835445457129713e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.0774735129726043e-05,
+      "replay_max_drawer_error": 1.3189716046024813e-06,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_006",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_extension_v4/train_006/close_top/episode.hdf5",
+      "sha256": "846aa5a017bfe2b9f6224042faafb5fc467ce4aae04ac63fc031b510bfcb6ba9",
+      "frames": 329,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 706,
+      "scene_offset": [
+        -0.0263,
+        -0.0251
+      ],
+      "robot_spawn_world_m": [
+        0.5051032554604373,
+        -0.6221806831230671,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4685967445395627,
+        0.5970806831230671
+      ],
+      "initial_state_sha256": "a1b3841fa1305ec6d6cc08dddc3e449d9992d3611eca642246abf4a636d02320",
+      "initial_dual_rgb_sha256": "d0abc8e1bcceeb8d7ca5dec2d0a6052b0b16a7bd4e7dda782e89434decf62999",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.0161649299789133e-11,
+      "replay_max_drawer_error": 1.2702769391914615e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_006",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_extension_v4/train_006/close_bottom/episode.hdf5",
+      "sha256": "3d584186500b700a3e17c10c516915dfa0b65ffd52985534856a8d281777adf5",
+      "frames": 407,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 706,
+      "scene_offset": [
+        -0.0263,
+        -0.0251
+      ],
+      "robot_spawn_world_m": [
+        0.5051032554604373,
+        -0.6221806831230671,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4685967445395627,
+        0.5970806831230671
+      ],
+      "initial_state_sha256": "a1b3841fa1305ec6d6cc08dddc3e449d9992d3611eca642246abf4a636d02320",
+      "initial_dual_rgb_sha256": "d0abc8e1bcceeb8d7ca5dec2d0a6052b0b16a7bd4e7dda782e89434decf62999",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.0519451976165328e-10,
+      "replay_max_drawer_error": 6.808112684719703e-10,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_007",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_extension_v4/train_007/open_top/episode.hdf5",
+      "sha256": "8e74101e2e0348f2abcba2892c9889cc709b78d82d0c933db4b6ce2622c6280a",
+      "frames": 321,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 707,
+      "scene_offset": [
+        0.0011,
+        -0.0392
+      ],
+      "robot_spawn_world_m": [
+        1.5303235017583185,
+        -0.6399241633953919,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5292235017583184,
+        0.6007241633953919
+      ],
+      "initial_state_sha256": "ddf061c8014b5a434fb2129108d25658a84c6c65bb922a6385be5d943a2973ea",
+      "initial_dual_rgb_sha256": "aaaa8dbd89bf9b61a7f61ca8567627f6fde51789ae52f893fb572b1419706d09",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835445664877672e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.1102230246251565e-14,
+      "replay_max_drawer_error": 4.6629367034256575e-15,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_007",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_extension_v4/train_007/open_bottom/episode.hdf5",
+      "sha256": "4884d935665c9947abdedc7030fe8cf9d177c7bdf3b6fb70effb49b246cd61f3",
+      "frames": 409,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 707,
+      "scene_offset": [
+        0.0011,
+        -0.0392
+      ],
+      "robot_spawn_world_m": [
+        1.5303235017583185,
+        -0.6399241633953919,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5292235017583184,
+        0.6007241633953919
+      ],
+      "initial_state_sha256": "ddf061c8014b5a434fb2129108d25658a84c6c65bb922a6385be5d943a2973ea",
+      "initial_dual_rgb_sha256": "aaaa8dbd89bf9b61a7f61ca8567627f6fde51789ae52f893fb572b1419706d09",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835445664877672e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 3.058997499749694e-11,
+      "replay_max_drawer_error": 2.834840695520313e-10,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_007",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_extension_v4/train_007/close_top/episode.hdf5",
+      "sha256": "6a384de3e3de892808a1a6bbfb56b83b10a40ddc7094475b4204306f7618b869",
+      "frames": 314,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 707,
+      "scene_offset": [
+        0.0011,
+        -0.0392
+      ],
+      "robot_spawn_world_m": [
+        1.5303235017583185,
+        -0.6399241633953919,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5292235017583184,
+        0.6007241633953919
+      ],
+      "initial_state_sha256": "44f3a1d7c10f2d592cacb2e93955d152e8283754fa74b655ead7299ea14eae72",
+      "initial_dual_rgb_sha256": "20f625b8422f036190de780330a84278f85318b9d2ed1a15153562f97d180be0",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 4.927258601128415e-11,
+      "replay_max_drawer_error": 6.476635937627262e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_007",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_extension_v4/train_007/close_bottom/episode.hdf5",
+      "sha256": "691ca23e9d563efce075dd1620c669cd43e3398063de0b851ea7ce2b7aae6155",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 707,
+      "scene_offset": [
+        0.0011,
+        -0.0392
+      ],
+      "robot_spawn_world_m": [
+        1.5303235017583185,
+        -0.6399241633953919,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5292235017583184,
+        0.6007241633953919
+      ],
+      "initial_state_sha256": "44f3a1d7c10f2d592cacb2e93955d152e8283754fa74b655ead7299ea14eae72",
+      "initial_dual_rgb_sha256": "20f625b8422f036190de780330a84278f85318b9d2ed1a15153562f97d180be0",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.1225242957380033e-11,
+      "replay_max_drawer_error": 1.363335833115542e-11,
+      "selected": true,
+      "rejection_reasons": []
+    }
+  ]
+}

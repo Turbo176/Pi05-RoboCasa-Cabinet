@@ -5,6 +5,10 @@ The controller advances after measured pose and contact gates; the robot still
 moves through the same OSC actions and physical drawer contact. All episodes
 remain labeled `SCRIPTED_PRIVILEGED_STATE`.
 
+The [training-only extension and review workflow](TRAINING_DATA_EXTENSION.md)
+adds fresh training groups while keeping this batch, its validation dataset,
+and the reserved tests intact.
+
 ## Collection protocol
 
 [Frozen plan](../configs/data_splits_v4.json), SHA256:

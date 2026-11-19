@@ -1,0 +1,324 @@
+{
+  "schema": "cabinet_extension_review_report_v1",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "review_index": "outputs/data_review_v4_extended/index.html",
+  "inventory": {
+    "path": "outputs/data_review_v4_extended/inventory.json",
+    "sha256": "9fd2ca68b7ddb61001a9679fc5b803469c8f8992bfc10402c1e538407c5a8d9c"
+  },
+  "manifest": {
+    "path": "data/lerobot/sft_readiness_v4_extended/selection_manifest.json",
+    "sha256": "3f02a512cfc735eec40a36a550e45694f21a3d72b0b3685c1bc19820d3ded913"
+  },
+  "generator_sha256": {
+    "scripts/review_sft_data.py": "faccdf3c04a8aeac34f18d8eb22168aae95d7046f6c14b6d5e4ab3f251dc7b20",
+    "scripts/make_collection_review.py": "c3683cdebe28d8a2f08f9c39a69cacfd3b1fcb837f1e55e2b67a724ad1837e5a"
+  },
+  "episode_count": 32,
+  "video_packets": 8,
+  "base_packets_reused": 4,
+  "new_packets": 4,
+  "human_decisions": {
+    "pending": 32,
+    "accept": 0,
+    "reject": 0
+  },
+  "agent_visual_inspection": {
+    "scope": "Additional four training groups; first action, end of grasp and final action in both policy views",
+    "episode_count": 16,
+    "timepoints": 48,
+    "full_episode_human_acceptance": false
+  },
+  "page_checks": {
+    "javascript_syntax": true,
+    "node_dom_fixture_logic": true,
+    "eight_video_panels": true,
+    "export_with_storage_disabled": true,
+    "all_pending_export_roundtrip": true,
+    "guard_cases_passed": [
+      "missing episode",
+      "duplicate episode",
+      "wrong source hash",
+      "unnamed acceptance",
+      "unwatched acceptance",
+      "rejection without reason",
+      "wrong inventory hash"
+    ],
+    "browser_visual_preview": "Not verified; automation browser disallowed the local file protocol"
+  },
+  "training_extension_guard_checks": {
+    "reused_base_seed_rejected_before_plan_write": true,
+    "missing_attempt_rejected_before_dataset_write": true,
+    "duplicate_raw_episode_rejected_before_dataset_write": true,
+    "cross_split_reset_rejected_before_dataset_write": true,
+    "wrong_source_hash_rejected_before_dataset_write": true
+  },
+  "annotations_modify_dataset": false,
+  "packets": [
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "seed": 701,
+      "review_report": "outputs/data_readiness_v4/review_final/train_001/report.json",
+      "review_report_sha256": "8c0865041231f000c9de8d845107cf0f5d9c3e2815015b8ecbefd3dfa0c3eada",
+      "video_sha256": "3906eeb131b1f9dc0bfcc26d9a4d59956e2706605dd1b74eed17f7b2654dbe00",
+      "frames": 409,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "train_001/open_top",
+          "path": "outputs/data_readiness_v4/train_001/open_top/episode.hdf5",
+          "sha256": "a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040"
+        },
+        {
+          "id": "train_001/open_bottom",
+          "path": "outputs/data_readiness_v4/train_001/open_bottom/episode.hdf5",
+          "sha256": "669864d9aefe3fa02beeb68c8f62fe456de6ac46d54c6cae93317d4f474a65df"
+        },
+        {
+          "id": "train_001/close_top",
+          "path": "outputs/data_readiness_v4/train_001/close_top/episode.hdf5",
+          "sha256": "34bb2304999f0918b88023107b9015a06dad2ae91c0036a808614442ae7e67da"
+        },
+        {
+          "id": "train_001/close_bottom",
+          "path": "outputs/data_readiness_v4/train_001/close_bottom/episode.hdf5",
+          "sha256": "bdf4bdc86767f997d4f8acb9c29d6a0e924628ebe9a7c31cdf86b9f1f627e17e"
+        }
+      ]
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "seed": 702,
+      "review_report": "outputs/data_readiness_v4/review_final/train_002/report.json",
+      "review_report_sha256": "8de9e881e90ee5fe0f0e29f354a399cb4e9be7704f3baeb792c2aa271e4450f8",
+      "video_sha256": "6b1356af0f14ed01c1a618bb284c3efc0768d8c74f2c4c62db827219cb8acaac",
+      "frames": 425,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "train_002/open_top",
+          "path": "outputs/data_readiness_v4/train_002/open_top/episode.hdf5",
+          "sha256": "85f5df40aa937a39c3c3dc36fceb6700f67f7e24bb0f69aa04024f425d9cead7"
+        },
+        {
+          "id": "train_002/open_bottom",
+          "path": "outputs/data_readiness_v4/train_002/open_bottom/episode.hdf5",
+          "sha256": "29a36c69ef7f4095942aa6921726f9982037f69a74baefac861ecb9dcce9c470"
+        },
+        {
+          "id": "train_002/close_top",
+          "path": "outputs/data_readiness_v4/train_002/close_top/episode.hdf5",
+          "sha256": "c61c55cb4f8497ca9f2d4e1438ac3e2c783348fec2fd2bf9520183a273cc09a9"
+        },
+        {
+          "id": "train_002/close_bottom",
+          "path": "outputs/data_readiness_v4/train_002/close_bottom/episode.hdf5",
+          "sha256": "7473f237b9f95d591882def02b686e9ad91d8d7c2c05d562adafecc52ad210d1"
+        }
+      ]
+    },
+    {
+      "condition_id": "train_003",
+      "split": "train",
+      "seed": 703,
+      "review_report": "outputs/data_readiness_v4/review_final/train_003/report.json",
+      "review_report_sha256": "236da8dc297bb94021cdb41c2166fc2cdf05cf6efd6837571838ac15be3d6e2e",
+      "video_sha256": "3e16ee9258b4d3fd135f67e173404a119261aa4548e04d538d788ffe7c76a27f",
+      "frames": 413,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "train_003/open_top",
+          "path": "outputs/data_readiness_v4/train_003/open_top/episode.hdf5",
+          "sha256": "8cea94f8725edf25cfcaf41e98bcb8c933e9197faa18cb821098a91002e3028e"
+        },
+        {
+          "id": "train_003/open_bottom",
+          "path": "outputs/data_readiness_v4/train_003/open_bottom/episode.hdf5",
+          "sha256": "d37ba1dacdc51e0f2ebc04ebb17194e6509cb6154de35c572dfbb71c80b00318"
+        },
+        {
+          "id": "train_003/close_top",
+          "path": "outputs/data_readiness_v4/train_003/close_top/episode.hdf5",
+          "sha256": "7b2de9c6fe5c2d175522d8f21270306cec3034ce96741f50225afefc7e7a0d6e"
+        },
+        {
+          "id": "train_003/close_bottom",
+          "path": "outputs/data_readiness_v4/train_003/close_bottom/episode.hdf5",
+          "sha256": "41a891081b9cbcbd11662afaa24e615bc93869e77819719ebf153125f0bb391a"
+        }
+      ]
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "seed": 801,
+      "review_report": "outputs/data_readiness_v4/review_final/validation_001/report.json",
+      "review_report_sha256": "f5ddc890ea2583d8fccc905cd727380b14133bd28030c1644cd6523df2f5beaa",
+      "video_sha256": "4e32edce00ce71e0d64e392980076e6f479bd8de7319d75235f7c43ed6969d25",
+      "frames": 413,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "validation_001/open_top",
+          "path": "outputs/data_readiness_v4/validation_001/open_top/episode.hdf5",
+          "sha256": "fd8a8203651ba9be8f05a1f4e314c13a8bc9f528656e3e1df3d26880f3f3fdd6"
+        },
+        {
+          "id": "validation_001/open_bottom",
+          "path": "outputs/data_readiness_v4/validation_001/open_bottom/episode.hdf5",
+          "sha256": "f70226264c15f226a25e7c2e9a8a073a36309943ec27d378ce7ab22d14cf1533"
+        },
+        {
+          "id": "validation_001/close_top",
+          "path": "outputs/data_readiness_v4/validation_001/close_top/episode.hdf5",
+          "sha256": "134472fa9403da1eee79c0994cdb36fe6a9d38de46edd5cab62de601d01818f7"
+        },
+        {
+          "id": "validation_001/close_bottom",
+          "path": "outputs/data_readiness_v4/validation_001/close_bottom/episode.hdf5",
+          "sha256": "a2da9ea325ab627f40769a1460978150805ee4db9fc88c32aa80712d39aa006e"
+        }
+      ]
+    },
+    {
+      "condition_id": "train_004",
+      "split": "train",
+      "seed": 704,
+      "review_report": "outputs/data_extension_v4/review/train_004/report.json",
+      "review_report_sha256": "8b659e4427b782dbb324213b7cfa634b57c581d0da51b0f893bd69aed1c1045c",
+      "video_sha256": "25ab58e125aba8c19583d47f33dd4ae62c2bdc1b2a864b52d402e47149cc64f1",
+      "frames": 409,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "train_004/open_top",
+          "path": "outputs/data_extension_v4/train_004/open_top/episode.hdf5",
+          "sha256": "12e718e8fb9d276ba82388968af24ff8db20457ddcf4d95d7195688ced1cdc98"
+        },
+        {
+          "id": "train_004/open_bottom",
+          "path": "outputs/data_extension_v4/train_004/open_bottom/episode.hdf5",
+          "sha256": "acc3c6bac82e1577b5c385750b11581cef533ff235edf7fd6887094ea7f463d6"
+        },
+        {
+          "id": "train_004/close_top",
+          "path": "outputs/data_extension_v4/train_004/close_top/episode.hdf5",
+          "sha256": "1c39aa395599e57347a2fc93ce454d8bc8f0d009cc3a287dc7bb228a846c0e48"
+        },
+        {
+          "id": "train_004/close_bottom",
+          "path": "outputs/data_extension_v4/train_004/close_bottom/episode.hdf5",
+          "sha256": "f939b6ab33ed1d3a16c54cd3d7f27d28c3b9611b4d49e7133a64af29027c9221"
+        }
+      ]
+    },
+    {
+      "condition_id": "train_005",
+      "split": "train",
+      "seed": 705,
+      "review_report": "outputs/data_extension_v4/review/train_005/report.json",
+      "review_report_sha256": "9c8d5b3fcc5c62a1d7e32da2b22e8b7609c1ccde3f180e7c380c314805772462",
+      "video_sha256": "c623b9398bca5f0afbea8eb8291130d12e936f514a4385e306cdf19c2e788a8f",
+      "frames": 406,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "train_005/open_top",
+          "path": "outputs/data_extension_v4/train_005/open_top/episode.hdf5",
+          "sha256": "5165195bbab8c0436e0c74237517b71f362531201b7c9e83253a23190dd1afd9"
+        },
+        {
+          "id": "train_005/open_bottom",
+          "path": "outputs/data_extension_v4/train_005/open_bottom/episode.hdf5",
+          "sha256": "9c6ad4cdfd6632835c42f48c5fd8d8f984c2cdf73a9e785cf2ba91990ce09e65"
+        },
+        {
+          "id": "train_005/close_top",
+          "path": "outputs/data_extension_v4/train_005/close_top/episode.hdf5",
+          "sha256": "c8e66633d87fbf9fa9a0e6dfd844a44a75c8b3f40073206e375b43a3382a9582"
+        },
+        {
+          "id": "train_005/close_bottom",
+          "path": "outputs/data_extension_v4/train_005/close_bottom/episode.hdf5",
+          "sha256": "16b69181b8a8c1abfc4f111946e925edf959b8c4fa45927df7aa27157c8e9ce6"
+        }
+      ]
+    },
+    {
+      "condition_id": "train_006",
+      "split": "train",
+      "seed": 706,
+      "review_report": "outputs/data_extension_v4/review/train_006/report.json",
+      "review_report_sha256": "eeedc7485d68873718b1f4cf7ed95457245987196e6bd6abceaf96bef44b8cca",
+      "video_sha256": "0356ef7cfa99f4689e5f42cebd5203bf508035a50a455e74836774f39b28adec",
+      "frames": 407,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "train_006/open_top",
+          "path": "outputs/data_extension_v4/train_006/open_top/episode.hdf5",
+          "sha256": "6e593624c1bb13d46436421b8bbda29ceb7b61d0b21d8b7c9b58d1e9795d015f"
+        },
+        {
+          "id": "train_006/open_bottom",
+          "path": "outputs/data_extension_v4/train_006/open_bottom/episode.hdf5",
+          "sha256": "4f7e37a06cfea55708f9dd4505e2bb5a0c67dd9ed5c3dcf11b91e8c6f2f05c2c"
+        },
+        {
+          "id": "train_006/close_top",
+          "path": "outputs/data_extension_v4/train_006/close_top/episode.hdf5",
+          "sha256": "846aa5a017bfe2b9f6224042faafb5fc467ce4aae04ac63fc031b510bfcb6ba9"
+        },
+        {
+          "id": "train_006/close_bottom",
+          "path": "outputs/data_extension_v4/train_006/close_bottom/episode.hdf5",
+          "sha256": "3d584186500b700a3e17c10c516915dfa0b65ffd52985534856a8d281777adf5"
+        }
+      ]
+    },
+    {
+      "condition_id": "train_007",
+      "split": "train",
+      "seed": 707,
+      "review_report": "outputs/data_extension_v4/review/train_007/report.json",
+      "review_report_sha256": "7f1fd6b1d57bd04e7302b2e62154e4e1485867af22580759a7911d0ad745ce26",
+      "video_sha256": "a467b6c89a277c7255fb73dd481ce527bae15c5fce02f28fa4f182c951553d79",
+      "frames": 415,
+      "fps": 20,
+      "decode_all_frames_passed": true,
+      "episode_sources": [
+        {
+          "id": "train_007/open_top",
+          "path": "outputs/data_extension_v4/train_007/open_top/episode.hdf5",
+          "sha256": "8e74101e2e0348f2abcba2892c9889cc709b78d82d0c933db4b6ce2622c6280a"
+        },
+        {
+          "id": "train_007/open_bottom",
+          "path": "outputs/data_extension_v4/train_007/open_bottom/episode.hdf5",
+          "sha256": "4884d935665c9947abdedc7030fe8cf9d177c7bdf3b6fb70effb49b246cd61f3"
+        },
+        {
+          "id": "train_007/close_top",
+          "path": "outputs/data_extension_v4/train_007/close_top/episode.hdf5",
+          "sha256": "6a384de3e3de892808a1a6bbfb56b83b10a40ddc7094475b4204306f7618b869"
+        },
+        {
+          "id": "train_007/close_bottom",
+          "path": "outputs/data_extension_v4/train_007/close_bottom/episode.hdf5",
+          "sha256": "691ca23e9d563efce075dd1620c669cd43e3398063de0b851ea7ce2b7aae6155"
+        }
+      ]
+    }
+  ]
+}
