@@ -1,0 +1,146 @@
+{
+  "schema": "cabinet_camera_framing_v3",
+  "source": "SIMULATION_CAMERA_QA",
+  "learned_policy": false,
+  "role": "Development visual and compatibility checks",
+  "front_profile": "cabinet_front",
+  "world_camera_eye_m": [
+    1.0,
+    -1.8,
+    1.4
+  ],
+  "world_camera_look_at_m": [
+    1.0,
+    -0.1,
+    0.9
+  ],
+  "fovy_deg": 50,
+  "resolution": [
+    256,
+    256
+  ],
+  "target_independent": true,
+  "ground_truth_overlay_in_policy_rgb": false,
+  "checks": [
+    {
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "initial_physics_state_identical_between_profiles": true,
+      "profiles": [
+        {
+          "profile": "robot_left",
+          "camera_mapping": {
+            "observation.images.front": "robot0_agentview_left_image",
+            "observation.images.wrist": "robot0_eye_in_hand_image"
+          },
+          "projected_handle_centres": {
+            "top": {
+              "pixel_xy": [
+                44.74133814890834,
+                219.8751973768862
+              ],
+              "inside_image": true
+            },
+            "bottom": {
+              "pixel_xy": [
+                61.478598417842605,
+                281.8250816893576
+              ],
+              "inside_image": false
+            }
+          }
+        },
+        {
+          "profile": "cabinet_front",
+          "camera_mapping": {
+            "observation.images.front": "cabinet_front_image",
+            "observation.images.wrist": "robot0_eye_in_hand_image"
+          },
+          "projected_handle_centres": {
+            "top": {
+              "pixel_xy": [
+                133.0791234852654,
+                114.85182767173868
+              ],
+              "inside_image": true
+            },
+            "bottom": {
+              "pixel_xy": [
+                132.75814102019262,
+                190.7796195897826
+              ],
+              "inside_image": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "initial_physics_state_identical_between_profiles": true,
+      "profiles": [
+        {
+          "profile": "robot_left",
+          "camera_mapping": {
+            "observation.images.front": "robot0_agentview_left_image",
+            "observation.images.wrist": "robot0_eye_in_hand_image"
+          },
+          "projected_handle_centres": {
+            "top": {
+              "pixel_xy": [
+                313.92899842537327,
+                182.34267775819154
+              ],
+              "inside_image": false
+            },
+            "bottom": {
+              "pixel_xy": [
+                281.6781797635664,
+                241.63790706999424
+              ],
+              "inside_image": false
+            }
+          }
+        },
+        {
+          "profile": "cabinet_front",
+          "camera_mapping": {
+            "observation.images.front": "cabinet_front_image",
+            "observation.images.wrist": "robot0_eye_in_hand_image"
+          },
+          "projected_handle_centres": {
+            "top": {
+              "pixel_xy": [
+                131.73724622308043,
+                115.21107851638868
+              ],
+              "inside_image": true
+            },
+            "bottom": {
+              "pixel_xy": [
+                131.5000406227707,
+                191.50022146883902
+              ],
+              "inside_image": true
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "visual_review": "Sampled reset frames reviewed on both spawn sides; both drawer fronts and handles visible. Full episode human review remains separate.",
+  "projection_limit": "Projected centres in frame do not prove absence of occlusion at every rollout timestep",
+  "legacy_replay": {
+    "episode_sha256": "099ebef8c7c245e7696d38f4a5dd158d7e03fcc5fb9856785a185cb4f5cdaf2b",
+    "within_tolerance": true,
+    "max_joint_error_rad": 7.91925369725277e-09,
+    "max_drawer_error": 2.849751851163873e-09
+  }
+}

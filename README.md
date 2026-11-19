@@ -29,7 +29,7 @@ A **MuJoCo + RoboCasa/robosuite** workflow for drawer opening, closing, and lang
 
 | 🗄️ Tasks | 📷 Observations | 🦾 Action interface | ⏱️ Control |
 |---|---|---|---|
-| 4 instructions, 2 target drawers | Front + wrist RGB, 9D state | 7D normalized OSC command | 20 Hz |
+| 4 instructions, 2 target drawers | Cabinet-front + wrist RGB, 9D state | 7D normalized OSC command | 20 Hz |
 
 <a id="demos"></a>
 
@@ -95,7 +95,7 @@ Single-drawer scenes use `OpenDrawerLite` / `CloseDrawerLite`; two-drawer scenes
 | `Close the top drawer.` | Top | Close |
 | `Close the bottom drawer.` | Bottom | Close |
 
-- **🗺️ Scene configuration** — RoboCasa drawer fixtures, configurable drawer spacing and cabinet translation, and identical initial physics and RGB when swapping the target instruction.
+- **🗺️ Scene configuration** — RoboCasa drawer fixtures, configurable drawer spacing and cabinet translation, a fixed frontal camera covering both drawers, and identical initial physics and RGB when swapping the target instruction.
 - **⌨️ Demonstration collection** — Keyboard translation, rotation, and gripper control; pause, save, discard, and optional fixed-orientation assistance.
 - **🎥 Recording and replay** — Two RGB views, robot state, actions, language, initial simulator state, and scene XML; replay reports joint and drawer-opening errors.
 - **📦 Dataset preparation** — Official LeRobot export and readback, frame-level checks, and action-chunk boundary and padding validation.
@@ -128,7 +128,7 @@ flowchart LR
 
 | Policy field | Shape | Meaning |
 |---|---|---|
-| `observation.images.front` | `256 × 256 × 3` | Front-view RGB |
+| `observation.images.front` | `256 × 256 × 3` | Fixed cabinet-front RGB; legacy recordings retain the robot-left view |
 | `observation.images.wrist` | `256 × 256 × 3` | Wrist-view RGB |
 | `observation.state` | `9` | 7 arm joint positions + 2 finger positions |
 | `action` | `7` | Normalized OSC translation, axis-angle delta, and gripper command |
@@ -136,13 +136,19 @@ flowchart LR
 
 Raw HDF5 stores **T actions and T+1 observations**; each training sample pairs an action with its preceding observation. Handle poses, drawer openings, and success labels are reserved for scripted control and scoring, and are excluded from policy inputs.
 
+<p align="center">
+  <img src="assets/demo/policy_views_v3.png" width="768" alt="Actual cabinet-front and wrist training images before grasping and after opening the lower drawer">
+</p>
+
+Actual policy RGB from one recorded opening trajectory. Inspection labels appear only in this figure. The new `cabinet_front` profile keeps both drawers in view; raw recordings declare their camera profile, and the converter rejects mixed front-camera profiles. [Camera checks](results/camera_framing_v3.json) · [Image provenance](results/policy_views_v3_provenance.json).
+
 Episodes are split by initialization condition, with separate training and validation datasets. Both use training-set normalization statistics. See the [data contract](docs/DATA_CONTRACT.md) and [split and collection guide](docs/DATA_READINESS.md).
 
 <a id="results"></a>
 
 ## 📊 Results
 
-### Scripted collection
+### Original collection (v1)
 
 Three initializations, seeds **101 / 102 / 201**, each run all four instructions in the `spaced` layout. Counts include every attempt.
 
@@ -172,7 +178,7 @@ Contact replay identified loaded lower-finger contact after release. The revised
 
 These are development regression conditions. [Contact diagnosis](docs/CONTACT_CONTROL.md) and the [regression report](results/withdraw_regression_v2.json) retain the same success thresholds and source hashes; these runs are excluded from the new collection split.
 
-### Dataset and replay checks
+### Original dataset and replay checks (v1)
 
 | Check | Recorded result |
 |---|---|

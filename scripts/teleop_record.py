@@ -14,6 +14,7 @@ from OpenGL import GL
 from scipy.spatial.transform import Rotation
 from pi05_cabinet.envs import add_scene_arguments, make_env_from_args
 from pi05_cabinet.recording import EpisodeRecorder
+from pi05_cabinet.adapters import image_keys
 
 
 class KeyboardWindow:
@@ -45,7 +46,7 @@ class KeyboardWindow:
         glfw.set_window_title(self.window, "Pi05 Cabinet | " + lines[0])
         frame = np.full((800, 1024, 3), (19, 25, 33), dtype=np.uint8)
         frame[65:545, :640] = overview
-        frame[65:321, 704:960] = obs["robot0_agentview_left_image"][::-1]
+        frame[65:321, 704:960] = obs[image_keys(obs)["observation.images.front"]][::-1]
         frame[337:593, 704:960] = obs["robot0_eye_in_hand_image"][::-1]
         cv2.putText(frame, "OVERVIEW", (12, 56), cv2.FONT_HERSHEY_SIMPLEX, .55, (210, 220, 235), 1)
         for i, line in enumerate(lines):

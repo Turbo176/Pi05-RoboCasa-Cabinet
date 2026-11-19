@@ -18,7 +18,7 @@ import h5py
 import numpy as np
 from lerobot.datasets.lerobot_dataset import LeRobotDataset
 from pi05_cabinet.adapters import (ACTION_NAMES, IMAGE_KEYS, SCHEMA_VERSION, STATE_NAMES,
-                                    policy_action, policy_observation)
+                                    image_keys, policy_action, policy_observation)
 
 
 def main():
@@ -45,6 +45,7 @@ def main():
             if path.name != "episode.hdf5" or not file.attrs.get("complete", True):
                 raise ValueError("Only completed episodes can be converted")
             n = len(file["actions"])
+            camera_mapping = image_keys(file["observations"])
             if n < 1 or any(len(v) != n+1 for v in file["observations"].values()):
                 raise ValueError("Invalid T / T+1 alignment")
             if meta["control_hz"] != 20 or not np.allclose(np.diff(file["sim_time"][:]), .05, atol=1e-6):
@@ -57,6 +58,7 @@ def main():
                 digest = hashlib.file_digest(stream, "sha256").hexdigest()
             provenance.append(dict(filename=path.parent.name+"/"+path.name, sha256=digest,
                 mode=mode, task=meta["task_variant"], seed=meta["seed"], frames=n,
+                camera_mapping=camera_mapping,
                 language=meta["lang"], success_final=bool(file["success"][-1])))
             if "scene_parameters" in meta:
                 provenance[-1].update(target_drawer=meta["target_drawer"], scene_parameters=meta["scene_parameters"],
@@ -65,6 +67,8 @@ def main():
             total += n
     if len({p["sha256"] for p in provenance}) != len(provenance):
         raise ValueError("Identical episode content was supplied more than once")
+    if len({p["camera_mapping"]["observation.images.front"] for p in provenance}) != 1:
+        raise ValueError("Do not mix legacy and cabinet-front camera profiles in one dataset")
     features = {
         "observation.state": dict(dtype="float32", shape=(9,), names=STATE_NAMES),
         "action": dict(dtype="float32", shape=(7,), names=ACTION_NAMES),
@@ -77,9 +81,10 @@ def main():
     for path in resolved:
         with h5py.File(path, "r") as file:
             meta = json.loads(file.attrs["metadata_json"])
+            camera_mapping = image_keys(file["observations"])
             for i, action in enumerate(file["actions"]):
                 raw = {key:file["observations"][key][i] for key in
-                       ["robot0_joint_pos", "robot0_gripper_qpos", *IMAGE_KEYS.values()]}
+                       ["robot0_joint_pos", "robot0_gripper_qpos", *camera_mapping.values()]}
                 frame = policy_observation(raw)
                 frame.update(action=policy_action(action), task=meta["lang"])
                 dataset.add_frame(frame)
@@ -95,10 +100,11 @@ def main():
     for path in resolved:
         with h5py.File(path, "r") as file:
             meta = json.loads(file.attrs["metadata_json"])
+            camera_mapping = image_keys(file["observations"])
             for i, action in enumerate(file["actions"]):
                 item = loaded[global_index]
                 raw = {key:file["observations"][key][i] for key in
-                       ["robot0_joint_pos", "robot0_gripper_qpos", *IMAGE_KEYS.values()]}
+                       ["robot0_joint_pos", "robot0_gripper_qpos", *camera_mapping.values()]}
                 expected = policy_observation(raw)
                 np.testing.assert_allclose(item["observation.state"].numpy(), expected["observation.state"], atol=1e-7)
                 np.testing.assert_allclose(item["action"].numpy(), policy_action(action), atol=1e-7)

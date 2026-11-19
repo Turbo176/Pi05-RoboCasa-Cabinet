@@ -3,6 +3,7 @@ param(
     [int]$Seed = 0,
     [ValidateSet('compact','spaced')][string]$PairLayout = 'spaced',
     [double[]]$SceneOffset = @(0.0, 0.0),
+    [ValidateSet('robot_left','cabinet_front')][string]$FrontCamera = 'cabinet_front',
     [string]$SplitPlan,
     [string]$ConditionId,
     [switch]$SkipConversion,
@@ -13,7 +14,7 @@ $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path -Parent $PSScriptRoot)
 if ([bool]$SplitPlan -ne [bool]$ConditionId) { throw 'SplitPlan and ConditionId must be supplied together' }
 if ($SplitPlan) {
-    foreach ($name in @('Seed', 'PairLayout', 'SceneOffset')) {
+    foreach ($name in @('Seed', 'PairLayout', 'SceneOffset', 'FrontCamera')) {
         if ($PSBoundParameters.ContainsKey($name)) { throw "With SplitPlan, $name is fixed by the plan" }
     }
     $plan = Get-Content -LiteralPath $SplitPlan -Raw | ConvertFrom-Json
@@ -31,6 +32,7 @@ if ($SplitPlan) {
     $Seed = [int]$condition.seed
     $SceneOffset = @([double]$condition.scene_offset[0], [double]$condition.scene_offset[1])
     $PairLayout = $plan.pair_layout
+    $FrontCamera = if ($plan.front_camera) { $plan.front_camera } else { 'robot_left' }
     $planHash = (Get-FileHash -LiteralPath $SplitPlan -Algorithm SHA256).Hash.ToLowerInvariant()
 }
 if ($SceneOffset.Length -ne 2) { throw 'SceneOffset requires two values in metres' }
@@ -43,7 +45,7 @@ if ($SplitPlan) {
     @{
         schema='cabinet_collection_request_v1'; plan_sha256=$planHash;
         condition_id=$ConditionId; split=$condition.split; seed=$Seed;
-        scene_offset=$SceneOffset; pair_layout=$PairLayout;
+        scene_offset=$SceneOffset; pair_layout=$PairLayout; front_camera=$FrontCamera;
         source='SCRIPTED_PRIVILEGED_STATE'; learned_policy=$false
     } | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $root 'collection_request.json') -Encoding UTF8
 }
@@ -59,7 +61,7 @@ $dx = $SceneOffset[0].ToString($invariant)
 $dy = $SceneOffset[1].ToString($invariant)
 foreach ($case in $cases) {
     $output = Join-Path $root $case.Name
-    & $SimPython scripts\scripted_rollout.py --task $case.Task --instruction $case.Instruction --pair-layout $PairLayout --seed $Seed --scene-offset $dx $dy --output $output
+    & $SimPython scripts\scripted_rollout.py --task $case.Task --instruction $case.Instruction --pair-layout $PairLayout --seed $Seed --scene-offset $dx $dy --front-camera $FrontCamera --output $output
     if ($LASTEXITCODE -ne 0) { throw "Rollout failed to record: $($case.Name)" }
     $episodes += Join-Path $output 'episode.hdf5'
     & $SimPython scripts\replay_episode.py (Join-Path $output 'episode.hdf5') --output (Join-Path $root "replay_$($case.Name)")

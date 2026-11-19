@@ -35,6 +35,17 @@ class LocalAssetPaths:
     need no relocation. Keep all upstream camera processing, then restore
     these paths as portable forward-slash absolute paths for MuJoCo.
     """
+    def __init__(self, *args, front_camera="robot_left", **kwargs):
+        if front_camera not in ("robot_left", "cabinet_front"):
+            raise ValueError("Unknown front camera profile")
+        self.front_camera = front_camera
+        super().__init__(*args, **kwargs)
+
+    def get_ep_meta(self):
+        meta = super().get_ep_meta()
+        meta.setdefault("scene_parameters", {})["front_camera"] = self.front_camera
+        return meta
+
     def edit_model_xml(self, xml_str):
         root = ET.fromstring(xml_str)
         preserved = {}
@@ -60,6 +71,19 @@ class LocalAssetPaths:
         ET.SubElement(root.find("worldbody"), "camera", name="cabinet_overview",
                       pos=" ".join(map(str, eye)),
                       xyaxes=" ".join(map(str, np.r_[x, y])), fovy="48")
+        if self.front_camera == "cabinet_front":
+            # Fixed world camera, independent of target command and handle
+            # state. Both handles fit in frame for either robot spawn side.
+            eye = np.array([1., -1.8, 1.4])
+            target = np.array([1., -.1, .9])
+            z = eye - target
+            z /= np.linalg.norm(z)
+            x = np.cross([0, 0, 1], z)
+            x /= np.linalg.norm(x)
+            y = np.cross(z, x)
+            ET.SubElement(root.find("worldbody"), "camera", name="cabinet_front",
+                          pos=" ".join(map(str, eye)),
+                          xyaxes=" ".join(map(str, np.r_[x, y])), fovy="50")
         return ET.tostring(root, encoding="unicode")
 
 
@@ -166,7 +190,7 @@ class DrawerPairTask:
         meta.update(lang=self.instruction, target_drawer=self.target_drawer,
                     scene_variant="stacked_pair_v1", scene_offset=self.scene_offset, pair_layout=self.pair_layout,
                     scene_parameters=dict(instruction=self.instruction, scene_offset=self.scene_offset,
-                                          pair_layout=self.pair_layout),
+                                          pair_layout=self.pair_layout, front_camera=self.front_camera),
                     drawer_names=list(self.drawers),
                     initial_drawer_fractions=self._initial_drawer_fractions,
                     non_target_tolerance=self.non_target_tolerance)
@@ -182,7 +206,7 @@ class CloseDrawerPairLite(DrawerPairTask, LocalAssetPaths, CloseDrawer):
 
 
 def make_lite_env(task="OpenDrawerLite", seed=0, width=256, height=256,
-                  instruction=None, scene_offset=(0., 0.), pair_layout="compact"):
+                  instruction=None, scene_offset=(0., 0.), pair_layout="compact", front_camera="robot_left"):
     if task not in LITE_TASKS:
         raise ValueError(f"Unsupported Lite task: {task}")
     paired = task in ("OpenDrawerPairLite", "CloseDrawerPairLite")
@@ -245,7 +269,8 @@ def make_lite_env(task="OpenDrawerLite", seed=0, width=256, height=256,
     return create_env(
         task, robots="PandaOmron", seed=seed,
         layout_and_style_ids=[(layout, {})],
-        camera_names=["robot0_agentview_left", "robot0_eye_in_hand"],
+        camera_names=["cabinet_front" if front_camera == "cabinet_front" else "robot0_agentview_left",
+                      "robot0_eye_in_hand"], front_camera=front_camera,
         camera_widths=width, camera_heights=height,
         renderer="mujoco", control_freq=20, horizon=600,
         randomize_cameras=False, generative_textures=False,
@@ -261,8 +286,11 @@ def add_scene_arguments(parser):
                         help="Paired cabinet translation in metres; stored for exact replay")
     parser.add_argument("--pair-layout", choices=("compact", "spaced"), default="compact",
                         help="Paired drawer geometry; spaced provides more arm clearance")
+    parser.add_argument("--front-camera", choices=("robot_left", "cabinet_front"), default="cabinet_front",
+                        help="Fixed cabinet view for new data; robot_left preserves legacy recordings")
 
 
 def make_env_from_args(args, seed=None):
     return make_lite_env(args.task, args.seed if seed is None else seed,
-                         instruction=args.instruction, scene_offset=args.scene_offset, pair_layout=args.pair_layout)
+                         instruction=args.instruction, scene_offset=args.scene_offset, pair_layout=args.pair_layout,
+                         front_camera=args.front_camera)

@@ -15,6 +15,14 @@ ACTION_NAMES = ["base_dx_norm", "base_dy_norm", "base_dz_norm", "base_rx_norm",
                 "base_ry_norm", "base_rz_norm", "gripper_close_norm"]
 
 
+def image_keys(raw_keys):
+    """Resolve one explicit front view; retain legacy recording compatibility."""
+    candidates = [key for key in ("robot0_agentview_left_image", "cabinet_front_image") if key in raw_keys]
+    if len(candidates) != 1 or "robot0_eye_in_hand_image" not in raw_keys:
+        raise ValueError("Expected exactly one supported front camera plus the wrist camera")
+    return {**IMAGE_KEYS, "observation.images.front": candidates[0]}
+
+
 def policy_observation(raw):
     joint = np.asarray(raw["robot0_joint_pos"], dtype=np.float32)
     gripper = np.asarray(raw["robot0_gripper_qpos"], dtype=np.float32)
@@ -24,7 +32,7 @@ def policy_observation(raw):
     if not np.isfinite(state).all():
         raise ValueError("Non-finite proprioception")
     result = {"observation.state": state}
-    for target, source in IMAGE_KEYS.items():
+    for target, source in image_keys(raw).items():
         image = np.asarray(raw[source])
         if image.shape != (256, 256, 3) or image.dtype != np.uint8:
             raise ValueError(f"Unexpected RGB shape/type for {source}")

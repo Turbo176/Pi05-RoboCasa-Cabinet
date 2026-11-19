@@ -1,0 +1,20 @@
+{
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "episode": "outputs/data_readiness_v3/train_001/open_bottom/episode.hdf5",
+  "episode_sha256": "ab19e742c9e849e23e181acf5d096871385601c6e31c8d2d53f867d70c11aaea",
+  "observation_indices": [
+    0,
+    360,
+    480
+  ],
+  "metadata_camera_profile": "cabinet_front",
+  "image_keys": [
+    "cabinet_front_image",
+    "robot0_eye_in_hand_image"
+  ],
+  "pixel_transform": "Vertical flip only before placing into labelled inspection grid",
+  "labels_in_training_images": false,
+  "asset": "assets/demo/policy_views_v3.png",
+  "asset_sha256": "d5a5431a538034df6bfd0de8a23328836b7ff49d5d14fe26392d843728060753"
+}

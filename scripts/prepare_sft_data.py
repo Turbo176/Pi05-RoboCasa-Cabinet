@@ -29,6 +29,7 @@ COLLECTION_FILES = [
     "scripts/_windows_runtime.py", "scripts/scripted_rollout.py",
     "scripts/replay_episode.py", "scripts/evaluate_drawer_pair.py",
     "scripts/run_pair_pilot.ps1", "requirements/sim-win.lock.txt",
+    "scripts/convert_lerobot.py", "scripts/prepare_sft_data.py", "requirements/data-cpu.lock.txt",
 ]
 
 
@@ -55,7 +56,7 @@ def freeze_plan(args):
     previous = read_json(args.previous_plan) if args.previous_plan else None
     if previous:
         validate_plan(previous)
-        previous_seeds = {c["seed"] for c in previous["conditions"]}
+        previous_seeds = {c["seed"] for c in previous["conditions"] + previous.get("retired_collection_conditions", [])}
         if previous_seeds.intersection(args.train_seeds + args.validation_seeds):
             raise ValueError("New training/validation conditions must use fresh seeds after controller tuning")
     splits = [("train", args.train_seeds), ("validation", args.validation_seeds)]
@@ -69,7 +70,8 @@ def freeze_plan(args):
             conditions.append(dict(id=f"{split}_{i:03d}", split=split, seed=seed,
                 scene_offset=[dx, dy], run_now=split in ("train", "validation")))
     if previous:
-        retired_positions = {tuple(c["scene_offset"]) for c in previous["conditions"] if c["run_now"]}
+        retired_positions = {tuple(c["scene_offset"]) for c in previous["conditions"] +
+                             previous.get("retired_collection_conditions", []) if c["run_now"]}
         if any(tuple(c["scene_offset"]) in retired_positions for c in conditions):
             raise ValueError("New conditions repeat a retired initialization position")
         # Keep the unexecuted test inventory exactly as frozen, rather than
@@ -79,6 +81,7 @@ def freeze_plan(args):
         purpose="Data readiness pilot; too small for a model quality claim",
         sampler=f"Python random.Random({args.sampler_seed}); reserved tests inherited if previous_plan is set",
         pair_layout="spaced", source="SCRIPTED_PRIVILEGED_STATE", learned_policy=False,
+        front_camera=args.front_camera,
         prompts=list(CASES.values()), max_control_steps=600, fps=20,
         group_rule="All four commands of one seed/offset/layout stay in one split; seeds are disjoint across splits",
         legacy_rule="All pre-plan episodes, including tuned seed 0/1 conditions, are development-only and excluded",
@@ -90,7 +93,8 @@ def freeze_plan(args):
         collection_code_sha256={name: digest(ROOT / name) for name in COLLECTION_FILES}, conditions=conditions)
     if previous:
         plan.update(previous_plan=dict(path=args.previous_plan.as_posix(), sha256=digest(args.previous_plan)),
-            retired_collection_conditions=[c for c in previous["conditions"] if c["run_now"]],
+            retired_collection_conditions=previous.get("retired_collection_conditions", []) +
+                [c for c in previous["conditions"] if c["run_now"]],
             legacy_rule="All previous-plan collection conditions and earlier tuning conditions are excluded from this new collection")
     validate_plan(plan)
     write_new(args.output, plan)
@@ -102,6 +106,8 @@ def freeze_plan(args):
 def validate_plan(plan):
     if plan["schema"] != "cabinet_split_plan_v1" or plan["pair_layout"] != "spaced":
         raise ValueError("Unknown collection plan")
+    if plan.get("front_camera", "robot_left") not in ("robot_left", "cabinet_front"):
+        raise ValueError("Unknown camera profile")
     ids, seeds, positions = set(), set(), set()
     for condition in plan["conditions"]:
         split, seed, xy = condition["split"], condition["seed"], condition["scene_offset"]
@@ -121,11 +127,11 @@ def validate_plan(plan):
         positions.add(tuple(xy))
 
 
-def inspect_episode(path, condition, case, audit_row, replay, code_hashes):
+def inspect_episode(path, condition, case, audit_row, replay, code_hashes, front_camera="robot_left"):
     import h5py
     import numpy as np
     from evaluate_drawer_pair import score
-    from pi05_cabinet.adapters import IMAGE_KEYS, policy_action, policy_observation
+    from pi05_cabinet.adapters import image_keys, policy_action, policy_observation
 
     sha = digest(path)
     if sha != audit_row["episode_sha256"] or sha != replay.get("source_episode_sha256"):
@@ -140,6 +146,9 @@ def inspect_episode(path, condition, case, audit_row, replay, code_hashes):
             raise ValueError("Episode does not match its assigned condition, prompt or source")
         if meta["scene_offset"] != condition["scene_offset"] or meta["pair_layout"] != "spaced":
             raise ValueError("Scene differs from the frozen plan")
+        if meta["scene_parameters"].get("front_camera", "robot_left") != front_camera:
+            raise ValueError("Camera profile differs from the frozen plan")
+        camera_mapping = image_keys(file["observations"])
         if meta["schema_version"] != "cabinet_raw_v1" or meta["drawer_names"] != ["top", "bottom"]:
             raise ValueError("Unknown raw/paired data schema")
         n = len(file["actions"])
@@ -162,12 +171,12 @@ def inspect_episode(path, condition, case, audit_row, replay, code_hashes):
         for i, action in enumerate(file["actions"]):
             policy_action(action)
             policy_observation({key: file["observations"][key][i] for key in
-                ["robot0_joint_pos", "robot0_gripper_qpos", *IMAGE_KEYS.values()]})
+                ["robot0_joint_pos", "robot0_gripper_qpos", *camera_mapping.values()]})
         # Joint state alone omits fixture geometry and the robot's model pose.
         initial_hash = hashlib.sha256(file["model_xml"][()] +
             file["initial_sim_state"][:].tobytes()).hexdigest()
         visual_hash = hashlib.sha256(b"".join(file["observations"][key][0].tobytes()
-            for key in IMAGE_KEYS.values())).hexdigest()
+            for key in camera_mapping.values())).hexdigest()
         spawn = meta["init_robot_base_pos"]
         relative = [1+meta["scene_offset"][0]-spawn[0], meta["scene_offset"][1]-spawn[1]]
         final, stable = bool(success[-1]), bool(success[-10:].all())
@@ -187,6 +196,7 @@ def inspect_episode(path, condition, case, audit_row, replay, code_hashes):
             path=path.relative_to(ROOT).as_posix(), sha256=sha, frames=n,
             source=meta["policy_mode"], language=prompt, seed=condition["seed"],
             scene_offset=condition["scene_offset"], robot_spawn_world_m=spawn,
+            camera_mapping=camera_mapping,
             robot_spawn_world_euler_rad=meta["init_robot_base_ori"],
             robot_side_of_cabinet_world_x="left" if relative[0] > 0 else "right",
             cabinet_minus_robot_spawn_world_xy_m=relative, initial_state_sha256=initial_hash,
@@ -273,7 +283,7 @@ def build_datasets(args):
             path = (directory / case / "episode.hdf5").resolve(strict=True)
             replay = read_json(directory / f"replay_{case}/report.json")
             rows.append(inspect_episode(path, condition, case, audit_rows[case], replay,
-                plan["collection_code_sha256"]))
+                plan["collection_code_sha256"], front_camera=plan.get("front_camera", "robot_left")))
     # Deduplicate by raw bytes and physical/visual initialization across splits.
     # Top/bottom intentionally share resets within a split, never across them.
     seen = {key: {} for key in ("sha256", "initial_state_sha256", "initial_dual_rgb_sha256")}
@@ -348,6 +358,7 @@ def main():
     plan.add_argument("--train-seeds", nargs="+", type=int, default=[101, 102])
     plan.add_argument("--validation-seeds", nargs="+", type=int, default=[201])
     plan.add_argument("--sampler-seed", type=int, default=20261119)
+    plan.add_argument("--front-camera", choices=("robot_left", "cabinet_front"), default="cabinet_front")
     build = commands.add_parser("build", help="Audit successes and build separate official train/validation datasets")
     build.add_argument("--plan", type=Path, required=True)
     build.add_argument("--raw-root", type=Path, required=True)

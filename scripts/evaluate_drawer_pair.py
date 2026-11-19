@@ -12,6 +12,7 @@ from pathlib import Path
 
 import h5py
 import numpy as np
+from pi05_cabinet.adapters import image_keys
 
 
 def score(fractions, target, behavior, tolerance):
@@ -72,7 +73,7 @@ def main():
                 raise ValueError(f"Repeated target in pilot condition: {key}")
             pair[target] = dict(state=file["initial_sim_state"][:], xml=file["model_xml"][()],
                 images={name: file["observations"][name][0] for name in
-                        ("robot0_agentview_left_image", "robot0_eye_in_hand_image")},
+                        image_keys(file["observations"]).values()},
                 base=meta["init_robot_base_pos"])
     reset_checks = []
     for (task, seed, offset, layout), pair in groups.items():

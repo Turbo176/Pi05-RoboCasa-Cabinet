@@ -20,13 +20,13 @@
 
 原始相机是 OpenGL bottom-left RGB；转换时只翻转一次行方向。视频使用 top-left RGB。图像记录在动作之前，T+1 的最后观测保留在原始数据中；LeRobot监督样本只取前T帧与T个动作。
 
-双抽屉metadata额外保存 `scene_parameters`（instruction、scene_offset、pair_layout），回放用其重建原布局；旧版紧凑双抽屉记录缺少pair_layout时默认为compact。`target_drawer`和抽屉评测真值只用于环境判据/脚本与审计，不作为state或RGB输入。LeRobot转换报告逐episode保留这些参数和非目标偏移；图像上的演示HUD不写入策略相机。
+双抽屉metadata额外保存 `scene_parameters`（instruction、scene_offset、pair_layout、front_camera），回放用其重建原布局；旧版记录缺少pair_layout时默认为compact，缺少front_camera时默认为robot_left。`target_drawer`和抽屉评测真值只用于环境判据/脚本与审计，不作为state或RGB输入。LeRobot转换报告逐episode保留这些参数、相机映射和非目标偏移；图像上的演示HUD不写入策略相机。
 
 ## 策略输入输出
 
 | LeRobot键 | 维度 | 语义 |
 |---|---|---|
-| `observation.images.front` | 256×256×3 | `robot0_agentview_left_image`，top-left RGB |
+| `observation.images.front` | 256×256×3 | 新采集为`cabinet_front_image`；旧录制为`robot0_agentview_left_image`，top-left RGB |
 | `observation.images.wrist` | 256×256×3 | `robot0_eye_in_hand_image`，top-left RGB |
 | `observation.state` | 9 | Panda 7个关节位置(rad)与2个夹指位置(m) |
 | `action` | 7 | OSC base坐标系归一化末端delta：XYZ、轴角XYZ、夹爪 |
@@ -35,6 +35,8 @@
 `action[:3]` 经控制器缩放到每步最大±0.05m；`action[3:6]` 最大±0.5rad；夹爪+1关闭、-1打开。机器人完整动作 `[0:6]` 为右臂、`[6]` 为夹爪、`[7:10]` 为底座、`[10]` 为躯干、`[11]` 为模式。适配器补底座/躯干为0，模式为-1；转换时逐帧检查这些维度，拒绝静默丢弃非零底座动作。
 
 此版不是关节位置动作，也不是绝对EEF位姿。关节状态与OSC动作维度可以不同。抽屉状态、把手坐标、success不进入策略输入。π0.5 的图像预处理、状态/动作归一化和padding交给官方processor；不能仅取模型输出而跳过反归一化。
+
+前视相机的版本由`scene_parameters.front_camera`明确记录。新CLI默认`cabinet_front`：固定世界坐标机位，能同时覆盖上下抽屉；腕部相机不变。相机不随语言目标或把手状态移动。`robot_left`保留历史相机和XML，可通过`--front-camera robot_left`显式选择。适配器拒绝同时存在两个前视来源的模糊输入；转换器拒绝在一个数据集中混用两种前视配置。训练与推理必须使用同一配置，不能把同名的`front`当作可任意替换的视角。详见[相机检查报告](../results/camera_framing_v3.json)。
 
 最初两条脚本pilot采用lossless PNG嵌入Parquet，官方API计算统计量，重读全部830帧逐像素比较。它是合法LeRobot Image Dataset，没有假造video元数据；后续规模增大再决定是否转视频存储。
 

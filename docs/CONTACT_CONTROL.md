@@ -59,7 +59,8 @@ $sim = Join-Path (Split-Path -Parent (Get-Location).Path) 'envs\pi05-sim-win\Scr
 
 & $sim scripts\scripted_rollout.py --task CloseDrawerPairLite `
     --instruction 'Close the bottom drawer.' --pair-layout spaced `
-    --seed 102 --scene-offset 0.0172 0.0088 --output outputs\NEW_CLEARANCE_RUN
+    --seed 102 --scene-offset 0.0172 0.0088 --front-camera robot_left `
+    --output outputs\NEW_CLEARANCE_RUN
 
 & $sim scripts\replay_episode.py outputs\NEW_CLEARANCE_RUN\episode.hdf5 `
     --output outputs\NEW_CLEARANCE_REPLAY --contact-diagnostics
@@ -89,11 +90,19 @@ be frozen with the existing data preparation command:
 
 ```powershell
 $data = Join-Path (Split-Path -Parent (Get-Location).Path) 'envs\pi05-data-cpu\Scripts\python.exe'
-& $data scripts\prepare_sft_data.py plan --previous-plan configs\data_splits_v1.json `
-    --train-seeds 301 302 303 --validation-seeds 401 --sampler-seed 2026111902 `
+& $data scripts\prepare_sft_data.py plan --previous-plan configs\data_splits_v2.json `
+    --train-seeds 501 502 503 --validation-seeds 601 --sampler-seed 2026111903 `
+    --front-camera cabinet_front `
     --output configs\data_splits_NEW.json
 ```
 
 The command rejects reused seeds, overlapping initialization positions, and an
 existing output path. The runner checks the frozen collection code before it
 records a new batch.
+
+The exact controller/recorder snapshot for the contact regression and v2 plan
+is commit `02b1b56`. Collection v2 was stopped during its first condition after
+review found that the legacy robot-left view clipped the lower handle. Its
+three completed recordings remain development diagnostics; no v2 SFT dataset
+was built. The next collection uses a declared `cabinet_front` profile and
+fresh seeds. [Retirement record](../results/data_collection_v2_retired.json).
