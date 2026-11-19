@@ -9,6 +9,8 @@ class DrawerScript:
     The handle location comes from simulator ground truth. Only env.step
     drives the robot; the controller does not write simulator state.
     """
+    revision = "lower_handle_clearance_v2"
+
     def __init__(self, env):
         self.env = env
         self.controller = env.robots[0].composite_controller.part_controllers["right"]
@@ -26,10 +28,11 @@ class DrawerScript:
             above[2] = float(env.drawers["top"].pos[2]) + .30
         pregrasp = np.array([grasp[0], min(grasp[1]-.30, -.65), grasp[2]])
         retreat = destination + [0, -.15, .08]
-        if getattr(env, "target_drawer", None) == "bottom" and env.behavior == "close":
+        lower_close = getattr(env, "target_drawer", None) == "bottom" and env.behavior == "close"
+        if lower_close:
             # Simultaneous lift / withdrawal can hook a low bar with an open finger.
             # Withdraw horizontally at the handle height instead.
-            retreat[2] = destination[2]
+            retreat[2] = destination[2] - .025
         self.stages = [
             ("approach_above", above, -1, 70),
             ("align_height", pregrasp, -1, 60),
@@ -46,6 +49,11 @@ class DrawerScript:
             durations = {"align_height": 140, "reach_handle": 120}
             self.stages = [(name, target, grip, durations.get(name, steps))
                            for name, target, grip, steps in self.stages]
+        if lower_close:
+            # Seed 102 contact replay showed the lower open pad still loading
+            # the bar at release, with the tool about 25 mm above its waypoint.
+            # Unload it vertically before withdrawing; keep collisions active.
+            self.stages.insert(-1, ("clear_handle", destination + [0, 0, -.025], -1, 25))
         # Panda's closing axis at grip_site is X; close vertically over the bar.
         self.orientation = np.array([[0., -1, 0], [0, 0, 1], [-1, 0, 0]])
 

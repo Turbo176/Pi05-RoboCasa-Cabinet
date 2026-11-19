@@ -67,6 +67,21 @@ The four panes show opening the top drawer, opening the bottom drawer, closing t
 
 All clips use `SCRIPTED_PRIVILEGED_STATE`: the controller uses simulator handle poses to generate OSC actions, and the arm moves the drawers through physical contact. **These videos show scripted baselines, not π0.5 inference.**
 
+<details>
+<summary><strong>🔎 Contact diagnosis: releasing the lower handle</strong></summary>
+
+<p align="center">
+  <a href="assets/demo/withdraw_clearance_v2.mp4">
+    <img src="assets/demo/withdraw_clearance_v2.gif" width="960" alt="Same-condition comparison of lower-drawer withdrawal before and after pad clearance">
+  </a>
+</p>
+
+The original closing trajectory reopened the drawer during retreat. Lowering the open gripper before withdrawing releases the loaded finger pad: final opening changes from **0.08134** to **0.03106**, against the same **0.05** threshold. Both panels share the same initialization and first 505 actions. The excerpt runs at 1× speed; the shorter left clip holds its final frame.
+
+[▶ Comparison MP4](assets/demo/withdraw_clearance_v2.mp4) · [Contact measurements and reproduction](docs/CONTACT_CONTROL.md)
+
+</details>
+
 <a id="tasks"></a>
 
 ## 🗄️ Tasks and capabilities
@@ -141,7 +156,21 @@ Three initializations, seeds **101 / 102 / 201**, each run all four instructions
 
 Success requires a normalized opening **≥ 0.95** for opening or **≤ 0.05** for closing, non-target opening drift **≤ 0.05** throughout the episode, and success over the **final 10 steps**. Runs use **20 Hz** control and a **600-step** budget.
 
-In seed 102, the bottom drawer reopened during retreat. The complete failed episode and replay are retained and excluded from successful demonstration candidates. See the [failure report](results/data_readiness_failure_train002_close_bottom.json).
+In seed 102, the bottom drawer reopened during retreat. The complete failed episode and replay are retained and excluded from successful demonstration candidates. See the [original failure report](results/data_readiness_failure_train002_close_bottom.json).
+
+### Contact clearance regression
+
+Contact replay identified loaded lower-finger contact after release. The revised controller lowers the open gripper waypoint by 25 mm before withdrawing. All four instructions were rerun on seeds **101 / 102**, covering both robot spawn sides:
+
+| Check | Clearance revision |
+|---|---:|
+| Stable task successes / attempts | **8 / 8** |
+| Recorded action replays passed | **8 / 8** |
+| Paired-prompt reset checks | **4 / 4** |
+| Maximum trajectory length | **570 / 600 steps** |
+| Seed 102 lower closing, final opening | **0.03106** |
+
+These are development regression conditions. [Contact diagnosis](docs/CONTACT_CONTROL.md) and the [regression report](results/withdraw_regression_v2.json) retain the same success thresholds and source hashes; these runs are excluded from the new collection split.
 
 ### Dataset and replay checks
 

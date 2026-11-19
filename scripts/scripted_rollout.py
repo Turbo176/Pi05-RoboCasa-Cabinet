@@ -30,7 +30,8 @@ def main():
         recorder = EpisodeRecorder(args.output, env, obs, task=args.task, seed=args.seed,
             mode="SCRIPTED_PRIVILEGED_STATE",
             source="pose servo uses simulator handle pose; robot motion only through env.step",
-            extra={"script_stages": [{"name": name, "target_xyz": target.tolist(), "gripper": grip, "steps": steps}
+            extra={"controller_revision": plan.revision,
+                   "script_stages": [{"name": name, "target_xyz": target.tolist(), "gripper": grip, "steps": steps}
                                       for name, target, grip, steps in plan.stages]})
         for stage, action in plan.actions():
             obs, reward, done, _ = env.step(action)

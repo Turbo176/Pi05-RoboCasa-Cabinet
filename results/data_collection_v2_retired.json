@@ -1,0 +1,31 @@
+{
+  "schema": "cabinet_retired_collection_v1",
+  "plan": "configs/data_splits_v2.json",
+  "plan_sha256": "f1afb5f377225ef8657ebc0c51024ed0758aff6c8dbd853cbd46b0b81e8547de",
+  "disposition": "Stopped during the first condition; complete recordings and any interrupted replay are preserved as development diagnostics. No SFT dataset was built.",
+  "reason": "Visual review of legacy robot-left RGB found the lower handle frequently outside the frame on both spawn sides",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "completed_recordings": [
+    {
+      "path": "outputs/data_readiness_v2/train_001/close_top/episode.hdf5",
+      "sha256": "61ef782bc34f1de26f1227b8ecb4192bfa7b6acae573879e2858657f10fa9cf1",
+      "success_final": true,
+      "steps": 415
+    },
+    {
+      "path": "outputs/data_readiness_v2/train_001/open_bottom/episode.hdf5",
+      "sha256": "f822ceabe35bc5a1a05e155317cce1f10ecf87ce50875fe4e8211284eb6ec0ed",
+      "success_final": true,
+      "steps": 545
+    },
+    {
+      "path": "outputs/data_readiness_v2/train_001/open_top/episode.hdf5",
+      "sha256": "23a64012f98ec85908a30e0fa6103f5562ce373ac3a257f6a331e50630567b49",
+      "success_final": true,
+      "steps": 415
+    }
+  ],
+  "reserved_test_conditions_executed": 0,
+  "new_camera_requires_new_frozen_plan": true
+}

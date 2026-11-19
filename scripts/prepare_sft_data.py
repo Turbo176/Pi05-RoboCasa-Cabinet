@@ -44,24 +44,40 @@ def read_json(path):
 def write_new(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("x", encoding="utf-8") as file:
+    with path.open("x", encoding="utf-8", newline="\n") as file:
         json.dump(value, file, indent=2, allow_nan=False)
         file.write("\n")
 
 
 def freeze_plan(args):
-    rng = random.Random(20261119)
+    rng = random.Random(args.sampler_seed)
     conditions = []
-    for split, seeds in (("train", [101, 102]), ("validation", [201]),
-                         ("test_id", range(1001, 1021)), ("test_translation", range(2001, 2021))):
+    previous = read_json(args.previous_plan) if args.previous_plan else None
+    if previous:
+        validate_plan(previous)
+        previous_seeds = {c["seed"] for c in previous["conditions"]}
+        if previous_seeds.intersection(args.train_seeds + args.validation_seeds):
+            raise ValueError("New training/validation conditions must use fresh seeds after controller tuning")
+    splits = [("train", args.train_seeds), ("validation", args.validation_seeds)]
+    if not previous:
+        splits.extend([("test_id", range(1001, 1021)), ("test_translation", range(2001, 2021))])
+    for split, seeds in splits:
         for i, seed in enumerate(seeds, 1):
             dx, dy = [round(rng.uniform(-.04, .04), 4) for _ in range(2)]
             if split == "test_translation":
                 dx = round(rng.uniform(.08, .12) * (-1 if i % 2 else 1), 4)
             conditions.append(dict(id=f"{split}_{i:03d}", split=split, seed=seed,
                 scene_offset=[dx, dy], run_now=split in ("train", "validation")))
+    if previous:
+        retired_positions = {tuple(c["scene_offset"]) for c in previous["conditions"] if c["run_now"]}
+        if any(tuple(c["scene_offset"]) in retired_positions for c in conditions):
+            raise ValueError("New conditions repeat a retired initialization position")
+        # Keep the unexecuted test inventory exactly as frozen, rather than
+        # silently resampling tests when a development failure is repaired.
+        conditions.extend(c for c in previous["conditions"] if not c["run_now"])
     plan = dict(schema="cabinet_split_plan_v1", created_utc=datetime.now(timezone.utc).isoformat(),
-        purpose="Data readiness pilot; too small for a model quality claim", sampler="Python random.Random(20261119)",
+        purpose="Data readiness pilot; too small for a model quality claim",
+        sampler=f"Python random.Random({args.sampler_seed}); reserved tests inherited if previous_plan is set",
         pair_layout="spaced", source="SCRIPTED_PRIVILEGED_STATE", learned_policy=False,
         prompts=list(CASES.values()), max_control_steps=600, fps=20,
         group_rule="All four commands of one seed/offset/layout stay in one split; seeds are disjoint across splits",
@@ -72,9 +88,15 @@ def freeze_plan(args):
         relative_position_ood_status="Not yet specified or implemented; must freeze a new relative-position protocol before collecting or claiming it",
         test_rule="Do not execute reserved tests or convert them to SFT; if used for tuning, retire this test version",
         collection_code_sha256={name: digest(ROOT / name) for name in COLLECTION_FILES}, conditions=conditions)
+    if previous:
+        plan.update(previous_plan=dict(path=args.previous_plan.as_posix(), sha256=digest(args.previous_plan)),
+            retired_collection_conditions=[c for c in previous["conditions"] if c["run_now"]],
+            legacy_rule="All previous-plan collection conditions and earlier tuning conditions are excluded from this new collection")
+    validate_plan(plan)
     write_new(args.output, plan)
     print(json.dumps(dict(plan=str(args.output), sha256=digest(args.output),
-        run_now=[c for c in conditions if c["run_now"]], reserved_conditions=40), indent=2))
+        run_now=[c for c in conditions if c["run_now"]],
+        reserved_conditions=sum(not c["run_now"] for c in conditions)), indent=2))
 
 
 def validate_plan(plan):
@@ -299,13 +321,14 @@ def build_datasets(args):
         max_replay_joint_error_rad=max(row["replay_max_joint_error_rad"] for row in rows),
         max_replay_drawer_error=max(row["replay_max_drawer_error"] for row in rows),
         non_target_max_drift=max(row["non_target_max_drift"] for row in rows),
-        splits=summaries, reserved_test_conditions_unexecuted=40,
+        splits=summaries, reserved_test_conditions_unexecuted=sum(not c["run_now"] for c in plan["conditions"]),
         train_normalization_stats=(args.output / "train/meta/stats.json").resolve().relative_to(ROOT).as_posix()
             if summaries["train"]["selected"] else None,
         normalization_rule="Use only the train stats for both training and validation; validation's own conversion stats are diagnostic only",
         train_validation_reset_hashes_disjoint=True, successful_demonstration_candidates_only=True,
         sufficient_for_sft_quality_claim=False, human_visual_acceptance="pending",
-        limitations=["2 train conditions and 1 validation condition only; expand after quality inspection",
+        limitations=[f"{sum(c['split'] == 'train' for c in plan['conditions'])} train conditions and "
+                    f"{sum(c['split'] == 'validation' for c in plan['conditions'])} validation conditions only; expand after quality inspection",
             "Privileged scripted actions are not human demonstrations or pi0.5 rollouts",
             "Validation inspected for data readiness; if used to tune controller, mark it development and version the split",
             "Translation tests unexecuted; no reserved robot-relative OOD region implemented",
@@ -320,6 +343,11 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     plan = commands.add_parser("plan", help="Freeze deterministic conditions before simulation")
     plan.add_argument("--output", type=Path, required=True)
+    plan.add_argument("--previous-plan", type=Path,
+                      help="Retire earlier collection conditions and retain its unexecuted test inventory")
+    plan.add_argument("--train-seeds", nargs="+", type=int, default=[101, 102])
+    plan.add_argument("--validation-seeds", nargs="+", type=int, default=[201])
+    plan.add_argument("--sampler-seed", type=int, default=20261119)
     build = commands.add_parser("build", help="Audit successes and build separate official train/validation datasets")
     build.add_argument("--plan", type=Path, required=True)
     build.add_argument("--raw-root", type=Path, required=True)

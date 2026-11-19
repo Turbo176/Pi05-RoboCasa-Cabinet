@@ -1,0 +1,156 @@
+{
+  "schema": "cabinet_withdraw_contact_fix_v2",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "role": "Development diagnosis and same-condition intervention; not an independent evaluation",
+  "seed": 102,
+  "mechanism": "Lower open finger pad retains loaded handle contact at the end of release and during the first two sampled retreat steps",
+  "intervention": "After release, lower the open gripper waypoint by 0.025 m for 25 control steps; withdraw horizontally at this lower waypoint",
+  "diagnostics_scope": "Final MuJoCo physics substep sampled after every 20 Hz action; intermediate transient contacts may be missed",
+  "contact_active_threshold_n": 0.001,
+  "success_threshold_fraction": 0.05,
+  "success_thresholds_unchanged": true,
+  "collisions_and_physics_unchanged": true,
+  "initial_scene_xml_identical": true,
+  "initial_sim_state_identical": true,
+  "first_505_actions_identical": true,
+  "original_episode_preserved": true,
+  "records": {
+    "baseline": {
+      "episode": "outputs/data_readiness_v1/train_002/close_bottom/episode.hdf5",
+      "episode_sha256": "099ebef8c7c245e7696d38f4a5dd158d7e03fcc5fb9856785a185cb4f5cdaf2b",
+      "replay_report": "outputs/withdraw_diagnosis_v2/baseline_seed102/report.json",
+      "replay_report_sha256": "8cce939e77ceedd17717103fcd80a1c4f7b5437eab3fdac55f44a2f78a73c902",
+      "contacts_sha256": "88fd62cbed6edb7ca5acec58e0a15fcab6572936e11777680a48babf8ae01eae",
+      "final_fraction": 0.08133813876539367,
+      "success_final": false,
+      "replay_within_tolerance": true,
+      "max_joint_error_rad": 7.91925369725277e-09,
+      "max_drawer_fraction_error": 2.849751851163873e-09,
+      "non_target_max_drift": 0.0,
+      "stages": [
+        {
+          "stage": "approach_above",
+          "steps": 70,
+          "final_fraction": 0.9676838122249679,
+          "lower_pad_handle_contact_sampled_steps": 0
+        },
+        {
+          "stage": "align_height",
+          "steps": 140,
+          "final_fraction": 0.9676838122249679,
+          "lower_pad_handle_contact_sampled_steps": 0
+        },
+        {
+          "stage": "reach_handle",
+          "steps": 120,
+          "final_fraction": 0.9676838122249679,
+          "lower_pad_handle_contact_sampled_steps": 0
+        },
+        {
+          "stage": "grasp",
+          "steps": 30,
+          "final_fraction": 0.9720133711216081,
+          "lower_pad_handle_contact_sampled_steps": 24
+        },
+        {
+          "stage": "push",
+          "steps": 100,
+          "final_fraction": 0.04111235779798857,
+          "lower_pad_handle_contact_sampled_steps": 100
+        },
+        {
+          "stage": "hold",
+          "steps": 20,
+          "final_fraction": 0.03978949758629899,
+          "lower_pad_handle_contact_sampled_steps": 20
+        },
+        {
+          "stage": "release",
+          "steps": 25,
+          "final_fraction": 0.031211789597322778,
+          "lower_pad_handle_contact_sampled_steps": 18
+        },
+        {
+          "stage": "retreat",
+          "steps": 40,
+          "final_fraction": 0.08133813876539367,
+          "lower_pad_handle_contact_sampled_steps": 2
+        }
+      ]
+    },
+    "fixed": {
+      "episode": "outputs/withdraw_diagnosis_v2/fixed_seed102/episode.hdf5",
+      "episode_sha256": "0b88d8fcfcb5a7067d3e7b69025dead081ee98a35e271a5f498555fe640efabb",
+      "replay_report": "outputs/withdraw_diagnosis_v2/fixed_seed102_replay/report.json",
+      "replay_report_sha256": "bece65331df2930f47b98f5c5c63360e083d2ec6521ed6ee7a34df56f50982da",
+      "contacts_sha256": "9bdc7ccf835f4e822da60310a722b13f490512cb8f585c26dc8cf04c7e4ff06b",
+      "final_fraction": 0.031059046619800818,
+      "success_final": true,
+      "replay_within_tolerance": true,
+      "max_joint_error_rad": 7.91925369725277e-09,
+      "max_drawer_fraction_error": 2.860071009885834e-09,
+      "non_target_max_drift": 0.0,
+      "stages": [
+        {
+          "stage": "approach_above",
+          "steps": 70,
+          "final_fraction": 0.9676838122249679,
+          "lower_pad_handle_contact_sampled_steps": 0
+        },
+        {
+          "stage": "align_height",
+          "steps": 140,
+          "final_fraction": 0.9676838122249679,
+          "lower_pad_handle_contact_sampled_steps": 0
+        },
+        {
+          "stage": "reach_handle",
+          "steps": 120,
+          "final_fraction": 0.9676838122249679,
+          "lower_pad_handle_contact_sampled_steps": 0
+        },
+        {
+          "stage": "grasp",
+          "steps": 30,
+          "final_fraction": 0.9720133711216081,
+          "lower_pad_handle_contact_sampled_steps": 24
+        },
+        {
+          "stage": "push",
+          "steps": 100,
+          "final_fraction": 0.04111235779798857,
+          "lower_pad_handle_contact_sampled_steps": 100
+        },
+        {
+          "stage": "hold",
+          "steps": 20,
+          "final_fraction": 0.03978949758629899,
+          "lower_pad_handle_contact_sampled_steps": 20
+        },
+        {
+          "stage": "release",
+          "steps": 25,
+          "final_fraction": 0.031211789597322778,
+          "lower_pad_handle_contact_sampled_steps": 18
+        },
+        {
+          "stage": "clear_handle",
+          "steps": 25,
+          "final_fraction": 0.031059046679082603,
+          "lower_pad_handle_contact_sampled_steps": 0
+        },
+        {
+          "stage": "retreat",
+          "steps": 40,
+          "final_fraction": 0.031059046619800818,
+          "lower_pad_handle_contact_sampled_steps": 0
+        }
+      ]
+    }
+  },
+  "reproduction": [
+    "python scripts/replay_episode.py <baseline_episode> --output <new_directory> --contact-diagnostics",
+    "python scripts/scripted_rollout.py --task CloseDrawerPairLite --instruction \"Close the bottom drawer.\" --pair-layout spaced --seed 102 --scene-offset 0.0172 0.0088 --output <new_directory>"
+  ]
+}

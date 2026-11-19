@@ -1,0 +1,44 @@
+{
+  "schema": "cabinet_controller_regression_v2",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "purpose": "Development regression on previously inspected train conditions; not an independent policy evaluation",
+  "controller_revision": "lower_handle_clearance_v2",
+  "conditions": [
+    {
+      "id": "train_001",
+      "split": "train",
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "run_now": true
+    },
+    {
+      "id": "train_002",
+      "split": "train",
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "run_now": true
+    }
+  ],
+  "max_control_steps": 600,
+  "success_thresholds_unchanged": true,
+  "old_plan_sha256": "26193995c32f355815426660cb2727d48de7f0e06d8aad7f1d4c50985e481a46",
+  "collection_code_sha256": {
+    "src/pi05_cabinet/envs.py": "ec27a098ef0532370a5a014bbce284568eb7f63a5b6d12c0ff319c0624d4c9df",
+    "src/pi05_cabinet/scripted.py": "117caade3c97ee1c710f45edcec8f94eb88ea389d696e19d37f04dbde4685995",
+    "src/pi05_cabinet/recording.py": "fce048fc6f4dd8517259943a89de9445fa51c5f4400abd76dd68665e09901816",
+    "src/pi05_cabinet/adapters.py": "a9ec7ae3acb1835ea1f09717e7f042217f8f90a53eb046f1a9594f4836470892",
+    "scripts/_windows_runtime.py": "8efcc811a07e4f58a54023d324758ec19c7a442ac767630a705a696429920199",
+    "scripts/scripted_rollout.py": "823a230e71adf50d446bfefbfc8c75bbb78b9662f0e67572d4fb459ddd8d3c3d",
+    "scripts/replay_episode.py": "521154615215cb8c1f39af649903fe3e0266d25acdaafac2b528f7ec2c5436eb",
+    "scripts/evaluate_drawer_pair.py": "ca583ae6ef0a0de608c9a5524703d75601586dcbfb4e7c0984c25e31d3195213",
+    "scripts/run_pair_pilot.ps1": "100f14f2efcd30b97e35d6a1564f35912cad37c34da266380cd88cd116c5d3d9",
+    "requirements/sim-win.lock.txt": "b6a3c761a3d6d052b4e8525589dfba3ce260b87e2d3fca0655b11d5926d69422"
+  }
+}

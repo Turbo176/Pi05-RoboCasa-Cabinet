@@ -1,0 +1,29 @@
+{
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "seed": 102,
+  "task": "Close the bottom drawer.",
+  "excerpt_source_frame_range": [
+    440,
+    570
+  ],
+  "fps": 20,
+  "simulation_speed": 1,
+  "left_shorter_clip_final_frame_held": true,
+  "baseline_video_sha256": "b86910e97900944524520f2fbcd80cf5d139549b156f3ed386636aa5d536d3ce",
+  "fixed_video_sha256": "35c8d5b9ed11e4b412c655509dec995b5d9860a88b9cad9a9e48911f2b148091",
+  "artifacts": {
+    "assets/demo/withdraw_clearance_v2.mp4": {
+      "sha256": "9546d3b8bc5d07838e767d5cc198147493596b4e0d7af9200e9324bfec7074a3",
+      "bytes": 502950
+    },
+    "assets/demo/withdraw_clearance_v2.gif": {
+      "sha256": "41c4474a6dba4e3d95951b6d351a36bd96e1dffe465a4a771f6904eb7dea94ef",
+      "bytes": 6049392
+    },
+    "assets/demo/withdraw_clearance_v2.png": {
+      "sha256": "44e243a60721acaa427da88dfb5eda1c8ad74f6ba00c405396956f4fd65eb8a4",
+      "bytes": 216633
+    }
+  }
+}

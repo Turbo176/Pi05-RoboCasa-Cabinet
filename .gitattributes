@@ -3,3 +3,6 @@
 *.png -text
 *.gif -text
 *.mp4 -text
+# Preserve byte hashes of frozen plans/reports, including historical Windows JSON.
+configs/** -text
+results/** -text
