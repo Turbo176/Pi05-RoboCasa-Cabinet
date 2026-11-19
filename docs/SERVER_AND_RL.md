@@ -10,7 +10,9 @@
 
 训练数据只用经人工确认且按episode划分的示教。现有开发pilot和新初始化的小批成功候选仍不足以支持模型质量或泛化结论；划分、排除失败轨迹与数据读取检查见 [SFT数据准备](DATA_READINESS.md)。服务器应读取固定manifest与train统计量，不能混入开发集或validation统计量。先把9维state、7维action与两路RGB送入官方processor，检查图像归一化、state量化、action缩放和padding；预测后必须用同一postprocessor反归一化。
 
-目前候选为[保留v4验证集的训练追加批次](TRAINING_DATA_EXTENSION.md)：train 28条/10226帧，validation仍为原4条/1465帧。合并训练集逐帧重新转换核对，原验证集7个文件的字节哈希保持一致；两部分共11691帧官方重读和160个动作块边界检查通过。32条动作回放通过，每条训练指令有5个左侧及2个右侧出生例子；验证只有一个左侧初始化。8组完整双视角视频和32条验收入口已整理，人工逐段验收仍待完成。此前v3候选及失败保留原记录，不合并到v4。新模型固定使用`cabinet_front`加腕部RGB，禁止把旧`robot_left`候选混入同一数据集。服务器读取`data/lerobot/sft_readiness_v4_extended/train`及原`data/lerobot/sft_readiness_v4/validation`，两者均使用追加后train统计量。训练/推理保留数据manifest、相机与train统计量hash；只使用自动筛选及人工验收均通过的轨迹。这仍是小批候选，不能据此宣称能训练出稳定策略。
+首版已验收数据见[冻结清单](../configs/sft_release_v1.json)及[验收结果](../results/human_acceptance_v4.json)：train 28条/10226帧，validation仍为原4条/1465帧。2026-11-19导出的32条人工结论全部通过，均声明完整观看，来源与视频hash校验通过。清单固定episode顺序、22个数据文件和train统计量hash；原始验收姓名和备注只留本地。
+
+数据来自[保留v4验证集的训练追加批次](TRAINING_DATA_EXTENSION.md)。合并训练集逐帧重新转换核对，原验证集7个文件的字节哈希保持一致；两部分共11691帧官方重读和160个动作块边界检查通过。32条动作回放通过，每条训练指令有5个左侧及2个右侧出生例子；验证只有一个左侧初始化。此前v3候选及失败保留原记录，不合并到v4。新模型固定使用`cabinet_front`加腕部RGB，禁止把旧`robot_left`候选混入同一数据集。服务器按冻结清单读取`data/lerobot/sft_readiness_v4_extended/train`及原`data/lerobot/sft_readiness_v4/validation`，传输后先核对文件hash，两者均使用追加后train统计量。训练/推理保留数据manifest、相机与train统计量hash；只使用自动筛选及人工验收均通过的轨迹。这仍是小批脚本示教，不能据此宣称能训练出稳定策略。
 
 当前上游PI05Config有chunk_size、n_action_steps、量化归一化及图像processor配置。拟先预测H=50、执行前k=5步后更新观测（20Hz），这些参数仍需模型接口与延迟实测。必须保留完整processor与dataset统计量，不能仅保存safetensors。
 

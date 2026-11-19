@@ -151,11 +151,11 @@ Episodes are split by initialization condition, with separate training and valid
 
 ## 📊 Results
 
-### Training-only extension
+### Accepted SFT data release
 
 Four additional training initializations, seeds **704–707**, produced **16 / 16** complete, stable scripted episodes and **16 / 16** passing action replays. The original validation files and all 40 reserved test conditions are retained unchanged.
 
-| Data check | Combined candidates |
+| Data check | Accepted release |
 |---|---|
 | Training | **28 episodes · 10,226 frames**, seven examples per instruction |
 | Training spawn coverage, per instruction | **5 left · 2 right** |
@@ -164,11 +164,13 @@ Four additional training initializations, seeds **704–707**, produced **16 / 1
 | Action-chunk boundary samples | **160**, horizon **50**, same-episode padding |
 | Stable successes / recorded-action replays | **32 / 32** each across the base and additional batches |
 | Maximum replay error | Joint `1.08 × 10⁻⁵ rad` · drawer opening `1.32 × 10⁻⁶` |
-| Complete-video review | **8 local packets · 32 episode entries**, human decisions pending |
+| Complete-video review | **32 / 32 accepted**, eight local dual-view packets |
 
-The merge preserves each episode's original collection-plan hash and checks for duplicate sources and cross-split reset leakage. A local review page plays both policy views and exports source-bound acceptance or rejection notes. These are scripted demonstration candidates within the four-command drawer task family. Human acceptance, model training, and learned-policy evaluation remain separate checks.
+The maintainer accepted all 32 recordings through the local review page and declared full-episode viewing for each. The checker verified the inventory, raw recordings and review-video hashes. The first accepted release freezes the episode order, all 22 dataset files, training statistics and policy contract. Reviewer names and free-text notes stay local.
 
-[Collection, review and reproduction](docs/TRAINING_DATA_EXTENSION.md) · [Combined data report](results/training_extension_v4.json) · [Review provenance](results/collection_review_extension_v4.json)
+The merge preserves each episode's original collection-plan hash and checks for duplicate sources and cross-split reset leakage. These are scripted demonstrations within the four-command drawer task family. This small release supports initial processor and SFT checks; π0.5 training and learned-policy evaluation have not been run.
+
+[Frozen release manifest](configs/sft_release_v1.json) · [Human acceptance](results/human_acceptance_v4.json) · [Collection and reproduction](docs/TRAINING_DATA_EXTENSION.md) · [Combined data report](results/training_extension_v4.json)
 
 ### Feedback-gated collection (v4)
 
@@ -196,7 +198,7 @@ Success requires target opening **≥ 0.95** for opening or **≤ 0.05** for clo
 
 All eight prompt pairs have exactly equal initial physics and XML. Training RGB is bit-identical; both validation pairs differ at the same three frontal pixels by one uint8 level. The strict failure is retained, and a separate audit uses the previously fixed `lsb_v1` image profile. Exported RGB still matches its raw source pixel-for-pixel. [Reset measurements](results/rgb_reset_difference_v4.json).
 
-These are successful demonstration candidates. Full-episode human visual acceptance and broader initialization coverage are still needed for SFT. The 40 reserved test conditions remain unexecuted. π0.5 training and learned-policy evaluation have not been run. [Protocol and commands](docs/DATA_READINESS_V4.md) · [Full data report](results/sft_data_readiness_v4.json) · [Review media provenance](results/collection_review_v4.json).
+These recordings are included in the [accepted SFT release](configs/sft_release_v1.json) above. Validation still covers only one initialization; broader coverage and model checks remain necessary. The 40 reserved test conditions remain unexecuted. π0.5 training and learned-policy evaluation have not been run. [Protocol and commands](docs/DATA_READINESS_V4.md) · [Full data report](results/sft_data_readiness_v4.json) · [Review media provenance](results/collection_review_v4.json).
 
 <details>
 <summary><strong>Earlier cabinet-front collection (v3)</strong></summary>

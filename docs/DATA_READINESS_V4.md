@@ -9,6 +9,11 @@ The [training-only extension and review workflow](TRAINING_DATA_EXTENSION.md)
 adds fresh training groups while keeping this batch, its validation dataset,
 and the reserved tests intact.
 
+The maintainer subsequently accepted this batch and the training supplement:
+32 recordings are now frozen in the [first accepted SFT release](../configs/sft_release_v1.json).
+The [acceptance summary](../results/human_acceptance_v4.json) records the
+source-bound decisions; the original collection reports below are unchanged.
+
 ## Collection protocol
 
 [Frozen plan](../configs/data_splits_v4.json), SHA256:
@@ -105,7 +110,7 @@ independent episodes at 1× simulation speed; a shorter episode holds its final
 frame. The keyframe sheet shows the first action, end of grasp, and final action
 for each command. The tool records exact source hashes and frame indices.
 
-Full-episode human acceptance remains a separate step. Automated success,
+Full-episode human acceptance is recorded separately. Automated success,
 faithful replay, and a few inspected images do not establish smooth contact or
 sufficient training coverage. Keep any rejected episodes and their reasons;
 never relabel scripted recordings as human demonstrations or π0.5 rollouts.

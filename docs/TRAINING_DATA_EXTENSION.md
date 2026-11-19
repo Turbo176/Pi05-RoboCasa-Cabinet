@@ -28,7 +28,7 @@ again after conversion. The union uses fresh training statistics; validation
 keeps its existing data path and must use the union's training statistics at
 model input time.
 
-These remain `SCRIPTED_PRIVILEGED_STATE` candidates. Additional drawer
+These remain `SCRIPTED_PRIVILEGED_STATE` demonstrations. Additional drawer
 initializations are coverage within the existing four-command task family.
 They do not add object storage, learned language grounding, or a robot-relative
 OOD region.
@@ -51,8 +51,8 @@ groups and uses the same four instructions, drawer assets and layout.
 
 | Combined data check | Result |
 |---|---|
-| Training candidates | 28 episodes, 10,226 frames |
-| Validation candidates, original files | 4 episodes, 1,465 frames |
+| Accepted training episodes | 28 episodes, 10,226 frames |
+| Accepted validation episodes, original files | 4 episodes, 1,465 frames |
 | Training examples per instruction | 7: five left-side, two right-side spawns |
 | Stable successes / attempts, both batches | 32 / 32 |
 | Recorded action replays, both batches | 32 / 32 passed |
@@ -62,7 +62,7 @@ groups and uses the same four instructions, drawer assets and layout.
 | Maximum drawer-fraction replay error | 1.3190 × 10⁻⁶ |
 | Original validation and protected raw files | All byte hashes unchanged |
 | Reserved tests | 40 conditions, unchanged and unexecuted |
-| Human video decisions | 32 pending, zero accepted or rejected |
+| Human video decisions | 32 accepted, zero rejected or pending |
 
 The combined training export was checked against all 10,226 raw frames through
 the official loader. The original validation export had already passed the
@@ -72,9 +72,11 @@ and after the merge. Validation was not recollected or re-exported. The
 checks, without adding the separate supplement checks a second time.
 
 The additional four review MP4 files decoded all 1,637 frames. An agent
-inspected 48 keyframe timepoints from the new episodes; full-episode human
-acceptance remains pending. The review page's Node DOM fixture and JSON export
-checks passed, including disabled browser storage. Browser visual preview was
+inspected 48 keyframe timepoints from the new episodes. The maintainer later
+exported acceptance and full-episode viewing declarations for all 32 recordings;
+the [acceptance summary](../results/human_acceptance_v4.json) records that
+follow-up separately from the original inspection. The review page's Node DOM
+fixture and JSON export checks passed, including disabled browser storage. Browser visual preview was
 blocked by the automation browser's local-file policy and is not marked as
 verified. Missing/duplicate review rows, source mismatch, unnamed or unwatched
 acceptance, rejection without a reason, and wrong inventory identity were
@@ -85,6 +87,46 @@ an output dataset.
 [Additional-batch report](../results/sft_data_readiness_v4_supplement.json)
 · [Combined report](../results/training_extension_v4.json)
 · [Video review and guard-check provenance](../results/collection_review_extension_v4.json)
+
+## Accepted SFT release
+
+On November 19, 2026, the review checker passed all 32 source-bound decisions:
+28 training and four validation episodes, with no rejections or pending rows.
+The [release manifest](../configs/sft_release_v1.json), `drawer_sft_v1`, freezes
+the dataset paths, ordered raw-source mapping, 22 file hashes and sizes,
+collection plans, collector code and 9D-state / 7D-action policy contract.
+The dataset files total 1,030,087,876 bytes and remain local.
+
+| Split | Dataset path | Episodes / frames |
+|---|---|---|
+| Train | `data/lerobot/sft_readiness_v4_extended/train` | 28 / 10,226 |
+| Validation | `data/lerobot/sft_readiness_v4/validation` | 4 / 1,465 |
+
+Both splits must use the training statistics at
+`data/lerobot/sft_readiness_v4_extended/train/meta/stats.json`; validation
+statistics are diagnostic only. The original review export and checker report
+are archived privately at `outputs/human_review_v4_accepted/`. Their hashes are
+published without reviewer names or free-text notes. No dataset was rewritten;
+earlier reports retain the pending status recorded when they were generated.
+
+To repeat the local acceptance check, use the existing checker with a new
+output filename:
+
+```powershell
+$roboticsRoot = Split-Path -Parent (Get-Location).Path
+$data = Join-Path $roboticsRoot 'envs\pi05-data-cpu\Scripts\python.exe'
+& $data scripts\review_sft_data.py check `
+    --inventory outputs\data_review_v4_extended\inventory.json `
+    --decisions outputs\human_review_v4_accepted\review_decisions.json `
+    --output outputs\NEW_ACCEPTANCE_CHECK.json
+if ($LASTEXITCODE -ne 0) { throw 'Acceptance verification failed' }
+```
+
+The paths above refer to this machine's local artifacts; they are not included
+in a Git clone. Run from the repository root with the existing CPU environment.
+Acceptance records a human viewing declaration. It does not establish model
+performance or sufficient data coverage: validation has one initialization,
+the 40 reserved tests are unexecuted, and π0.5 training and rollouts have not run.
 
 ## Collect and verify
 

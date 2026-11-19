@@ -1,0 +1,85 @@
+{
+  "schema": "cabinet_human_acceptance_summary_v1",
+  "created_utc": "2026-11-19T09:02:53.695789+00:00",
+  "release": {
+    "path": "configs/sft_release_v1.json",
+    "sha256": "fa7428a322cca8f996a42b099a14902314b5023eb67fa26abdc21e79a6c876fd"
+  },
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "review_export_created_utc": "2026-11-19T08:59:21.531Z",
+  "inventory_sha256": "9fd2ca68b7ddb61001a9679fc5b803469c8f8992bfc10402c1e538407c5a8d9c",
+  "decisions_sha256": "f8ee05930f0c9ed45536d9b899d903a73728bf15f9d067925222c696b48454a4",
+  "local_check_sha256": "c2504416ad63c427fe77b2ef99177c186a543d8dfd4b7634abf310f21238b401",
+  "review_method": "Maintainer exported accept decisions and full-episode viewing declarations for all 32 recordings",
+  "check_method": "Existing review checker verified the exact inventory, selection, raw source and MP4 hashes",
+  "decision_counts": {
+    "accept": 32,
+    "reject": 0,
+    "pending": 0
+  },
+  "full_episode_viewing_declarations": 32,
+  "splits": {
+    "train": {
+      "dataset": "data/lerobot/sft_readiness_v4_extended/train",
+      "episodes": 28,
+      "frames": 10226,
+      "human_accepted": 28
+    },
+    "validation": {
+      "dataset": "data/lerobot/sft_readiness_v4/validation",
+      "episodes": 4,
+      "frames": 1465,
+      "human_accepted": 4
+    }
+  },
+  "conditions": {
+    "train_001": {
+      "split": "train",
+      "seed": 701,
+      "accepted": 4
+    },
+    "train_002": {
+      "split": "train",
+      "seed": 702,
+      "accepted": 4
+    },
+    "train_003": {
+      "split": "train",
+      "seed": 703,
+      "accepted": 4
+    },
+    "validation_001": {
+      "split": "validation",
+      "seed": 801,
+      "accepted": 4
+    },
+    "train_004": {
+      "split": "train",
+      "seed": 704,
+      "accepted": 4
+    },
+    "train_005": {
+      "split": "train",
+      "seed": 705,
+      "accepted": 4
+    },
+    "train_006": {
+      "split": "train",
+      "seed": 706,
+      "accepted": 4
+    },
+    "train_007": {
+      "split": "train",
+      "seed": 707,
+      "accepted": 4
+    }
+  },
+  "dataset_file_count": 22,
+  "dataset_bytes": 1030087876,
+  "private_annotation_fields_published": false,
+  "original_datasets_modified": false,
+  "historical_pending_reports_preserved": true,
+  "reserved_test_conditions_unexecuted": 40,
+  "sft_and_model_rollouts_executed": false
+}
