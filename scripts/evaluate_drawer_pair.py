@@ -13,6 +13,7 @@ from pathlib import Path
 import h5py
 import numpy as np
 from pi05_cabinet.adapters import image_keys
+from pi05_cabinet.validation import compare_policy_rgb
 
 
 def score(fractions, target, behavior, tolerance):
@@ -27,6 +28,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("episodes", nargs="+", type=Path)
     parser.add_argument("--output", type=Path, required=True, help="New directory for JSON and CSV")
+    parser.add_argument("--rgb-reset-check", choices=("exact", "lsb_v1"), default="exact",
+                        help="Named reset-image QA profile; physics state and XML always require exact equality")
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
@@ -81,13 +84,18 @@ def main():
             raise ValueError(f"Missing opposite-prompt episode for {task}, seed={seed}, offset={offset}")
         top, bottom = pair["top"], pair["bottom"]
         state_error = float(np.max(np.abs(top["state"]-bottom["state"])))
-        images_equal = all(np.array_equal(top["images"][name], bottom["images"][name]) for name in top["images"])
-        equal = state_error == 0. and top["xml"] == bottom["xml"] and images_equal and top["base"] == bottom["base"]
+        image_checks = {name: compare_policy_rgb(top["images"][name], bottom["images"][name], args.rgb_reset_check)
+                        for name in top["images"]}
+        images_equal = all(check["bitwise_identical"] for check in image_checks.values())
+        images_passed = all(check["passed"] for check in image_checks.values())
+        equal = state_error == 0. and top["xml"] == bottom["xml"] and images_passed and top["base"] == bottom["base"]
         if not equal:
-            raise AssertionError("Prompt changes must preserve the complete physical initialization and policy images")
+            raise AssertionError(f"Prompt-paired physics/XML must match exactly and RGB must pass {args.rgb_reset_check}: {image_checks}")
         reset_checks.append(dict(task=task, seed=seed, scene_offset=list(offset),
             pair_layout=layout,
             max_initial_state_error=state_error, initial_dual_rgb_identical=images_equal,
+            rgb_reset_check=args.rgb_reset_check, initial_dual_rgb_passed=images_passed,
+            image_reset_checks=image_checks,
             model_xml_identical=True, robot_base_position=top["base"], passed=True))
     summary = dict(mode="SCRIPTED_PRIVILEGED_STATE", learned_policy=False,
         evaluation_split="development_pilot; includes controller tuning conditions; not an OOD or VLA evaluation",
@@ -97,6 +105,7 @@ def main():
         wrong_target_success_count=sum(row["wrong_target_success_final"] for row in rows),
         non_target_max_drift=max(row["non_target_max_drift"] for row in rows),
         control_hz=20, max_control_steps=600, non_target_tolerance=.05,
+        rgb_reset_check=args.rgb_reset_check,
         prompt_paired_initialization_checks=reset_checks, episodes=rows)
     args.output.mkdir(parents=True, exist_ok=False)
     (args.output / "report.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")

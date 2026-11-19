@@ -30,6 +30,7 @@ COLLECTION_FILES = [
     "scripts/replay_episode.py", "scripts/evaluate_drawer_pair.py",
     "scripts/run_pair_pilot.ps1", "requirements/sim-win.lock.txt",
     "scripts/convert_lerobot.py", "scripts/prepare_sft_data.py", "requirements/data-cpu.lock.txt",
+    "src/pi05_cabinet/validation.py",
 ]
 
 
@@ -273,11 +274,16 @@ def build_datasets(args):
         request = read_json(directory / "collection_request.json")
         if request["plan_sha256"] != plan_hash or request["condition_id"] != condition["id"]:
             raise ValueError("Collection was not requested with this exact pre-recording plan")
-        audit = read_json(directory / "evaluation/report.json")
+        audit = read_json(directory / args.audit_subdir / "report.json")
+        if audit.get("rgb_reset_check", "exact") != args.rgb_reset_check:
+            raise ValueError("Audit reset-image profile differs from the explicit build request")
         if len(audit["episodes"]) != 4 or len(audit["prompt_paired_initialization_checks"]) != 2:
             raise ValueError("All four prompts and both paired reset checks are required")
         if not all(c["passed"] for c in audit["prompt_paired_initialization_checks"]):
             raise ValueError("Changing the target prompt changed the initial state")
+        if any(c["max_initial_state_error"] != 0. or not c["model_xml_identical"]
+               for c in audit["prompt_paired_initialization_checks"]):
+            raise ValueError("Prompt-paired physics and XML must match exactly")
         audit_rows = {row["episode"]: row for row in audit["episodes"]}
         for case in CASES:
             path = (directory / case / "episode.hdf5").resolve(strict=True)
@@ -297,6 +303,10 @@ def build_datasets(args):
     # Save selection before conversion so a failed converter remains auditable.
     manifest = dict(schema="cabinet_sft_selection_v1", plan_sha256=plan_hash,
         selection_code_sha256=digest(__file__), source="SCRIPTED_PRIVILEGED_STATE",
+        rgb_reset_check=args.rgb_reset_check, audit_subdir=args.audit_subdir,
+        data_qa_code_sha256={name: digest(ROOT / name) for name in
+            ("scripts/prepare_sft_data.py", "scripts/convert_lerobot.py", "scripts/evaluate_drawer_pair.py",
+             "src/pi05_cabinet/adapters.py", "src/pi05_cabinet/validation.py")},
         policy_schema="pandaomron_arm_osc_v1", learned_policy=False,
         rules=["completed raw schema", "600-step budget", "last 10 steps successful",
                "non-target drift <=0.05", "same-source-hash replay passed", "disjoint initialization groups"],
@@ -325,6 +335,10 @@ def build_datasets(args):
         summaries[split] = summary
     report = dict(schema="cabinet_data_readiness_report_v1", source="SCRIPTED_PRIVILEGED_STATE", learned_policy=False,
         plan_sha256=plan_hash, selection_manifest_sha256=digest(args.output / "selection_manifest.json"),
+        front_camera=plan.get("front_camera", "robot_left"),
+        rgb_reset_check=args.rgb_reset_check, audit_subdir=args.audit_subdir,
+        collection_code_sha256=plan["collection_code_sha256"],
+        data_qa_code_sha256=manifest["data_qa_code_sha256"],
         selection_manifest=(args.output / "selection_manifest.json").resolve().relative_to(ROOT).as_posix(),
         attempted_episodes=len(rows), selected_episodes=manifest["selected_episodes"],
         stable_success_count=sum(row["stable_success"] for row in rows),
@@ -364,6 +378,8 @@ def main():
     build.add_argument("--raw-root", type=Path, required=True)
     build.add_argument("--output", type=Path, required=True)
     build.add_argument("--report", type=Path, required=True)
+    build.add_argument("--audit-subdir", choices=("evaluation", "evaluation_lsb_v1"), default="evaluation")
+    build.add_argument("--rgb-reset-check", choices=("exact", "lsb_v1"), default="exact")
     args = parser.parse_args()
     os.chdir(ROOT)
     freeze_plan(args) if args.command == "plan" else build_datasets(args)

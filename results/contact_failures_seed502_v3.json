@@ -1,0 +1,277 @@
+{
+  "schema": "cabinet_contact_failure_review_v3",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "role": "Failure diagnosis after frozen collection; no controller tuning or reclassification",
+  "seed": 502,
+  "source_threshold_n": 0.001,
+  "sampling": "Final physics substep after every 20 Hz action; intermediate contacts may be missed",
+  "findings": [
+    "Opening: rigid finger2 collision geom contacted the handle during reach/grasp; no bilateral pad/handle contact samples. The pull never opened the drawer.",
+    "Closing: bilateral grasp occurred, but lower-pad contact persisted through clearance and retreat. The tool remained above its commanded clearance waypoint, so the same nominal release fix did not clear this initialization."
+  ],
+  "interpretation_limit": "These records localize failed contact modes; they do not establish the underlying posture, saturation or collision cause of waypoint error",
+  "controller_changed": false,
+  "success_thresholds_changed": false,
+  "episodes": [
+    {
+      "case": "open_bottom",
+      "source_episode_sha256": "fdcefc1f903bc8781591b5aa51013cb31543e0434afc222416cb7b2e063bcf1f",
+      "replay_within_tolerance": true,
+      "source_replay_report": "outputs/data_readiness_v3_diagnostics/seed502_open_bottom/report.json",
+      "source_contacts_sha256": "c8f3f64804e39aaa15e68a8a9ca02141a1bc29605010498b13c78af3c08fef3d",
+      "final_fraction": 9.587784655963502e-05,
+      "stages": [
+        {
+          "stage": "approach_above",
+          "steps": 70,
+          "final_fraction": 1.2826043483847072e-06,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            0.8570454592165642,
+            -0.664249001406718,
+            1.400915521819661
+          ]
+        },
+        {
+          "stage": "align_height",
+          "steps": 140,
+          "final_fraction": 1.2826043483847072e-06,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            1.0098509325756118,
+            -0.6479645770466186,
+            0.7719477061061861
+          ]
+        },
+        {
+          "stage": "reach_handle",
+          "steps": 120,
+          "final_fraction": -0.00017733544344533767,
+          "robot_fixture_contact_sampled_steps": 49,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_collision": 50
+          },
+          "final_tool_world_m": [
+            1.0140564602947242,
+            -0.3052440190317476,
+            0.7620115296018662
+          ]
+        },
+        {
+          "stage": "grasp",
+          "steps": 30,
+          "final_fraction": -0.00013161134086156205,
+          "robot_fixture_contact_sampled_steps": 30,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_collision": 43
+          },
+          "final_tool_world_m": [
+            1.0135889912904137,
+            -0.3084570695790025,
+            0.7417033802097301
+          ]
+        },
+        {
+          "stage": "pull",
+          "steps": 100,
+          "final_fraction": 9.587784655963502e-05,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            1.0052719838768052,
+            -0.5831889969537478,
+            0.7297857928813599
+          ]
+        },
+        {
+          "stage": "hold",
+          "steps": 20,
+          "final_fraction": 9.587784655963502e-05,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            1.005262917315241,
+            -0.5832993125972065,
+            0.7297990577483083
+          ]
+        },
+        {
+          "stage": "release",
+          "steps": 25,
+          "final_fraction": 9.587784655963502e-05,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            1.0052679595804381,
+            -0.5833282294103002,
+            0.7298165261304861
+          ]
+        },
+        {
+          "stage": "retreat",
+          "steps": 40,
+          "final_fraction": 9.587784655963502e-05,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            1.0102774208932046,
+            -0.7281925467990491,
+            0.8041080439914597
+          ]
+        }
+      ]
+    },
+    {
+      "case": "close_bottom",
+      "source_episode_sha256": "82413a326f422749e40a245da69a8fa631dfe4d4299a1770eaeafa0360a4f149",
+      "replay_within_tolerance": true,
+      "source_replay_report": "outputs/data_readiness_v3_diagnostics/seed502_close_bottom/report.json",
+      "source_contacts_sha256": "d01851ecfcfd45dd56233da3a58220cc0e5ac33664d1d06ed4365ddcced07da2",
+      "final_fraction": 0.12415494403065745,
+      "stages": [
+        {
+          "stage": "approach_above",
+          "steps": 70,
+          "final_fraction": 0.9655162708189292,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            0.8570358279066891,
+            -0.6644745682885541,
+            1.4009037587920248
+          ]
+        },
+        {
+          "stage": "align_height",
+          "steps": 140,
+          "final_fraction": 0.9655162708189292,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            1.0337798360596293,
+            -0.8989608681224759,
+            0.8834298153180195
+          ]
+        },
+        {
+          "stage": "reach_handle",
+          "steps": 120,
+          "final_fraction": 0.9655162708189292,
+          "robot_fixture_contact_sampled_steps": 0,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {},
+          "final_tool_world_m": [
+            1.0063763024496186,
+            -0.5745041104784216,
+            0.7303864702949101
+          ]
+        },
+        {
+          "stage": "grasp",
+          "steps": 30,
+          "final_fraction": 0.9716376509002007,
+          "robot_fixture_contact_sampled_steps": 25,
+          "bilateral_pad_handle_sampled_steps": 21,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_pad_collision": 125,
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger1_pad_collision": 83
+          },
+          "final_tool_world_m": [
+            1.0063189362912863,
+            -0.5765160519534694,
+            0.7238737446827732
+          ]
+        },
+        {
+          "stage": "push",
+          "steps": 100,
+          "final_fraction": 0.03802898110320402,
+          "robot_fixture_contact_sampled_steps": 100,
+          "bilateral_pad_handle_sampled_steps": 57,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger1_pad_collision": 206,
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_pad_collision": 434
+          },
+          "final_tool_world_m": [
+            1.0063795043266521,
+            -0.288691923538486,
+            0.7440803494728976
+          ]
+        },
+        {
+          "stage": "hold",
+          "steps": 20,
+          "final_fraction": 0.03573506058732403,
+          "robot_fixture_contact_sampled_steps": 20,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_pad_collision": 60
+          },
+          "final_tool_world_m": [
+            1.0064534912764076,
+            -0.2879085715421375,
+            0.7446444416161361
+          ]
+        },
+        {
+          "stage": "release",
+          "steps": 25,
+          "final_fraction": 0.03488015944456943,
+          "robot_fixture_contact_sampled_steps": 25,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_pad_collision": 75
+          },
+          "final_tool_world_m": [
+            1.0065443604149378,
+            -0.28760742816969526,
+            0.7451332858573717
+          ]
+        },
+        {
+          "stage": "clear_handle",
+          "steps": 25,
+          "final_fraction": 0.016724418667328208,
+          "robot_fixture_contact_sampled_steps": 25,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_pad_collision": 75
+          },
+          "final_tool_world_m": [
+            1.006742700614726,
+            -0.28197826006893956,
+            0.7448479011756695
+          ]
+        },
+        {
+          "stage": "retreat",
+          "steps": 40,
+          "final_fraction": 0.12415494403065745,
+          "robot_fixture_contact_sampled_steps": 7,
+          "bilateral_pad_handle_sampled_steps": 0,
+          "loaded_contact_point_counts": {
+            "drawer_bottom_cabinet_door_handle_handle | gripper0_right_finger2_pad_collision": 21
+          },
+          "final_tool_world_m": [
+            1.0064986010660328,
+            -0.4254029255252924,
+            0.7223802182904069
+          ]
+        }
+      ]
+    }
+  ]
+}

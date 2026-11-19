@@ -1,0 +1,1122 @@
+{
+  "schema": "cabinet_data_readiness_report_v1",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "plan_sha256": "eea6f89da02b2a1292554863a58c010025def75d24878a237f58acdd5d13016e",
+  "selection_manifest_sha256": "8230cc7217528a8dec5d51cc8512b834f7b287d59e692c41146b7423409cb12f",
+  "front_camera": "cabinet_front",
+  "rgb_reset_check": "lsb_v1",
+  "audit_subdir": "evaluation_lsb_v1",
+  "collection_code_sha256": {
+    "src/pi05_cabinet/envs.py": "5295e4cc312d4f6e12afecd89803c12ad3e9fbc4c14b99e31bea6e2968c8bc2a",
+    "src/pi05_cabinet/scripted.py": "117caade3c97ee1c710f45edcec8f94eb88ea389d696e19d37f04dbde4685995",
+    "src/pi05_cabinet/recording.py": "fce048fc6f4dd8517259943a89de9445fa51c5f4400abd76dd68665e09901816",
+    "src/pi05_cabinet/adapters.py": "85395e19e3e3aac48724439d655a787870e4cc2beaf179583cfd471a00faa890",
+    "scripts/_windows_runtime.py": "8efcc811a07e4f58a54023d324758ec19c7a442ac767630a705a696429920199",
+    "scripts/scripted_rollout.py": "823a230e71adf50d446bfefbfc8c75bbb78b9662f0e67572d4fb459ddd8d3c3d",
+    "scripts/replay_episode.py": "521154615215cb8c1f39af649903fe3e0266d25acdaafac2b528f7ec2c5436eb",
+    "scripts/evaluate_drawer_pair.py": "ac2b0a0f9e9477f3c3f2273ae3b4881d3456813039d5f8f4a8a1eebf869356d0",
+    "scripts/run_pair_pilot.ps1": "4a858d65a054e408a3afd2ef9a55847d0b3abf2cdeda8c480fff380ae0055732",
+    "requirements/sim-win.lock.txt": "b6a3c761a3d6d052b4e8525589dfba3ce260b87e2d3fca0655b11d5926d69422",
+    "scripts/convert_lerobot.py": "2504688500ec602af12ff270267ad168eadf4d12dc64642f32b118db5700138c",
+    "scripts/prepare_sft_data.py": "db736bd5288448a03c2a9031e8665c2816956ea9db1135a90fbcb6054128c3a9",
+    "requirements/data-cpu.lock.txt": "b5682ba3f0a33ee65aa7c26192171465d625eae7aa05f0931b0e10035c8e42e6"
+  },
+  "data_qa_code_sha256": {
+    "scripts/prepare_sft_data.py": "fccbc62d851204b4ec3871bed7e5afd78cff57549c53c92c791db95ab01745e3",
+    "scripts/convert_lerobot.py": "ca75ad71d62fe1727b6fb1d82d57fffce2e8f7f30a5edc6bf322d748731fade1",
+    "scripts/evaluate_drawer_pair.py": "cb6cd3f87795e372c6034e015e4430377a41b30d19a3b6b9181ba32371d9144d",
+    "src/pi05_cabinet/adapters.py": "85395e19e3e3aac48724439d655a787870e4cc2beaf179583cfd471a00faa890",
+    "src/pi05_cabinet/validation.py": "eaa6e405b231fb0bdc84645300298df782ebd55b270de9dbd9acf658f2802c67"
+  },
+  "selection_manifest": "data/lerobot/sft_readiness_v3/selection_manifest.json",
+  "attempted_episodes": 16,
+  "selected_episodes": 13,
+  "stable_success_count": 13,
+  "max_replay_joint_error_rad": 0.0008451102303932423,
+  "max_replay_drawer_error": 0.00011240703327297652,
+  "non_target_max_drift": 3.835638084413152e-09,
+  "splits": {
+    "train": {
+      "attempted": 12,
+      "selected": 9,
+      "rejected": 3,
+      "frames": 4305,
+      "selected_prompt_counts": {
+        "Open the top drawer.": 2,
+        "Open the bottom drawer.": 2,
+        "Close the top drawer.": 3,
+        "Close the bottom drawer.": 2
+      },
+      "selected_prompt_spawn_side_counts": {
+        "Open the top drawer. | robot=right": 1,
+        "Open the bottom drawer. | robot=right": 1,
+        "Close the top drawer. | robot=right": 1,
+        "Close the bottom drawer. | robot=right": 1,
+        "Open the top drawer. | robot=left": 1,
+        "Close the top drawer. | robot=left": 2,
+        "Open the bottom drawer. | robot=left": 1,
+        "Close the bottom drawer. | robot=left": 1
+      },
+      "all_four_prompts_present": true,
+      "dataset": "data/lerobot/sft_readiness_v3/train",
+      "official_all_frames_passed": true,
+      "chunk_check": {
+        "chunk_size": 50,
+        "action_shape": [
+          50,
+          7
+        ],
+        "boundary_samples_checked": 45,
+        "official_action_padding_passed": true,
+        "cross_episode_actions_observed": false,
+        "cpu_batch_action_shape": [
+          4,
+          50,
+          7
+        ],
+        "cpu_batch_state_shape": [
+          4,
+          9
+        ],
+        "cpu_batch_rgb_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "cpu_batch_language_passed": true,
+        "stats_sha256": "48e980c4ae7c1af5ca421fad58874dd6a005a58cd1bdbcd5486c38c27e79e582",
+        "vector_stats": {
+          "observation.state": {
+            "min": [
+              -0.646024763584137,
+              -1.7658262252807617,
+              -2.13950777053833,
+              -2.704847812652588,
+              -0.5573087334632874,
+              0.7267891764640808,
+              -2.8097383975982666,
+              -0.00032714198459871113,
+              -0.040085479617118835
+            ],
+            "max": [
+              0.5182019472122192,
+              -1.0401078462600708,
+              2.088815450668335,
+              -0.4497055113315582,
+              0.4249799847602844,
+              2.7798306941986084,
+              1.3435027599334717,
+              0.03895308077335358,
+              -0.0011372381122782826
+            ],
+            "mean": [
+              -0.01509805958345965,
+              -1.6571652991708008,
+              -0.09104825381479474,
+              -1.9739828257887482,
+              -0.14452085103601667,
+              2.0422294387695543,
+              -0.752735946790405,
+              0.028668331533981947,
+              -0.03104413974852789
+            ],
+            "std": [
+              0.2610433431702873,
+              0.16133211949084794,
+              1.5155198256166211,
+              0.46944902404067884,
+              0.1499460155333489,
+              0.4967552278317293,
+              1.5375739070639463,
+              0.014430485449015028,
+              0.013029834225467342
+            ],
+            "q01": [
+              -0.3571303337567965,
+              -1.7630829139215503,
+              -0.9445137892736167,
+              -2.6810782313485317,
+              -0.32837393737109283,
+              1.2424375395741611,
+              -1.4169362292887857,
+              0.0059893904539966136,
+              -0.04004804829822952
+            ],
+            "q99": [
+              0.35455302508509595,
+              -1.1306859211223883,
+              0.8175175540498232,
+              -1.1990641923523946,
+              0.056265737493625234,
+              2.6786836186016756,
+              0.7977895335651656,
+              0.03894911535167271,
+              -0.012403202989853354
+            ]
+          },
+          "action": {
+            "min": [
+              -0.3499999940395355,
+              -0.3499999940395355,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.1643054485321045,
+              -1.0
+            ],
+            "max": [
+              0.3499999940395355,
+              0.3499999940395355,
+              0.3499999940395355,
+              0.048854295164346695,
+              0.023535961285233498,
+              0.5,
+              1.0
+            ],
+            "mean": [
+              -0.015527602196449325,
+              -0.0067664877177323205,
+              -0.10079718248553046,
+              -0.027058930111384834,
+              -0.039433973396800534,
+              0.01711833840841806,
+              -0.3728222977132055
+            ],
+            "std": [
+              0.2660282291309918,
+              0.17166545128629723,
+              0.17426934758514567,
+              0.098129509072848,
+              0.08953842454177441,
+              0.08750782877733015,
+              0.927902779146769
+            ],
+            "q01": [
+              -0.3499999940395355,
+              -0.23937004847137278,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.05518437947809662,
+              -1.0
+            ],
+            "q99": [
+              0.34999273187442964,
+              0.23189464775903454,
+              0.3499391747519941,
+              0.008168828063891185,
+              0.006878513245692996,
+              0.4999288374871743,
+              0.999986958889365
+            ]
+          }
+        }
+      }
+    },
+    "validation": {
+      "attempted": 4,
+      "selected": 4,
+      "rejected": 0,
+      "frames": 1945,
+      "selected_prompt_counts": {
+        "Open the top drawer.": 1,
+        "Open the bottom drawer.": 1,
+        "Close the top drawer.": 1,
+        "Close the bottom drawer.": 1
+      },
+      "selected_prompt_spawn_side_counts": {
+        "Open the top drawer. | robot=right": 1,
+        "Open the bottom drawer. | robot=right": 1,
+        "Close the top drawer. | robot=right": 1,
+        "Close the bottom drawer. | robot=right": 1
+      },
+      "all_four_prompts_present": true,
+      "dataset": "data/lerobot/sft_readiness_v3/validation",
+      "official_all_frames_passed": true,
+      "chunk_check": {
+        "chunk_size": 50,
+        "action_shape": [
+          50,
+          7
+        ],
+        "boundary_samples_checked": 20,
+        "official_action_padding_passed": true,
+        "cross_episode_actions_observed": false,
+        "cpu_batch_action_shape": [
+          4,
+          50,
+          7
+        ],
+        "cpu_batch_state_shape": [
+          4,
+          9
+        ],
+        "cpu_batch_rgb_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "cpu_batch_language_passed": true,
+        "stats_sha256": "668526a682c5c34dd7f671983aaa56381291e88a8a86a1fa2e55fb97741b0d81",
+        "vector_stats": {
+          "observation.state": {
+            "min": [
+              -0.477999210357666,
+              -1.7641105651855469,
+              -0.01554114744067192,
+              -2.7226293087005615,
+              -0.5419557094573975,
+              0.7757422924041748,
+              -0.16536182165145874,
+              0.009896581992506981,
+              -0.040044426918029785
+            ],
+            "max": [
+              0.2835260033607483,
+              -1.022539734840393,
+              2.148540496826172,
+              -0.44720467925071716,
+              0.45139187574386597,
+              2.606722831726074,
+              1.4048678874969482,
+              0.038953088223934174,
+              -0.013059892691671848
+            ],
+            "mean": [
+              -0.012922367320460645,
+              -1.5686575591104504,
+              1.4850016133644282,
+              -2.0093703668344296,
+              -0.10472020092192837,
+              2.0097092632156413,
+              0.842555714910012,
+              0.0302816788381047,
+              -0.03178036219145921
+            ],
+            "std": [
+              0.22710493082580357,
+              0.19768534819027683,
+              0.5689280709983195,
+              0.4243316214486941,
+              0.20857727901597264,
+              0.42711974327697283,
+              0.4687363928667197,
+              0.012118265071875132,
+              0.011709546420129125
+            ],
+            "q01": [
+              -0.3580434011731172,
+              -1.762995340777522,
+              0.0752343245023014,
+              -2.7075850171111235,
+              -0.34763337263794364,
+              1.254442599155296,
+              -0.16308238110517015,
+              0.011568702413655032,
+              -0.04004403489107951
+            ],
+            "q99": [
+              0.28289493535355614,
+              -1.1113653544595126,
+              1.866797966957238,
+              -1.1987085654373955,
+              0.18476723696471486,
+              2.5759734332316335,
+              1.2376246999148313,
+              0.038950625128963835,
+              -0.013973339547616544
+            ]
+          },
+          "action": {
+            "min": [
+              -0.3499999940395355,
+              -0.19109050929546356,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.051364876329898834,
+              -1.0
+            ],
+            "max": [
+              0.3499999940395355,
+              0.3499999940395355,
+              0.3499999940395355,
+              0.04781879484653473,
+              0.016450155526399612,
+              0.5,
+              1.0
+            ],
+            "mean": [
+              -0.0455567754953525,
+              0.07797629801810248,
+              -0.06883954386056848,
+              -0.02286341059522028,
+              -0.02445074914928267,
+              0.020789955563096277,
+              -0.38303341718443257
+            ],
+            "std": [
+              0.2537530450252584,
+              0.14631218494442608,
+              0.17420826993923075,
+              0.09695947102183052,
+              0.08747971903061769,
+              0.08354918041050449,
+              0.9237345027554098
+            ],
+            "q01": [
+              -0.3499999940395355,
+              -0.07368838590519518,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.023125408292846195,
+              -1.0
+            ],
+            "q99": [
+              0.3499919223053002,
+              0.3499957897260874,
+              0.34994402523202367,
+              0.015229970166233134,
+              0.0076531650767159105,
+              0.49994194392509644,
+              0.9999867484440841
+            ]
+          }
+        }
+      }
+    }
+  },
+  "reserved_test_conditions_unexecuted": 40,
+  "train_normalization_stats": "data/lerobot/sft_readiness_v3/train/meta/stats.json",
+  "normalization_rule": "Use only the train stats for both training and validation; validation's own conversion stats are diagnostic only",
+  "train_validation_reset_hashes_disjoint": true,
+  "successful_demonstration_candidates_only": true,
+  "sufficient_for_sft_quality_claim": false,
+  "human_visual_acceptance": "pending",
+  "limitations": [
+    "3 train conditions and 1 validation conditions only; expand after quality inspection",
+    "Privileged scripted actions are not human demonstrations or pi0.5 rollouts",
+    "Validation inspected for data readiness; if used to tune controller, mark it development and version the split",
+    "Translation tests unexecuted; no reserved robot-relative OOD region implemented",
+    "No weights, tokenizer, processor, forward/backward or model rollout validated"
+  ],
+  "episode_results": [
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_readiness_v3/train_001/open_top/episode.hdf5",
+      "sha256": "01b839d90cebd18b4278b8dc020b2b0831a6eee1d3bb3ec1336c0ba39ea97e79",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "robot_spawn_world_m": [
+        1.5477532956023945,
+        -0.6087745114724286,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5349532956023946,
+        0.5936745114724286
+      ],
+      "initial_state_sha256": "a2c41880b0e78a3a1392dfe3ea4c82e498530c8f652d6c000581a954447c8b5e",
+      "initial_dual_rgb_sha256": "3817c18e6c313764f556c69c1b3ef5d48a7f6ff16d1760ea5023036e6d3f02d1",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835445821661353e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.0652589921278377e-12,
+      "replay_max_drawer_error": 1.39203093496576e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_readiness_v3/train_001/open_bottom/episode.hdf5",
+      "sha256": "ab19e742c9e849e23e181acf5d096871385601c6e31c8d2d53f867d70c11aaea",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "robot_spawn_world_m": [
+        1.5477532956023945,
+        -0.6087745114724286,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5349532956023946,
+        0.5936745114724286
+      ],
+      "initial_state_sha256": "a2c41880b0e78a3a1392dfe3ea4c82e498530c8f652d6c000581a954447c8b5e",
+      "initial_dual_rgb_sha256": "3817c18e6c313764f556c69c1b3ef5d48a7f6ff16d1760ea5023036e6d3f02d1",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835445821661353e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 4.3966830176600524e-11,
+      "replay_max_drawer_error": 5.862159646596865e-10,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_readiness_v3/train_001/close_top/episode.hdf5",
+      "sha256": "916f4ff95e8195bd0d588580ba58b8630b0a3841b9aec82b94c31330c69d23e3",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "robot_spawn_world_m": [
+        1.5477532956023945,
+        -0.6087745114724286,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5349532956023946,
+        0.5936745114724286
+      ],
+      "initial_state_sha256": "22c09f79a12a156a68926c63c8ac34c601ac304e86c90ffb1c895a2dcb6bebb3",
+      "initial_dual_rgb_sha256": "b95f3905afd685c23698c6ad155e5dcb9c2c23de3ce090e838d0b6495def1942",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.8617108682738035e-11,
+      "replay_max_drawer_error": 3.401957133965933e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_readiness_v3/train_001/close_bottom/episode.hdf5",
+      "sha256": "35651e7b71ed4f7c6244ca6f87ea0436211ff1eb6fceac8cb98a28534087a672",
+      "frames": 570,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 501,
+      "scene_offset": [
+        0.0128,
+        -0.0151
+      ],
+      "robot_spawn_world_m": [
+        1.5477532956023945,
+        -0.6087745114724286,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5349532956023946,
+        0.5936745114724286
+      ],
+      "initial_state_sha256": "22c09f79a12a156a68926c63c8ac34c601ac304e86c90ffb1c895a2dcb6bebb3",
+      "initial_dual_rgb_sha256": "b95f3905afd685c23698c6ad155e5dcb9c2c23de3ce090e838d0b6495def1942",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 5.116183165870813e-07,
+      "replay_max_drawer_error": 2.238119126956456e-07,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_readiness_v3/train_002/open_top/episode.hdf5",
+      "sha256": "ff58dac1a7b5a9209f8473bad08042338da9a817df6b49a3e7ed57c1cbb068bb",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "robot_spawn_world_m": [
+        0.5030693751945033,
+        -0.5908679864485282,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.5111306248054966,
+        0.6106679864485283
+      ],
+      "initial_state_sha256": "38f3154cb41db4ab26f37b355b44dd383e0d78f9fa940b430c87897c7494a9f1",
+      "initial_dual_rgb_sha256": "6e6ac0db4ab050f5e1b9195c046ec99b5a2dc2fb789a07fb36b822ff42946431",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835638084357248e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.5424466780110677e-05,
+      "replay_max_drawer_error": 5.983353399408031e-07,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_readiness_v3/train_002/open_bottom/episode.hdf5",
+      "sha256": "fdcefc1f903bc8781591b5aa51013cb31543e0434afc222416cb7b2e063bcf1f",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "robot_spawn_world_m": [
+        0.5030693751945033,
+        -0.5908679864485282,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.5111306248054966,
+        0.6106679864485283
+      ],
+      "initial_state_sha256": "38f3154cb41db4ab26f37b355b44dd383e0d78f9fa940b430c87897c7494a9f1",
+      "initial_dual_rgb_sha256": "6e6ac0db4ab050f5e1b9195c046ec99b5a2dc2fb789a07fb36b822ff42946431",
+      "success_final": false,
+      "stable_success": false,
+      "non_target_max_drift": 3.835638084357248e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.0158540675320182e-14,
+      "replay_max_drawer_error": 2.5191437477700696e-16,
+      "selected": false,
+      "rejection_reasons": [
+        "task_final_failure",
+        "not_successful_for_final_10_steps"
+      ]
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_readiness_v3/train_002/close_top/episode.hdf5",
+      "sha256": "689e0b83b768df6971da10576f6d4c497d8e7cfdd7d713cc3734877fd5ea2d32",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "robot_spawn_world_m": [
+        0.5030693751945033,
+        -0.5908679864485282,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.5111306248054966,
+        0.6106679864485283
+      ],
+      "initial_state_sha256": "b35d03b223a2fd0eb3e876dc6cbafc01ed2bb82566bf6846b3345a3d897f3b29",
+      "initial_dual_rgb_sha256": "95232fbb2be2717659093aae6ec1670a45ab79ac46a7ec54dfd51308d98bd959",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 0.0008451102303932423,
+      "replay_max_drawer_error": 0.00011240703327297652,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_readiness_v3/train_002/close_bottom/episode.hdf5",
+      "sha256": "82413a326f422749e40a245da69a8fa631dfe4d4299a1770eaeafa0360a4f149",
+      "frames": 570,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 502,
+      "scene_offset": [
+        0.0142,
+        0.0198
+      ],
+      "robot_spawn_world_m": [
+        0.5030693751945033,
+        -0.5908679864485282,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.5111306248054966,
+        0.6106679864485283
+      ],
+      "initial_state_sha256": "b35d03b223a2fd0eb3e876dc6cbafc01ed2bb82566bf6846b3345a3d897f3b29",
+      "initial_dual_rgb_sha256": "82e78b52ec3a7b6550865c7f0bfd6226b513a4e111e406f44686c6533767fb94",
+      "success_final": false,
+      "stable_success": false,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.8210271490737284e-07,
+      "replay_max_drawer_error": 4.8487867027047216e-08,
+      "selected": false,
+      "rejection_reasons": [
+        "task_final_failure",
+        "not_successful_for_final_10_steps"
+      ]
+    },
+    {
+      "condition_id": "train_003",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_readiness_v3/train_003/open_top/episode.hdf5",
+      "sha256": "a56a431c0883a0530744d9c70d96de9324e5d8b842c57ecd8693302fcf1eb55c",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "robot_spawn_world_m": [
+        0.5491511196075074,
+        -0.4922915583081079,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4858488803924925,
+        0.5269915583081078
+      ],
+      "initial_state_sha256": "67f8daa6f9f1c8729e9a7d350e4ad8032813e7427eac6cd50c53197edebeabc0",
+      "initial_dual_rgb_sha256": "ea6f438e594145ac90f9a5ea59ce253a2fccdc6f680442fd64e86c70fcdf3368",
+      "success_final": false,
+      "stable_success": false,
+      "non_target_max_drift": 3.8354442481365054e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.7698560870037525e-05,
+      "replay_max_drawer_error": 6.22630894857605e-07,
+      "selected": false,
+      "rejection_reasons": [
+        "task_final_failure",
+        "not_successful_for_final_10_steps"
+      ]
+    },
+    {
+      "condition_id": "train_003",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_readiness_v3/train_003/open_bottom/episode.hdf5",
+      "sha256": "78050048b6627c980add34ce749e0ab1d26602dd9dcf397bb97a8c9379f92cb7",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "robot_spawn_world_m": [
+        0.5491511196075074,
+        -0.4922915583081079,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4858488803924925,
+        0.5269915583081078
+      ],
+      "initial_state_sha256": "67f8daa6f9f1c8729e9a7d350e4ad8032813e7427eac6cd50c53197edebeabc0",
+      "initial_dual_rgb_sha256": "ea6f438e594145ac90f9a5ea59ce253a2fccdc6f680442fd64e86c70fcdf3368",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.8354442481365054e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.710718388032607e-06,
+      "replay_max_drawer_error": 4.885532434162343e-07,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_003",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_readiness_v3/train_003/close_top/episode.hdf5",
+      "sha256": "8805ba022ab53b5304e4cdb65b3bf4a3c4666df7e875829b7c37702b2f2eda16",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "robot_spawn_world_m": [
+        0.5491511196075074,
+        -0.4922915583081079,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4858488803924925,
+        0.5269915583081078
+      ],
+      "initial_state_sha256": "b2c817388839f634042fa5114526edd0be95de7c4e52f04f1f41509c4174810b",
+      "initial_dual_rgb_sha256": "1431e54c234a797e605ce6181980a7025e0b935ac514a561b859fa1743098b64",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.2250167236160792e-06,
+      "replay_max_drawer_error": 4.446775325972442e-09,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_003",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_readiness_v3/train_003/close_bottom/episode.hdf5",
+      "sha256": "8f1c20f237eda856c42579afe14d267e6bc39782b5b232bc5a6c9493bc67c72c",
+      "frames": 570,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 503,
+      "scene_offset": [
+        0.035,
+        0.0347
+      ],
+      "robot_spawn_world_m": [
+        0.5491511196075074,
+        -0.4922915583081079,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.4858488803924925,
+        0.5269915583081078
+      ],
+      "initial_state_sha256": "b2c817388839f634042fa5114526edd0be95de7c4e52f04f1f41509c4174810b",
+      "initial_dual_rgb_sha256": "1431e54c234a797e605ce6181980a7025e0b935ac514a561b859fa1743098b64",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 4.1990557031468256e-08,
+      "replay_max_drawer_error": 1.1727304197184374e-08,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "open_top",
+      "path": "outputs/data_readiness_v3/validation_001/open_top/episode.hdf5",
+      "sha256": "af501679ceb61e50abc8bcaecc40492f470462b2bbefc68c15d1bbb1502763f5",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 601,
+      "scene_offset": [
+        -0.0234,
+        0.0038
+      ],
+      "robot_spawn_world_m": [
+        1.4747288882326108,
+        -0.5327509262755378,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.4981288882326108,
+        0.5365509262755378
+      ],
+      "initial_state_sha256": "7d1d172ef9ee587a58595f8f35679cbba2a7082a5378a8176fbcf0ee9e24bf1a",
+      "initial_dual_rgb_sha256": "23c04f36219b4922ab9a9b61e3481247998e008e8fca156f70dc4812fcf6afa1",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835638084413152e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.4431584043166366e-05,
+      "replay_max_drawer_error": 2.255161248188031e-06,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "open_bottom",
+      "path": "outputs/data_readiness_v3/validation_001/open_bottom/episode.hdf5",
+      "sha256": "0ccad80adfe5defd9c5e5eb3140c945fdb00a2e1a5c44e19ee235dfbc0f503fc",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 601,
+      "scene_offset": [
+        -0.0234,
+        0.0038
+      ],
+      "robot_spawn_world_m": [
+        1.4747288882326108,
+        -0.5327509262755378,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.4981288882326108,
+        0.5365509262755378
+      ],
+      "initial_state_sha256": "7d1d172ef9ee587a58595f8f35679cbba2a7082a5378a8176fbcf0ee9e24bf1a",
+      "initial_dual_rgb_sha256": "23c04f36219b4922ab9a9b61e3481247998e008e8fca156f70dc4812fcf6afa1",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835638084413152e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 3.913314117198752e-11,
+      "replay_max_drawer_error": 5.763070853870289e-10,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "close_top",
+      "path": "outputs/data_readiness_v3/validation_001/close_top/episode.hdf5",
+      "sha256": "dd81992d9ca2755a389bba9946f7a0d80a71345d4a6a47eddcf88814e8ae5632",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 601,
+      "scene_offset": [
+        -0.0234,
+        0.0038
+      ],
+      "robot_spawn_world_m": [
+        1.4747288882326108,
+        -0.5327509262755378,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.4981288882326108,
+        0.5365509262755378
+      ],
+      "initial_state_sha256": "2136cf0076deb3f7ceefc4643f10ff13545a95a10bf70cca901a298d84bf37d3",
+      "initial_dual_rgb_sha256": "bc791f925def0b9c63bfd9e18e6566958c03e32bcc9940042d6f0a8d55789393",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.135096889814946e-06,
+      "replay_max_drawer_error": 7.396257727641537e-10,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "close_bottom",
+      "path": "outputs/data_readiness_v3/validation_001/close_bottom/episode.hdf5",
+      "sha256": "4154dc88b705827a3b9c529c14bf8998e586b1fabc1ac8b9dfea81de6e3ae8ba",
+      "frames": 570,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 601,
+      "scene_offset": [
+        -0.0234,
+        0.0038
+      ],
+      "robot_spawn_world_m": [
+        1.4747288882326108,
+        -0.5327509262755378,
+        0.0
+      ],
+      "camera_mapping": {
+        "observation.images.front": "cabinet_front_image",
+        "observation.images.wrist": "robot0_eye_in_hand_image"
+      },
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.4981288882326108,
+        0.5365509262755378
+      ],
+      "initial_state_sha256": "2136cf0076deb3f7ceefc4643f10ff13545a95a10bf70cca901a298d84bf37d3",
+      "initial_dual_rgb_sha256": "bc791f925def0b9c63bfd9e18e6566958c03e32bcc9940042d6f0a8d55789393",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.3053505407433228e-07,
+      "replay_max_drawer_error": 4.534437451431464e-07,
+      "selected": true,
+      "rejection_reasons": []
+    }
+  ]
+}

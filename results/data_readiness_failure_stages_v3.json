@@ -1,0 +1,348 @@
+{
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "mechanism_limit": "Measured waypoint tracking and stage timing only; no new contact replay or controller intervention in this frozen batch",
+  "episodes": [
+    {
+      "case": "open_bottom",
+      "episode": "outputs/data_readiness_v3/train_002/open_bottom/episode.hdf5",
+      "episode_sha256": "fdcefc1f903bc8781591b5aa51013cb31543e0434afc222416cb7b2e063bcf1f",
+      "language": "Open the bottom drawer.",
+      "seed": 502,
+      "spawn_world_m": [
+        0.5030693751945033,
+        -0.5908679864485282,
+        0.0
+      ],
+      "stages": [
+        {
+          "stage": "approach_above",
+          "steps": 70,
+          "final_fraction": 1.2826043483847072e-06,
+          "final_eef_waypoint_error_world_m": [
+            -0.15715454078343583,
+            0.03575099859328179,
+            0.0009155218196603698
+          ],
+          "final_eef_waypoint_error_norm_m": 0.16117233562082453
+        },
+        {
+          "stage": "align_height",
+          "steps": 140,
+          "final_fraction": 1.2826043483847072e-06,
+          "final_eef_waypoint_error_world_m": [
+            -0.004349067424388231,
+            0.0020354229533817714,
+            0.05194770610618549
+          ],
+          "final_eef_waypoint_error_norm_m": 0.05216916238311335
+        },
+        {
+          "stage": "reach_handle",
+          "steps": 120,
+          "final_fraction": -0.00017733544344534146,
+          "final_eef_waypoint_error_world_m": [
+            -0.00014353970527736237,
+            -0.020043632204212403,
+            0.04201152960186638
+          ],
+          "final_eef_waypoint_error_norm_m": 0.04654821602460428
+        },
+        {
+          "stage": "grasp",
+          "steps": 30,
+          "final_fraction": -0.00013161134086159726,
+          "final_eef_waypoint_error_world_m": [
+            -0.0006110087095874128,
+            -0.023256682751467694,
+            0.02170338020973095
+          ],
+          "final_eef_waypoint_error_norm_m": 0.03181640043709765
+        },
+        {
+          "stage": "pull",
+          "steps": 100,
+          "final_fraction": 9.587784655965268e-05,
+          "final_eef_waypoint_error_world_m": [
+            -0.008928016123197269,
+            0.004511389873788851,
+            0.009785792881360833
+          ],
+          "final_eef_waypoint_error_norm_m": 0.013993707614720529
+        },
+        {
+          "stage": "hold",
+          "steps": 20,
+          "final_fraction": 9.587784655965268e-05,
+          "final_eef_waypoint_error_world_m": [
+            -0.008937082684760789,
+            0.004401074230329871,
+            0.009799057748309248
+          ],
+          "final_eef_waypoint_error_norm_m": 0.013973633530682858
+        },
+        {
+          "stage": "release",
+          "steps": 25,
+          "final_fraction": 9.587784655965268e-05,
+          "final_eef_waypoint_error_world_m": [
+            -0.008932040419563636,
+            0.004372157417235845,
+            0.009816526130487557
+          ],
+          "final_eef_waypoint_error_norm_m": 0.013973592659311132
+        },
+        {
+          "stage": "retreat",
+          "steps": 40,
+          "final_fraction": 9.587784655965268e-05,
+          "final_eef_waypoint_error_world_m": [
+            -0.003922579106796942,
+            0.009507840028486259,
+            0.004108043991461474
+          ],
+          "final_eef_waypoint_error_norm_m": 0.01107527310237306
+        }
+      ],
+      "final_fraction": 9.587784655965268e-05,
+      "success_any": false,
+      "success_final": false,
+      "disposition": "Keep full failed episode; exclude from successful SFT candidates",
+      "replay_passed": true,
+      "replay_episode_sha256": "fdcefc1f903bc8781591b5aa51013cb31543e0434afc222416cb7b2e063bcf1f"
+    },
+    {
+      "case": "close_bottom",
+      "episode": "outputs/data_readiness_v3/train_002/close_bottom/episode.hdf5",
+      "episode_sha256": "82413a326f422749e40a245da69a8fa631dfe4d4299a1770eaeafa0360a4f149",
+      "language": "Close the bottom drawer.",
+      "seed": 502,
+      "spawn_world_m": [
+        0.5030693751945033,
+        -0.5908679864485282,
+        0.0
+      ],
+      "stages": [
+        {
+          "stage": "approach_above",
+          "steps": 70,
+          "final_fraction": 0.9655162708189292,
+          "final_eef_waypoint_error_world_m": [
+            -0.15716417209331113,
+            0.2627941036341722,
+            0.0009037587920244228
+          ],
+          "final_eef_waypoint_error_norm_m": 0.3062060330473881
+        },
+        {
+          "stage": "align_height",
+          "steps": 140,
+          "final_fraction": 0.9655162708189292,
+          "final_eef_waypoint_error_world_m": [
+            0.01957983605966418,
+            -0.021692196199806668,
+            0.16342981531833567
+          ],
+          "final_eef_waypoint_error_norm_m": 0.16602176330553636
+        },
+        {
+          "stage": "reach_handle",
+          "steps": 120,
+          "final_fraction": 0.9655162708189292,
+          "final_eef_waypoint_error_world_m": [
+            -0.007823714833773199,
+            0.0027645845409344227,
+            0.010386450802314817
+          ],
+          "final_eef_waypoint_error_norm_m": 0.013294051367174813
+        },
+        {
+          "stage": "grasp",
+          "steps": 30,
+          "final_fraction": 0.9716376334010948,
+          "final_eef_waypoint_error_world_m": [
+            -0.007881080957020226,
+            0.0007526492510722127,
+            0.0038737422681127676
+          ],
+          "final_eef_waypoint_error_norm_m": 0.0088138412230996
+        },
+        {
+          "stage": "push",
+          "steps": 100,
+          "final_fraction": 0.03802900964691814,
+          "final_eef_waypoint_error_world_m": [
+            -0.007820513335858426,
+            -0.0034919053705047554,
+            0.024080355439164425
+          ],
+          "final_eef_waypoint_error_norm_m": 0.02555811710649662
+        },
+        {
+          "stage": "hold",
+          "steps": 20,
+          "final_fraction": 0.035735099606115185,
+          "final_eef_waypoint_error_world_m": [
+            -0.007746526764367934,
+            -0.002708558004069439,
+            0.0246444372654957
+          ],
+          "final_eef_waypoint_error_norm_m": 0.025974858065164294
+        },
+        {
+          "stage": "release",
+          "steps": 25,
+          "final_fraction": 0.034880200859656166,
+          "final_eef_waypoint_error_world_m": [
+            -0.007655657715073039,
+            -0.0024074153233056284,
+            0.025133281485616
+          ],
+          "final_eef_waypoint_error_norm_m": 0.02638345280330935
+        },
+        {
+          "stage": "clear_handle",
+          "steps": 25,
+          "final_fraction": 0.01672446625466374,
+          "final_eef_waypoint_error_world_m": [
+            -0.00745731778515113,
+            0.0032217509911248166,
+            0.049847896693180016
+          ],
+          "final_eef_waypoint_error_norm_m": 0.050505485570693134
+        },
+        {
+          "stage": "retreat",
+          "steps": 40,
+          "final_fraction": 0.12415499251852448,
+          "final_eef_waypoint_error_world_m": [
+            -0.007701419332515336,
+            0.009797084623361707,
+            0.027380210589925236
+          ],
+          "final_eef_waypoint_error_norm_m": 0.03008273024180494
+        }
+      ],
+      "final_fraction": 0.12415499251852448,
+      "success_any": true,
+      "success_final": false,
+      "disposition": "Keep full failed episode; exclude from successful SFT candidates",
+      "replay_passed": true,
+      "replay_episode_sha256": "82413a326f422749e40a245da69a8fa631dfe4d4299a1770eaeafa0360a4f149"
+    },
+    {
+      "case": "open_top",
+      "episode": "outputs/data_readiness_v3/train_003/open_top/episode.hdf5",
+      "episode_sha256": "a56a431c0883a0530744d9c70d96de9324e5d8b842c57ecd8693302fcf1eb55c",
+      "language": "Open the top drawer.",
+      "seed": 503,
+      "spawn_world_m": [
+        0.5491511196075074,
+        -0.4922915583081079,
+        0.0
+      ],
+      "stages": [
+        {
+          "stage": "approach_above",
+          "steps": 70,
+          "final_fraction": 1.2826237647375705e-06,
+          "final_eef_waypoint_error_world_m": [
+            -0.13738848504340706,
+            0.13506338113263539,
+            0.0001500681587398578
+          ],
+          "final_eef_waypoint_error_norm_m": 0.19265963579835368
+        },
+        {
+          "stage": "align_height",
+          "steps": 60,
+          "final_fraction": 1.2826237647375705e-06,
+          "final_eef_waypoint_error_world_m": [
+            0.005718969546362196,
+            -0.005939798837173771,
+            0.046569988404118634
+          ],
+          "final_eef_waypoint_error_norm_m": 0.047294308778732065
+        },
+        {
+          "stage": "reach_handle",
+          "steps": 70,
+          "final_fraction": 1.2826237647375705e-06,
+          "final_eef_waypoint_error_world_m": [
+            -0.0006634077276681527,
+            -0.06914494949782796,
+            0.00029135820220571595
+          ],
+          "final_eef_waypoint_error_norm_m": 0.06914874576210549
+        },
+        {
+          "stage": "grasp",
+          "steps": 30,
+          "final_fraction": -0.00023006001714661345,
+          "final_eef_waypoint_error_world_m": [
+            0.0002740190093706296,
+            -0.024858035787278188,
+            0.002925861010609987
+          ],
+          "final_eef_waypoint_error_norm_m": 0.025031134458360197
+        },
+        {
+          "stage": "pull",
+          "steps": 100,
+          "final_fraction": 0.00014801829107386524,
+          "final_eef_waypoint_error_world_m": [
+            -0.00017366993853840107,
+            0.0007928241878156772,
+            -0.00035664679633362617
+          ],
+          "final_eef_waypoint_error_norm_m": 0.0008865260163540376
+        },
+        {
+          "stage": "hold",
+          "steps": 20,
+          "final_fraction": 0.00014801829107386524,
+          "final_eef_waypoint_error_world_m": [
+            -0.00020815153239106543,
+            0.0006513709393557443,
+            -0.00036352466194333743
+          ],
+          "final_eef_waypoint_error_norm_m": 0.0007744426001421611
+        },
+        {
+          "stage": "release",
+          "steps": 25,
+          "final_fraction": 0.00014801829107386524,
+          "final_eef_waypoint_error_world_m": [
+            -0.0002201780419945898,
+            0.000616186815099451,
+            -0.0003620230989740403
+          ],
+          "final_eef_waypoint_error_norm_m": 0.00074781367028809
+        },
+        {
+          "stage": "retreat",
+          "steps": 40,
+          "final_fraction": 0.00014801829107386524,
+          "final_eef_waypoint_error_world_m": [
+            0.001321812913875453,
+            0.006294600505261649,
+            -0.0006162411745747054
+          ],
+          "final_eef_waypoint_error_norm_m": 0.006461341817716297
+        }
+      ],
+      "final_fraction": 0.00014801829107386524,
+      "success_any": false,
+      "success_final": false,
+      "disposition": "Keep full failed episode; exclude from successful SFT candidates",
+      "replay_passed": true,
+      "replay_episode_sha256": "a56a431c0883a0530744d9c70d96de9324e5d8b842c57ecd8693302fcf1eb55c"
+    }
+  ],
+  "schema": "cabinet_collection_failure_stages_v3",
+  "findings": [
+    "Seed 502 lower opening never succeeded; no bilateral handle contact was reported. Reach waypoint error was about 46.5 mm, reducing to 31.8 mm by the end of grasp.",
+    "Seed 502 lower closing reached fraction 0.01672 at clearance, then reopened to 0.12415 during retreat. The end-of-clearance tool height was about 49.8 mm above its waypoint.",
+    "Seed 503 upper opening never succeeded and no bilateral handle contact was reported. Exact contact and posture mechanisms remain to be diagnosed."
+  ]
+}

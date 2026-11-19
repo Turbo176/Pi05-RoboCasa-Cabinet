@@ -148,6 +148,37 @@ Episodes are split by initialization condition, with separate training and valid
 
 ## 📊 Results
 
+### Cabinet-front collection (v3)
+
+Four fresh initializations, seeds **501 / 502 / 503 / 601**, each run all four instructions. The controller and collection files were frozen before recording. Success counts include failed attempts; these are scripted collection results.
+
+| Task | Stable successes / attempts |
+|---|---:|
+| Open top drawer | 3 / 4 |
+| Open bottom drawer | 3 / 4 |
+| Close top drawer | 4 / 4 |
+| Close bottom drawer | 3 / 4 |
+| **Total** | **13 / 16** |
+
+| Data check | Recorded result |
+|---|---|
+| Training candidates | **9 episodes · 4,305 frames**, all four commands represented on each robot spawn side |
+| Validation candidates | **4 episodes · 1,945 frames** |
+| Official LeRobot readback | **6,250 frames** checked against source RGB, state, action, language, and timestamp |
+| Action replays | **16 / 16** passed, including the three failed task episodes |
+| Maximum replay error | Joint `8.45 × 10⁻⁴ rad` · drawer opening `1.12 × 10⁻⁴` |
+| Action-chunk boundaries | **65 samples**, horizon **50**, same-episode padding |
+| CPU batch | Action `[4, 50, 7]` · state `[4, 9]` · RGB `[4, 3, 256, 256]` per view |
+
+Seed 502 failed to open and close the lower drawer; seed 503 failed to open the upper drawer. Full failures remain in raw storage and are excluded from successful candidates. Contact replay found a missed pad grasp for lower opening and residual lower-pad contact during closing retreat. The nominal clearance waypoint therefore does not cover every initialization. [Failure measurements](results/data_readiness_failure_stages_v3.json) · [Seed 502 contacts](results/contact_failures_seed502_v3.json).
+
+Paired prompts have identical initial physics and XML. One closing pair differed in three RGB pixels by one uint8 level; a separately recorded image QA profile accepts this bounded difference. Raw-to-LeRobot image readback still requires exact pixels. [Image QA protocol](configs/rgb_reset_audit_v1.json) · [Collection and reproduction](docs/DATA_READINESS_V3.md) · [Full report](results/sft_data_readiness_v3.json).
+
+Candidates require full-episode human visual acceptance before training. The validation set has one initialization on the right spawn side. The 40 reserved test conditions remain unexecuted; these measurements establish neither learned language following nor policy generalization.
+
+<details>
+<summary><strong>Earlier collection and development regression</strong></summary>
+
 ### Original collection (v1)
 
 Three initializations, seeds **101 / 102 / 201**, each run all four instructions in the `spaced` layout. Counts include every attempt.
@@ -192,6 +223,10 @@ These are development regression conditions. [Contact diagnosis](docs/CONTACT_CO
 | CPU batch shapes | Action `[4, 50, 7]` · state `[4, 9]` · each RGB view `[4, 3, 256, 256]` |
 
 The [experiment report](results/sft_data_readiness_v1.json) records provenance, file hashes, and raw statistics. These are scripted collection and data-pipeline results. π0.5 training and learned-policy rollouts have not been run; the [training and evaluation guide](docs/SERVER_AND_RL.md) describes the integration requirements.
+
+</details>
+
+π0.5 training and model rollouts have not been run. The [server integration guide](docs/SERVER_AND_RL.md) specifies processor, checkpoint, and closed-loop checks for the next stage.
 
 <a id="quickstart"></a>
 

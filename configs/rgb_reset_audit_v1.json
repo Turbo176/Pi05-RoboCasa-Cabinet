@@ -1,0 +1,30 @@
+{
+  "schema": "cabinet_rgb_reset_audit_v1",
+  "created_utc": "2026-11-19T05:14:49.178098+00:00",
+  "profile": "lsb_v1",
+  "role": "Image reset QA; not task scoring or a learned-policy evaluation",
+  "calibration": "Train seed 502 showed three one-channel differences of one uint8 level under identical recorded state and XML",
+  "calibration_report": "results/rgb_reset_difference_v3.json",
+  "calibration_report_sha256": "a527ce6c5ab7ceb6e75829b236a36d6b9f9060f8a9539381d41ecaf0b09b1987",
+  "bounds": {
+    "image_shape": [
+      256,
+      256,
+      3
+    ],
+    "dtype": "uint8",
+    "max_channel_error": 1,
+    "max_differing_pixels": 16
+  },
+  "physics_requirements": [
+    "identical XML",
+    "identical initial simulator state",
+    "identical robot spawn"
+  ],
+  "changes_to_task_success_thresholds": false,
+  "raw_images_modified": false,
+  "export_readback_comparison": "exact all RGB pixels",
+  "source": "src/pi05_cabinet/validation.py",
+  "source_sha256": "eaa6e405b231fb0bdc84645300298df782ebd55b270de9dbd9acf658f2802c67",
+  "strict_audits_preserved": true
+}

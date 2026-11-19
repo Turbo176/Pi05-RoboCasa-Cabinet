@@ -1,0 +1,72 @@
+{
+  "schema": "cabinet_rgb_reset_diagnostic_v1",
+  "source": "RAW_RESET_IMAGE_AUDIT",
+  "learned_policy": false,
+  "role": "Post-collection data QA calibration",
+  "seed": 502,
+  "task_pair": [
+    "Close the top drawer.",
+    "Close the bottom drawer."
+  ],
+  "episodes": [
+    {
+      "path": "outputs/data_readiness_v3/train_002/close_top/episode.hdf5",
+      "sha256": "689e0b83b768df6971da10576f6d4c497d8e7cfdd7d713cc3734877fd5ea2d32"
+    },
+    {
+      "path": "outputs/data_readiness_v3/train_002/close_bottom/episode.hdf5",
+      "sha256": "82413a326f422749e40a245da69a8fa631dfe4d4299a1770eaeafa0360a4f149"
+    }
+  ],
+  "model_xml_identical": true,
+  "initial_physics_state_max_error": 0.0,
+  "strict_rgb_comparison": {
+    "profile": "exact",
+    "bitwise_identical": false,
+    "max_channel_error_uint8": 1,
+    "differing_pixels": 3,
+    "differing_channels": 3,
+    "allowed_channel_error_uint8": 0,
+    "allowed_differing_pixels": 0,
+    "passed": false
+  },
+  "bounded_rgb_comparison": {
+    "profile": "lsb_v1",
+    "bitwise_identical": false,
+    "max_channel_error_uint8": 1,
+    "differing_pixels": 3,
+    "differing_channels": 3,
+    "allowed_channel_error_uint8": 1,
+    "allowed_differing_pixels": 16,
+    "passed": true
+  },
+  "differences": [
+    {
+      "raw_row": 44,
+      "column": 245,
+      "channel": 0,
+      "first": 153,
+      "second": 152
+    },
+    {
+      "raw_row": 46,
+      "column": 240,
+      "channel": 1,
+      "first": 158,
+      "second": 157
+    },
+    {
+      "raw_row": 47,
+      "column": 241,
+      "channel": 2,
+      "first": 144,
+      "second": 143
+    }
+  ],
+  "image_convention": "Raw OpenGL bottom-left RGB",
+  "interpretation": "Three one-channel, one-level image discrepancies under identical recorded physics state and XML",
+  "cause_limit": "The numerical image discrepancy is measured; its driver or rasterization mechanism is not established",
+  "task_success_thresholds_changed": false,
+  "physics_equality_tolerance_changed": false,
+  "tests": "Exact-image match passes; a 2-level change or 17 one-level pixels fails the bounded profile"
+}

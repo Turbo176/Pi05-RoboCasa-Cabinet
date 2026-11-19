@@ -10,6 +10,8 @@
 
 训练数据只用经人工确认且按episode划分的示教。现有开发pilot和新初始化的小批成功候选仍不足以支持模型质量或泛化结论；划分、排除失败轨迹与数据读取检查见 [SFT数据准备](DATA_READINESS.md)。服务器应读取固定manifest与train统计量，不能混入开发集或validation统计量。先把9维state、7维action与两路RGB送入官方processor，检查图像归一化、state量化、action缩放和padding；预测后必须用同一postprocessor反归一化。
 
+目前候选批次为[前视相机v3](DATA_READINESS_V3.md)：train 9条/4305帧、validation 4条/1945帧，完整6250帧官方重读与65个动作块边界核对通过。训练候选覆盖两侧四指令，但量少且未完成人工逐段验收；不能直接据此宣称已可训练出稳定策略。新模型固定使用`cabinet_front`加腕部RGB，禁止把旧`robot_left`候选混入同一数据集。训练/推理都要保留相机配置、数据manifest及train统计量hash。
+
 当前上游PI05Config有chunk_size、n_action_steps、量化归一化及图像processor配置。拟先预测H=50、执行前k=5步后更新观测（20Hz），这些参数仍需模型接口与延迟实测。必须保留完整processor与dataset统计量，不能仅保存safetensors。
 
 每个run保存代码/数据hash、配置、训练/验证划分、随机状态、optimizer/scheduler、step、完整模型/processor与归一化统计。断点恢复须经过短训练验证。服务器只在本地已验证的数据格式和动作契约上继续；不切换任务平台。

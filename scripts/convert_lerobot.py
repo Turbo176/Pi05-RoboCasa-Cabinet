@@ -61,7 +61,9 @@ def main():
                 camera_mapping=camera_mapping,
                 language=meta["lang"], success_final=bool(file["success"][-1])))
             if "scene_parameters" in meta:
-                provenance[-1].update(target_drawer=meta["target_drawer"], scene_parameters=meta["scene_parameters"],
+                provenance[-1]["scene_parameters"] = meta["scene_parameters"]
+            if "target_drawer" in meta:
+                provenance[-1].update(target_drawer=meta["target_drawer"],
                     non_target_max_drift=float(file["evaluation/non_target_max_drift"][-1]),
                     non_target_tolerance=meta["non_target_tolerance"])
             total += n
@@ -120,6 +122,7 @@ def main():
         cameras=list(IMAGE_KEYS), image_storage="lossless PNG embedded in Parquet",
         all_frames_compared=True, official_loader_passed=True,
         no_upload=True, learned_policy=False, source_episodes=provenance)
+    report["conversion_code_sha256"] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     (args.output / "conversion_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps(report, indent=2))
 
