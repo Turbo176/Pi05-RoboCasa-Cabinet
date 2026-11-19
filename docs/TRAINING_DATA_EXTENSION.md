@@ -196,3 +196,9 @@ and rejections without reasons. It records the declarations without changing
 the original datasets or their automatic selection. Future training must use
 episodes that pass both automatic selection and human acceptance. Keep
 rejections and their reasons when preparing the final training manifest.
+
+The local review page uses Chinese labels and task translations. It preserves
+the original English task strings, export values (`pending`, `accept`,
+`reject`), inventory hash and browser storage key, so existing progress and
+annotation files remain compatible. The recorded videos retain their original
+overlays.
