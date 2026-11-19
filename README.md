@@ -38,18 +38,19 @@ A **MuJoCo + RoboCasa/robosuite** workflow for drawer opening, closing, and lang
 ### Two drawers, four instructions
 
 <p align="center">
-  <a href="assets/demo/drawer_pair_scripted_pilot.mp4">
-    <img src="assets/demo/drawer_pair_scripted_pilot.gif" width="880" alt="Four independent scripted PandaOmron drawer rollouts">
+  <a href="assets/demo/feedback_four_commands_v4.mp4">
+    <img src="assets/demo/feedback_four_commands_v4.gif" width="880" alt="Four complete scripted drawer episodes, each showing recorded cabinet-front and wrist RGB">
   </a>
 </p>
 
 <p align="center">
-  <strong>Scripted contact control · 20 FPS · 1× simulation speed</strong><br>
-  <a href="assets/demo/drawer_pair_scripted_pilot.mp4">▶ Watch MP4</a> &nbsp;·&nbsp;
-  <a href="docs/MULTI_DRAWER.md">Scene and controller details</a>
+  <strong>Pose and contact feedback · Recorded policy views · 20 FPS · 1× simulation speed</strong><br>
+  <a href="assets/demo/feedback_four_commands_v4.mp4">▶ Watch MP4</a> &nbsp;·&nbsp;
+  <a href="docs/DATA_READINESS_V4.md">Collection and replay checks</a> &nbsp;·&nbsp;
+  <a href="results/collection_review_v4.json">Source hashes</a>
 </p>
 
-The four panes show opening the top drawer, opening the bottom drawer, closing the top drawer, and closing the bottom drawer. Each pane is an independent episode; shorter clips hold their final frame. The overlay reports the instruction, drawer openings, and non-target movement.
+The four panes show opening the top drawer, opening the bottom drawer, closing the top drawer, and closing the bottom drawer on the first frozen training condition, seed 701. Each pane contains the actual cabinet-front and wrist RGB stored in its recording. Episodes run independently; shorter clips hold their final frame. Overlays show the instruction, stage, measured openings, and non-target movement. [Earlier overview-camera MP4](assets/demo/drawer_pair_scripted_pilot.mp4).
 
 <details>
 <summary><strong>▶ Single-drawer opening and closing</strong></summary>
@@ -80,7 +81,7 @@ The original closing trajectory reopened the drawer during retreat. Lowering the
 
 [▶ Comparison MP4](assets/demo/withdraw_clearance_v2.mp4) · [Contact measurements and reproduction](docs/CONTACT_CONTROL.md)
 
-The optional [`feedback_v4` collector](docs/FEEDBACK_COLLECTOR.md) also checks actual alignment and pad contact before advancing stages. It completed 20 reused development conditions, with the three diagnosed training failures re-recorded and replayed. These are scripted controller checks; the frozen v3 dataset results below retain their original counts.
+The optional [`feedback_v4` collector](docs/FEEDBACK_COLLECTOR.md) checks measured alignment and pad contact before advancing stages. Its 20 reused development trajectories and three failure re-recordings are documented separately from the fresh collection below.
 
 </details>
 
@@ -150,6 +151,37 @@ Episodes are split by initialization condition, with separate training and valid
 
 ## 📊 Results
 
+### Feedback-gated collection (v4)
+
+Four fresh initializations, seeds **701 / 702 / 703 / 801**, each run all four instructions with the frozen `feedback_v4` controller. Counts cover all attempts in this small scripted collection.
+
+| Task | Stable successes / attempts |
+|---|---:|
+| Open top drawer | 4 / 4 |
+| Open bottom drawer | 4 / 4 |
+| Close top drawer | 4 / 4 |
+| Close bottom drawer | 4 / 4 |
+| **Total** | **16 / 16** |
+
+| Data check | Recorded result |
+|---|---|
+| Training candidates | **12 episodes · 4,379 frames**, all four commands on both robot spawn sides |
+| Validation candidates | **4 episodes · 1,465 frames**, one left-side initialization |
+| Official LeRobot readback | **5,844 frames** checked against both raw RGB views, state, action, language, and timestamp |
+| Completed feedback stages / action replays | **16 / 16** each; longest trajectory **425 / 600** actions |
+| Maximum replay error | Joint `8.12 × 10⁻¹¹ rad` · drawer opening `4.75 × 10⁻¹⁰` |
+| Action-chunk boundaries | **80 samples**, horizon **50**, same-episode padding |
+| CPU batch | Action `[4, 50, 7]` · state `[4, 9]` · RGB `[4, 3, 256, 256]` per view |
+
+Success requires target opening **≥ 0.95** for opening or **≤ 0.05** for closing, cumulative non-target drift **≤ 0.05**, and success over the **final 10 steps**. The control budget is **600 actions at 20 Hz**. Selection also requires every feedback stage to complete.
+
+All eight prompt pairs have exactly equal initial physics and XML. Training RGB is bit-identical; both validation pairs differ at the same three frontal pixels by one uint8 level. The strict failure is retained, and a separate audit uses the previously fixed `lsb_v1` image profile. Exported RGB still matches its raw source pixel-for-pixel. [Reset measurements](results/rgb_reset_difference_v4.json).
+
+These are successful demonstration candidates. Full-episode human visual acceptance and broader initialization coverage are still needed for SFT. The 40 reserved test conditions remain unexecuted. π0.5 training and learned-policy evaluation have not been run. [Protocol and commands](docs/DATA_READINESS_V4.md) · [Full data report](results/sft_data_readiness_v4.json) · [Review media provenance](results/collection_review_v4.json).
+
+<details>
+<summary><strong>Earlier cabinet-front collection (v3)</strong></summary>
+
 ### Cabinet-front collection (v3)
 
 Four fresh initializations, seeds **501 / 502 / 503 / 601**, each run all four instructions. The controller and collection files were frozen before recording. Success counts include failed attempts; these are scripted collection results.
@@ -177,6 +209,8 @@ Seed 502 failed to open and close the lower drawer; seed 503 failed to open the 
 Paired prompts have identical initial physics and XML. One closing pair differed in three RGB pixels by one uint8 level; a separately recorded image QA profile accepts this bounded difference. Raw-to-LeRobot image readback still requires exact pixels. [Image QA protocol](configs/rgb_reset_audit_v1.json) · [Collection and reproduction](docs/DATA_READINESS_V3.md) · [Full report](results/sft_data_readiness_v3.json).
 
 Candidates require full-episode human visual acceptance before training. The validation set has one initialization on the right spawn side. The 40 reserved test conditions remain unexecuted; these measurements establish neither learned language following nor policy generalization.
+
+</details>
 
 <details>
 <summary><strong>Earlier collection and development regression</strong></summary>
@@ -307,6 +341,7 @@ scripts/
   convert_lerobot.py    # Official export and frame-level verification
   evaluate_drawer_pair.py / run_pair_pilot.ps1
   prepare_sft_data.py   # Splits, selection, action-chunk checks
+  make_collection_review.py # Full recorded policy-view videos and keyframes
 configs/                # Initialization conditions, splits, frozen code hashes
 requirements/           # Simulation and CPU dataset dependencies
 docs/                   # Setup, collection, data, and model integration
@@ -319,11 +354,11 @@ assets/readme/          # Project icon and self-hosted badges
 
 <a id="references"></a>
 
-## 📚 References and license
+## 📚 Dependencies and license
 
 This repository implements the Lite layouts, target-instruction binding, non-target movement checks, Windows compatibility layer, contact controller, and recording / replay / dataset verification tools.
 
-The physics engine, robot, drawer fixtures, textures, dataset API, and base model come from **MuJoCo, RoboCasa, robosuite, LeRobot, and Physical Intelligence**, respectively. Engineering organization, collection and deployment workflows, and presentation are informed by [Pi05-Mujoco](https://github.com/metro8116/Pi05-Mujoco) and [Pi05-FR3-Gello](https://github.com/metro8116/Pi05-FR3-Gello).
+Simulation uses **MuJoCo**, with the robot, drawer fixtures, and textures supplied by **RoboCasa and robosuite**. Dataset tooling uses **LeRobot**. The π0.5 base model is provided by **Physical Intelligence**.
 
 [📖 Attribution and pinned upstream versions](docs/ATTRIBUTION.md) &nbsp;·&nbsp; [📝 Changelog](CHANGELOG.md) &nbsp;·&nbsp; [⚖️ MIT License](LICENSE)
 

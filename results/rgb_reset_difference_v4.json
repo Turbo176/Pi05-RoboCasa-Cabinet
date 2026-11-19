@@ -1,0 +1,540 @@
+{
+  "schema": "cabinet_rgb_reset_difference_v1",
+  "batch": "v4",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "plan_sha256": "825826bc5db92b3cb275e8c73c016940914bfabc5d19ce4328a8e0c8ef331c75",
+  "profile_path": "configs/rgb_reset_audit_v1.json",
+  "profile_sha256": "af46adad8fce1b4f928ce57df9bd306cc51bfc2ad64c7373e5161d3d81a636e7",
+  "profile_rule": "Previously fixed lsb_v1: at most 16 pixels per view and one uint8 level per channel; no physical/XML tolerance",
+  "strict_audit": {
+    "passed_conditions": [
+      "train_001",
+      "train_002",
+      "train_003"
+    ],
+    "failed_condition": "validation_001",
+    "log": "outputs/data_readiness_v4/validation_001.log",
+    "log_sha256": "cf2426113abf62f89b3b072c34cb901dd89e87e315d133a78277b0b65e94914c"
+  },
+  "exact_rgb_pairs": 6,
+  "total_pairs": 8,
+  "named_profile_passed_pairs": 8,
+  "all_initial_states_and_xml_exact": true,
+  "cause": "Pixel differences measured; rendering mechanism not isolated. No controller, physics, success or profile tuning on validation.",
+  "raw_to_lerobot_pixels": "Must still match exactly; reset profile does not apply to export readback",
+  "pairs": [
+    {
+      "condition_id": "train_001",
+      "task": "OpenDrawerPairLite",
+      "seed": 701,
+      "top_episode_sha256": "a45a7482ecebe0a2446a60e6485b870f6f30eb19be85f272cc13fe64bfcb9040",
+      "bottom_episode_sha256": "669864d9aefe3fa02beeb68c8f62fe456de6ac46d54c6cae93317d4f474a65df",
+      "exact_rgb_passed": true,
+      "measured_lsb_v1_check": {
+        "task": "OpenDrawerPairLite",
+        "seed": 701,
+        "scene_offset": [
+          -0.0153,
+          -0.0264
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.4894045120216701,
+          -0.5898841745258072,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": []
+    },
+    {
+      "condition_id": "train_001",
+      "task": "CloseDrawerPairLite",
+      "seed": 701,
+      "top_episode_sha256": "34bb2304999f0918b88023107b9015a06dad2ae91c0036a808614442ae7e67da",
+      "bottom_episode_sha256": "bdf4bdc86767f997d4f8acb9c29d6a0e924628ebe9a7c31cdf86b9f1f627e17e",
+      "exact_rgb_passed": true,
+      "measured_lsb_v1_check": {
+        "task": "CloseDrawerPairLite",
+        "seed": 701,
+        "scene_offset": [
+          -0.0153,
+          -0.0264
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          1.4894045120216701,
+          -0.5898841745258072,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": []
+    },
+    {
+      "condition_id": "train_002",
+      "task": "OpenDrawerPairLite",
+      "seed": 702,
+      "top_episode_sha256": "85f5df40aa937a39c3c3dc36fceb6700f67f7e24bb0f69aa04024f425d9cead7",
+      "bottom_episode_sha256": "29a36c69ef7f4095942aa6921726f9982037f69a74baefac861ecb9dcce9c470",
+      "exact_rgb_passed": true,
+      "measured_lsb_v1_check": {
+        "task": "OpenDrawerPairLite",
+        "seed": 702,
+        "scene_offset": [
+          -0.0306,
+          -0.0241
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.43364778997103415,
+          -0.6401486392903584,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": []
+    },
+    {
+      "condition_id": "train_002",
+      "task": "CloseDrawerPairLite",
+      "seed": 702,
+      "top_episode_sha256": "c61c55cb4f8497ca9f2d4e1438ac3e2c783348fec2fd2bf9520183a273cc09a9",
+      "bottom_episode_sha256": "7473f237b9f95d591882def02b686e9ad91d8d7c2c05d562adafecc52ad210d1",
+      "exact_rgb_passed": true,
+      "measured_lsb_v1_check": {
+        "task": "CloseDrawerPairLite",
+        "seed": 702,
+        "scene_offset": [
+          -0.0306,
+          -0.0241
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.43364778997103415,
+          -0.6401486392903584,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": []
+    },
+    {
+      "condition_id": "train_003",
+      "task": "OpenDrawerPairLite",
+      "seed": 703,
+      "top_episode_sha256": "8cea94f8725edf25cfcaf41e98bcb8c933e9197faa18cb821098a91002e3028e",
+      "bottom_episode_sha256": "d37ba1dacdc51e0f2ebc04ebb17194e6509cb6154de35c572dfbb71c80b00318",
+      "exact_rgb_passed": true,
+      "measured_lsb_v1_check": {
+        "task": "OpenDrawerPairLite",
+        "seed": 703,
+        "scene_offset": [
+          -0.0057,
+          0.0247
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.47461837964932185,
+          -0.5695506738129318,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": []
+    },
+    {
+      "condition_id": "train_003",
+      "task": "CloseDrawerPairLite",
+      "seed": 703,
+      "top_episode_sha256": "7b2de9c6fe5c2d175522d8f21270306cec3034ce96741f50225afefc7e7a0d6e",
+      "bottom_episode_sha256": "41a891081b9cbcbd11662afaa24e615bc93869e77819719ebf153125f0bb391a",
+      "exact_rgb_passed": true,
+      "measured_lsb_v1_check": {
+        "task": "CloseDrawerPairLite",
+        "seed": 703,
+        "scene_offset": [
+          -0.0057,
+          0.0247
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": true,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.47461837964932185,
+          -0.5695506738129318,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": []
+    },
+    {
+      "condition_id": "validation_001",
+      "task": "OpenDrawerPairLite",
+      "seed": 801,
+      "top_episode_sha256": "fd8a8203651ba9be8f05a1f4e314c13a8bc9f528656e3e1df3d26880f3f3fdd6",
+      "bottom_episode_sha256": "f70226264c15f226a25e7c2e9a8a073a36309943ec27d378ce7ab22d14cf1533",
+      "exact_rgb_passed": false,
+      "measured_lsb_v1_check": {
+        "task": "OpenDrawerPairLite",
+        "seed": 801,
+        "scene_offset": [
+          0.0356,
+          -0.0072
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": false,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": false,
+            "max_channel_error_uint8": 1,
+            "differing_pixels": 3,
+            "differing_channels": 3,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.5032228737985964,
+          -0.5427466834903178,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": [
+        {
+          "camera": "cabinet_front_image",
+          "raw_opengl_row_col": [
+            44,
+            245
+          ],
+          "top_prompt_rgb": [
+            152,
+            146,
+            140
+          ],
+          "bottom_prompt_rgb": [
+            153,
+            146,
+            140
+          ]
+        },
+        {
+          "camera": "cabinet_front_image",
+          "raw_opengl_row_col": [
+            46,
+            240
+          ],
+          "top_prompt_rgb": [
+            163,
+            157,
+            151
+          ],
+          "bottom_prompt_rgb": [
+            163,
+            158,
+            151
+          ]
+        },
+        {
+          "camera": "cabinet_front_image",
+          "raw_opengl_row_col": [
+            47,
+            241
+          ],
+          "top_prompt_rgb": [
+            159,
+            150,
+            143
+          ],
+          "bottom_prompt_rgb": [
+            159,
+            150,
+            144
+          ]
+        }
+      ]
+    },
+    {
+      "condition_id": "validation_001",
+      "task": "CloseDrawerPairLite",
+      "seed": 801,
+      "top_episode_sha256": "134472fa9403da1eee79c0994cdb36fe6a9d38de46edd5cab62de601d01818f7",
+      "bottom_episode_sha256": "a2da9ea325ab627f40769a1460978150805ee4db9fc88c32aa80712d39aa006e",
+      "exact_rgb_passed": false,
+      "measured_lsb_v1_check": {
+        "task": "CloseDrawerPairLite",
+        "seed": 801,
+        "scene_offset": [
+          0.0356,
+          -0.0072
+        ],
+        "pair_layout": "spaced",
+        "max_initial_state_error": 0.0,
+        "initial_dual_rgb_identical": false,
+        "rgb_reset_check": "lsb_v1",
+        "initial_dual_rgb_passed": true,
+        "image_reset_checks": {
+          "cabinet_front_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": false,
+            "max_channel_error_uint8": 1,
+            "differing_pixels": 3,
+            "differing_channels": 3,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          },
+          "robot0_eye_in_hand_image": {
+            "profile": "lsb_v1",
+            "bitwise_identical": true,
+            "max_channel_error_uint8": 0,
+            "differing_pixels": 0,
+            "differing_channels": 0,
+            "allowed_channel_error_uint8": 1,
+            "allowed_differing_pixels": 16,
+            "passed": true
+          }
+        },
+        "model_xml_identical": true,
+        "robot_base_position": [
+          0.5032228737985964,
+          -0.5427466834903178,
+          0.0
+        ],
+        "passed": true
+      },
+      "differing_pixel_values": [
+        {
+          "camera": "cabinet_front_image",
+          "raw_opengl_row_col": [
+            44,
+            245
+          ],
+          "top_prompt_rgb": [
+            152,
+            146,
+            140
+          ],
+          "bottom_prompt_rgb": [
+            153,
+            146,
+            140
+          ]
+        },
+        {
+          "camera": "cabinet_front_image",
+          "raw_opengl_row_col": [
+            46,
+            240
+          ],
+          "top_prompt_rgb": [
+            163,
+            157,
+            151
+          ],
+          "bottom_prompt_rgb": [
+            163,
+            158,
+            151
+          ]
+        },
+        {
+          "camera": "cabinet_front_image",
+          "raw_opengl_row_col": [
+            47,
+            241
+          ],
+          "top_prompt_rgb": [
+            159,
+            150,
+            143
+          ],
+          "bottom_prompt_rgb": [
+            159,
+            150,
+            144
+          ]
+        }
+      ]
+    }
+  ]
+}

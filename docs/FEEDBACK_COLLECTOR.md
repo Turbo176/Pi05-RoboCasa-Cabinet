@@ -132,3 +132,8 @@ runner rejects overrides, and SFT selection rejects a mismatched controller
 or incomplete feedback execution. Review the next small batch before expanding
 collection. The server SFT and policy rollout stages follow the existing
 [training and evaluation contract](SERVER_AND_RL.md).
+
+The subsequent [v4 collection](DATA_READINESS_V4.md) ran fresh seeds
+701, 702, 703 and 801 with this frozen controller. All 16 trajectories completed
+and replayed, and 5,844 exported frames passed official LeRobot readback. Those
+collection results are separate from the reused development regressions above.
