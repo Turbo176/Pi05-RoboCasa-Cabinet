@@ -1,0 +1,866 @@
+{
+  "schema": "cabinet_data_readiness_report_v1",
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "plan_sha256": "26193995c32f355815426660cb2727d48de7f0e06d8aad7f1d4c50985e481a46",
+  "selection_manifest_sha256": "c35c66e8db8af7186640ad9ff6da4f9abb3a23336476d009fee0b9dd47ce5d0f",
+  "selection_manifest": "data/lerobot/sft_readiness_v1/selection_manifest.json",
+  "attempted_episodes": 12,
+  "selected_episodes": 11,
+  "stable_success_count": 11,
+  "max_replay_joint_error_rad": 0.0004817501059806162,
+  "max_replay_drawer_error": 5.1834438165920815e-05,
+  "non_target_max_drift": 3.835449641357276e-09,
+  "splits": {
+    "train": {
+      "attempted": 8,
+      "selected": 7,
+      "rejected": 1,
+      "frames": 3295,
+      "selected_prompt_counts": {
+        "Open the top drawer.": 2,
+        "Open the bottom drawer.": 2,
+        "Close the top drawer.": 2,
+        "Close the bottom drawer.": 1
+      },
+      "selected_prompt_spawn_side_counts": {
+        "Open the top drawer. | robot=right": 1,
+        "Open the bottom drawer. | robot=right": 1,
+        "Close the top drawer. | robot=right": 1,
+        "Close the bottom drawer. | robot=right": 1,
+        "Open the top drawer. | robot=left": 1,
+        "Open the bottom drawer. | robot=left": 1,
+        "Close the top drawer. | robot=left": 1
+      },
+      "all_four_prompts_present": true,
+      "dataset": "data/lerobot/sft_readiness_v1/train",
+      "official_all_frames_passed": true,
+      "chunk_check": {
+        "chunk_size": 50,
+        "action_shape": [
+          50,
+          7
+        ],
+        "boundary_samples_checked": 35,
+        "official_action_padding_passed": true,
+        "cross_episode_actions_observed": false,
+        "cpu_batch_action_shape": [
+          4,
+          50,
+          7
+        ],
+        "cpu_batch_state_shape": [
+          4,
+          9
+        ],
+        "cpu_batch_rgb_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "cpu_batch_language_passed": true,
+        "stats_sha256": "6a68e37e3fb518c1320b447e0976335343bda8406e547dda78166cbb1543b213",
+        "vector_stats": {
+          "observation.state": {
+            "min": [
+              -0.559535026550293,
+              -1.7664868831634521,
+              -2.075126886367798,
+              -2.71985125541687,
+              -0.4763907492160797,
+              0.8083819150924683,
+              -2.7693235874176025,
+              -0.0002757966285571456,
+              -0.040186598896980286
+            ],
+            "max": [
+              0.44211694598197937,
+              -1.0151891708374023,
+              2.0963540077209473,
+              -0.44909247756004333,
+              0.45276907086372375,
+              2.6924655437469482,
+              1.3753734827041626,
+              0.03895309194922447,
+              -0.001131779165007174
+            ],
+            "mean": [
+              -0.015879988769275648,
+              -1.6320507251438494,
+              0.30073981201883876,
+              -2.011787959223271,
+              -0.12807610214084433,
+              2.051840169295917,
+              -0.35247229037407857,
+              0.029090224780786742,
+              -0.03117685644337639
+            ],
+            "std": [
+              0.23206492652576838,
+              0.1765962190093061,
+              1.48752720095515,
+              0.3852567999177743,
+              0.1593333263503805,
+              0.42004900939838996,
+              1.5035889221990626,
+              0.013716536683301635,
+              0.012649935352909777
+            ],
+            "q01": [
+              -0.3364409483076046,
+              -1.7630502016434604,
+              -0.6629803296500797,
+              -2.691475986909794,
+              -0.31562903967879613,
+              1.3531576301964714,
+              -1.1121560579219518,
+              0.007468039094180197,
+              -0.04006245072806686
+            ],
+            "q99": [
+              0.308926854043385,
+              -1.1057776865720388,
+              1.0663240359368564,
+              -1.317771661272541,
+              0.07907056582806143,
+              2.6444495067878604,
+              0.9335368575951203,
+              0.03894996114352113,
+              -0.012843280879602256
+            ]
+          },
+          "action": {
+            "min": [
+              -0.3499999940395355,
+              -0.3499999940395355,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.1208956316113472,
+              -1.0
+            ],
+            "max": [
+              0.3499999940395355,
+              0.3499999940395355,
+              0.3499999940395355,
+              0.0474829338490963,
+              0.011869087815284729,
+              0.5,
+              1.0
+            ],
+            "mean": [
+              -0.03508870924324114,
+              0.010346339102580076,
+              -0.08176879034757795,
+              -0.026391065347380088,
+              -0.03549436785631187,
+              0.02044542156490575,
+              -0.362670704971134
+            ],
+            "std": [
+              0.2590104535281212,
+              0.1702903457095222,
+              0.1751285526380166,
+              0.09972119726951777,
+              0.0918269216650776,
+              0.08635733415264289,
+              0.9319173762206456
+            ],
+            "q01": [
+              -0.3499999940395355,
+              -0.19031110935606352,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.032270971502351246,
+              -1.0
+            ],
+            "q99": [
+              0.3499919836240216,
+              0.23555483968611793,
+              0.349953315100582,
+              0.009583943425114656,
+              0.004710400943922711,
+              0.49994329599023885,
+              0.9999872110293981
+            ]
+          }
+        }
+      }
+    },
+    "validation": {
+      "attempted": 4,
+      "selected": 4,
+      "rejected": 0,
+      "frames": 1920,
+      "selected_prompt_counts": {
+        "Open the top drawer.": 1,
+        "Open the bottom drawer.": 1,
+        "Close the top drawer.": 1,
+        "Close the bottom drawer.": 1
+      },
+      "selected_prompt_spawn_side_counts": {
+        "Open the top drawer. | robot=right": 1,
+        "Open the bottom drawer. | robot=right": 1,
+        "Close the top drawer. | robot=right": 1,
+        "Close the bottom drawer. | robot=right": 1
+      },
+      "all_four_prompts_present": true,
+      "dataset": "data/lerobot/sft_readiness_v1/validation",
+      "official_all_frames_passed": true,
+      "chunk_check": {
+        "chunk_size": 50,
+        "action_shape": [
+          50,
+          7
+        ],
+        "boundary_samples_checked": 20,
+        "official_action_padding_passed": true,
+        "cross_episode_actions_observed": false,
+        "cpu_batch_action_shape": [
+          4,
+          50,
+          7
+        ],
+        "cpu_batch_state_shape": [
+          4,
+          9
+        ],
+        "cpu_batch_rgb_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "cpu_batch_language_passed": true,
+        "stats_sha256": "94e4cfe9e27f961976875942a071be5b363381f066297f8e057e2e0d4f1d2f1f",
+        "vector_stats": {
+          "observation.state": {
+            "min": [
+              -0.6146534085273743,
+              -1.7645188570022583,
+              -0.039613738656044006,
+              -2.6720168590545654,
+              -0.47878605127334595,
+              1.3284060955047607,
+              -0.19481012225151062,
+              0.0037443642504513264,
+              -0.04004398733377457
+            ],
+            "max": [
+              0.25333523750305176,
+              -1.0756810903549194,
+              2.0999064445495605,
+              -1.3264676332473755,
+              0.2297787219285965,
+              2.7859880924224854,
+              1.384592056274414,
+              0.03895314782857895,
+              -0.012133194133639336
+            ],
+            "mean": [
+              -0.0728708837996237,
+              -1.5870844796299934,
+              1.4776970731715362,
+              -2.0708781589443483,
+              -0.09681564643688034,
+              2.129407413924734,
+              0.8247894571783642,
+              0.0299034483274833,
+              -0.031930022722614616
+            ],
+            "std": [
+              0.26174408184008324,
+              0.18834960909006618,
+              0.5657874351739481,
+              0.2808927041715977,
+              0.18457905691734275,
+              0.3932156528710505,
+              0.4749944472152277,
+              0.012596717723177043,
+              0.011436397578854647
+            ],
+            "q01": [
+              -0.5493143007081623,
+              -1.7629858373297802,
+              0.047053655613369,
+              -2.650075148139149,
+              -0.28101890710434724,
+              1.4588517216267065,
+              -0.19207799412931006,
+              0.009245181201804372,
+              -0.04004323051776737
+            ],
+            "q99": [
+              0.2527152167710786,
+              -1.1583634975055854,
+              1.829057042111067,
+              -1.5812810781722269,
+              0.13210488615053084,
+              2.721052336025362,
+              1.2121706349826384,
+              0.03895034094307395,
+              -0.014015097862783193
+            ]
+          },
+          "action": {
+            "min": [
+              -0.3499999940395355,
+              -0.05473844334483147,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.014692074619233608,
+              -1.0
+            ],
+            "max": [
+              0.3499999940395355,
+              0.3499999940395355,
+              0.3499999940395355,
+              0.018984301015734673,
+              0.006688588298857212,
+              0.5,
+              1.0
+            ],
+            "mean": [
+              -0.02733645408200876,
+              0.07407323854082885,
+              -0.0775762474804651,
+              -0.024909565448372934,
+              -0.029341115819988772,
+              0.018287538153041776,
+              -0.3749999909972151
+            ],
+            "std": [
+              0.24882459906978424,
+              0.14786418562034334,
+              0.16384654643017024,
+              0.10061785103578191,
+              0.0886258059655915,
+              0.07896324732076002,
+              0.9270248322192386
+            ],
+            "q01": [
+              -0.3499999940395355,
+              -0.04180718205752783,
+              -0.3499999940395355,
+              -0.5,
+              -0.5,
+              -0.01142139536520214,
+              -1.0
+            ],
+            "q99": [
+              0.3499922237043402,
+              0.3499961896908774,
+              0.33449061413391656,
+              0.008271353934767167,
+              0.0060719137209364095,
+              0.4999284739938698,
+              0.9999869631148047
+            ]
+          }
+        }
+      }
+    }
+  },
+  "reserved_test_conditions_unexecuted": 40,
+  "train_normalization_stats": "data/lerobot/sft_readiness_v1/train/meta/stats.json",
+  "normalization_rule": "Use only the train stats for both training and validation; validation's own conversion stats are diagnostic only",
+  "train_validation_reset_hashes_disjoint": true,
+  "successful_demonstration_candidates_only": true,
+  "sufficient_for_sft_quality_claim": false,
+  "human_visual_acceptance": "pending",
+  "limitations": [
+    "2 train conditions and 1 validation condition only; expand after quality inspection",
+    "Privileged scripted actions are not human demonstrations or pi0.5 rollouts",
+    "Validation inspected for data readiness; if used to tune controller, mark it development and version the split",
+    "Translation tests unexecuted; no reserved robot-relative OOD region implemented",
+    "No weights, tokenizer, processor, forward/backward or model rollout validated"
+  ],
+  "episode_results": [
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_readiness_v1/train_001/open_top/episode.hdf5",
+      "sha256": "7f0a27925936556abb2e70ce717809f54ac87b0dca6539fe69a63e29b0cb1d5e",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "robot_spawn_world_m": [
+        1.5415896231280846,
+        -0.5614939478774301,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5180896231280845,
+        0.5778939478774301
+      ],
+      "initial_state_sha256": "12f17343837d0cf364c47709cb37488dd7fff44f4b80f20db37bb6dc39767ef1",
+      "initial_dual_rgb_sha256": "413e0ddf9a3aac5486c1c70674e90c3b16ba8568e62bc73da2b9b84ab9a09c5f",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835449641357276e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 0.00042268876761974994,
+      "replay_max_drawer_error": 1.3932351275225408e-05,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_readiness_v1/train_001/open_bottom/episode.hdf5",
+      "sha256": "db3b9b15d73d34f63ceb2409c9d37d57a7758536ac055be32e855dc88a702dcf",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "robot_spawn_world_m": [
+        1.5415896231280846,
+        -0.5614939478774301,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5180896231280845,
+        0.5778939478774301
+      ],
+      "initial_state_sha256": "12f17343837d0cf364c47709cb37488dd7fff44f4b80f20db37bb6dc39767ef1",
+      "initial_dual_rgb_sha256": "413e0ddf9a3aac5486c1c70674e90c3b16ba8568e62bc73da2b9b84ab9a09c5f",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835449641357276e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 4.6203041392800515e-12,
+      "replay_max_drawer_error": 3.873557030686925e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_readiness_v1/train_001/close_top/episode.hdf5",
+      "sha256": "77aabd987b2bfd7ccdfcaaefc0ba4b6fc21bccd7fcc88d4b23c4f1e5f113174a",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "robot_spawn_world_m": [
+        1.5415896231280846,
+        -0.5614939478774301,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5180896231280845,
+        0.5778939478774301
+      ],
+      "initial_state_sha256": "b8f56902f656c4c975c3314787660e89613acfdd58fd94d99891ee2d06b1de5e",
+      "initial_dual_rgb_sha256": "31edcbaccdcaed18c98d23093a012dfa05f55e7523e756e04307e3746651a7b0",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 1.1368683772161603e-13,
+      "replay_max_drawer_error": 4.718447854656915e-15,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_001",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_readiness_v1/train_001/close_bottom/episode.hdf5",
+      "sha256": "8ca9f6ce7f55d3ef07f325ea5e40af89d9bb66dc62cf991b33f3f937b4bfa0df",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 101,
+      "scene_offset": [
+        0.0235,
+        0.0164
+      ],
+      "robot_spawn_world_m": [
+        1.5415896231280846,
+        -0.5614939478774301,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.5180896231280845,
+        0.5778939478774301
+      ],
+      "initial_state_sha256": "b8f56902f656c4c975c3314787660e89613acfdd58fd94d99891ee2d06b1de5e",
+      "initial_dual_rgb_sha256": "31edcbaccdcaed18c98d23093a012dfa05f55e7523e756e04307e3746651a7b0",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 3.839661916416048e-06,
+      "replay_max_drawer_error": 6.256730776810215e-07,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "open_top",
+      "path": "outputs/data_readiness_v1/train_002/open_top/episode.hdf5",
+      "sha256": "b8e2466ece9e78387e87fea6b46c78d7ad3a8b8e6172781b7f475d5b0d4ffe24",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "robot_spawn_world_m": [
+        0.5017549921138921,
+        -0.5382785500752425,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.515445007886108,
+        0.5470785500752425
+      ],
+      "initial_state_sha256": "eda4a371db16fb3a5fd0541ea676c455dad68250600ab995ecd51122c9c8766c",
+      "initial_dual_rgb_sha256": "ff99994ca2f032440a42432cc9007a8a9775d72e388e2dae3464b48ed6aa2359",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835255092840482e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 3.0391130246165687e-05,
+      "replay_max_drawer_error": 4.1721017116636006e-06,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "open_bottom",
+      "path": "outputs/data_readiness_v1/train_002/open_bottom/episode.hdf5",
+      "sha256": "6f98049774c00961ca09615e4c6893bae94d9e50e6a1e170a43f529e2571e6aa",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "robot_spawn_world_m": [
+        0.5017549921138921,
+        -0.5382785500752425,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.515445007886108,
+        0.5470785500752425
+      ],
+      "initial_state_sha256": "eda4a371db16fb3a5fd0541ea676c455dad68250600ab995ecd51122c9c8766c",
+      "initial_dual_rgb_sha256": "ff99994ca2f032440a42432cc9007a8a9775d72e388e2dae3464b48ed6aa2359",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835255092840482e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 0.0004817501059806162,
+      "replay_max_drawer_error": 5.1834438165920815e-05,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "close_top",
+      "path": "outputs/data_readiness_v1/train_002/close_top/episode.hdf5",
+      "sha256": "79612aa47b242e3ab4bd680c870ba07a08d4f37d98dd7846f9335258192102aa",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "robot_spawn_world_m": [
+        0.5017549921138921,
+        -0.5382785500752425,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.515445007886108,
+        0.5470785500752425
+      ],
+      "initial_state_sha256": "1cd839a296194e9b34ecfa7715dab160a2f493bd5e302497c5d0b3da41ae1b69",
+      "initial_dual_rgb_sha256": "e77ea04f06bbf79e58285931ab2aca65c6837220b1aeacd7fc52f69f7e557132",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 0.0001249911926446412,
+      "replay_max_drawer_error": 4.014276191966154e-06,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "train_002",
+      "split": "train",
+      "case": "close_bottom",
+      "path": "outputs/data_readiness_v1/train_002/close_bottom/episode.hdf5",
+      "sha256": "099ebef8c7c245e7696d38f4a5dd158d7e03fcc5fb9856785a185cb4f5cdaf2b",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 102,
+      "scene_offset": [
+        0.0172,
+        0.0088
+      ],
+      "robot_spawn_world_m": [
+        0.5017549921138921,
+        -0.5382785500752425,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "left",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        0.515445007886108,
+        0.5470785500752425
+      ],
+      "initial_state_sha256": "1cd839a296194e9b34ecfa7715dab160a2f493bd5e302497c5d0b3da41ae1b69",
+      "initial_dual_rgb_sha256": "e77ea04f06bbf79e58285931ab2aca65c6837220b1aeacd7fc52f69f7e557132",
+      "success_final": false,
+      "stable_success": false,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 7.91925369725277e-09,
+      "replay_max_drawer_error": 2.849751851163873e-09,
+      "selected": false,
+      "rejection_reasons": [
+        "task_final_failure",
+        "not_successful_for_final_10_steps"
+      ]
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "open_top",
+      "path": "outputs/data_readiness_v1/validation_001/open_top/episode.hdf5",
+      "sha256": "eec400955affb69036265d8c67756bc8336c5d5e5c851fff59bd949d4f4124e4",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the top drawer.",
+      "seed": 201,
+      "scene_offset": [
+        0.0381,
+        0.0276
+      ],
+      "robot_spawn_world_m": [
+        1.543992714936542,
+        -0.5819155391613,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.505892714936542,
+        0.6095155391613
+      ],
+      "initial_state_sha256": "0a601a4c1c1bd40ded5dbf702f7ae0474f2b3801f32c8e89afa76333449dab21",
+      "initial_dual_rgb_sha256": "125b5ee09e61e0cf70fdd7d9dab9445d52a977181a675e468827e83c3227f63f",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835442220873896e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 5.941671546932925e-05,
+      "replay_max_drawer_error": 3.4794759663503427e-06,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "open_bottom",
+      "path": "outputs/data_readiness_v1/validation_001/open_bottom/episode.hdf5",
+      "sha256": "5140c55839eeca2b954b11f94493a3f04f7ad00812a751809d54a0beee772b15",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Open the bottom drawer.",
+      "seed": 201,
+      "scene_offset": [
+        0.0381,
+        0.0276
+      ],
+      "robot_spawn_world_m": [
+        1.543992714936542,
+        -0.5819155391613,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.505892714936542,
+        0.6095155391613
+      ],
+      "initial_state_sha256": "0a601a4c1c1bd40ded5dbf702f7ae0474f2b3801f32c8e89afa76333449dab21",
+      "initial_dual_rgb_sha256": "125b5ee09e61e0cf70fdd7d9dab9445d52a977181a675e468827e83c3227f63f",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 3.835442220873896e-09,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 7.87148124459236e-12,
+      "replay_max_drawer_error": 3.3114733177797007e-11,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "close_top",
+      "path": "outputs/data_readiness_v1/validation_001/close_top/episode.hdf5",
+      "sha256": "2b086934af12e9335446bc92a4a20a31d2e49a51964f85ae6173c7bf62f9c78c",
+      "frames": 415,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the top drawer.",
+      "seed": 201,
+      "scene_offset": [
+        0.0381,
+        0.0276
+      ],
+      "robot_spawn_world_m": [
+        1.543992714936542,
+        -0.5819155391613,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.505892714936542,
+        0.6095155391613
+      ],
+      "initial_state_sha256": "7f3738e5c0873a860617adcdad8826bf329447063e5a55379c19fbd5c3639ded",
+      "initial_dual_rgb_sha256": "9c227bd52273cc4a8ead05eb14e455c0176f541a827e29a724a4f87b66ac124c",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.842170943040401e-14,
+      "replay_max_drawer_error": 6.457399719106416e-15,
+      "selected": true,
+      "rejection_reasons": []
+    },
+    {
+      "condition_id": "validation_001",
+      "split": "validation",
+      "case": "close_bottom",
+      "path": "outputs/data_readiness_v1/validation_001/close_bottom/episode.hdf5",
+      "sha256": "82a6ae301ab65e757acfda3b99360d4bf9b2a2638c4ddf560a5d530e8b995881",
+      "frames": 545,
+      "source": "SCRIPTED_PRIVILEGED_STATE",
+      "language": "Close the bottom drawer.",
+      "seed": 201,
+      "scene_offset": [
+        0.0381,
+        0.0276
+      ],
+      "robot_spawn_world_m": [
+        1.543992714936542,
+        -0.5819155391613,
+        0.0
+      ],
+      "robot_spawn_world_euler_rad": [
+        0.0,
+        0.0,
+        1.5707963267948966
+      ],
+      "robot_side_of_cabinet_world_x": "right",
+      "cabinet_minus_robot_spawn_world_xy_m": [
+        -0.505892714936542,
+        0.6095155391613
+      ],
+      "initial_state_sha256": "7f3738e5c0873a860617adcdad8826bf329447063e5a55379c19fbd5c3639ded",
+      "initial_dual_rgb_sha256": "9c227bd52273cc4a8ead05eb14e455c0176f541a827e29a724a4f87b66ac124c",
+      "success_final": true,
+      "stable_success": true,
+      "non_target_max_drift": 0.0,
+      "replay_passed": true,
+      "replay_max_joint_error_rad": 2.6303470512800686e-10,
+      "replay_max_drawer_error": 4.959384951319645e-10,
+      "selected": true,
+      "rejection_reasons": []
+    }
+  ]
+}

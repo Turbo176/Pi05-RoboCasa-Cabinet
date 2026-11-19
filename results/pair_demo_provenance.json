@@ -1,0 +1,37 @@
+{
+  "mode": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "video": "assets/demo/drawer_pair_scripted_pilot.mp4",
+  "gif": "assets/demo/drawer_pair_scripted_pilot.gif",
+  "video_frames": 545,
+  "fps": 20,
+  "sim_duration_seconds": 27.25,
+  "montage": "4 independent episodes; shorter clips hold their final frame after 20.75s; no speed changes",
+  "source_videos": [
+    {
+      "path": "outputs/pair_spaced_open_top_seed0_v1/scripted.mp4",
+      "frames": 415,
+      "sha256": "d69b54d30d19fbcc6e73150d240d1583e97a1e9461948f2f9b70b95804a56792"
+    },
+    {
+      "path": "outputs/pair_spaced_open_bottom_seed0_v1/scripted.mp4",
+      "frames": 545,
+      "sha256": "589ef0742d1caa79f5d98e2e3d0e20390beb77c42181cbc5fe9c0453d5ccfb83"
+    },
+    {
+      "path": "outputs/pair_spaced_close_top_seed0_v1/scripted.mp4",
+      "frames": 415,
+      "sha256": "95aefb515693f6fe8ea983279cc99d30bcbf2a1856995787900d916b222c7933"
+    },
+    {
+      "path": "outputs/pair_spaced_close_bottom_seed0_v1/scripted.mp4",
+      "frames": 545,
+      "sha256": "89661b390a81f11731245fccf021cc6166aed696cc825155117daac54675cf32"
+    }
+  ],
+  "video_bytes": 4438162,
+  "gif_bytes": 3107611,
+  "decode_passed": true,
+  "gif_frames": 91,
+  "gif_duration_ms": 27250
+}

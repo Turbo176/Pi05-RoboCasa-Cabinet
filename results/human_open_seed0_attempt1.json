@@ -1,0 +1,21 @@
+{
+  "task": "OpenDrawerLite",
+  "seed": 0,
+  "mode": "KEYBOARD_TELEOP",
+  "source": "human",
+  "learned_policy": false,
+  "benchmark": "custom Lite; not full RoboCasa benchmark",
+  "steps": 1200,
+  "sim_seconds": 60.0,
+  "wall_seconds": 88.09551720000002,
+  "steps_per_second": 13.621578465515833,
+  "language": "Open the left drawer.",
+  "final_drawer_open_fraction": 0.2204913721638704,
+  "max_drawer_open_fraction": 0.2204913721638704,
+  "success_final": false,
+  "success_any": false,
+  "success_stable_last_10": false,
+  "bilateral_handle_contact_steps": 99,
+  "saved_alignment_and_video_decode_passed": true,
+  "episode_sha256": "bbfdde4946198e0249e7250e7769c4317d9b581028de1a17f80aab291d46f4cc"
+}

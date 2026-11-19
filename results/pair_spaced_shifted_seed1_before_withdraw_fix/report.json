@@ -1,0 +1,138 @@
+{
+  "mode": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "evaluation_split": "development_pilot; includes controller tuning conditions; not an OOD or VLA evaluation",
+  "counterfactual_method": "Offline score the same measured trajectory under the opposite target prompt; no model inference",
+  "episode_count": 4,
+  "success_final_count": 3,
+  "stable_success_count": 3,
+  "wrong_target_success_count": 0,
+  "non_target_max_drift": 3.8352558421866014e-09,
+  "control_hz": 20,
+  "max_control_steps": 600,
+  "non_target_tolerance": 0.05,
+  "prompt_paired_initialization_checks": [
+    {
+      "task": "OpenDrawerPairLite",
+      "seed": 1,
+      "scene_offset": [
+        0.04,
+        -0.03
+      ],
+      "pair_layout": "spaced",
+      "max_initial_state_error": 0.0,
+      "initial_dual_rgb_identical": true,
+      "model_xml_identical": true,
+      "robot_base_position": [
+        1.543814331321928,
+        -0.6220268283500909,
+        0.0
+      ],
+      "passed": true
+    },
+    {
+      "task": "CloseDrawerPairLite",
+      "seed": 1,
+      "scene_offset": [
+        0.04,
+        -0.03
+      ],
+      "pair_layout": "spaced",
+      "max_initial_state_error": 0.0,
+      "initial_dual_rgb_identical": true,
+      "model_xml_identical": true,
+      "robot_base_position": [
+        1.543814331321928,
+        -0.6220268283500909,
+        0.0
+      ],
+      "passed": true
+    }
+  ],
+  "episodes": [
+    {
+      "episode": "open_top",
+      "episode_sha256": "121c017385effcb1745af502314487e2ca5c0e0823dbc443c460d43e272e46eb",
+      "task": "OpenDrawerPairLite",
+      "language": "Open the top drawer.",
+      "seed": 1,
+      "scene_offset": [
+        0.04,
+        -0.03
+      ],
+      "pair_layout": "spaced",
+      "target": "top",
+      "steps": 415,
+      "final_top_fraction": 0.9819031104935214,
+      "final_bottom_fraction": 1.28263680617609e-06,
+      "non_target_max_drift": 3.8352558421866014e-09,
+      "success_final": true,
+      "success_stable_last_10": true,
+      "wrong_target_success_final": false,
+      "wrong_target_max_drift": 0.9819018316919711
+    },
+    {
+      "episode": "open_bottom",
+      "episode_sha256": "d4e9d5dfeb3d472cd2dbdac943eb617d068807b090bf8ed84cadefa6818bc1f1",
+      "task": "OpenDrawerPairLite",
+      "language": "Open the bottom drawer.",
+      "seed": 1,
+      "scene_offset": [
+        0.04,
+        -0.03
+      ],
+      "pair_layout": "spaced",
+      "target": "bottom",
+      "steps": 545,
+      "final_top_fraction": 1.28263680617609e-06,
+      "final_bottom_fraction": 0.9913041827854273,
+      "non_target_max_drift": 3.8352558421866014e-09,
+      "success_final": true,
+      "success_stable_last_10": true,
+      "wrong_target_success_final": false,
+      "wrong_target_max_drift": 0.991302903983877
+    },
+    {
+      "episode": "close_top",
+      "episode_sha256": "8b2d1cd7d2c5976005fcbe4a4edd0b78f1fd0f2141e80fe8695b34aa39c7b97a",
+      "task": "CloseDrawerPairLite",
+      "language": "Close the top drawer.",
+      "seed": 1,
+      "scene_offset": [
+        0.04,
+        -0.03
+      ],
+      "pair_layout": "spaced",
+      "target": "top",
+      "steps": 415,
+      "final_top_fraction": 1.7735508419256066e-05,
+      "final_bottom_fraction": 0.9890024019924231,
+      "non_target_max_drift": 0.0,
+      "success_final": true,
+      "success_stable_last_10": true,
+      "wrong_target_success_final": false,
+      "wrong_target_max_drift": 0.9375067144231389
+    },
+    {
+      "episode": "close_bottom",
+      "episode_sha256": "627e490857ac0964036ffef302041c37f85e9addb6e43c82240de638e117f850",
+      "task": "CloseDrawerPairLite",
+      "language": "Close the bottom drawer.",
+      "seed": 1,
+      "scene_offset": [
+        0.04,
+        -0.03
+      ],
+      "pair_layout": "spaced",
+      "target": "bottom",
+      "steps": 545,
+      "final_top_fraction": 0.9372303780820106,
+      "final_bottom_fraction": 0.4886237882560951,
+      "non_target_max_drift": 0.0,
+      "success_final": false,
+      "success_stable_last_10": false,
+      "wrong_target_success_final": false,
+      "wrong_target_max_drift": 0.9725878167263815
+    }
+  ]
+}

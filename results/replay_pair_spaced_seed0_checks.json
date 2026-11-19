@@ -1,0 +1,142 @@
+[
+  {
+    "mode": "RECORDED_ACTION_REPLAY",
+    "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+    "learned_policy": false,
+    "task": "OpenDrawerPairLite",
+    "seed": 0,
+    "steps": 415,
+    "initial_state_max_error": 0.0,
+    "max_joint_error_rad": 4.8825388176965134E-12,
+    "max_open_fraction_error": 2.455842820769938E-11,
+    "success_final": true,
+    "replay_within_tolerance": true,
+    "max_all_drawer_fraction_error": 2.455842820769938E-11,
+    "target_drawer": "top",
+    "drawer_fractions": {
+      "top": 0.9660546452294834,
+      "bottom": 1.2826235554084683E-06
+    },
+    "initial_drawer_fractions": {
+      "top": 1.2787881090705071E-06,
+      "bottom": 1.2787881090705071E-06
+    },
+    "target_success": true,
+    "non_target_max_drift": 3.83544633796118E-09,
+    "non_target_unchanged": true,
+    "non_target_tolerance": 0.05,
+    "scene_parameters": {
+      "instruction": "Open the top drawer.",
+      "scene_offset": [
+        0.0,
+        0.0
+      ],
+      "pair_layout": "spaced"
+    }
+  },
+  {
+    "mode": "RECORDED_ACTION_REPLAY",
+    "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+    "learned_policy": false,
+    "task": "OpenDrawerPairLite",
+    "seed": 0,
+    "steps": 545,
+    "initial_state_max_error": 0.0,
+    "max_joint_error_rad": 1.609823385706477E-13,
+    "max_open_fraction_error": 3.7995717683259045E-12,
+    "success_final": true,
+    "replay_within_tolerance": true,
+    "max_all_drawer_fraction_error": 3.7995717683259045E-12,
+    "target_drawer": "bottom",
+    "drawer_fractions": {
+      "top": 1.2826235554084683E-06,
+      "bottom": 0.9959008409089396
+    },
+    "initial_drawer_fractions": {
+      "top": 1.2787881090705071E-06,
+      "bottom": 1.2787881090705071E-06
+    },
+    "target_success": true,
+    "non_target_max_drift": 3.83544633796118E-09,
+    "non_target_unchanged": true,
+    "non_target_tolerance": 0.05,
+    "scene_parameters": {
+      "instruction": "Open the bottom drawer.",
+      "scene_offset": [
+        0.0,
+        0.0
+      ],
+      "pair_layout": "spaced"
+    }
+  },
+  {
+    "mode": "RECORDED_ACTION_REPLAY",
+    "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+    "learned_policy": false,
+    "task": "CloseDrawerPairLite",
+    "seed": 0,
+    "steps": 415,
+    "initial_state_max_error": 0.0,
+    "max_joint_error_rad": 1.1480066897107122E-11,
+    "max_open_fraction_error": 2.3073987165389553E-11,
+    "success_final": true,
+    "replay_within_tolerance": true,
+    "max_all_drawer_fraction_error": 2.3073987165389553E-11,
+    "target_drawer": "top",
+    "drawer_fractions": {
+      "top": 1.451776261889478E-05,
+      "bottom": 0.899001081938403
+    },
+    "initial_drawer_fractions": {
+      "top": 0.9378223148959911,
+      "bottom": 0.899001081938403
+    },
+    "target_success": true,
+    "non_target_max_drift": 0.0,
+    "non_target_unchanged": true,
+    "non_target_tolerance": 0.05,
+    "scene_parameters": {
+      "instruction": "Close the top drawer.",
+      "scene_offset": [
+        0.0,
+        0.0
+      ],
+      "pair_layout": "spaced"
+    }
+  },
+  {
+    "mode": "RECORDED_ACTION_REPLAY",
+    "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+    "learned_policy": false,
+    "task": "CloseDrawerPairLite",
+    "seed": 0,
+    "steps": 545,
+    "initial_state_max_error": 0.0,
+    "max_joint_error_rad": 1.222300038961066E-12,
+    "max_open_fraction_error": 1.5040191314596996E-12,
+    "success_final": true,
+    "replay_within_tolerance": true,
+    "max_all_drawer_fraction_error": 1.5040191314596996E-12,
+    "target_drawer": "bottom",
+    "drawer_fractions": {
+      "top": 0.9378223148959911,
+      "bottom": 1.5217851250278836E-06
+    },
+    "initial_drawer_fractions": {
+      "top": 0.9378223148959911,
+      "bottom": 0.899001081938403
+    },
+    "target_success": true,
+    "non_target_max_drift": 0.0,
+    "non_target_unchanged": true,
+    "non_target_tolerance": 0.05,
+    "scene_parameters": {
+      "instruction": "Close the bottom drawer.",
+      "scene_offset": [
+        0.0,
+        0.0
+      ],
+      "pair_layout": "spaced"
+    }
+  }
+]

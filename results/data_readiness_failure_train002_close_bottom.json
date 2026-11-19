@@ -1,0 +1,85 @@
+{
+  "source": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "condition": "train_002",
+  "episode": "outputs/data_readiness_v1/train_002/close_bottom/episode.hdf5",
+  "episode_sha256": "099ebef8c7c245e7696d38f4a5dd158d7e03fcc5fb9856785a185cb4f5cdaf2b",
+  "measured_failure": "Target drawer reopened during retreat after successful push, hold and release",
+  "root_cause_limit": "Reopening phase confirmed from raw measurements; exact finger/handle contact cause not yet re-simulated",
+  "threshold": 0.05,
+  "final_fraction": 0.08133813591564183,
+  "non_target_max_drift": 0.0,
+  "stages": [
+    {
+      "stage": "approach_above",
+      "control_steps": 70,
+      "minimum_fraction": 0.9676838122249679,
+      "final_fraction": 0.9676838122249679,
+      "successful_steps": 0
+    },
+    {
+      "stage": "align_height",
+      "control_steps": 140,
+      "minimum_fraction": 0.9676838122249679,
+      "final_fraction": 0.9676838122249679,
+      "successful_steps": 0
+    },
+    {
+      "stage": "reach_handle",
+      "control_steps": 120,
+      "minimum_fraction": 0.9676838122249679,
+      "final_fraction": 0.9676838122249679,
+      "successful_steps": 0
+    },
+    {
+      "stage": "grasp",
+      "control_steps": 30,
+      "minimum_fraction": 0.9676838122249679,
+      "final_fraction": 0.9720133721162105,
+      "successful_steps": 0
+    },
+    {
+      "stage": "push",
+      "control_steps": 100,
+      "minimum_fraction": 0.04111235569823696,
+      "final_fraction": 0.04111235569823696,
+      "successful_steps": 19
+    },
+    {
+      "stage": "hold",
+      "control_steps": 20,
+      "minimum_fraction": 0.03978949512185199,
+      "final_fraction": 0.03978949512185199,
+      "successful_steps": 20
+    },
+    {
+      "stage": "release",
+      "control_steps": 25,
+      "minimum_fraction": 0.03121178677331321,
+      "final_fraction": 0.03121178677331321,
+      "successful_steps": 25
+    },
+    {
+      "stage": "retreat",
+      "control_steps": 40,
+      "minimum_fraction": 0.0372343116823113,
+      "final_fraction": 0.08133813591564183,
+      "successful_steps": 2
+    }
+  ],
+  "replay_within_tolerance": true,
+  "replay_max_joint_error_rad": 7.91925369725277e-09,
+  "disposition": "Preserved full raw episode and replay; excluded from successful SFT candidates; no successful-prefix truncation; controller frozen for this batch",
+  "robot_spawn_world_m": [
+    0.5017549921138921,
+    -0.5382785500752425,
+    0.0
+  ],
+  "robot_spawn_world_euler_rad": [
+    0.0,
+    0.0,
+    1.5707963267948966
+  ],
+  "robot_side_of_cabinet_world_x": "left",
+  "claim": "Side association is recorded; not proof of the exact contact mechanism"
+}

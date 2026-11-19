@@ -1,0 +1,5 @@
+# Keep checkout bytes stable for the SHA256-frozen collection code on Windows/Linux.
+* text=auto eol=lf
+*.png -text
+*.gif -text
+*.mp4 -text

@@ -1,0 +1,190 @@
+{
+  "schema_version": "pandaomron_arm_osc_v1",
+  "lerobot_version": "0.4.4",
+  "dataset_format": "v3.0",
+  "dataset_api": "official LeRobotDataset.create/add_frame/save_episode/finalize and loader",
+  "frames": 3840,
+  "episodes": 8,
+  "fps": 20,
+  "state_dim": 9,
+  "action_dim": 7,
+  "cameras": [
+    "observation.images.front",
+    "observation.images.wrist"
+  ],
+  "image_storage": "lossless PNG embedded in Parquet",
+  "all_frames_compared": true,
+  "official_loader_passed": true,
+  "no_upload": true,
+  "learned_policy": false,
+  "source_episodes": [
+    {
+      "filename": "pair_spaced_open_top_seed0_v1/episode.hdf5",
+      "sha256": "b7ee90621134a214e6cb2f85fdc90af1a873e63c8a21d5d8520c5cf9130868cd",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "OpenDrawerPairLite",
+      "seed": 0,
+      "frames": 415,
+      "language": "Open the top drawer.",
+      "success_final": true,
+      "target_drawer": "top",
+      "scene_parameters": {
+        "instruction": "Open the top drawer.",
+        "scene_offset": [
+          0.0,
+          0.0
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 3.83544633796118e-09,
+      "non_target_tolerance": 0.05
+    },
+    {
+      "filename": "pair_spaced_open_bottom_seed0_v1/episode.hdf5",
+      "sha256": "422c406b6ecf8589e0d27fc598ffe7acd96d035306ad2ace65a64feacdfaf655",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "OpenDrawerPairLite",
+      "seed": 0,
+      "frames": 545,
+      "language": "Open the bottom drawer.",
+      "success_final": true,
+      "target_drawer": "bottom",
+      "scene_parameters": {
+        "instruction": "Open the bottom drawer.",
+        "scene_offset": [
+          0.0,
+          0.0
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 3.83544633796118e-09,
+      "non_target_tolerance": 0.05
+    },
+    {
+      "filename": "pair_spaced_close_top_seed0_v1/episode.hdf5",
+      "sha256": "6ae05fdc18cf28cd401200ee9cc065d42ce490521c070a9038c6088ba9600a7e",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "CloseDrawerPairLite",
+      "seed": 0,
+      "frames": 415,
+      "language": "Close the top drawer.",
+      "success_final": true,
+      "target_drawer": "top",
+      "scene_parameters": {
+        "instruction": "Close the top drawer.",
+        "scene_offset": [
+          0.0,
+          0.0
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 0.0,
+      "non_target_tolerance": 0.05
+    },
+    {
+      "filename": "pair_spaced_close_bottom_nominal_withdraw_v2/episode.hdf5",
+      "sha256": "a586bd3fdc747c2fa6514e8ccfa319484cbae4f9022748c85619d5ee09167a1c",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "CloseDrawerPairLite",
+      "seed": 0,
+      "frames": 545,
+      "language": "Close the bottom drawer.",
+      "success_final": true,
+      "target_drawer": "bottom",
+      "scene_parameters": {
+        "instruction": "Close the bottom drawer.",
+        "scene_offset": [
+          0.0,
+          0.0
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 0.0,
+      "non_target_tolerance": 0.05
+    },
+    {
+      "filename": "open_top/episode.hdf5",
+      "sha256": "121c017385effcb1745af502314487e2ca5c0e0823dbc443c460d43e272e46eb",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "OpenDrawerPairLite",
+      "seed": 1,
+      "frames": 415,
+      "language": "Open the top drawer.",
+      "success_final": true,
+      "target_drawer": "top",
+      "scene_parameters": {
+        "instruction": "Open the top drawer.",
+        "scene_offset": [
+          0.04,
+          -0.03
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 3.8352558421866014e-09,
+      "non_target_tolerance": 0.05
+    },
+    {
+      "filename": "open_bottom/episode.hdf5",
+      "sha256": "d4e9d5dfeb3d472cd2dbdac943eb617d068807b090bf8ed84cadefa6818bc1f1",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "OpenDrawerPairLite",
+      "seed": 1,
+      "frames": 545,
+      "language": "Open the bottom drawer.",
+      "success_final": true,
+      "target_drawer": "bottom",
+      "scene_parameters": {
+        "instruction": "Open the bottom drawer.",
+        "scene_offset": [
+          0.04,
+          -0.03
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 3.8352558421866014e-09,
+      "non_target_tolerance": 0.05
+    },
+    {
+      "filename": "close_top/episode.hdf5",
+      "sha256": "8b2d1cd7d2c5976005fcbe4a4edd0b78f1fd0f2141e80fe8695b34aa39c7b97a",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "CloseDrawerPairLite",
+      "seed": 1,
+      "frames": 415,
+      "language": "Close the top drawer.",
+      "success_final": true,
+      "target_drawer": "top",
+      "scene_parameters": {
+        "instruction": "Close the top drawer.",
+        "scene_offset": [
+          0.04,
+          -0.03
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 0.0,
+      "non_target_tolerance": 0.05
+    },
+    {
+      "filename": "pair_spaced_close_bottom_shifted_withdraw_v2/episode.hdf5",
+      "sha256": "acfbf134ba9d438fdda675fa9c300deeae26160ee06cfd603164bdf98ce5d317",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "CloseDrawerPairLite",
+      "seed": 1,
+      "frames": 545,
+      "language": "Close the bottom drawer.",
+      "success_final": true,
+      "target_drawer": "bottom",
+      "scene_parameters": {
+        "instruction": "Close the bottom drawer.",
+        "scene_offset": [
+          0.04,
+          -0.03
+        ],
+        "pair_layout": "spaced"
+      },
+      "non_target_max_drift": 0.0,
+      "non_target_tolerance": 0.05
+    }
+  ]
+}

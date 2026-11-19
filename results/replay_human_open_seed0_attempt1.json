@@ -1,0 +1,13 @@
+{
+  "mode": "RECORDED_ACTION_REPLAY",
+  "source_policy_mode": "KEYBOARD_TELEOP",
+  "learned_policy": false,
+  "task": "OpenDrawerLite",
+  "seed": 0,
+  "steps": 1200,
+  "initial_state_max_error": 0.0,
+  "max_joint_error_rad": 8.068982371156608e-09,
+  "max_open_fraction_error": 7.977749849619187e-10,
+  "success_final": false,
+  "replay_within_tolerance": true
+}

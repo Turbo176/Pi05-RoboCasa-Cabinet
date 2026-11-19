@@ -1,0 +1,3 @@
+task,seed,mode,steps,sim_seconds,final_drawer_open_fraction,success_final,success_stable_last_10,bilateral_handle_contact_steps,steps_per_second
+OpenDrawerLite,0,SCRIPTED_PRIVILEGED_STATE,415,20.75,0.9641312518385003,True,True,145,26.52096809406744
+CloseDrawerLite,0,SCRIPTED_PRIVILEGED_STATE,415,20.75,1.8086198891846304e-05,True,True,144,28.446114282380464

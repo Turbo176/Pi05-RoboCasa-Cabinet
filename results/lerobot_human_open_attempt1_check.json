@@ -1,0 +1,32 @@
+{
+  "schema_version": "pandaomron_arm_osc_v1",
+  "lerobot_version": "0.4.4",
+  "dataset_format": "v3.0",
+  "dataset_api": "official LeRobotDataset.create/add_frame/save_episode/finalize and loader",
+  "frames": 1200,
+  "episodes": 1,
+  "fps": 20,
+  "state_dim": 9,
+  "action_dim": 7,
+  "cameras": [
+    "observation.images.front",
+    "observation.images.wrist"
+  ],
+  "image_storage": "lossless PNG embedded in Parquet",
+  "all_frames_compared": true,
+  "official_loader_passed": true,
+  "no_upload": true,
+  "learned_policy": false,
+  "source_episodes": [
+    {
+      "filename": "OpenDrawerLite_s0_20261118_231404_647900/episode.hdf5",
+      "sha256": "bbfdde4946198e0249e7250e7769c4317d9b581028de1a17f80aab291d46f4cc",
+      "mode": "KEYBOARD_TELEOP",
+      "task": "OpenDrawerLite",
+      "seed": 0,
+      "frames": 1200,
+      "language": "Open the left drawer.",
+      "success_final": false
+    }
+  ]
+}

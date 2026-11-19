@@ -1,0 +1,38 @@
+# Verified Windows 10 / Python 3.11 simulation subset, 2026-11-18.
+# Upstream editable packages are installed separately at commits in bootstrap_sim.ps1.
+# Full RoboCasa extras (LeRobot/torch, tianshou, pygame, hidapi) are intentionally deferred.
+absl-py==2.5.1
+cloudpickle==3.1.2
+colorama==0.4.6
+etils==1.15.0
+Farama-Notifications==0.0.6
+fsspec==2026.9.0
+glfw==2.11.0
+gymnasium==1.1.1
+h5py==3.13.0
+imageio==2.37.0
+imageio-ffmpeg==0.6.0
+iniconfig==2.3.1
+llvmlite==0.44.0
+lxml==5.3.2
+mujoco==3.3.1
+numba==0.61.2
+numpy==2.2.5
+opencv-python==4.11.0.86
+packaging==26.3
+pillow==13.0.0
+pluggy==1.7.0
+Pygments==2.21.0
+pynput==1.8.2
+PyOpenGL==3.1.10
+pytest==9.2.0
+PyYAML==6.0.2
+qpsolvers==4.13.0
+quadprog==0.1.14
+scipy==1.15.3
+six==1.17.0
+termcolor==3.3.0
+tqdm==4.70.1
+typing_extensions==4.16.0
+wheel==0.45.1
+zipp==4.1.2

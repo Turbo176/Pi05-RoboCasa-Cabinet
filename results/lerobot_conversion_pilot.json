@@ -1,0 +1,42 @@
+{
+  "schema_version": "pandaomron_arm_osc_v1",
+  "lerobot_version": "0.4.4",
+  "dataset_format": "v3.0",
+  "dataset_api": "official LeRobotDataset.create/add_frame/save_episode/finalize and loader",
+  "frames": 830,
+  "episodes": 2,
+  "fps": 20,
+  "state_dim": 9,
+  "action_dim": 7,
+  "cameras": [
+    "observation.images.front",
+    "observation.images.wrist"
+  ],
+  "image_storage": "lossless PNG embedded in Parquet",
+  "all_frames_compared": true,
+  "official_loader_passed": true,
+  "no_upload": true,
+  "learned_policy": false,
+  "source_episodes": [
+    {
+      "filename": "open_shared_recorder_v1/episode.hdf5",
+      "sha256": "c3009b6c0632ff2f422fd756abf3638ff7002098bf503b570189e1d3c8f4d314",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "OpenDrawerLite",
+      "seed": 0,
+      "frames": 415,
+      "language": "Open the left drawer.",
+      "success_final": true
+    },
+    {
+      "filename": "close_seed0/episode.hdf5",
+      "sha256": "9bc0cafe82600561f89cbf230d6df3b13be9a978de6405c59e9afc61790d8e31",
+      "mode": "SCRIPTED_PRIVILEGED_STATE",
+      "task": "CloseDrawerLite",
+      "seed": 0,
+      "frames": 415,
+      "language": "Close the left drawer.",
+      "success_final": true
+    }
+  ]
+}

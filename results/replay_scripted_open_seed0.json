@@ -1,0 +1,13 @@
+{
+  "mode": "RECORDED_ACTION_REPLAY",
+  "source_policy_mode": "SCRIPTED_PRIVILEGED_STATE",
+  "learned_policy": false,
+  "task": "OpenDrawerLite",
+  "seed": 0,
+  "steps": 415,
+  "initial_state_max_error": 0.0,
+  "max_joint_error_rad": 1.6608936448392342e-13,
+  "max_open_fraction_error": 5.773159728050814e-15,
+  "success_final": true,
+  "replay_within_tolerance": true
+}

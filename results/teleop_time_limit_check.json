@@ -1,0 +1,31 @@
+{
+  "check": "teleop main loop with real RoboCasa environment and recorder; synthetic in-process key events",
+  "mode": "AGENT_UI_CHECK",
+  "learned_policy": false,
+  "human_demonstration": false,
+  "native_keyboard_event_delivery_tested": false,
+  "checks": [
+    "limit pauses without stepping",
+    "Space extends same episode",
+    "focus loss pauses",
+    "manual pause/resume",
+    "F8 save and reset",
+    "F9 discard and reset",
+    "0 means unlimited",
+    "T actions / T+1 observations and 20Hz time preserved"
+  ],
+  "cases": [
+    {
+      "case": "limited",
+      "configured_increment": 2,
+      "saved_steps": 4,
+      "passed": true
+    },
+    {
+      "case": "unlimited",
+      "configured_increment": 0,
+      "saved_steps": 3,
+      "passed": true
+    }
+  ]
+}

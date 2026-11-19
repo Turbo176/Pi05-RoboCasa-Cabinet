@@ -1,0 +1,21 @@
+{
+  "task": "CloseDrawerLite",
+  "seed": 0,
+  "mode": "SCRIPTED_PRIVILEGED_STATE",
+  "source": "pose servo uses simulator handle pose; robot motion only through env.step",
+  "learned_policy": false,
+  "benchmark": "custom Lite; not full RoboCasa benchmark",
+  "steps": 415,
+  "sim_seconds": 20.75,
+  "wall_seconds": 14.588987300000099,
+  "steps_per_second": 28.446114282380464,
+  "language": "Close the left drawer.",
+  "final_drawer_open_fraction": 1.8086198891846304e-05,
+  "max_drawer_open_fraction": 0.9378223148959911,
+  "success_final": true,
+  "success_any": true,
+  "success_stable_last_10": true,
+  "bilateral_handle_contact_steps": 144,
+  "saved_alignment_and_video_decode_passed": true,
+  "episode_sha256": "58155ab0933bd3c349d96d107667ae1563467ee5cba46c0900c1d0c6e578f438"
+}
