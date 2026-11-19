@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="145" height="24" viewBox="0 0 145 24" role="img" aria-label="RoboCasa: 1.0.1">
+  <title>RoboCasa 1.0.1</title>
+  <defs><clipPath id="r"><rect width="145" height="24" rx="5"/></clipPath></defs>
+  <g clip-path="url(#r)"><rect width="145" height="24" fill="#1e293b"/><rect width="87" height="24" fill="#087f78"/></g>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11">
+    <text x="43.5" y="16">RoboCasa</text><text x="116" y="16" fill="#f1f5f9">1.0.1</text>
+  </g>
+</svg>
